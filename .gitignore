@@ -2,6 +2,7 @@
 # (install flow in Home.php, admin settings panel in Admin.php).
 # Real deployments should populate these; only *.example templates are tracked.
 application/config/database.php
+application/config/config.php
 application/config/pusher.php
 application/config/my_config.php
 application/config/package_config.php
