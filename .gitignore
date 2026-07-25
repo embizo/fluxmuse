@@ -1,0 +1,26 @@
+# Environment-specific config, generated/rewritten by the app itself
+# (install flow in Home.php, admin settings panel in Admin.php).
+# Real deployments should populate these; only *.example templates are tracked.
+application/config/database.php
+application/config/pusher.php
+application/config/my_config.php
+application/config/package_config.php
+application/config/frontend_config.php
+application/views/include/fb_px.php
+application/views/include/google_code.php
+
+# Runtime / user-generated content
+application/logs/*
+!application/logs/index.html
+application/cache/*
+!application/cache/index.html
+upload/*
+!upload/index.html
+upload_caster/*
+!upload_caster/index.html
+download/*
+!download/index.html
+
+# Local environment
+.env
+.DS_Store
