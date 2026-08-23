@@ -64,15 +64,30 @@ booted from here without one installed.
 
 ## Important notes / gotchas
 
-- **Secrets are committed.** `application/config/database.php` and other config files
-  containing credentials/API keys are tracked in git. Treat them as sensitive; avoid
-  printing secret values. See "Security follow-up" below.
 - `vendor/` and `system/` are vendored — don't hand-edit; update via Composer / upstream.
 - This is a large white-label product; a lot of features are toggled by config and admin
   settings rather than code paths, so behavior can depend on DB/admin state.
 
-## Security follow-up (not yet done)
+## Security follow-up (resolved)
 
-- No `.gitignore` exists and live-looking DB credentials + API keys are committed. Before
-  any public push, consider moving secrets to environment/untracked config and rotating
-  anything already exposed on GitHub (`origin` = github.com/embizo/fluxmuse).
+Config files (`database.php`, `config.php`, `pusher.php`, `my_config.php`,
+`package_config.php`, `frontend_config.php`) are `.gitignore`d and untracked
+(`.example` templates are tracked instead) as of commits `cd564cca` and `f69a99da`.
+
+Audited the full git history of every one of those files (each only ever existed in
+one commit, `b8caae1c`, before being untracked) to check whether real secrets had been
+exposed on the public `embizo/fluxmuse` repo. Result: no real credentials were ever
+committed — `database.php`'s hostname/username/password/database and `pusher.php`'s
+app_id/key/secret were all empty-string placeholders; no other file had a non-empty
+key/secret/token. The one non-empty value, `config.php`'s `encryption_key = '12345'`,
+is an obvious default placeholder, not a production secret. Nothing needs rotating.
+
+Checked the untracked `application/config/config.php` present in this working copy:
+its `encryption_key` is a 64-character hex string (32 random bytes) — a properly
+strong key, not the `'12345'` placeholder. Note this environment has no PHP toolchain
+and isn't the deployed server (see "Running locally" above), so this only confirms
+the key in *this local file*; it doesn't confirm what's actually configured on the
+live production host. If the production server's `config.php` was ever seeded from
+the same placeholder-containing `b8caae1c` commit and not since regenerated, rotate
+its `encryption_key` there directly (changing it invalidates existing sessions/cookies
+but rotating a weak key outweighs that).
