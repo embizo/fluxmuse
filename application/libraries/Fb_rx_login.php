@@ -142,7 +142,7 @@ class Fb_rx_login
 
 		$helper = $this->fb->getRedirectLoginHelper();
 
-		$permissions = ['email','pages_manage_posts','pages_manage_engagement','pages_manage_metadata','pages_read_engagement','pages_show_list','pages_messaging','public_profile','read_insights','business_management'];
+		$permissions = ['email','pages_manage_posts','pages_manage_engagement','pages_manage_metadata','pages_read_engagement','pages_show_list','pages_messaging','public_profile','read_insights','business_management','whatsapp_business_messaging','whatsapp_business_management'];
 		if($this->CI->config->item('instagram_reply_enable_disable') == '1')
 			array_push($permissions, 'instagram_basic','instagram_manage_comments','instagram_manage_insights','instagram_content_publish','instagram_manage_messages');
 
