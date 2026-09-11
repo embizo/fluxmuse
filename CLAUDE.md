@@ -40,6 +40,9 @@ marketing, live chat, comment automation, and AI reply features.
 - `upload/`, `upload_caster/`, `download/` — user-generated / runtime content
 - `ci/` — CI-related scripts
 - `system/`, `vendor/` — framework & Composer deps (do not edit)
+- `docs/agency_provisioning.md` — architecture + status of the Agency ($346/mo) tier
+  clone-per-client provisioning pipeline (`Agency_provisioning.php`,
+  `Agency_branding_generator.php`, `assets/backup_db/agency_provisioning.sql`)
 
 ## Conventions
 
