@@ -7180,6 +7180,19 @@ public function _email_send_function($config_id_prefix="", $message_org="", $to_
     public function get_ai_reply_open_ai($description, $human = "Human: How are you ?", $user_id = 0)
     {
         $api_info = $this->basic->get_data("open_ai_config", ['where' => ['user_id' => $user_id]], $select = '', $join = '', $limit = '1', $start = 0, $order_by = 'RAND()');
+        if (!isset($api_info[0])) return array();
+
+        // Agency/BYOK accounts supply their own OpenAI key and are never metered against
+        // module 340 ("Bot - AI Reply") — Fluxmuse only pays for platform-key tiers.
+        $is_byok = $this->_is_byok_account($user_id);
+
+        if (!$is_byok) {
+            $usage_status = $this->_check_usage($module_id = 340, $request = 1, $user_id);
+            if ($usage_status == "2" || $usage_status == "3") {
+                return array('choices' => array(array('text' => $this->lang->line('Your monthly AI reply limit has been reached. Please upgrade your plan to continue using AI replies.'))));
+            }
+        }
+
         $promt = $api_info[0]['instruction_to_ai'] . "." . $description . "Human : " . $human . "." . "AI:";
         $api_key = $api_info[0]['open_ai_secret_key'];
 
@@ -7192,7 +7205,27 @@ public function _email_send_function($config_id_prefix="", $message_org="", $to_
         $this->load->library('Openai_api');
         $response = $this->openai_api->open_ai_completion($api_key, $promt, $model, $max_token, $api_info[0]['instruction_to_ai'], $description, $human);
         $response = json_decode($response, true);
+
+        // Only meter successful completions — a failed/errored OpenAI call (bad key,
+        // rate limit, etc.) must not burn the customer's monthly allowance.
+        if (!$is_byok && isset($response['choices'][0]['text']) && $response['choices'][0]['text'] !== '') {
+            $this->_insert_usage_log($module_id = 340, $request = 1, $user_id);
+        }
+
         return $response;
+    }
+
+    // Whether $user_id's account is on a bring-your-own-key (Agency) package, which is
+    // never metered/charged against Fluxmuse's own OpenAI usage for module 340.
+    protected function _is_byok_account($user_id = 0)
+    {
+        if ($user_id == 0) $user_id = $this->session->userdata("user_id");
+        if ($user_id == 0 || $user_id == "") return false;
+
+        $package_data = $this->basic->get_data("users", array("where" => array("users.id" => $user_id)), "package.is_byok,users.user_type", array('package' => "users.package_id=package.id,left"));
+        if (!isset($package_data[0])) return false;
+
+        return isset($package_data[0]['is_byok']) && $package_data[0]['is_byok'] == '1';
     }
 
 

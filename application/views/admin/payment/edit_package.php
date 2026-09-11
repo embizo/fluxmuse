@@ -103,12 +103,34 @@
                          <span class="red"><?php echo form_error('highlight'); ?></span>
                        </label>
                      </div>
-                 </div> 
+                 </div>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="col-12 col-md-6">
+                 <div class="form-group" id="is_byok_container">
+                   <label for="is_byok" ><i class="fas fa-key"></i> <?php echo $this->lang->line('Bring Your Own AI Key');?></label>
+
+                     <div class="form-group">
+                       <?php
+                       $is_byok = isset($value[0]["is_byok"]) ? $value[0]["is_byok"] : '0';
+                       if($is_byok == '') $is_byok='0';
+                       ?>
+                       <label class="custom-switch mt-2">
+                         <input type="checkbox" name="is_byok" value="1" class="custom-switch-input"  <?php if($is_byok=='1') echo 'checked'; ?>>
+                         <span class="custom-switch-indicator"></span>
+                         <span class="custom-switch-description"><?php echo $this->lang->line('Yes');?></span>
+                         <span class="red"><?php echo form_error('is_byok'); ?></span>
+                       </label>
+                       <small class="form-text text-muted"><?php echo $this->lang->line('Members on this package must supply their own OpenAI API key and are never charged against the AI Reply usage limit below.');?></small>
+                     </div>
+                 </div>
                </div>
              </div>
 
              <div class="form-group">
-               <label for=""><?php echo $this->lang->line("Modules")?> *</label>   
+               <label for=""><?php echo $this->lang->line("Modules")?> *</label>
                 <?php $mandatory_modules = array(65,66,199,200,315); ?>
                <div class="table-responsive">
                   <table class="table table-bordered">
