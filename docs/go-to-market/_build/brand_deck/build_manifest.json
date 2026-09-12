@@ -1,0 +1,113 @@
+{
+  "built": "2026-09-12",
+  "assets_revision_v3_marker": true,
+  "decks": {
+    "FluxMuse_Brand_Pitch_Deck.pptx": {
+      "variant": "master",
+      "slides": 30,
+      "images": [
+        "brand/fluxmuse-icon-512.png",
+        "brand/fluxmuse-logo-dark.png",
+        "infographics/agency-partner-model.png",
+        "infographics/ai-agent-roster.png",
+        "infographics/brand-engagement-journey.png",
+        "infographics/case-study-template.png",
+        "infographics/founding-member-offer.png",
+        "infographics/gauteng-pilot.png",
+        "infographics/how-fluxmuse-works.png",
+        "infographics/omnichannel-hub.png",
+        "infographics/payment-coverage-map.png",
+        "infographics/payment-rails-matrix.png",
+        "infographics/pricing-regional.png",
+        "infographics/pricing-tiers.png",
+        "infographics/problem-solution.png",
+        "infographics/roadmap-2026-2027.png",
+        "infographics/segment-agency.png",
+        "infographics/segment-sme.png",
+        "infographics/segment-solo.png",
+        "infographics/whatsapp-commerce-flow.png",
+        "screenshots/composites/browser-pricing.png",
+        "screenshots/composites/checkout-in-chat-3-phones.png",
+        "screenshots/composites/hero-laptop-phone_night.png",
+        "screenshots/composites/laptop-home.png",
+        "screenshots/composites/phone-demo-step-01-catalog.png",
+        "screenshots/composites/phone-demo-step-03-cart.png",
+        "screenshots/composites/phone-demo-step-07-confirmation.png"
+      ]
+    },
+    "FluxMuse_Pitch_Solo_Entrepreneurs.pptx": {
+      "variant": "solo",
+      "slides": 16,
+      "images": [
+        "brand/fluxmuse-icon-512.png",
+        "brand/fluxmuse-logo-dark.png",
+        "infographics/ai-agent-roster.png",
+        "infographics/case-study-template.png",
+        "infographics/founding-member-offer.png",
+        "infographics/how-fluxmuse-works.png",
+        "infographics/payment-coverage-map.png",
+        "infographics/pricing-tiers.png",
+        "infographics/problem-solution.png",
+        "infographics/segment-solo.png",
+        "infographics/whatsapp-commerce-flow.png",
+        "screenshots/composites/browser-pricing.png",
+        "screenshots/composites/checkout-in-chat-3-phones.png",
+        "screenshots/composites/hero-laptop-phone_night.png",
+        "screenshots/composites/laptop-home.png",
+        "screenshots/composites/phone-demo-step-01-catalog.png",
+        "screenshots/composites/phone-demo-step-03-cart.png",
+        "screenshots/composites/phone-demo-step-07-confirmation.png"
+      ]
+    },
+    "FluxMuse_Pitch_SMEs.pptx": {
+      "variant": "sme",
+      "slides": 25,
+      "images": [
+        "brand/fluxmuse-icon-512.png",
+        "brand/fluxmuse-logo-dark.png",
+        "infographics/ai-agent-roster.png",
+        "infographics/brand-engagement-journey.png",
+        "infographics/founding-member-offer.png",
+        "infographics/gauteng-pilot.png",
+        "infographics/how-fluxmuse-works.png",
+        "infographics/payment-coverage-map.png",
+        "infographics/payment-rails-matrix.png",
+        "infographics/platform-stack.png",
+        "infographics/pricing-regional.png",
+        "infographics/pricing-tiers.png",
+        "infographics/problem-solution.png",
+        "infographics/roadmap-2026-2027.png",
+        "infographics/segment-sme.png",
+        "infographics/whatsapp-commerce-flow.png",
+        "screenshots/composites/browser-pricing.png",
+        "screenshots/composites/checkout-in-chat-3-phones.png",
+        "screenshots/composites/hero-laptop-phone_night.png",
+        "screenshots/composites/laptop-home.png",
+        "screenshots/composites/phone-demo-step-01-catalog.png",
+        "screenshots/composites/phone-demo-step-03-cart.png",
+        "screenshots/composites/phone-demo-step-07-confirmation.png"
+      ]
+    },
+    "FluxMuse_Partner_Programme_Deck.pptx": {
+      "variant": "partner",
+      "slides": 24,
+      "images": [
+        "brand/fluxmuse-icon-512.png",
+        "brand/fluxmuse-logo-dark.png",
+        "infographics/agency-partner-model.png",
+        "infographics/ai-agent-roster.png",
+        "infographics/gauteng-pilot.png",
+        "infographics/how-fluxmuse-works.png",
+        "infographics/omnichannel-hub.png",
+        "infographics/payment-coverage-map.png",
+        "infographics/payment-rails-matrix.png",
+        "infographics/pricing-regional.png",
+        "infographics/roadmap-2026-2027.png",
+        "infographics/segment-agency.png",
+        "infographics/whatsapp-commerce-flow.png",
+        "screenshots/composites/checkout-in-chat-3-phones.png",
+        "screenshots/composites/hero-laptop-phone_night.png"
+      ]
+    }
+  }
+}

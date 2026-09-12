@@ -1,0 +1,33 @@
+{
+  "assets_revision_v3_marker": true,
+  "files": {
+    "FluxMuse_Proposal_Solo_Entrepreneur.docx": [
+      "infographics/founding-member-offer.png",
+      "infographics/segment-solo.png",
+      "screenshots/composites/checkout-in-chat-3-phones.png"
+    ],
+    "FluxMuse_Proposal_SME_Growth.docx": [
+      "infographics/brand-engagement-journey.png",
+      "infographics/case-study-template.png",
+      "infographics/payment-coverage-map.png",
+      "infographics/pilot-campaign-framework.png",
+      "infographics/platform-stack.png",
+      "infographics/pricing-tiers.png",
+      "infographics/segment-sme.png"
+    ],
+    "FluxMuse_Proposal_Agency_Partner.docx": [
+      "infographics/agency-partner-model.png",
+      "infographics/segment-agency.png"
+    ],
+    "FluxMuse_Proposal_Brand_Campaign.docx": [
+      "infographics/how-fluxmuse-works.png",
+      "infographics/omnichannel-hub.png",
+      "infographics/whatsapp-commerce-flow.png"
+    ],
+    "FluxMuse_Proposal_Sample_Braiding_Studio.docx": [
+      "infographics/founding-member-offer.png",
+      "infographics/segment-solo.png",
+      "infographics/whatsapp-commerce-flow.png"
+    ]
+  }
+}
