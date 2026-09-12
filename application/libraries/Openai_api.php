@@ -2,7 +2,7 @@
 
 class Openai_api 
 {
-    public function open_ai_completion($api_key,$prompt,$model="text-davinci-003",$max_tokens=1500,$instruction="AI Agent",$description="description in the flow",$human){
+    public function open_ai_completion($api_key,$prompt,$model="gpt-4o-mini",$max_tokens=1500,$instruction="AI Agent",$description="description in the flow",$human){
 
 
       $text_completion_model=array("text-davinci-003", "text-davinci-002", "text-curie-001", "text-babbage-001", 

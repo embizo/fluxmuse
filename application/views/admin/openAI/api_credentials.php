@@ -16,26 +16,13 @@
     else{
       $xvalue['instruction_to_ai'] = $this->lang->line('The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.');
     }
-    $text_completions =[
-        'text-davinci-003',
-        'text-davinci-002',
-        'text-curie-001',
-        'text-babbage-001',
-        'text-ada-001',
-        'davinci',
-        'curie',
-        'babbage',
-        'ada'];
-
     $chat_completions = [
       'gpt-4-1106-preview',
       'gpt-4-vision-preview',
       'gpt-4',
-      'gpt-4-32k',
       'gpt-4-0613',
       'gpt-4-32k-0613',
       'gpt-3.5-turbo',
-      'gpt-3.5-turbo-0301',
       'gpt-4o',
       'gpt-4o-mini'
     ];
@@ -74,11 +61,6 @@
                         <label for="models"><i class="fas fa-paper-plane"></i>  <?php echo $this->lang->line("Models");?></label>
                         <select class="select2 w-100" name="models">
                           <option value=""><?php echo $this->lang->line("Select Models"); ?></option>
-                          <optgroup label="Text Completions">
-                          <?php foreach ($text_completions as  $value): ?>
-                            <option value="<?php echo $value ?>" <?php if(isset($xvalue['models']) && $value == $xvalue['models']) echo 'selected'; ?> ><?php echo $value?></option>
-                          <?php endforeach ?>
-                          </optgroup>
                           <optgroup label="Chat Completions">
                           <?php foreach ($chat_completions as  $value): ?>
                             <option value="<?php echo $value ?>" <?php if(isset($xvalue['models']) && $value == $xvalue['models']) echo 'selected'; ?> ><?php echo $value?></option>
