@@ -225,9 +225,44 @@
                       
                       <textarea name="whatsapp_send_order_text" id="whatsapp_send_order_text" cols="30" rows="10" class="form-control whatsapp_send_order_text" style="height:250px !important;"><?php echo !empty($xvalue['whatsapp_send_order_text']) ? $xvalue['whatsapp_send_order_text']: $default_whatsapp_send_order_text; ?></textarea>
                     </div>
-                 </div>   
+                 </div>
+
+                 <div class="col-12">
+                    <div class="form-group mb-0">
+                      <label type="button" data-toggle="collapse" data-target="#whatsapp_business_collapse" aria-expanded="false" aria-controls="whatsapp_business_collapse" class="pointer text-primary" style="font-size: 14px"><b><i class="fab fa-whatsapp"></i> <?php echo $this->lang->line('WhatsApp Business API (send payment links automatically)'); ?></b></label>
+                      <div class="collapse" id="whatsapp_business_collapse">
+                        <div class="row mt-2">
+                          <div class="col-12 col-md-4">
+                            <div class="form-group">
+                              <label><?php echo $this->lang->line('Enable WhatsApp Business sending'); ?></label>
+                              <br>
+                              <label class="custom-switch mt-2">
+                                <input type="checkbox" id="whatsapp_business_enabled" name="whatsapp_business_enabled" value="1" class="custom-switch-input" <?php if(isset($xvalue['whatsapp_business_enabled']) && $xvalue['whatsapp_business_enabled']=='1') echo 'checked'; ?>>
+                                <span class="custom-switch-indicator"></span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-4">
+                            <div class="form-group">
+                              <label><?php echo $this->lang->line('Phone Number ID'); ?></label>
+                              <input type="text" name="whatsapp_business_phone_number_id" value="<?php echo isset($xvalue['whatsapp_business_phone_number_id']) ? $xvalue['whatsapp_business_phone_number_id'] : ''; ?>" class="form-control">
+                              <span class="red"><?php echo form_error('whatsapp_business_phone_number_id'); ?></span>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-4">
+                            <div class="form-group">
+                              <label><?php echo $this->lang->line('Access Token'); ?></label>
+                              <input type="text" name="whatsapp_business_access_token" value="<?php echo isset($xvalue['whatsapp_business_access_token']) ? $xvalue['whatsapp_business_access_token'] : ''; ?>" class="form-control">
+                              <span class="red"><?php echo form_error('whatsapp_business_access_token'); ?></span>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="text-muted small"><?php echo $this->lang->line('From your Meta WhatsApp Business/Cloud API setup. Used only to push checkout payment links automatically; falls back to the manual WhatsApp link above if not configured or the send fails.'); ?></p>
+                      </div>
+                    </div>
+                 </div>
                 <?php endif; ?>
-                <?php endif; ?>      
+                <?php endif; ?>
               </div>    
             <div class="card-footer p-0">
               <button class="btn btn-primary btn-lg" id="save-btn" type="submit"><i class="fas fa-save"></i> <?php echo $this->lang->line("Save");?></button>

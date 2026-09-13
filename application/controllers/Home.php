@@ -4715,6 +4715,15 @@ class Home extends CI_Controller
         else if (isset($response['entry'][0]['changes'][0]['field']) && $response['entry'][0]['changes'][0]['field'] == 'comments')
             $url = base_url() . "instagram_reply/webhook_callback";
 
+        // WhatsApp Cloud API delivery/status/inbound-message callbacks: this app only
+        // sends WhatsApp messages (checkout payment links, see Whatsapp_cloud_api.php);
+        // it doesn't process inbound WhatsApp conversations (that remains Livechat.php's
+        // separate, pre-existing whatsapp_bots gap). Acknowledging with a plain 200 here
+        // (same as the existing exit-with-no-url fallthrough below) is enough to satisfy
+        // Meta's requirement that a subscribed webhook URL respond successfully.
+        else if (isset($response['entry'][0]['changes'][0]['value']['messaging_product']) && $response['entry'][0]['changes'][0]['value']['messaging_product'] == 'whatsapp')
+            exit;
+
         if ($url == '') exit;
 
         $ch = curl_init();
