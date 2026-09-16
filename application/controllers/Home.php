@@ -7206,7 +7206,7 @@ public function _email_send_function($config_id_prefix="", $message_org="", $to_
         $api_key = $api_info[0]['open_ai_secret_key'];
 
         $model = $api_info[0]['models'] ?? "";
-        if ($model == "")  $model = "text-davinci-003";
+        if ($model == "")  $model = "gpt-4o-mini";
 
         $max_token = (int)$api_info[0]['maximum_token'] ?? "";
         if ($max_token == "" || $max_token == 0) $max_token = 800;

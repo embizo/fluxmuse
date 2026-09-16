@@ -63,7 +63,7 @@
                           <option value=""><?php echo $this->lang->line("Select Models"); ?></option>
                           <optgroup label="Chat Completions">
                           <?php foreach ($chat_completions as  $value): ?>
-                            <option value="<?php echo $value ?>" <?php if(isset($xvalue['models']) && $value == $xvalue['models']) echo 'selected'; ?> ><?php echo $value?></option>
+                            <option value="<?php echo $value ?>" <?php if((isset($xvalue['models']) && $value == $xvalue['models']) || (empty($xvalue['models']) && $value == 'gpt-4o-mini')) echo 'selected'; ?> ><?php echo $value?></option>
                           <?php endforeach ?>
                           </optgroup>
                         </select>
