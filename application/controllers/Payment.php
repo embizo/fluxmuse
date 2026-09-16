@@ -1988,11 +1988,12 @@ class Payment extends Home
             $this->form_validation->set_rules('validity_amount', '<b>'.$this->lang->line("Validity").'</b>', 'trim|required|integer');   
             $this->form_validation->set_rules('visible', '<b>'.$this->lang->line("Available to Purchase").'</b>', 'trim');
             $this->form_validation->set_rules('highlight', '<b>'.$this->lang->line("Highlighted Package").'</b>', 'trim');
-            $this->form_validation->set_rules('modules[]','<b>'.$this->lang->line("Modules").'</b>','trim|required');       
-                
+            $this->form_validation->set_rules('is_byok', '<b>'.$this->lang->line("Bring Your Own AI Key").'</b>', 'trim');
+            $this->form_validation->set_rules('modules[]','<b>'.$this->lang->line("Modules").'</b>','trim|required');
+
             if ($this->form_validation->run() == FALSE)
             {
-                $this->add_package(); 
+                $this->add_package();
             }
             else
             {
@@ -2007,9 +2008,11 @@ class Payment extends Home
                 $price=strip_tags($this->input->post('price',true));
                 $visible=$this->input->post('visible',true);
                 $highlight=$this->input->post('highlight',true);
+                $is_byok=$this->input->post('is_byok',true);
 
                 if($visible=='') $visible='0';
                 if($highlight=='') $highlight='0';
+                if($is_byok=='') $is_byok='0';
 
                 $validity_amount=$this->input->post('validity_amount',true);
                 $validity_type=$this->input->post('validity_type',true);
@@ -2052,13 +2055,14 @@ class Payment extends Home
                     'validity'=>$validity,
                     'visible'=>$visible,
                     'highlight'=>$highlight,
+                    'is_byok'=>$is_byok,
                     'validity_extra_info'=>$validity_extra_info,
                     'module_ids'=>$modules_str,
                     'monthly_limit'=>json_encode($monthly_limit),
                     'bulk_limit'=>json_encode($bulk_limit)
                 );
-                
-                if($this->basic->insert_data('package',$data))                                      
+
+                if($this->basic->insert_data('package',$data))
                 $this->session->set_flashdata('success_message',1);   
                 else    
                 $this->session->set_flashdata('error_message',1);     
@@ -2191,7 +2195,8 @@ class Payment extends Home
             $this->form_validation->set_rules('name', '<b>'.$this->lang->line("Package Name").'</b>', 'trim|required');
             $this->form_validation->set_rules('visible', '<b>'.$this->lang->line("Available to Purchase").'</b>', 'trim');
             $this->form_validation->set_rules('highlight', '<b>'.$this->lang->line("Highlighted Package").'</b>', 'trim');
-            $this->form_validation->set_rules('modules[]','<b>'.$this->lang->line("modules").'</b>','trim');   
+            $this->form_validation->set_rules('is_byok', '<b>'.$this->lang->line("Bring Your Own AI Key").'</b>', 'trim');
+            $this->form_validation->set_rules('modules[]','<b>'.$this->lang->line("modules").'</b>','trim');
             $this->form_validation->set_rules('price', '<b>'.$this->lang->line("price").'</b>', 'trim|required');    
             
             if(($this->input->post("is_default")=="1" && $this->input->post("price")=="Trial") || $this->input->post("is_default")=="0")  
@@ -2209,9 +2214,11 @@ class Payment extends Home
                 $price=strip_tags($this->input->post('price',true));
                 $visible=$this->input->post('visible',true);
                 $highlight=$this->input->post('highlight',true);
+                $is_byok=$this->input->post('is_byok',true);
 
                 if($visible=='') $visible='0';
                 if($highlight=='') $highlight='0';
+                if($is_byok=='') $is_byok='0';
 
                 // $validity=$this->input->post('validity');
                 $validity_amount=$this->input->post('validity_amount',true);
@@ -2255,14 +2262,15 @@ class Payment extends Home
                     'validity'=>$validity,
                     'visible'=>$visible,
                     'highlight'=>$highlight,
+                    'is_byok'=>$is_byok,
                     'validity_extra_info'=>$validity_extra_info,
                     'module_ids'=>$modules_str,
                     'price'=>$price,
                     'monthly_limit'=>json_encode($monthly_limit),
                     'bulk_limit'=>json_encode($bulk_limit)
                 );
-                
-                if($this->basic->update_data('package',array("id"=>$id),$data))                                      
+
+                if($this->basic->update_data('package',array("id"=>$id),$data))
                 $this->session->set_flashdata('success_message',1);   
                 else    
                 $this->session->set_flashdata('error_message',1);   

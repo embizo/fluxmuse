@@ -2539,7 +2539,8 @@ INSERT INTO `modules` (`id`, `module_name`, `add_ons_id`, `extra_text`, `limit_e
 (315, 'Bot - Visual Flow Builder Access', 0, '', '1', '0', '0'),
 (320, 'Bot - Instagram Bot', 0, 'month', '1', '0', '0');
 
-INSERT INTO `modules` (`id`, `module_name`, `add_ons_id`, `extra_text`, `limit_enabled`, `bulk_limit_enabled`, `deleted`) VALUES ('340', 'Bot - AI Reply', '0', '', '1', '0', '0');
+INSERT INTO `modules` (`id`, `module_name`, `add_ons_id`, `extra_text`, `limit_enabled`, `bulk_limit_enabled`, `deleted`) VALUES ('340', 'Bot - AI Reply', '0', 'month', '1', '0', '0');
+INSERT INTO `modules` (`id`, `module_name`, `add_ons_id`, `extra_text`, `limit_enabled`, `bulk_limit_enabled`, `deleted`) VALUES ('341', 'Bot - AI Reply (WhatsApp)', '0', 'month', '1', '0', '0');
 -- --------------------------------------------------------
 
 --
@@ -2638,6 +2639,7 @@ CREATE TABLE IF NOT EXISTS `package` (
   `is_default` enum('0','1') NOT NULL DEFAULT '0',
   `visible` enum('0','1') NOT NULL DEFAULT '1',
   `highlight` enum('0','1') NOT NULL DEFAULT '0',
+  `is_byok` enum('0','1') NOT NULL DEFAULT '0',
   `deleted` enum('0','1') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
