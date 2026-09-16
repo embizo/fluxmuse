@@ -21,12 +21,12 @@
 
     <div class="rails-strip__verified-row">
       <span class="rails-strip__verified-badge">
-        <span class="rails-strip__mark"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-        Meta <strong>Tech&nbsp;Provider</strong>
+        <img class="rails-strip__badge-logo" src="<?php echo base_url('assets/site_new/img/rails/badge-meta.svg'); ?>" alt="Meta">
+        <strong>Tech&nbsp;Provider</strong>&nbsp;(Verified)
       </span>
       <span class="rails-strip__verified-badge">
-        <span class="rails-strip__mark"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-        <strong>WhatsApp</strong>&nbsp;Cloud API
+        <img class="rails-strip__badge-logo rails-strip__badge-logo--icon" src="<?php echo base_url('assets/site_new/img/rails/badge-whatsapp.svg'); ?>" alt="WhatsApp">
+        <strong>Cloud API</strong>
       </span>
     </div>
 
