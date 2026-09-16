@@ -71,8 +71,71 @@ class Paystack_class_ecommerce{
 		return $button;
 	}
 	
+	// Hosted checkout (Paystack "Initialize Transaction") for cardless/QR/pay-link in-person checkout.
+	// https://paystack.com/docs/api/transaction/#initialize
+	public function initialize_transaction($cart_id, $amount, $currency, $email, $callback_url, $reference='')
+	{
+		if(empty($reference)) $reference = strtoupper('CNT'.$cart_id.time());
+
+		$payload = array(
+			"amount" => intval(round($amount*100)), // lowest currency unit
+			"email" => !empty($email) ? $email : "guest+cart{$cart_id}@example.com",
+			"currency" => $currency,
+			"reference" => $reference,
+			"callback_url" => $callback_url,
+			"metadata" => array("cart_id"=>$cart_id)
+		);
+
+		$curl = curl_init();
+			curl_setopt_array($curl, array(
+			CURLOPT_URL => "https://api.paystack.co/transaction/initialize",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => json_encode($payload),
+			CURLOPT_HTTPHEADER => array(
+			  "Authorization: Bearer {$this->secret_key}",
+			  "Content-Type: application/json",
+			  "Cache-Control: no-cache",
+			),
+		));
+
+		$result = curl_exec($curl);
+		$err = curl_error($curl);
+		curl_close($curl);
+
+		if($err)
+		{
+			return array('status'=>'Error', 'message'=>"cURL Error #:".$err);
+		}
+
+		$result = json_decode($result,true);
+
+		if(empty($result['status']))
+		{
+			return array('status'=>'Error', 'message'=>isset($result['message']) ? $result['message'] : "Transaction initialize error");
+		}
+
+		return array(
+			'status' => 'Success',
+			'authorization_url' => $result['data']['authorization_url'],
+			'reference' => $result['data']['reference']
+		);
+	}
+
+	// Verifies the X-Paystack-Signature header per Paystack's documented webhook contract.
+	public function verify_webhook_signature($raw_payload, $signature_header, $secret_key)
+	{
+		if(empty($signature_header)) return false;
+		$computed = hash_hmac('sha512', $raw_payload, $secret_key);
+		return hash_equals($computed, $signature_header);
+	}
+
 	public function paystack_payment_action($reference)
-	{	
+	{
 
 		  $curl = curl_init();
 		  	curl_setopt_array($curl, array(

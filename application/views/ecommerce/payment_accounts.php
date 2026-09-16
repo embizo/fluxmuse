@@ -391,7 +391,51 @@
                           <span class="red"><?php echo form_error('paystack_public_key'); ?></span>
                         </div>
                       </div>
-                    </div>                       
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-md-6">
+                        <div class="form-group">
+                          <label for=""> <?php echo $this->lang->line("M-Pesa Consumer Key");?></label>
+                          <input name="mpesa_consumer_key" value="<?php echo isset($xvalue['mpesa_consumer_key']) ? $xvalue['mpesa_consumer_key'] :""; ?>" class="form-control" type="text">
+                          <span class="red"><?php echo form_error('mpesa_consumer_key'); ?></span>
+                        </div>
+                      </div>
+
+                      <div class="col-6 col-md-6">
+                        <div class="form-group">
+                          <label for=""><?php echo $this->lang->line("M-Pesa Consumer Secret");?></label>
+                          <input name="mpesa_consumer_secret" value="<?php echo isset($xvalue['mpesa_consumer_secret']) ? $xvalue['mpesa_consumer_secret'] :""; ?>" class="form-control" type="text">
+                          <span class="red"><?php echo form_error('mpesa_consumer_secret'); ?></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                          <label for=""><?php echo $this->lang->line("M-Pesa Shortcode");?></label>
+                          <input name="mpesa_shortcode" value="<?php echo isset($xvalue['mpesa_shortcode']) ? $xvalue['mpesa_shortcode'] :""; ?>" class="form-control" type="text">
+                          <span class="red"><?php echo form_error('mpesa_shortcode'); ?></span>
+                        </div>
+                      </div>
+
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                          <label for=""><?php echo $this->lang->line("M-Pesa Passkey");?></label>
+                          <input name="mpesa_passkey" value="<?php echo isset($xvalue['mpesa_passkey']) ? $xvalue['mpesa_passkey'] :""; ?>" class="form-control" type="text">
+                          <span class="red"><?php echo form_error('mpesa_passkey'); ?></span>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-4">
+                        <div class="form-group">
+                          <label for=""><?php echo $this->lang->line("M-Pesa Environment");?></label>
+                          <?php echo form_dropdown('mpesa_environment', array('sandbox'=>$this->lang->line("Sandbox"),'live'=>$this->lang->line("Live")), isset($xvalue['mpesa_environment']) ? $xvalue['mpesa_environment'] : 'sandbox', "class='form-control'"); ?>
+                          <span class="red"><?php echo form_error('mpesa_environment'); ?></span>
+                        </div>
+                      </div>
+                    </div>
 
                     <?php if($xdata2['store_type'] == 'physical') : ?>
                     <div class="row">
@@ -481,6 +525,24 @@
                                 </label>
                                 <label class="selectgroup-item">
                                   <input type="radio" name="paystack_enabled" value="0" class="selectgroup-input" <?php if($xdata2["paystack_enabled"]=='0') echo 'checked'; ?>>
+                                  <span class="selectgroup-button"> <?php echo $this->lang->line("No") ?></span>
+                                </label>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                              <label>
+                                <?php echo $this->lang->line("M-Pesa checkout"); ?> *
+                              </label>
+                              <div class="selectgroup w-100">
+                                <label class="selectgroup-item">
+                                  <input type="radio" name="mpesa_enabled" value="1" class="selectgroup-input" <?php if(isset($xdata2["mpesa_enabled"]) && $xdata2["mpesa_enabled"]=='1') echo 'checked'; ?>>
+                                  <span class="selectgroup-button"> <?php echo $this->lang->line("Yes") ?></span>
+                                </label>
+                                <label class="selectgroup-item">
+                                  <input type="radio" name="mpesa_enabled" value="0" class="selectgroup-input" <?php if(!isset($xdata2["mpesa_enabled"]) || $xdata2["mpesa_enabled"]=='0') echo 'checked'; ?>>
                                   <span class="selectgroup-button"> <?php echo $this->lang->line("No") ?></span>
                                 </label>
                               </div>

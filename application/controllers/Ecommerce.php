@@ -28,7 +28,7 @@ class Ecommerce extends Home
 
     $function_name=$this->uri->segment(2);     
 
-    $private_functions = array("","index","qr_code","download_qr","qr_code_action","qr_code_live","notification_settings","notification_settings_action","reset_notification","reset_reminder","reminder_settings","reminder_settings_action","store_list","copy_url","order_list","change_payment_status","order_list_data","reminder_send_status_data","reminder_response","add_store","add_store_action","edit_store","edit_store_action","product_list","product_list_data","delete_store","add_product","add_product_action","edit_product","edit_product_action","delete_product","payment_accounts","payment_accounts_action","attribute_list","attribute_list_data","ajax_create_new_attribute","ajax_get_attribute_update_info","ajax_update_attribute","delete_attribute","category_list","category_list_data","ajax_create_new_category","ajax_get_category_update_info","ajax_update_category","delete_category","coupon_list","coupon_list_data","add_coupon","add_coupon_action","edit_coupon","edit_coupon_action","delete_coupon","upload_product_thumb","delete_product_thumb","upload_store_logo","delete_store_logo","upload_store_favicon","delete_store_favicon","download_csv","upload_featured_image","delete_featured_image","pickup_point_list","pickup_point_list_data","ajax_create_new_pickup_point","ajax_get_pickup_point_update_info","ajax_update_pickup_point","delete_pickup_point","appearance_settings","appearance_settings_action","business_hour_settings","business_hour_settings_action","customer_list","customer_list_data","change_user_password_action","download_result","sort_category");
+    $private_functions = array("","index","qr_code","download_qr","qr_code_action","qr_code_live","notification_settings","notification_settings_action","reset_notification","reset_reminder","reminder_settings","reminder_settings_action","store_list","copy_url","order_list","change_payment_status","order_list_data","reminder_send_status_data","reminder_response","add_store","add_store_action","edit_store","edit_store_action","product_list","product_list_data","delete_store","add_product","add_product_action","edit_product","edit_product_action","delete_product","payment_accounts","payment_accounts_action","attribute_list","attribute_list_data","ajax_create_new_attribute","ajax_get_attribute_update_info","ajax_update_attribute","delete_attribute","category_list","category_list_data","ajax_create_new_category","ajax_get_category_update_info","ajax_update_category","delete_category","coupon_list","coupon_list_data","add_coupon","add_coupon_action","edit_coupon","edit_coupon_action","delete_coupon","upload_product_thumb","delete_product_thumb","upload_store_logo","delete_store_logo","upload_store_favicon","delete_store_favicon","download_csv","upload_featured_image","delete_featured_image","pickup_point_list","pickup_point_list_data","ajax_create_new_pickup_point","ajax_get_pickup_point_update_info","ajax_update_pickup_point","delete_pickup_point","appearance_settings","appearance_settings_action","business_hour_settings","business_hour_settings_action","customer_list","customer_list_data","change_user_password_action","download_result","sort_category","counter_checkout","counter_search_order","counter_start_sale");
 
     if(in_array($function_name, $private_functions)) 
 
@@ -6454,7 +6454,7 @@ if($manual_enabled=='1')
 
   <small class="text-muted"><img class="rounded" width="60" height="60" src="'.base_url("assets/img/payment/manual.png").'"></small>
 
-  <h6 class="mb-1">'.$this->lang->line("Manual Payment").'</h6>
+  <h6 class="mb-1">'.$this->lang->line("Manual Payment").' <small class="text-muted">('.$this->lang->line("cash / other, unverified").')</small></h6>
 
   </div>
 
@@ -6462,7 +6462,7 @@ if($manual_enabled=='1')
 
   </div>';
 
-} 
+}
 
 
 
@@ -7234,7 +7234,9 @@ public function manual_payment()
 
     'action_type'=>'checkout',
 
-    'payment_method'=>'Manual'
+    'payment_method'=>'Manual',
+
+    'payment_verification_method'=>'merchant_declared'
 
   ];
 
@@ -7308,7 +7310,9 @@ public function cod_payment()
 
     'action_type'=>'checkout',
 
-    'payment_method'=>'Cash on Delivery'
+    'payment_method'=>'Cash on Delivery',
+
+    'payment_verification_method'=>'merchant_declared'
 
   ];
 
@@ -7335,6 +7339,191 @@ public function cod_payment()
   $message = $this->lang->line('Something went wrong, please try again.');
 
   echo json_encode(['error' => $message]);
+
+}
+
+
+
+// ---------------------------------------------------------------------------
+// In-person / counter checkout: lets a merchant finalize an already-placed
+// pickup order, or ring up a walk-in sale with no prior online order, using
+// the same cart/product data model and payment endpoints the chat storefront
+// already uses (update_cart_item(), proceed_checkout(), the gateway _action
+// methods, manual_payment(), counter_generate_pay_link() below).
+// ---------------------------------------------------------------------------
+
+public function counter_checkout($store_id=0)
+
+{
+
+  if($store_id=='0') $store_id = $this->session->userdata("ecommerce_selected_store");
+
+  $store_data = $this->basic->get_data("ecommerce_store",array("where"=>array("id"=>$store_id,"user_id"=>$this->user_id)));
+
+  if(!isset($store_data[0])) show_404();
+
+  $ecommerce_config = $this->get_ecommerce_config($store_id);
+
+  $product_list = $this->basic->get_data("ecommerce_product",array("where"=>array("store_id"=>$store_id,"status"=>"1")),"id,product_name,sell_price,thumbnail,stock_item,stock_display,stock_prevent_purchase","","","",'product_name ASC');
+
+  $data['store_id'] = $store_id;
+
+  $data['product_list'] = $product_list;
+
+  $data['ecommerce_config'] = $ecommerce_config;
+
+  $data['body'] = 'ecommerce/counter_checkout';
+
+  $data['page_title'] = $this->lang->line('Counter Checkout')." : ".$this->session->userdata("ecommerce_selected_store_title");
+
+  $data["iframe"]="1";
+
+  $this->_viewcontroller($data);
+
+}
+
+
+
+// Merchant search: finds an in-progress or already-placed order by cart id,
+// buyer phone, or transaction/reference id, scoped to a store the logged-in
+// admin owns. Covers both "an online pickup order shows up at the counter"
+// and "resume/complete a cart that was started but not paid".
+public function counter_search_order()
+
+{
+
+  $this->ajax_check();
+
+  $store_id = $this->input->post("store_id",true);
+
+  $query = trim($this->input->post("query",true));
+
+  $store_data = $this->basic->get_data("ecommerce_store",array("where"=>array("id"=>$store_id,"user_id"=>$this->user_id)));
+
+  if(!isset($store_data[0]) || $query=="")
+
+  {
+
+    echo json_encode(array('status'=>'0','message'=>$this->lang->line("Order not found.")));
+
+    exit();
+
+  }
+
+  $this->db->where("store_id",$store_id);
+
+  $this->db->group_start();
+
+  $this->db->where("id",$query);
+
+  $this->db->or_where("transaction_id",$query);
+
+  $this->db->or_like("buyer_mobile",$query);
+
+  $this->db->group_end();
+
+  $this->db->order_by("id","DESC");
+
+  $this->db->limit(20);
+
+  $cart_list = $this->db->get("ecommerce_cart")->result_array();
+
+  if(empty($cart_list))
+
+  {
+
+    echo json_encode(array('status'=>'0','message'=>$this->lang->line("Order not found.")));
+
+    exit();
+
+  }
+
+  $result = array();
+
+  foreach($cart_list as $cart)
+
+  {
+
+    $items = $this->basic->get_data("ecommerce_cart_item",array("where"=>array("ecommerce_cart_item.cart_id"=>$cart['id'])),"ecommerce_cart_item.*,product_name,thumbnail",array("ecommerce_product"=>"ecommerce_cart_item.product_id=ecommerce_product.id,left"));
+
+    $cart['items'] = $items;
+
+    $result[] = $cart;
+
+  }
+
+  echo json_encode(array('status'=>'1','orders'=>$result));
+
+}
+
+
+
+// Starts a brand-new counter/walk-in sale: creates a "system" subscriber row
+// exactly the way guest_login_action() already does for an online guest
+// checkout, then hands back its subscriber_id so the counter-checkout UI can
+// add products to it via the existing update_cart_item() endpoint — no
+// parallel cart-mutation logic is introduced.
+public function counter_start_sale()
+
+{
+
+  $this->ajax_check();
+
+  $store_id = $this->input->post("store_id",true);
+
+  $buyer_mobile = strip_tags($this->input->post("buyer_mobile",true));
+
+  $store_data = $this->basic->get_data("ecommerce_store",array("where"=>array("id"=>$store_id,"user_id"=>$this->user_id)));
+
+  if(!isset($store_data[0]))
+
+  {
+
+    echo json_encode(array('status'=>'0','message'=>$this->lang->line("Store not found.")));
+
+    exit();
+
+  }
+
+  $subscriber_id = "sys-counter-".time().$this->_random_number_generator(6);
+
+  $insert_data = array
+
+  (
+
+    "user_id"=>$this->user_id,
+
+    "subscribe_id"=>$subscriber_id,
+
+    "first_name"=>"Counter",
+
+    "last_name"=>"Sale",
+
+    "full_name"=>"Counter Sale",
+
+    "subscribed_at"=>date("Y-m-d H:i:s"),
+
+    "status"=>"0",
+
+    "is_bot_subscriber"=>"0",
+
+    "subscriber_type"=>"system",
+
+    "store_id"=>$store_id
+
+  );
+
+  $this->basic->insert_data("messenger_bot_subscriber",$insert_data);
+
+  // update_cart_item() resolves the "system" subscriber for a store from this
+
+  // session key (see guest_login_action() for the same convention) rather
+
+  // than trusting a client-supplied subscriber_id for system-type buyers.
+
+  $this->session->set_userdata($store_id."ecom_session_subscriber_id",$subscriber_id);
+
+  echo json_encode(array('status'=>'1','subscriber_id'=>$subscriber_id,'buyer_mobile'=>$buyer_mobile));
 
 }
 
@@ -7590,6 +7779,35 @@ public function paystack_action($store_id='',$cart_id='',$subscriber_id='',$refe
 
 
 
+  if($cart_id!="" && $subscriber_id!="")
+
+  {
+
+    $cart_data = $this->valid_cart_data($cart_id,$subscriber_id,$select="");
+
+    if(isset($cart_data[0]['store_locale'])) $this->_language_loader($cart_data[0]['store_locale']);
+
+  }
+
+  $this->mark_paystack_cart_paid($cart_id,$subscriber_id,$response,$receiver_email,$country);
+
+  $invoice_link = base_url("ecommerce/order/".$cart_id."?subscriber_id=".$subscriber_id."&action=success3");
+
+  redirect($invoice_link, 'location');
+
+}
+
+
+
+// Shared "write the Paystack charge onto the cart + finalize" logic used by
+// both the browser-redirect callback (paystack_action, above) and the
+// server-to-server webhook (paystack_webhook, below). Field writes are
+// unchanged from what paystack_action always did; only extracted so the two
+// trigger paths (browser redirect vs. webhook) don't duplicate them.
+private function mark_paystack_cart_paid($cart_id,$subscriber_id,$response,$receiver_email="",$country="")
+
+{
+
   $currency = isset($response['charge_info']['data']['currency'])?$response['charge_info']['data']['currency']:"NGN";
 
   $currency = strtoupper($currency);
@@ -7600,27 +7818,25 @@ public function paystack_action($store_id='',$cart_id='',$subscriber_id='',$refe
 
   $payment_date= isset($response['charge_info']['data']['paid_at']) ? date("Y-m-d H:i:s",strtotime($response['charge_info']['data']['paid_at'])) : '';
 
-  
-
   $curtime = date("Y-m-d H:i:s");
 
   $insert_data=array
 
   (
 
-    'checkout_account_receiver_email' => $receiver_email, 
+    'checkout_account_receiver_email' => $receiver_email,
 
-    'checkout_account_country' => $country, 
+    'checkout_account_country' => $country,
 
-    'checkout_amount' => $payment_amount, 
+    'checkout_amount' => $payment_amount,
 
-    'checkout_currency' => $currency,           
+    'checkout_currency' => $currency,
 
-    'checkout_timestamp' => $payment_date,           
+    'checkout_timestamp' => $payment_date,
 
     'transaction_id' => $transaction_id,
 
-    "checkout_source_json"=>json_encode($response),            
+    "checkout_source_json"=>json_encode($response),
 
     'paid_at' => $curtime,
 
@@ -7632,29 +7848,512 @@ public function paystack_action($store_id='',$cart_id='',$subscriber_id='',$refe
 
     'payment_method'=>'Paystack'
 
-  ); 
+  );
 
   $this->basic->update_data('ecommerce_cart',array("id"=>$cart_id,"subscriber_id"=>$subscriber_id,"action_type !="=>"checkout"),$insert_data);
 
+  $this->confirmation_message_sender($cart_id,$subscriber_id);
+
+}
 
 
-  if($cart_id!="" && $subscriber_id!="") 
+
+// Generates a per-order, per-amount hosted checkout link + QR for the cart
+// built in counter_checkout(), so a customer can scan/tap and pay on their
+// own phone with no card machine needed. Routes to M-Pesa STK push instead
+// of a QR when the store's currency is KES and M-Pesa is configured, since
+// STK push already prompts the customer's phone directly (see mpesa_action()).
+public function counter_generate_pay_link($cart_id=0)
+
+{
+
+  $this->ajax_check();
+
+  $cart_id = $this->input->post("cart_id",true);
+
+  $subscriber_id = $this->input->post("subscriber_id",true);
+
+  $cart_data = $this->valid_cart_data($cart_id,$subscriber_id,$select="");
+
+  if(!isset($cart_data[0]))
 
   {
 
-    $cart_data = $this->valid_cart_data($cart_id,$subscriber_id,$select="");
+    echo json_encode(array('status'=>'0','message'=>$this->lang->line("Cart not found.")));
 
-    if(isset($cart_data[0]['store_locale'])) $this->_language_loader($cart_data[0]['store_locale']);
+    exit();
 
   }
 
-  
+  $cart = $cart_data[0];
 
-  $invoice_link = base_url("ecommerce/order/".$cart_id."?subscriber_id=".$subscriber_id."&action=success3");
+  $store_id = $cart['store_id'];
 
-  $this->confirmation_message_sender($cart_id,$subscriber_id);
+  $ecommerce_config = $this->get_ecommerce_config($store_id);
 
-  redirect($invoice_link, 'location');    
+  // mpesa_enabled lives on ecommerce_store (like paystack_enabled etc.), not
+
+  // ecommerce_config, which only holds gateway credentials. page_id is fetched
+
+  // here too, needed to push the pay link into the buyer's Messenger thread.
+
+  $store_row = $this->basic->get_data("ecommerce_store",array("where"=>array("id"=>$store_id)),"mpesa_enabled,page_id");
+
+  $mpesa_enabled = isset($store_row[0]['mpesa_enabled']) ? $store_row[0]['mpesa_enabled'] : '0';
+
+  $page_id = isset($store_row[0]['page_id']) ? $store_row[0]['page_id'] : 0;
+
+  $amount = $cart['payment_amount'];
+
+  $currency = strtoupper($cart['currency']);
+
+
+
+  if($currency=='KES' && $mpesa_enabled=='1')
+
+  {
+
+    $buyer_mobile = strip_tags($this->input->post("buyer_mobile",true));
+
+    if($buyer_mobile=="") $buyer_mobile = $cart['buyer_mobile'];
+
+    $response = $this->trigger_mpesa_stk_push($store_id,$cart_id,$subscriber_id,$buyer_mobile,$amount,$ecommerce_config);
+
+    if($response['status']=='1') $this->push_text_to_messenger($store_id,$subscriber_id,$page_id,$response['message']);
+
+    echo json_encode($response);
+
+    exit();
+
+  }
+
+
+
+  $this->load->library('paystack_class_ecommerce');
+
+  $this->paystack_class_ecommerce->secret_key = isset($ecommerce_config['paystack_secret_key']) ? $ecommerce_config['paystack_secret_key'] : '';
+
+  $callback_url = base_url("ecommerce/paystack_webhook");
+
+  $reference = strtoupper('CNT'.$cart_id.time());
+
+  $init = $this->paystack_class_ecommerce->initialize_transaction($cart_id,$amount,$currency,$cart['buyer_email'],$callback_url,$reference);
+
+  if($init['status']=='Error')
+
+  {
+
+    echo json_encode(array('status'=>'0','message'=>$init['message']));
+
+    exit();
+
+  }
+
+  // Pre-payment placeholder — mark_paystack_cart_paid()/paystack_webhook() overwrite
+
+  // this with the settled Paystack transaction id once payment is confirmed.
+
+  $this->basic->update_data('ecommerce_cart',array("id"=>$cart_id,"subscriber_id"=>$subscriber_id),array("transaction_id"=>$reference,"payment_method"=>"Paystack"));
+
+  $this->load->library('quick_response_code');
+
+  $filename = "order_".$cart_id."_".time().".png";
+
+  $this->quick_response_code->create($init['authorization_url'],$filename,$this->quick_response_code::QRC_ECLEVEL_L,8,1,false);
+
+  $qr_url = base_url("upload/qrc/".$filename);
+
+  $whatsapp_link = "";
+
+  $whatsapp_sent = false;
+
+  if(!empty($cart['buyer_mobile']))
+
+  {
+
+    $whatsapp_text = $this->lang->line("Please complete your payment using this secure link")." : ".$init['authorization_url'];
+
+    // Try a real WhatsApp Business (Cloud API) message first; the wa.me link
+
+    // below always stays in the response as a fallback the merchant can tap,
+
+    // since WABA may not be configured or the send may fail (e.g. no approved
+
+    // template outside a 24-hour session window — see docs).
+
+    $whatsapp_sent = $this->send_whatsapp_business_message($store_id,$ecommerce_config,$cart['buyer_mobile'],$whatsapp_text);
+
+    $whatsapp_link = "https://wa.me/".preg_replace('/[^0-9]/','',$cart['buyer_mobile'])."?text=".urlencode($whatsapp_text);
+
+  }
+
+  // Best-effort: push the pay link straight into the buyer's Messenger thread
+
+  // when they're a genuine chat subscriber (same "sys" check send_messenger_reminder()
+
+  // already uses) — doesn't block the response if it fails.
+
+  $this->push_pay_link_to_messenger($store_id,$subscriber_id,$page_id,$init['authorization_url']);
+
+  echo json_encode(array('status'=>'1','pay_link'=>$init['authorization_url'],'qr_url'=>$qr_url,'whatsapp_link'=>$whatsapp_link,'whatsapp_sent'=>$whatsapp_sent));
+
+}
+
+
+
+// Pushes a "Pay Now" button-template message into the buyer's Messenger
+
+// thread, mirroring the exact button-template convention already used for
+
+// the post-checkout "My Orders" message (see the confirmation_message_sender()
+
+// block building $messenger_confirmation_template3). Skipped (silently, via
+
+// send_messenger_reminder()'s own check) for non-Messenger/system subscribers.
+
+private function push_pay_link_to_messenger($store_id,$subscriber_id,$page_id,$pay_link)
+
+{
+
+  if(empty($subscriber_id) || strpos($subscriber_id,"sys")!==false || empty($page_id)) return;
+
+  $page_info = $this->basic->get_data("facebook_rx_fb_page_info",array('where'=>array('id'=>$page_id)));
+
+  $page_access_token = isset($page_info[0]['page_access_token']) ? $page_info[0]['page_access_token'] : "";
+
+  if($page_access_token=="") return;
+
+  $template = array(
+
+    "recipient" => array("id"=>$subscriber_id),
+
+    "message" => array('attachment' => array(
+
+      'type' => 'template',
+
+      'payload' => array(
+
+        'template_type' => 'button',
+
+        'text' => $this->lang->line("Your order is ready for payment."),
+
+        'buttons'=> array(array(
+
+          "type"=>"web_url",
+
+          "url"=>$pay_link,
+
+          "title"=>$this->lang->line("Pay Now"),
+
+          "messenger_extensions" => 'true',
+
+          "webview_height_ratio" => 'full'
+
+        ))
+
+      )
+
+    ))
+
+  );
+
+  $this->send_messenger_reminder(json_encode($template),$page_access_token,$store_id,$subscriber_id);
+
+}
+
+
+
+// Same as above but a plain text push (used for the M-Pesa STK-push notice,
+
+// which has no URL to attach a button to).
+
+private function push_text_to_messenger($store_id,$subscriber_id,$page_id,$text)
+
+{
+
+  if(empty($subscriber_id) || strpos($subscriber_id,"sys")!==false || empty($page_id)) return;
+
+  $page_info = $this->basic->get_data("facebook_rx_fb_page_info",array('where'=>array('id'=>$page_id)));
+
+  $page_access_token = isset($page_info[0]['page_access_token']) ? $page_info[0]['page_access_token'] : "";
+
+  if($page_access_token=="") return;
+
+  $template = json_encode(array("recipient"=>array("id"=>$subscriber_id),"message"=>array("text"=>$text)));
+
+  $this->send_messenger_reminder($template,$page_access_token,$store_id,$subscriber_id);
+
+}
+
+
+
+// Scoped WhatsApp Business (Cloud API) sender for checkout payment links —
+
+// see Whatsapp_cloud_api.php and docs/counter_checkout_and_cardless_payments.md
+
+// for what this deliberately does not cover (general inbox/conversation
+
+// handling remains Livechat.php's separate, pre-existing gap).
+
+private function send_whatsapp_business_message($store_id,$ecommerce_config,$buyer_mobile,$text)
+
+{
+
+  if(!isset($ecommerce_config['whatsapp_business_enabled']) || $ecommerce_config['whatsapp_business_enabled']!='1') return false;
+
+  $phone_number_id = isset($ecommerce_config['whatsapp_business_phone_number_id']) ? $ecommerce_config['whatsapp_business_phone_number_id'] : '';
+
+  $access_token = isset($ecommerce_config['whatsapp_business_access_token']) ? $ecommerce_config['whatsapp_business_access_token'] : '';
+
+  if($phone_number_id=="" || $access_token=="") return false;
+
+  $to = preg_replace('/[^0-9]/','',$buyer_mobile);
+
+  if($to=="") return false;
+
+  $this->load->library('whatsapp_cloud_api');
+
+  $response = $this->whatsapp_cloud_api->send_text_message($phone_number_id,$to,$text,$access_token);
+
+  return $response['status']=='Success';
+
+}
+
+
+
+// Server-to-server Paystack webhook — confirms payment automatically instead
+
+// of requiring the merchant to manually mark an order paid. Guarded against
+
+// the cart already being approved/completed: confirmation_message_sender()
+
+// decrements stock with no idempotency check of its own, and webhooks can
+
+// legitimately be retried/delivered more than once by the gateway.
+
+public function paystack_webhook()
+
+{
+
+  $raw_payload = file_get_contents("php://input");
+
+  $signature_header = isset($_SERVER['HTTP_X_PAYSTACK_SIGNATURE']) ? $_SERVER['HTTP_X_PAYSTACK_SIGNATURE'] : '';
+
+  $event = json_decode($raw_payload,true);
+
+  $reference = isset($event['data']['reference']) ? $event['data']['reference'] : '';
+
+  if($reference=="")  { http_response_code(400); exit(); }
+
+  $cart_data = $this->basic->get_data("ecommerce_cart",array("where"=>array("transaction_id"=>$reference)));
+
+  if(!isset($cart_data[0])) { http_response_code(404); exit(); }
+
+  $cart = $cart_data[0];
+
+  $store_id = $cart['store_id'];
+
+  $ecommerce_config = $this->get_ecommerce_config($store_id);
+
+  $paystack_secret_key = isset($ecommerce_config['paystack_secret_key']) ? $ecommerce_config['paystack_secret_key'] : '';
+
+  $this->load->library('paystack_class_ecommerce');
+
+  if(!$this->paystack_class_ecommerce->verify_webhook_signature($raw_payload,$signature_header,$paystack_secret_key))
+
+  {
+
+    http_response_code(401);
+
+    exit();
+
+  }
+
+  if(isset($event['event']) && $event['event']=='charge.success' && !in_array($cart['status'],array('approved','completed')))
+
+  {
+
+    $response = array('status'=>'Success','charge_info'=>$event);
+
+    $this->mark_paystack_cart_paid($cart['id'],$cart['subscriber_id'],$response);
+
+  }
+
+  http_response_code(200);
+
+  echo "OK";
+
+}
+
+
+
+// Kicks off an M-Pesa STK push prompt on the buyer's phone for the given cart,
+
+// reusing Mpesa_class_ecommerce.php the same way paystack calls rely on
+
+// Paystack_class_ecommerce.php. Called both from mpesa_action() (a store's
+
+// normal storefront checkout) and from counter_generate_pay_link() above.
+
+private function trigger_mpesa_stk_push($store_id,$cart_id,$subscriber_id,$buyer_mobile,$amount,$ecommerce_config)
+
+{
+
+  $buyer_mobile = preg_replace('/[^0-9]/','',$buyer_mobile);
+
+  if(substr($buyer_mobile,0,1)=='0') $buyer_mobile = '254'.substr($buyer_mobile,1);
+
+  if($buyer_mobile=="")
+
+  {
+
+    return array('status'=>'0','message'=>$this->lang->line("A valid M-Pesa phone number is required."));
+
+  }
+
+  $this->load->library('mpesa_class_ecommerce');
+
+  $this->mpesa_class_ecommerce->consumer_key = isset($ecommerce_config['mpesa_consumer_key']) ? $ecommerce_config['mpesa_consumer_key'] : '';
+
+  $this->mpesa_class_ecommerce->consumer_secret = isset($ecommerce_config['mpesa_consumer_secret']) ? $ecommerce_config['mpesa_consumer_secret'] : '';
+
+  $this->mpesa_class_ecommerce->shortcode = isset($ecommerce_config['mpesa_shortcode']) ? $ecommerce_config['mpesa_shortcode'] : '';
+
+  $this->mpesa_class_ecommerce->passkey = isset($ecommerce_config['mpesa_passkey']) ? $ecommerce_config['mpesa_passkey'] : '';
+
+  $this->mpesa_class_ecommerce->environment = isset($ecommerce_config['mpesa_environment']) ? $ecommerce_config['mpesa_environment'] : 'sandbox';
+
+  $callback_url = base_url("ecommerce/mpesa_webhook");
+
+  $push = $this->mpesa_class_ecommerce->stk_push($buyer_mobile,$amount,"Order".$cart_id,"Order #".$cart_id,$callback_url);
+
+  if($push['status']=='Error')
+
+  {
+
+    return array('status'=>'0','message'=>$push['message']);
+
+  }
+
+  // Stored in a dedicated column, not transaction_id: Safaricom's
+
+  // CheckoutRequestID (~24-27 chars) doesn't reliably fit ecommerce_cart's
+
+  // transaction_id varchar(25). mpesa_webhook() resolves the cart via this
+
+  // column, then writes the short, final MpesaReceiptNumber to transaction_id.
+
+  $this->basic->update_data('ecommerce_cart',array("id"=>$cart_id,"subscriber_id"=>$subscriber_id),array("mpesa_checkout_request_id"=>$push['checkout_request_id'],"payment_method"=>"M-Pesa"));
+
+  return array('status'=>'1','message'=>$this->lang->line("A payment prompt has been sent to the customer's phone."),'checkout_request_id'=>$push['checkout_request_id']);
+
+}
+
+
+
+// Storefront-reachable M-Pesa action, mirroring paystack_action()'s role for
+
+// Paystack: same config-loading pattern, same "store_id/cart_id/subscriber_id"
+
+// signature as every other gateway _action method in this file.
+
+public function mpesa_action($store_id='',$cart_id='',$subscriber_id='')
+
+{
+
+  $cart_data = $this->valid_cart_data($cart_id,$subscriber_id,$select="");
+
+  if(!isset($cart_data[0])) { echo json_encode(array('status'=>'0','message'=>$this->lang->line("Cart not found."))); exit(); }
+
+  $cart = $cart_data[0];
+
+  $ecommerce_config = $this->get_ecommerce_config($store_id);
+
+  $response = $this->trigger_mpesa_stk_push($store_id,$cart_id,$subscriber_id,$cart['buyer_mobile'],$cart['payment_amount'],$ecommerce_config);
+
+  echo json_encode($response);
+
+}
+
+
+
+// Safaricom Daraja STK push callback. Payload shape: {"Body":{"stkCallback":
+
+// {"MerchantRequestID":...,"CheckoutRequestID":...,"ResultCode":0,...,
+
+// "CallbackMetadata":{"Item":[{"Name":"MpesaReceiptNumber","Value":...},...]}}}}
+
+public function mpesa_webhook()
+
+{
+
+  $raw_payload = file_get_contents("php://input");
+
+  $event = json_decode($raw_payload,true);
+
+  $callback = isset($event['Body']['stkCallback']) ? $event['Body']['stkCallback'] : array();
+
+  $checkout_request_id = isset($callback['CheckoutRequestID']) ? $callback['CheckoutRequestID'] : '';
+
+  if($checkout_request_id=="") { http_response_code(400); exit(); }
+
+  $cart_data = $this->basic->get_data("ecommerce_cart",array("where"=>array("mpesa_checkout_request_id"=>$checkout_request_id)));
+
+  if(!isset($cart_data[0])) { http_response_code(404); exit(); }
+
+  $cart = $cart_data[0];
+
+  if(isset($callback['ResultCode']) && $callback['ResultCode']==0 && !in_array($cart['status'],array('approved','completed')))
+
+  {
+
+    $receipt = "";
+
+    if(isset($callback['CallbackMetadata']['Item']))
+
+    {
+
+      foreach($callback['CallbackMetadata']['Item'] as $item)
+
+      {
+
+        if(isset($item['Name']) && $item['Name']=='MpesaReceiptNumber') $receipt = $item['Value'];
+
+      }
+
+    }
+
+    $curtime = date("Y-m-d H:i:s");
+
+    $insert_data = array
+
+    (
+
+      'transaction_id' => substr($receipt!="" ? $receipt : $checkout_request_id,0,25),
+
+      "checkout_source_json"=>json_encode($event),
+
+      'paid_at' => $curtime,
+
+      'status' => 'approved',
+
+      'status_changed_at' => $curtime,
+
+      'action_type'=>'checkout',
+
+      'payment_method'=>'M-Pesa'
+
+    );
+
+    $this->basic->update_data('ecommerce_cart',array("id"=>$cart['id'],"subscriber_id"=>$cart['subscriber_id'],"action_type !="=>"checkout"),$insert_data);
+
+    $this->confirmation_message_sender($cart['id'],$cart['subscriber_id']);
+
+  }
+
+  http_response_code(200);
+
+  echo "OK";
 
 }
 
@@ -10364,7 +11063,7 @@ public function my_orders_data()
 
   $table="ecommerce_cart";
 
-  $select = "ecommerce_cart.id,action_type,ecommerce_cart.user_id,store_id,subscriber_id,coupon_code,coupon_type,discount,payment_amount,currency,ordered_at,transaction_id,card_ending,payment_method,manual_additional_info,manual_filename,paid_at,ecommerce_cart.status,ecommerce_cart.updated_at,ecommerce_store.store_name,status_changed_note";
+  $select = "ecommerce_cart.id,action_type,ecommerce_cart.user_id,store_id,subscriber_id,coupon_code,coupon_type,discount,payment_amount,currency,ordered_at,transaction_id,card_ending,payment_method,payment_verification_method,manual_additional_info,manual_filename,paid_at,ecommerce_cart.status,ecommerce_cart.updated_at,ecommerce_store.store_name,status_changed_note";
 
   $join = array('ecommerce_store'=>"ecommerce_store.id=ecommerce_cart.store_id,left");
 
@@ -10441,6 +11140,14 @@ public function my_orders_data()
     $payment_method = $pay." ".$info[$key]['card_ending'];
 
     if(trim($payment_method)=="") $payment_method = "x";
+
+    if($info[$key]['payment_verification_method']=='merchant_declared')
+
+      $payment_method .= " <span class='badge badge-warning' title='".$this->lang->line("Merchant-declared, not gateway-verified")."'>".$this->lang->line("Declared")."</span>";
+
+    else if(trim($payment_method)!="x")
+
+      $payment_method .= " <span class='badge badge-success' title='".$this->lang->line("Confirmed automatically by the payment gateway")."'>".$this->lang->line("Verified")."</span>";
 
 
 
@@ -14115,7 +14822,7 @@ public function payment_accounts()
 
   $data['xvalue'] = $this->get_ecommerce_config();
 
-  if($this->is_demo == '1')$data["xvalue"]["stripe_secret_key"]=$data["xvalue"]["stripe_publishable_key"]=$data["xvalue"]["paypal_email"]=$data["xvalue"]["paystack_secret_key"]=$data["xvalue"]["paystack_public_key"]=$data["xvalue"]["razorpay_key_id"]=$data["xvalue"]["razorpay_key_secret"]=$data["xvalue"]["mollie_api_key"]=$data["xvalue"]["mercadopago_public_key"]=$data["xvalue"]["mercadopago_access_token"]=$data["xvalue"]["sslcommerz_store_id"]=$data["xvalue"]["sslcommerz_store_password"]=$data["xvalue"]["senangpay_merchent_id"]=$data["xvalue"]["senangpay_secret_key"]=$data["xvalue"]["instamojo_api_key"]=$data["xvalue"]["instamojo_auth_token"]=$data["xvalue"]["xendit_secret_api_key"]=$data["xvalue"]["toyyibpay_secret_key"]=$data["xvalue"]["toyyibpay_category_code"]="XXXXXXXXXX";
+  if($this->is_demo == '1')$data["xvalue"]["stripe_secret_key"]=$data["xvalue"]["stripe_publishable_key"]=$data["xvalue"]["paypal_email"]=$data["xvalue"]["paystack_secret_key"]=$data["xvalue"]["paystack_public_key"]=$data["xvalue"]["razorpay_key_id"]=$data["xvalue"]["razorpay_key_secret"]=$data["xvalue"]["mollie_api_key"]=$data["xvalue"]["mercadopago_public_key"]=$data["xvalue"]["mercadopago_access_token"]=$data["xvalue"]["sslcommerz_store_id"]=$data["xvalue"]["sslcommerz_store_password"]=$data["xvalue"]["senangpay_merchent_id"]=$data["xvalue"]["senangpay_secret_key"]=$data["xvalue"]["instamojo_api_key"]=$data["xvalue"]["instamojo_auth_token"]=$data["xvalue"]["xendit_secret_api_key"]=$data["xvalue"]["toyyibpay_secret_key"]=$data["xvalue"]["toyyibpay_category_code"]=$data["xvalue"]["mpesa_consumer_key"]=$data["xvalue"]["mpesa_consumer_secret"]=$data["xvalue"]["mpesa_passkey"]="XXXXXXXXXX";
 
   $paypal_stripe_currency_list = $this->paypal_stripe_currency_list();
 
@@ -14172,6 +14879,16 @@ public function payment_accounts_action()
     $this->form_validation->set_rules('paystack_secret_key','<b>'.$this->lang->line("Paystack Secret Key").'</b>','trim');
 
     $this->form_validation->set_rules('paystack_public_key','<b>'.$this->lang->line("Paystack Public Key").'</b>','trim');
+
+    $this->form_validation->set_rules('mpesa_consumer_key','<b>'.$this->lang->line("M-Pesa Consumer Key").'</b>','trim');
+
+    $this->form_validation->set_rules('mpesa_consumer_secret','<b>'.$this->lang->line("M-Pesa Consumer Secret").'</b>','trim');
+
+    $this->form_validation->set_rules('mpesa_shortcode','<b>'.$this->lang->line("M-Pesa Shortcode").'</b>','trim');
+
+    $this->form_validation->set_rules('mpesa_passkey','<b>'.$this->lang->line("M-Pesa Passkey").'</b>','trim');
+
+    $this->form_validation->set_rules('mpesa_environment','<b>'.$this->lang->line("M-Pesa Environment").'</b>','trim');
 
     $this->form_validation->set_rules('mollie_api_key','<b>'.$this->lang->line("Mollie API Key").'</b>','trim');
 
@@ -14288,6 +15005,18 @@ public function payment_accounts_action()
       $paystack_secret_key=strip_tags($this->input->post('paystack_secret_key',true));
 
       $paystack_public_key=strip_tags($this->input->post('paystack_public_key',true));
+
+      $mpesa_enabled=strip_tags($this->input->post('mpesa_enabled',true));
+
+      $mpesa_consumer_key=strip_tags($this->input->post('mpesa_consumer_key',true));
+
+      $mpesa_consumer_secret=strip_tags($this->input->post('mpesa_consumer_secret',true));
+
+      $mpesa_shortcode=strip_tags($this->input->post('mpesa_shortcode',true));
+
+      $mpesa_passkey=strip_tags($this->input->post('mpesa_passkey',true));
+
+      $mpesa_environment=strip_tags($this->input->post('mpesa_environment',true));
 
       $mollie_api_key=strip_tags($this->input->post('mollie_api_key',true));
 
@@ -14569,6 +15298,16 @@ public function payment_accounts_action()
 
         'paystack_public_key'=>$paystack_public_key,
 
+        'mpesa_consumer_key'=>$mpesa_consumer_key,
+
+        'mpesa_consumer_secret'=>$mpesa_consumer_secret,
+
+        'mpesa_shortcode'=>$mpesa_shortcode,
+
+        'mpesa_passkey'=>$mpesa_passkey,
+
+        'mpesa_environment'=>$mpesa_environment,
+
         'mollie_api_key'=>$mollie_api_key,
 
         'mercadopago_public_key'=>$mercadopago_public_key,
@@ -14688,6 +15427,8 @@ public function payment_accounts_action()
         "razorpay_enabled"=> $razorpay_enabled,
 
         "paystack_enabled"=> $paystack_enabled,
+
+        "mpesa_enabled"=> $mpesa_enabled,
 
         "paymaya_enabled"=> $paymaya_enabled,
 
@@ -14849,6 +15590,10 @@ public function appearance_settings_action()
 
       $this->form_validation->set_rules('whatsapp_phone_number','<b>'.$this->lang->line("WhatsApp Phone Number").'</b>',  'trim|required');
 
+    $this->form_validation->set_rules('whatsapp_business_phone_number_id','<b>'.$this->lang->line("WhatsApp Business Phone Number ID").'</b>',  'trim');
+
+    $this->form_validation->set_rules('whatsapp_business_access_token','<b>'.$this->lang->line("WhatsApp Business Access Token").'</b>',  'trim');
+
 
 
         // go to config form page if validation wrong
@@ -14895,6 +15640,12 @@ public function appearance_settings_action()
 
       $whatsapp_send_order_text=$this->input->post('whatsapp_send_order_text');
 
+      $whatsapp_business_enabled=strip_tags($this->input->post('whatsapp_business_enabled',true));
+
+      $whatsapp_business_phone_number_id=strip_tags($this->input->post('whatsapp_business_phone_number_id',true));
+
+      $whatsapp_business_access_token=strip_tags($this->input->post('whatsapp_business_access_token',true));
+
 
 
       if($hide_add_to_cart=="") $hide_add_to_cart="0";
@@ -14902,6 +15653,8 @@ public function appearance_settings_action()
       if($hide_buy_now=="") $hide_buy_now="0";
 
       if($whatsapp_send_order_button=="") $whatsapp_send_order_button="0";
+
+      if($whatsapp_business_enabled=="") $whatsapp_business_enabled="0";
 
       
 
@@ -14932,6 +15685,12 @@ public function appearance_settings_action()
         'whatsapp_phone_number'=>isset($whatsapp_phone_number) ? $whatsapp_phone_number:"",
 
         'whatsapp_send_order_text'=>isset($whatsapp_send_order_text) ? $whatsapp_send_order_text:"",
+
+        'whatsapp_business_enabled'=>$whatsapp_business_enabled,
+
+        'whatsapp_business_phone_number_id'=>$whatsapp_business_phone_number_id,
+
+        'whatsapp_business_access_token'=>$whatsapp_business_access_token,
 
         'buy_button_title'=>$buy_button_title,
 
