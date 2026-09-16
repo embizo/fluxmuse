@@ -530,7 +530,8 @@ Description: This is a default theme provided by the Author of ChatPion. We high
 	</section>
 	<!--====== TESTIMONIAL PART ENDS ======-->
 
-	
+	<?php $this->load->view('site/modern/rails_trust_strip'); ?>
+
 	<!--====== PRICING PART START ======-->
 	<?php if(!empty($pricing_table_data)) : ?>
 	<section id="pricing" class="pricing-area pt-120">
