@@ -25,3 +25,8 @@ download/*
 # Local environment
 .env
 .DS_Store
+
+# Go-to-market pack: build previews and Python caches are regenerable
+docs/go-to-market/_build/**/preview/
+docs/go-to-market/_build/**/__pycache__/
+docs/go-to-market/_build/__pycache__/

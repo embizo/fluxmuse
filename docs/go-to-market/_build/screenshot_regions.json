@@ -1,0 +1,208 @@
+{
+  "home-hero.png": {
+    "boxes": [
+      {
+        "claim": "200\\+ African businesses",
+        "x": 164,
+        "y": 684.5,
+        "w": 167.59375,
+        "h": 20
+      },
+      {
+        "claim": "4\\.9 average rating",
+        "x": 164,
+        "y": 704.5,
+        "w": 167.59375,
+        "h": 16
+      },
+      {
+        "claim": "Stitch ready",
+        "x": 44,
+        "y": 644.5,
+        "w": 644,
+        "h": 16
+      },
+      {
+        "claim": "just bought",
+        "x": 777,
+        "y": 681.96875,
+        "w": 187.171875,
+        "h": 15
+      }
+    ],
+    "scrollY": 0
+  },
+  "home-full.png": {
+    "boxes": [
+      {
+        "claim": "200\\+ African businesses",
+        "x": 164,
+        "y": 684.5,
+        "w": 167.59375,
+        "h": 20
+      },
+      {
+        "claim": "4\\.9 average rating",
+        "x": 164,
+        "y": 704.5,
+        "w": 167.59375,
+        "h": 16
+      },
+      {
+        "claim": "Stitch ready",
+        "x": 44,
+        "y": 644.5,
+        "w": 644,
+        "h": 16
+      },
+      {
+        "claim": "just bought",
+        "x": 777,
+        "y": 652,
+        "w": 163.109375,
+        "h": 15
+      }
+    ],
+    "scrollY": 0
+  },
+  "features-hero.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "features-full.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "pricing-za.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "pricing-za-full.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "pricing-ng.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "pricing-ke.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "for-agencies-hero.png": {
+    "boxes": [
+      {
+        "claim": "Lerato's Agency",
+        "x": 837,
+        "y": 231,
+        "w": 250.03125,
+        "h": 24
+      },
+      {
+        "claim": "MRR managed",
+        "x": 957.65625,
+        "y": 486,
+        "w": 164.671875,
+        "h": 16
+      }
+    ],
+    "scrollY": 0
+  },
+  "for-agencies-full.png": {
+    "boxes": [
+      {
+        "claim": "Lerato's Agency",
+        "x": 837,
+        "y": 231,
+        "w": 250.03125,
+        "h": 24
+      },
+      {
+        "claim": "MRR managed",
+        "x": 957.65625,
+        "y": 486,
+        "w": 164.671875,
+        "h": 16
+      }
+    ],
+    "scrollY": 0
+  },
+  "demo.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "demo-full.png": {
+    "boxes": [],
+    "scrollY": 0
+  },
+  "home_mobile.png": {
+    "boxes": [
+      {
+        "claim": "200\\+ African businesses",
+        "x": 144,
+        "y": 698.1875,
+        "w": 167.59375,
+        "h": 20
+      },
+      {
+        "claim": "4\\.9 average rating",
+        "x": 144,
+        "y": 718.1875,
+        "w": 167.59375,
+        "h": 16
+      },
+      {
+        "claim": "Stitch ready",
+        "x": 24,
+        "y": 658.1875,
+        "w": 342,
+        "h": 16
+      },
+      {
+        "claim": "just bought",
+        "x": 65,
+        "y": 1273.1875,
+        "w": 187.171875,
+        "h": 15
+      }
+    ],
+    "scrollY": 0
+  },
+  "home-full_mobile.png": {
+    "boxes": [
+      {
+        "claim": "200\\+ African businesses",
+        "x": 144,
+        "y": 698.1875,
+        "w": 167.59375,
+        "h": 20
+      },
+      {
+        "claim": "4\\.9 average rating",
+        "x": 144,
+        "y": 718.1875,
+        "w": 167.59375,
+        "h": 16
+      },
+      {
+        "claim": "Stitch ready",
+        "x": 24,
+        "y": 658.1875,
+        "w": 342,
+        "h": 16
+      },
+      {
+        "claim": "just bought",
+        "x": 65,
+        "y": 1231.6875,
+        "w": 163.109375,
+        "h": 15
+      }
+    ],
+    "scrollY": 0
+  },
+  "demo_mobile.png": {
+    "boxes": [],
+    "scrollY": 0
+  }
+}

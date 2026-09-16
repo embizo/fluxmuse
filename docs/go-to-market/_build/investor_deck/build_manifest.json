@@ -1,0 +1,26 @@
+{
+  "built": "2026-09-11",
+  "model_version": "v2",
+  "model_date": "2026-09-11",
+  "deck": "FluxMuse_Investor_Pitch_Deck.pptx",
+  "slides": 30,
+  "core_slides": 19,
+  "images": [
+    "brand/fluxmuse-logo-dark.png",
+    "charts/cash_runway_r25m_16x9.png",
+    "charts/customers_by_region_16x9.png",
+    "charts/customers_by_segment_16x9.png",
+    "charts/founding_member_discount_cost_16x9.png",
+    "charts/fx_shock_sensitivity_16x9.png",
+    "charts/revenue_by_stream_fy1_fy5_16x9.png",
+    "charts/scenarios_16x9.png",
+    "charts/tam_sam_som_16x9.png",
+    "charts/unit_economics_16x9.png",
+    "charts/use_of_funds_16x9.png",
+    "infographics/how-fluxmuse-works_dark.png",
+    "infographics/payment-coverage-map_dark.png",
+    "infographics/payment-rails-matrix.png",
+    "screenshots/composites/checkout-in-chat-3-phones.png",
+    "screenshots/composites/hero-laptop-phone_night.png"
+  ]
+}

@@ -1,0 +1,823 @@
+{
+ "source": "FluxMuse Financial Model v2 Python mirror, Base case (financial_model.run(2))",
+ "headcount_by_dept_fy_end": {
+  "Leadership": [
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "Engineering & product": [
+   6,
+   11,
+   17,
+   24,
+   36
+  ],
+  "Marketing": [
+   4,
+   6,
+   9,
+   12,
+   16
+  ],
+  "Sales & partnerships": [
+   1,
+   4,
+   7,
+   12,
+   18
+  ],
+  "Customer success": [
+   3,
+   7,
+   13,
+   21,
+   39
+  ],
+  "G&A & compliance": [
+   2,
+   3,
+   5,
+   6,
+   9
+  ],
+  "Country teams": [
+   0,
+   8,
+   15,
+   15,
+   15
+  ]
+ },
+ "headcount_total_fy_end": [
+  18,
+  41,
+  68,
+  92,
+  135
+ ],
+ "payroll_by_dept_zar_fy": {
+  "Leadership": [
+   1320000,
+   1399200,
+   1483152,
+   1572141,
+   1666470
+  ],
+  "Engineering & product": [
+   2244000,
+   7777220,
+   13558481,
+   21872413,
+   37981619
+  ],
+  "Marketing": [
+   1064800,
+   2789072,
+   4582940,
+   6202097,
+   11115352
+  ],
+  "Sales & partnerships": [
+   440000,
+   2180420,
+   4313500,
+   8116179,
+   13678938
+  ],
+  "Customer success": [
+   572000,
+   1865600,
+   4004510,
+   6665878,
+   11598628
+  ],
+  "G&A & compliance": [
+   326700,
+   1322244,
+   2977428,
+   5376723,
+   7865736
+  ],
+  "Country teams": [
+   0,
+   2157100,
+   4795525,
+   6131350,
+   6499231
+  ]
+ },
+ "roles": [
+  {
+   "role": "Founder & CEO (reduced salary)",
+   "dept": "Leadership",
+   "count": 1,
+   "ctc_zar": 45000,
+   "first_month": "Oct 2026",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "CTO / founding engineer (reduced salary)",
+   "dept": "Leadership",
+   "count": 1,
+   "ctc_zar": 55000,
+   "first_month": "Oct 2026",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Senior full-stack engineers",
+   "dept": "Engineering & product",
+   "count": 2,
+   "ctc_zar": 70000,
+   "first_month": "Feb 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "AI / ML engineer",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 80000,
+   "first_month": "Mar 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Product designer (UX)",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 50000,
+   "first_month": "May 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 150000
+  },
+  {
+   "role": "Full-stack engineers",
+   "dept": "Engineering & product",
+   "count": 2,
+   "ctc_zar": 55000,
+   "first_month": "Sep 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 400000
+  },
+  {
+   "role": "DevOps / QA engineer",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 60000,
+   "first_month": "Dec 2027",
+   "fy": "FY2",
+   "mrr_gate_zar": 800000
+  },
+  {
+   "role": "Integrations engineers (social adapters, commerce, CRM)",
+   "dept": "Engineering & product",
+   "count": 2,
+   "ctc_zar": 60000,
+   "first_month": "Jan 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 1000000
+  },
+  {
+   "role": "Product manager",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 70000,
+   "first_month": "May 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 1500000
+  },
+  {
+   "role": "Security & compliance engineer",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 80000,
+   "first_month": "Sep 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 2500000
+  },
+  {
+   "role": "Payments & data engineers",
+   "dept": "Engineering & product",
+   "count": 2,
+   "ctc_zar": 65000,
+   "first_month": "Jan 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 3500000
+  },
+  {
+   "role": "Engineers (scale-up I)",
+   "dept": "Engineering & product",
+   "count": 3,
+   "ctc_zar": 65000,
+   "first_month": "Apr 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 5000000
+  },
+  {
+   "role": "VP Engineering",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 110000,
+   "first_month": "Sep 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 7000000
+  },
+  {
+   "role": "Product manager #2",
+   "dept": "Engineering & product",
+   "count": 1,
+   "ctc_zar": 75000,
+   "first_month": "Nov 2029",
+   "fy": "FY4",
+   "mrr_gate_zar": 8000000
+  },
+  {
+   "role": "Engineers (scale-up II)",
+   "dept": "Engineering & product",
+   "count": 4,
+   "ctc_zar": 70000,
+   "first_month": "Mar 2030",
+   "fy": "FY4",
+   "mrr_gate_zar": 10000000
+  },
+  {
+   "role": "Data / AI engineers",
+   "dept": "Engineering & product",
+   "count": 2,
+   "ctc_zar": 85000,
+   "first_month": "Sep 2030",
+   "fy": "FY4",
+   "mrr_gate_zar": 13000000
+  },
+  {
+   "role": "Engineers (scale-up III)",
+   "dept": "Engineering & product",
+   "count": 4,
+   "ctc_zar": 75000,
+   "first_month": "Mar 2031",
+   "fy": "FY5",
+   "mrr_gate_zar": 17000000
+  },
+  {
+   "role": "Engineers (scale-up IV: social adapters & integrations at scale)",
+   "dept": "Engineering & product",
+   "count": 5,
+   "ctc_zar": 80000,
+   "first_month": "Nov 2030",
+   "fy": "FY5",
+   "mrr_gate_zar": 14000000
+  },
+  {
+   "role": "Data & AI team II",
+   "dept": "Engineering & product",
+   "count": 3,
+   "ctc_zar": 90000,
+   "first_month": "Jul 2031",
+   "fy": "FY5",
+   "mrr_gate_zar": 19000000
+  },
+  {
+   "role": "Head of Growth",
+   "dept": "Marketing",
+   "count": 1,
+   "ctc_zar": 70000,
+   "first_month": "Feb 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Performance marketer",
+   "dept": "Marketing",
+   "count": 1,
+   "ctc_zar": 40000,
+   "first_month": "Apr 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 100000
+  },
+  {
+   "role": "Multilingual content & community",
+   "dept": "Marketing",
+   "count": 2,
+   "ctc_zar": 28000,
+   "first_month": "Jul 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 300000
+  },
+  {
+   "role": "Lifecycle & growth marketers",
+   "dept": "Marketing",
+   "count": 2,
+   "ctc_zar": 40000,
+   "first_month": "May 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 1500000
+  },
+  {
+   "role": "Marketing team expansion I",
+   "dept": "Marketing",
+   "count": 3,
+   "ctc_zar": 42000,
+   "first_month": "Apr 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 5000000
+  },
+  {
+   "role": "Marketing team expansion II",
+   "dept": "Marketing",
+   "count": 3,
+   "ctc_zar": 45000,
+   "first_month": "Aug 2030",
+   "fy": "FY4",
+   "mrr_gate_zar": 12000000
+  },
+  {
+   "role": "Marketing team expansion III",
+   "dept": "Marketing",
+   "count": 4,
+   "ctc_zar": 48000,
+   "first_month": "Dec 2030",
+   "fy": "FY5",
+   "mrr_gate_zar": 15000000
+  },
+  {
+   "role": "Partnerships manager #1 (agency programme)",
+   "dept": "Sales & partnerships",
+   "count": 1,
+   "ctc_zar": 50000,
+   "first_month": "Feb 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Partnerships manager #2",
+   "dept": "Sales & partnerships",
+   "count": 1,
+   "ctc_zar": 50000,
+   "first_month": "Nov 2027",
+   "fy": "FY2",
+   "mrr_gate_zar": 800000
+  },
+  {
+   "role": "Partnerships managers (scale-up I)",
+   "dept": "Sales & partnerships",
+   "count": 2,
+   "ctc_zar": 50000,
+   "first_month": "Dec 2028",
+   "fy": "FY3",
+   "mrr_gate_zar": 3500000
+  },
+  {
+   "role": "Partnerships managers (scale-up II)",
+   "dept": "Sales & partnerships",
+   "count": 2,
+   "ctc_zar": 55000,
+   "first_month": "Jan 2030",
+   "fy": "FY4",
+   "mrr_gate_zar": 9000000
+  },
+  {
+   "role": "SME onboarding & sales-assist",
+   "dept": "Sales & partnerships",
+   "count": 2,
+   "ctc_zar": 30000,
+   "first_month": "Oct 2027",
+   "fy": "FY2",
+   "mrr_gate_zar": 600000
+  },
+  {
+   "role": "Head of Sales & Partnerships",
+   "dept": "Sales & partnerships",
+   "count": 1,
+   "ctc_zar": 95000,
+   "first_month": "Apr 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 5000000
+  },
+  {
+   "role": "SME account managers",
+   "dept": "Sales & partnerships",
+   "count": 3,
+   "ctc_zar": 45000,
+   "first_month": "Mar 2030",
+   "fy": "FY4",
+   "mrr_gate_zar": 10000000
+  },
+  {
+   "role": "Partnerships managers (scale-up III)",
+   "dept": "Sales & partnerships",
+   "count": 2,
+   "ctc_zar": 55000,
+   "first_month": "Nov 2030",
+   "fy": "FY5",
+   "mrr_gate_zar": 14000000
+  },
+  {
+   "role": "SME account managers II",
+   "dept": "Sales & partnerships",
+   "count": 4,
+   "ctc_zar": 45000,
+   "first_month": "Feb 2031",
+   "fy": "FY5",
+   "mrr_gate_zar": 16000000
+  },
+  {
+   "role": "Customer success lead",
+   "dept": "Customer success",
+   "count": 1,
+   "ctc_zar": 40000,
+   "first_month": "Feb 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "CS & onboarding agents",
+   "dept": "Customer success",
+   "count": 2,
+   "ctc_zar": 20000,
+   "first_month": "May 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 150000
+  },
+  {
+   "role": "CS agents II",
+   "dept": "Customer success",
+   "count": 4,
+   "ctc_zar": 20000,
+   "first_month": "Feb 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 1200000
+  },
+  {
+   "role": "CS agents III",
+   "dept": "Customer success",
+   "count": 6,
+   "ctc_zar": 22000,
+   "first_month": "Dec 2028",
+   "fy": "FY3",
+   "mrr_gate_zar": 3500000
+  },
+  {
+   "role": "CS agents IV",
+   "dept": "Customer success",
+   "count": 8,
+   "ctc_zar": 22000,
+   "first_month": "Jan 2030",
+   "fy": "FY4",
+   "mrr_gate_zar": 9000000
+  },
+  {
+   "role": "CS agents V",
+   "dept": "Customer success",
+   "count": 8,
+   "ctc_zar": 24000,
+   "first_month": "Feb 2031",
+   "fy": "FY5",
+   "mrr_gate_zar": 16000000
+  },
+  {
+   "role": "Finance & compliance manager",
+   "dept": "G&A & compliance",
+   "count": 1,
+   "ctc_zar": 55000,
+   "first_month": "May 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 150000
+  },
+  {
+   "role": "Operations & admin",
+   "dept": "G&A & compliance",
+   "count": 1,
+   "ctc_zar": 22000,
+   "first_month": "Sep 2027",
+   "fy": "FY1",
+   "mrr_gate_zar": 500000
+  },
+  {
+   "role": "Legal & data-protection counsel",
+   "dept": "G&A & compliance",
+   "count": 1,
+   "ctc_zar": 70000,
+   "first_month": "Jul 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 2000000
+  },
+  {
+   "role": "People & HR partner",
+   "dept": "G&A & compliance",
+   "count": 1,
+   "ctc_zar": 45000,
+   "first_month": "Jan 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 3500000
+  },
+  {
+   "role": "Finance analyst",
+   "dept": "G&A & compliance",
+   "count": 1,
+   "ctc_zar": 40000,
+   "first_month": "Apr 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 5000000
+  },
+  {
+   "role": "CFO",
+   "dept": "G&A & compliance",
+   "count": 1,
+   "ctc_zar": 120000,
+   "first_month": "Nov 2029",
+   "fy": "FY4",
+   "mrr_gate_zar": 8000000
+  },
+  {
+   "role": "CS agents VI",
+   "dept": "Customer success",
+   "count": 10,
+   "ctc_zar": 24000,
+   "first_month": "May 2031",
+   "fy": "FY5",
+   "mrr_gate_zar": 18000000
+  },
+  {
+   "role": "Finance, legal & people team expansion",
+   "dept": "G&A & compliance",
+   "count": 3,
+   "ctc_zar": 60000,
+   "first_month": "Feb 2031",
+   "fy": "FY5",
+   "mrr_gate_zar": 16000000
+  },
+  {
+   "role": "Country lead: Nigeria",
+   "dept": "Country teams",
+   "count": 1,
+   "ctc_zar": 60000,
+   "first_month": "Dec 2027",
+   "fy": "FY2",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Nigeria sales & CS",
+   "dept": "Country teams",
+   "count": 2,
+   "ctc_zar": 18000,
+   "first_month": "Feb 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Nigeria team expansion",
+   "dept": "Country teams",
+   "count": 3,
+   "ctc_zar": 20000,
+   "first_month": "Feb 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Country lead: Kenya",
+   "dept": "Country teams",
+   "count": 1,
+   "ctc_zar": 55000,
+   "first_month": "Feb 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Kenya sales & CS",
+   "dept": "Country teams",
+   "count": 1,
+   "ctc_zar": 18000,
+   "first_month": "Apr 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Kenya team expansion",
+   "dept": "Country teams",
+   "count": 2,
+   "ctc_zar": 20000,
+   "first_month": "Apr 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Country lead: Ghana",
+   "dept": "Country teams",
+   "count": 1,
+   "ctc_zar": 45000,
+   "first_month": "Apr 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Ghana sales & CS",
+   "dept": "Country teams",
+   "count": 2,
+   "ctc_zar": 18000,
+   "first_month": "Jun 2028",
+   "fy": "FY2",
+   "mrr_gate_zar": 0
+  },
+  {
+   "role": "Ghana team expansion",
+   "dept": "Country teams",
+   "count": 2,
+   "ctc_zar": 20000,
+   "first_month": "Jun 2029",
+   "fy": "FY3",
+   "mrr_gate_zar": 0
+  }
+ ],
+ "annual": {
+  "a_rev": [
+   3442875,
+   24861333,
+   73061216,
+   144882642,
+   237982700
+  ],
+  "a_cogs": [
+   1820651,
+   8275178,
+   20744065,
+   36808127,
+   57246047
+  ],
+  "a_gp": [
+   1622224,
+   16586155,
+   52317151,
+   108074514,
+   180736653
+  ],
+  "a_opex": [
+   8698845,
+   30307496,
+   51776266,
+   76602864,
+   114451456
+  ],
+  "a_ebitda": [
+   -7076621,
+   -13721340,
+   540884,
+   31471651,
+   66285197
+  ],
+  "a_tax": [
+   0,
+   0,
+   0,
+   3027935,
+   17897003
+  ],
+  "a_ni": [
+   -7076621,
+   -13721340,
+   540884,
+   28443716,
+   48388194
+  ],
+  "a_opcf": [
+   -6406188,
+   -11136040,
+   5259435,
+   35158739,
+   56073548
+  ],
+  "a_funding": [
+   25000000,
+   0,
+   0,
+   0,
+   0
+  ],
+  "a_close_cash": [
+   19093812,
+   7957772,
+   13217207,
+   48375947,
+   104449495
+  ],
+  "a_min_cash": [
+   -57528,
+   7957772,
+   8008686,
+   15712041,
+   53600931
+  ]
+ },
+ "cash_flow_rows_fy_sum": {
+  "cogs_ai": [
+   430040,
+   2424729,
+   5959114,
+   9969964,
+   14044041
+  ],
+  "cogs_hosting": [
+   363933,
+   799586,
+   1553635,
+   2505405,
+   3575997
+  ],
+  "cogs_wa": [
+   263501,
+   1787977,
+   5075032,
+   9660651,
+   15283878
+  ],
+  "cogs_proc": [
+   99843,
+   769307,
+   2446581,
+   4941366,
+   8149221
+  ],
+  "cogs_support": [
+   91333,
+   627980,
+   1705193,
+   3064864,
+   4594282
+  ],
+  "cogs_cs_team": [
+   572000,
+   1865600,
+   4004510,
+   6665878,
+   11598628
+  ],
+  "cogs_total": [
+   1820651,
+   8275178,
+   20744065,
+   36808127,
+   57246047
+  ],
+  "cf_ebitda": [
+   -7076621,
+   -13721340,
+   540884,
+   31471651,
+   66285197
+  ],
+  "cf_tax": [
+   0,
+   0,
+   0,
+   -3027935,
+   -17897003
+  ],
+  "d_dr": [
+   788421,
+   2900125,
+   5253804,
+   7448676,
+   8643219
+  ],
+  "d_ar": [
+   117988,
+   314824,
+   535252,
+   733652,
+   957865
+  ],
+  "op_cf": [
+   -6406188,
+   -11136040,
+   5259435,
+   35158739,
+   56073548
+  ],
+  "seed_in": [
+   25000000,
+   0,
+   0,
+   0,
+   0
+  ],
+  "net_cf": [
+   18593812,
+   -11136040,
+   5259435,
+   35158739,
+   56073548
+  ]
+ },
+ "opening_cash_fy": [
+  500000,
+  19093812,
+  7957772,
+  13217207,
+  48375947
+ ],
+ "crosscheck_vs_model_summary_mismatches": []
+}

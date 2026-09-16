@@ -1,0 +1,79 @@
+
+<div id="live" class="no-print" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></div>
+<script>
+(function(){
+  var live = document.getElementById('live');
+  function flash(btn){
+    try{ btn.setAttribute('data-state','copied'); if(live) live.textContent='Copied'; setTimeout(function(){btn.removeAttribute('data-state');},1400); }catch(e){}
+  }
+  function copyText(text, btn){
+    function fallback(){
+      try{
+        var ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly','');
+        ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta); flash(btn);
+      }catch(e){}
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){flash(btn);}, fallback);
+      } else { fallback(); }
+    }catch(e){ fallback(); }
+  }
+  document.addEventListener('click', function(ev){
+    try{
+      var b = ev.target.closest('[data-copy],[data-copy-from]');
+      if(!b) return;
+      var t = b.getAttribute('data-copy');
+      if(t===null){
+        var src = document.querySelector('[data-copy-src="'+b.getAttribute('data-copy-from')+'"]');
+        t = src ? src.textContent.trim() : '';
+      }
+      if(t) copyText(t, b);
+    }catch(e){}
+  });
+
+  // Dark image variants follow an explicit data-theme stamp, not only the OS setting.
+  function syncPictures(){
+    try{
+      var th = document.documentElement.getAttribute('data-theme');
+      var m = th==='dark' ? 'all' : th==='light' ? 'not all' : '(prefers-color-scheme: dark)';
+      document.querySelectorAll('source[data-dark]').forEach(function(s){ if(s.media!==m) s.media=m; });
+    }catch(e){}
+  }
+  syncPictures();
+  try{ new MutationObserver(syncPictures).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']}); }catch(e){}
+
+  // Scroll spy for the side navigation.
+  try{
+    var links = {}; document.querySelectorAll('.rail nav a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && links[en.target.id]){
+          Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
+          var a = links[en.target.id]; a.setAttribute('aria-current','true');
+          try{ if(window.matchMedia('(max-width:1080px)').matches){ a.scrollIntoView({block:'nearest',inline:'center'}); } }catch(e){}
+        }
+      });
+    }, {rootMargin:'-20% 0px -70% 0px'});
+    document.querySelectorAll('.sec').forEach(function(s){ io.observe(s); });
+  }catch(e){}
+
+  // Asset table filter.
+  try{
+    var btns = document.querySelectorAll('.asset-filter button');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var f = b.getAttribute('data-filter');
+        btns.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); });
+        document.querySelectorAll('table.assets tbody tr').forEach(function(tr){
+          var cat = tr.getAttribute('data-cat'), internal = tr.getAttribute('data-internal')==='1';
+          var show = f==='all' || (f==='internal' ? internal : cat===f);
+          if(tr.classList.contains('cat')) show = f==='all' || (f!=='internal' && cat===f);
+          tr.hidden = !show;
+        });
+      });
+    });
+  }catch(e){}
+})();
+</script>
