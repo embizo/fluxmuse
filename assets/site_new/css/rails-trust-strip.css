@@ -22,6 +22,37 @@
   padding-block: 72px;
 }
 
+/*
+ * Dark-mode token overrides. Needed alongside the monotone logo filters
+ * below — a pure-white logo silhouette on this section's still-white
+ * background would simply disappear, so the surface/border/text tokens
+ * flip too. Same [data-theme] caveat as the logo filters: there's no
+ * manual toggle in this codebase yet, this follows the OS preference.
+ */
+@media (prefers-color-scheme: dark) {
+  .rails-strip:not([data-theme="light"]) {
+    --rs-bg: #0F1419;
+    --rs-surface: #1B232C;
+    --rs-surface-soft: #171E25;
+    --rs-border: #2B333C;
+    --rs-ink: #F3F4F6;
+    --rs-ink-soft: #A7B0B8;
+    --rs-muted: #5B6670;
+    --rs-accent-tint: #2A1D14;
+  }
+}
+
+.rails-strip[data-theme="dark"] {
+  --rs-bg: #0F1419;
+  --rs-surface: #1B232C;
+  --rs-surface-soft: #171E25;
+  --rs-border: #2B333C;
+  --rs-ink: #F3F4F6;
+  --rs-ink-soft: #A7B0B8;
+  --rs-muted: #5B6670;
+  --rs-accent-tint: #2A1D14;
+}
+
 .rails-strip *,
 .rails-strip *::before,
 .rails-strip *::after {
@@ -65,6 +96,8 @@
   width: auto;
   flex-shrink: 0;
   display: block;
+  filter: brightness(0) saturate(100%);
+  opacity: .88;
 }
 
 .rails-strip__badge-logo--icon {
@@ -150,13 +183,11 @@
   border: 1px solid var(--rs-border);
   border-radius: 14px;
   box-shadow: var(--rs-shadow);
-  filter: grayscale(1);
   opacity: .82;
-  transition: opacity .2s ease, filter .2s ease, border-color .2s ease, transform .2s ease;
+  transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
 }
 
 .rails-strip__rail:hover {
-  filter: grayscale(.15);
   opacity: 1;
   border-color: var(--rs-accent-deep);
   transform: translateY(-1px);
@@ -179,14 +210,35 @@
   max-width: 44px;
   max-height: 26px;
   object-fit: contain;
-  filter: grayscale(1);
+  filter: brightness(0) saturate(100%);
   opacity: .82;
-  transition: filter .2s ease, opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
 .rails-strip__rail:hover .rails-strip__rail-mark img {
-  filter: grayscale(.1);
   opacity: 1;
+}
+
+/*
+ * Monotone brand marks: pure black in light mode, pure white in dark mode.
+ * "brightness(0)" flattens any logo (color or multi-tone) to a solid black
+ * silhouette wherever it has opaque pixels; stacking "invert(1)" on top of
+ * that flips black to white for dark mode. This site has no manual light/
+ * dark toggle yet, so it's driven by the OS-level preference — the
+ * [data-theme="dark"] fallback is there in case one gets added later
+ * (adjust the attribute/selector to match however that toggle actually
+ * flags dark mode once it exists).
+ */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .rails-strip__rail-mark img,
+  html:not([data-theme="light"]) .rails-strip__badge-logo {
+    filter: brightness(0) saturate(100%) invert(1);
+  }
+}
+
+html[data-theme="dark"] .rails-strip__rail-mark img,
+html[data-theme="dark"] .rails-strip__badge-logo {
+  filter: brightness(0) saturate(100%) invert(1);
 }
 
 .rails-strip__rail-mark .rails-strip__mono-text {
