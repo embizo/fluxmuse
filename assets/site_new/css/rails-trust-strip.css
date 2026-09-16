@@ -60,29 +60,15 @@
   letter-spacing: .1px;
 }
 
-.rails-strip__verified-badge .rails-strip__mark {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--rs-accent-tint);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.rails-strip__badge-logo {
+  height: 15px;
+  width: auto;
   flex-shrink: 0;
-}
-
-.rails-strip__verified-badge .rails-strip__mark svg {
-  width: 11px;
-  height: 11px;
   display: block;
 }
 
-.rails-strip__verified-badge .rails-strip__mark svg path {
-  fill: none;
-  stroke: var(--rs-accent-deep);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.rails-strip__badge-logo--icon {
+  height: 18px;
 }
 
 .rails-strip__verified-badge strong {
