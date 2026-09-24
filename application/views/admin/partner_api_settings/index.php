@@ -77,6 +77,44 @@
     </div>
 
     <div class="card">
+      <div class="card-header"><h4><?php echo $this->lang->line("WhatsApp senders"); ?></h4></div>
+      <div class="card-body">
+        <p class="text-muted"><?php echo $this->lang->line("One WhatsApp number per brand. Bind an API key to a sender below and that key sends from that number. Keys with no sender use the number in Marketing identity."); ?></p>
+        <table class="table table-striped">
+          <thead><tr><th><?php echo $this->lang->line("Label"); ?></th><th><?php echo $this->lang->line("Number"); ?></th><th><?php echo $this->lang->line("Phone Number ID"); ?></th><th><?php echo $this->lang->line("WABA ID"); ?></th></tr></thead>
+          <tbody>
+            <?php foreach ($senders as $sd) { ?>
+              <tr>
+                <td><?php echo htmlspecialchars($sd['label']); ?></td>
+                <td><?php echo htmlspecialchars($sd['display_number'] ?? ''); ?></td>
+                <td><code><?php echo htmlspecialchars($sd['phone_number_id']); ?></code></td>
+                <td><?php echo $sd['waba_id'] ? '<code>' . htmlspecialchars($sd['waba_id']) . '</code>' : '<span class="text-muted">' . $this->lang->line('not set') . '</span>'; ?></td>
+              </tr>
+            <?php } ?>
+            <?php if (empty($senders)) { ?>
+              <tr><td colspan="4" class="text-muted"><?php echo $this->lang->line("No senders yet."); ?></td></tr>
+            <?php } ?>
+          </tbody>
+        </table>
+
+        <form action="<?php echo site_url('partner_api_settings/save_sender'); ?>" method="POST">
+          <input type="hidden" name="csrf_token" value="<?php echo $this->session->userdata('csrf_token_session'); ?>">
+          <div class="form-row">
+            <div class="col-md-3 mb-2"><input type="text" class="form-control" name="label" placeholder="<?php echo $this->lang->line('Label, e.g. Sedilaka'); ?>" required></div>
+            <div class="col-md-3 mb-2"><input type="text" class="form-control" name="display_number" placeholder="<?php echo $this->lang->line('Number, e.g. +27 71 000 0000'); ?>"></div>
+            <div class="col-md-3 mb-2"><input type="text" class="form-control" name="phone_number_id" placeholder="<?php echo $this->lang->line('Phone Number ID'); ?>" required></div>
+            <div class="col-md-3 mb-2"><input type="text" class="form-control" name="waba_id" placeholder="<?php echo $this->lang->line('WhatsApp Business Account ID'); ?>"></div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-9 mb-2"><input type="password" class="form-control" name="access_token" autocomplete="off" placeholder="<?php echo $this->lang->line('Permanent System User token'); ?>"></div>
+            <div class="col-md-3 mb-2"><button type="submit" class="btn btn-primary btn-block"><?php echo $this->lang->line("Add sender"); ?></button></div>
+          </div>
+          <small class="text-muted"><?php echo $this->lang->line("The WABA ID is needed to see template approval status."); ?></small>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-header"><h4><?php echo $this->lang->line("API keys"); ?></h4></div>
       <div class="card-body">
         <table class="table table-striped">
@@ -85,6 +123,7 @@
               <th><?php echo $this->lang->line("Label"); ?></th>
               <th><?php echo $this->lang->line("Key"); ?></th>
               <th><?php echo $this->lang->line("Last used"); ?></th>
+              <th><?php echo $this->lang->line("WhatsApp sender"); ?></th>
               <th><?php echo $this->lang->line("Status"); ?></th>
               <th></th>
             </tr>
@@ -95,6 +134,20 @@
                 <td><?php echo htmlspecialchars($k['label']); ?></td>
                 <td><code><?php echo htmlspecialchars($k['key_prefix']); ?>…</code></td>
                 <td><?php echo $k['last_used_at'] ? htmlspecialchars($k['last_used_at']) : $this->lang->line('Never'); ?></td>
+                <td>
+                  <?php if (!$k['revoked_at']) { ?>
+                    <form class="form-inline" action="<?php echo site_url('partner_api_settings/bind_key'); ?>" method="POST">
+                      <input type="hidden" name="csrf_token" value="<?php echo $this->session->userdata('csrf_token_session'); ?>">
+                      <input type="hidden" name="key_id" value="<?php echo (int) $k['id']; ?>">
+                      <select name="sender_id" class="form-control form-control-sm mr-1" onchange="this.form.submit()">
+                        <option value="0"><?php echo $this->lang->line("Default number"); ?></option>
+                        <?php foreach ($senders as $sd) { ?>
+                          <option value="<?php echo (int) $sd['id']; ?>" <?php echo ((int) ($k['whatsapp_sender_id'] ?? 0) === (int) $sd['id']) ? 'selected' : ''; ?>><?php echo htmlspecialchars($sd['label']); ?></option>
+                        <?php } ?>
+                      </select>
+                    </form>
+                  <?php } ?>
+                </td>
                 <td>
                   <?php if ($k['revoked_at']) { ?>
                     <span class="badge badge-secondary"><?php echo $this->lang->line("Revoked"); ?></span>
@@ -114,7 +167,7 @@
               </tr>
             <?php } ?>
             <?php if (empty($api_keys)) { ?>
-              <tr><td colspan="5" class="text-muted"><?php echo $this->lang->line("No API keys yet."); ?></td></tr>
+              <tr><td colspan="6" class="text-muted"><?php echo $this->lang->line("No API keys yet."); ?></td></tr>
             <?php } ?>
           </tbody>
         </table>

@@ -89,6 +89,36 @@ class Partner_api_base
         return $config;
     }
 
+    /** The WhatsApp number a key sends as: its bound sender if it has one,
+     *  otherwise the legacy single number in partner_api_config, so keys
+     *  created before senders existed behave exactly as before. Returns
+     *  array(id|null, phone_number_id, access_token, waba_id) or dies 503. */
+    public function whatsapp_sender($key)
+    {
+        if (!empty($key['whatsapp_sender_id'])) {
+            $row = $this->CI->basic->get_data('partner_api_whatsapp_senders', array('where' => array('id' => $key['whatsapp_sender_id'])));
+            if (empty($row)) {
+                $this->die_error('This API key\'s WhatsApp sender no longer exists. An admin must rebind it under Admin > Partner API.', 503);
+            }
+            return array(
+                'id' => (int) $row[0]['id'],
+                'phone_number_id' => $row[0]['phone_number_id'],
+                'access_token' => $this->CI->partner_api_crypto->decrypt($row[0]['access_token_enc']),
+                'waba_id' => $row[0]['waba_id'],
+            );
+        }
+        $config = $this->config();
+        if (empty($config['whatsapp_phone_number_id']) || empty($config['whatsapp_access_token'])) {
+            $this->die_error('WhatsApp is not configured yet. An admin must set it up under Admin > Partner API.', 503);
+        }
+        return array(
+            'id' => null,
+            'phone_number_id' => $config['whatsapp_phone_number_id'],
+            'access_token' => $config['whatsapp_access_token'],
+            'waba_id' => isset($config['whatsapp_waba_id']) ? $config['whatsapp_waba_id'] : null,
+        );
+    }
+
     /** Body of a JSON POST request as an associative array, or a 400 on
      *  malformed JSON -- CI3's $this->input->post() expects form-encoded
      *  bodies, which is not what a JSON API client sends. */

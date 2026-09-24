@@ -147,10 +147,53 @@ class Partner_api_meta
 
     /** A free-form WhatsApp text message. Meta only allows this within 24 hours
      *  of the recipient's last message to this number; outside that window it
-     *  is rejected (code 131047) and an approved template is required instead,
-     *  which this client does not send -- not needed for the marketing use this
-     *  module exists for today (replies to inbound leads, not cold outreach). */
+     *  is rejected (code 131047) and an approved template is required instead
+     *  -- see send_whatsapp_template() for business-initiated messages. */
     public function send_whatsapp_text($phone_number_id, $access_token, $to, $body)
+    {
+        return $this->whatsapp_post($phone_number_id, $access_token, array(
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $to,
+            'type' => 'text',
+            'text' => array('body' => $body, 'preview_url' => false),
+        ));
+    }
+
+    /** A business-initiated message: an approved template, by name. `$payload`
+     *  is built and validated by Partner_api_whatsapp_payload -- this only
+     *  sends it. Works outside the 24-hour window, which is the point. */
+    public function send_whatsapp_template($phone_number_id, $access_token, $payload)
+    {
+        return $this->whatsapp_post($phone_number_id, $access_token, $payload);
+    }
+
+    /** The templates on a WhatsApp Business Account and where each stands with
+     *  Meta review (APPROVED / PENDING / REJECTED ...). Needed because a send
+     *  with a template that is not yet approved fails, and "is it approved
+     *  yet" should be a question the caller can ask rather than discover by
+     *  failing. Note this is keyed on the WABA id, not the phone number id. */
+    public function list_whatsapp_templates($waba_id, $access_token)
+    {
+        $r = $this->call('GET', $waba_id . '/message_templates', array(
+            'fields' => 'name,status,category,language,rejected_reason',
+            'limit' => 100,
+        ), $access_token);
+        if (!$r['ok']) return $r;
+        $out = array();
+        foreach (isset($r['data']['data']) ? $r['data']['data'] : array() as $t) {
+            $out[] = array(
+                'name' => isset($t['name']) ? $t['name'] : null,
+                'language' => isset($t['language']) ? $t['language'] : null,
+                'category' => isset($t['category']) ? $t['category'] : null,
+                'status' => isset($t['status']) ? $t['status'] : null,
+                'rejected_reason' => isset($t['rejected_reason']) ? $t['rejected_reason'] : null,
+            );
+        }
+        return array('ok' => true, 'templates' => $out);
+    }
+
+    private function whatsapp_post($phone_number_id, $access_token, $payload)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, self::GRAPH_BASE . self::GRAPH_VERSION . '/' . $phone_number_id . '/messages');
@@ -159,13 +202,7 @@ class Partner_api_meta
             'Authorization: Bearer ' . $access_token,
             'Content-Type: application/json',
         ));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array(
-            'messaging_product' => 'whatsapp',
-            'recipient_type' => 'individual',
-            'to' => $to,
-            'type' => 'text',
-            'text' => array('body' => $body, 'preview_url' => false),
-        )));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);

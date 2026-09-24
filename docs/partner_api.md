@@ -38,11 +38,29 @@ GET    partner_api/posts/show/{id}                    status, permalink (id = th
 GET    partner_api/posts/metrics/{platform_post_id}   engagement, once published (the Graph post id, not this API's own id)
 
 POST   partner_api/whatsapp/send
-       { to, body, external_ref? }
-       `to` is digits only, international format (e.g. 2348012345678). Meta
-       only allows a free-form message within 24 hours of the recipient's
-       last message to this number -- an approved template is required
-       outside that window, which this endpoint does not send.
+       { to, body, external_ref? }                              free-form text
+       { to, template: { name, language?, otp | components }, external_ref? }
+       `to` is digits only, international format (e.g. 27711234567). Meta
+       only allows free-form text within 24 hours of the recipient's last
+       message to this number. Anything business-initiated (a login code,
+       an alert to someone who has not written first) must be a template
+       that Meta has approved in WhatsApp Manager.
+
+       Login code: { "to": "...", "template": { "name": "sedilaka_login_code",
+       "language": "en", "otp": "482913" } }. `otp` fills both the body and
+       the copy-code button, which Meta requires for Authentication
+       templates. Other templates: pass `components` (header/body/button,
+       text/payload/coupon_code parameters). Template parameters are NEVER
+       stored -- the log keeps only `[template NAME / LANG]`.
+
+GET    partner_api/whatsapp/templates
+       Approval status (APPROVED / PENDING / REJECTED) of the templates on
+       the caller's sender. Needs the sender's WABA id.
+
+The number a key sends from is its bound sender (Admin > Partner API >
+WhatsApp senders, then pick it in the key's row). Keys with no sender keep
+using the single number in Marketing identity. Run
+`assets/backup_db/partner_api_whatsapp_senders.sql` once to enable senders.
 ```
 
 Every post and every WhatsApp send is logged (`partner_api_posts`,
@@ -60,5 +78,6 @@ text, so a problem is diagnosable without server log access.
   reseller model is a separate, larger piece of work (see
   `agent-pal-ai/docs/partner-and-internal-api-design.md` on the imanami
   side for that design).
-- WhatsApp template sends (only free-form messages), and Instagram
+- Template *creation*: templates are written and submitted in WhatsApp
+  Manager; this only sends approved ones. Also no Instagram
   video/carousel posts (image only).
