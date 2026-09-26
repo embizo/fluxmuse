@@ -1,0 +1,210 @@
+{
+  "id": "16-digital-photography-courses",
+  "slot": "Education: photography courses",
+  "name": "Digital Photography Courses (DPC)",
+  "legal_or_trading_name": "DPC and Daniel Bester Photographic (as shown in the site footer)",
+  "segment": "sme",
+  "trade": "Part-time photography courses for adults, in person and online",
+  "location": "Between Johannesburg and Pretoria, Gauteng",
+  "wave": 2,
+  "why_wave": "Its own site tells students to WhatsApp or email with questions and lists a course starting 6 October 2026, but it already has a working enquiry set-up, so this is a wave 2 conversation.",
+  "one_line_pitch": "Answer course questions on WhatsApp faster and keep interested students in touch about the next dates, without adding admin.",
+  "public_facts": [
+    {
+      "fact": "The About page says DPC was founded in 2010 by photographer Danie Bester, who is listed as Programme Director.",
+      "source": "https://digitalphotographycourses.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Says it offers more than sixteen programmes and almost sixty face-to-face and online courses a year in and around Johannesburg and Pretoria, in small groups.",
+      "source": "https://digitalphotographycourses.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Basic Photography Course page lists R4 900 per person, R4 100 per person for couples or friends, over five weeks with five evening Zoom classes and weekend practical shoots.",
+      "source": "https://digitalphotographycourses.co.za/basic-photography-courses/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "That page lists a course running 06 Oct to 03 Nov 2026 with a 'Register Here' button, and its page timestamp is 3 September 2026.",
+      "source": "https://digitalphotographycourses.co.za/basic-photography-courses/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Tells students with questions to send an email or a WhatsApp, or speak to the Programme Director in office hours, and says new course dates are added throughout the year.",
+      "source": "https://digitalphotographycourses.co.za/basic-photography-courses/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The page invites people whose dates do not work to 'let us know' so they can be kept updated on future courses.",
+      "source": "https://digitalphotographycourses.co.za/basic-photography-courses/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The contact page has an enquiry form, a business email, a WhatsApp number and weekday hours of 09:00 to 16:00.",
+      "source": "https://digitalphotographycourses.co.za/contact/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The About page lists a small team (Danie Bester and John Fox) and describes an online student community with discussions and photo critiques.",
+      "source": "https://digitalphotographycourses.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The About page was last updated on 31 July 2026 per its page timestamp, and the site footer shows a 2026 copyright.",
+      "source": "https://digitalphotographycourses.co.za/about/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with WhatsApp and email links on course pages (digitalphotographycourses.co.za)",
+    "Contact form, business email and WhatsApp number (digitalphotographycourses.co.za/contact/)",
+    "Register Here button on course pages that opens a registration pop-up",
+    "Online student community described on the About page"
+  ],
+  "decision_maker": "Danie Bester, founder and Programme Director (named on the business's own About page).",
+  "approach": {
+    "route": "The enquiry form on the website contact page, or the published business email.",
+    "contact_source": "https://digitalphotographycourses.co.za/contact/",
+    "opening_message": "Hello Danie, I am [SENDER NAME] from FluxMuse, a new South African WhatsApp and marketing tool for small businesses. Your course pages ask students to WhatsApp or email with questions, and to say if the listed dates do not work so you can keep them updated. That looks like a lot of small conversations to track. We are opening with a small first group of businesses and setting each one up by hand. Could we have 20 minutes to talk about how you handle enquiries? If this is not relevant, tell me and I will not follow up.",
+    "compliance_note": "One relevant, one-to-one message through the enquiry route the business publishes, with a clear opt-out, is the defensible approach under POPIA s69; this is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "People who cannot make the listed dates have to be remembered and told when new dates are added.",
+      "basis": "observed",
+      "evidence": "The Basic Photography Course page says to let them know if dates do not work so they can be kept updated on future courses. How the list is kept is unknown.",
+      "validate_with": "How do you keep track of people waiting for a future date, and how do you tell them when one opens?"
+    },
+    {
+      "pain": "Questions arrive by WhatsApp, email, phone and form, and can be split across numbers.",
+      "basis": "observed",
+      "evidence": "The header shows a call number and a different WhatsApp number, and the course page WhatsApp link points to the call number. Whether messages actually get split is unknown.",
+      "validate_with": "Where do most course questions arrive, and does anything get missed between channels?"
+    },
+    {
+      "pain": "Questions sent outside weekday office hours wait until the next working day.",
+      "basis": "inferred",
+      "evidence": "The contact page lists weekday hours of 09:00 to 16:00. Whether WhatsApp is watched outside those hours is unknown.",
+      "validate_with": "When do most questions arrive, and how long do evening or weekend ones wait?"
+    },
+    {
+      "pain": "Students who finish one course are not always told about the next programme that suits them.",
+      "basis": "inferred",
+      "evidence": "The site lists more than sixteen programmes and an online community; how past students hear about new dates is not stated.",
+      "validate_with": "How do finished students find out about the next course, and how many come back?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "An established, founder-led school with a course starting in October and WhatsApp already listed for questions, so the topic is real. It already has a form, an email, a registration pop-up and a student community, so there is less to fix, and a Programme Director may handle enquiries who is not the founder. Poor fit if enquiries are few and well handled, or if registration is fully managed elsewhere."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One WhatsApp number for course questions and follow-ups, plus simple post support, fits the entry business plan.",
+    "upgrade_path": "Starter if it connects more channels, or Growth if it later runs separate brands."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: quick replies and templates",
+      "status": "live",
+      "for_them": "Saved answers for the questions students most often ask (dates, price, what to bring, format), and one number that is the same everywhere. Templates for reminders need Meta approval when sent outside the 24-hour window."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "A message to students who have agreed to hear from the school when new dates open. Only people who have consented, and each message includes a way to stop."
+    },
+    {
+      "capability": "Hosted shop link with WhatsApp orders",
+      "status": "live",
+      "for_them": "A simple public page listing courses, where an interest message arrives as a pre-typed WhatsApp message to its own number. It is an enquiry, not payment or registration."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a photo from a practical shoot or a student's work, with their permission, and get a caption back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Voice-note transcription",
+      "status": "live",
+      "for_them": "Your voice notes between sessions come back as text to reuse in course descriptions or replies."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on once Meta approves the permissions; until then posts are forwarded by hand."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Call to walk through a typical enquiry from first question to registration.",
+        "Connect the WhatsApp Business number and set up the profile."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Write saved answers for the five most common questions from your own examples.",
+        "Agree how consent to hear about new dates is asked and recorded."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up the hosted course link and test an enquiry end to end.",
+        "Try the POST keyword on two photos from a practical shoot, with permission from anyone identifiable."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review the month: which saved answers were used and what still takes time.",
+        "Decide whether to continue and on which plan."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Enquiries answered with a saved reply",
+    "Time from first message to first reply",
+    "Enquiries arriving from the course link",
+    "Consented contacts told about new dates"
+  ],
+  "objections": [
+    {
+      "objection": "We already have a form, email and a student community.",
+      "response": "You do, and we would not replace them. The question is whether WhatsApp questions and the wait-for-new-dates list are easier to handle in one place."
+    },
+    {
+      "objection": "Registration is already handled and I do not want it changed.",
+      "response": "We would leave registration alone. The shop link is only a way to start a conversation, and the rest is saved answers and reminders."
+    },
+    {
+      "objection": "I do not have time to set up another tool.",
+      "response": "We set it up by hand with you and start with two things only: saved answers and one shared number. Anything else is optional."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Keeping students enrolled after the first lesson",
+      "url": "https://fluxmuse.ai/blog/keeping-students-enrolled-after-the-first-lesson"
+    },
+    {
+      "title": "Filling seats: promoting an event on a small budget",
+      "url": "https://fluxmuse.ai/blog/filling-seats-promoting-an-event-on-a-small-budget"
+    }
+  ],
+  "gaps": [
+    "The WhatsApp numbers differ between the site header and the course page link; which is the primary number is unconfirmed.",
+    "The 'Register Here' pop-up form was not opened, so how registration is captured is unknown.",
+    "The 'Programme Director' role is shown on the About page, but who answers enquiries in practice is not stated.",
+    "Its claims about students trained and return rates were not verified and are not used.",
+    "Social accounts were not opened; their activity is unchecked.",
+    "The 2026 evidence is the course date, page timestamps and footer copyright on its own site; enrolment numbers are unknown.",
+    "The site does not say whether students consent to marketing messages, so any broadcast depends on how consent is collected."
+  ]
+}

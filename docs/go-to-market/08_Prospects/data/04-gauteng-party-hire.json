@@ -1,0 +1,218 @@
+{
+  "id": "04-gauteng-party-hire",
+  "slot": "Events: party and décor hire",
+  "name": "Gauteng Party Hire",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Party, event and décor equipment hire",
+  "location": "Roodepoort and Fourways area, Gauteng (delivers across Gauteng)",
+  "wave": 1,
+  "why_wave": "Its own site tells customers to WhatsApp an event date, location and equipment list for a quote, and its pages were updated as recently as September 2026.",
+  "one_line_pitch": "Make hire quote requests on WhatsApp quicker to answer and keep the equipment list easy to share, so fewer enquiries wait.",
+  "public_facts": [
+    {
+      "fact": "Describes itself as an event equipment hire company supplying Tiffany chairs, tables, linen, décor, crockery, glassware and more for weddings, birthdays, corporate and kids' events across Johannesburg, Pretoria, Midrand and Gauteng.",
+      "source": "https://gautengpartyhire.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The homepage tells customers to WhatsApp for a quote 'within hours' and to send the event date, guest count, location and equipment needed by WhatsApp or email.",
+      "source": "https://gautengpartyhire.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Says that after a request it checks availability and sends a detailed quote including delivery, and that a deposit secures the booking once the quote is approved.",
+      "source": "https://gautengpartyhire.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its booking terms page says a 50% deposit secures the equipment, the balance is due 7 days before delivery, and it accepts EFT only.",
+      "source": "https://gautengpartyhire.co.za/payement-terms/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The contact page has a quote form (name, WhatsApp number, email, event date, suburb, equipment needed, message) and lists a business email address and a phone number.",
+      "source": "https://gautengpartyhire.co.za/contact/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes item prices on its pricing page (for example Tiffany chairs at R35 each) and says delivery is quoted separately by location.",
+      "source": "https://gautengpartyhire.co.za/pricing/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The About page says it has '10 Plus Members' on its team and more than 168 products, and gives a home base in Cosmo City, Johannesburg.",
+      "source": "https://gautengpartyhire.co.za/about-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site's own sitemap shows pages last updated between May and 17 September 2026, and the homepage metadata gives a publish date of 21 April 2026.",
+      "source": "https://gautengpartyhire.co.za/page-sitemap.xml",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Links to Facebook, YouTube and Instagram accounts in the page footer.",
+      "source": "https://gautengpartyhire.co.za/payement-terms/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with WhatsApp quote buttons and a pre-typed enquiry message (gautengpartyhire.co.za)",
+    "Quote form and published business email (gautengpartyhire.co.za/contact/)",
+    "Published phone number that is also used for WhatsApp",
+    "Facebook, YouTube and Instagram links in the site footer"
+  ],
+  "decision_maker": "The owner or manager; no person is named on the site, so ask whoever answers the enquiry route.",
+  "approach": {
+    "route": "The quote form on the website contact page, or the published business email.",
+    "contact_source": "https://gautengpartyhire.co.za/contact/",
+    "opening_message": "Hello, I am [SENDER NAME] from FluxMuse, a new South African WhatsApp and marketing tool for small businesses. Your website asks customers to WhatsApp an event date, location and equipment list to get a quote, which suggests a lot of your week goes on checking stock and typing quotes. We are opening with a small first group of businesses and setting each one up by hand. Could we have 20 minutes to talk about how quotes work for you? If this is not relevant, tell me and I will not follow up.",
+    "compliance_note": "One relevant, one-to-one message through the enquiry route the business publishes, with a clear opt-out, is the defensible approach under POPIA s69; this is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Each quote request means checking stock for the date and typing a fresh quote.",
+      "basis": "observed",
+      "evidence": "The homepage says it checks availability and sends a detailed quote including delivery. How long this takes is unknown.",
+      "validate_with": "How many quote requests do you get in a busy week, and how long does each one take to answer?"
+    },
+    {
+      "pain": "Customers send the event date, guest count, suburb and item list in different orders, so details are missed and have to be asked for again.",
+      "basis": "inferred",
+      "evidence": "The site asks for these four things by WhatsApp or email, and the form has separate fields for them. Whether details often go missing is not known.",
+      "validate_with": "What do you most often have to ask a customer again?"
+    },
+    {
+      "pain": "Customers cannot see whether an item is free on their date, so they ask on WhatsApp first.",
+      "basis": "inferred",
+      "evidence": "Prices are published, but availability is checked per request. Whether stock levels are tracked anywhere customers can see is unknown.",
+      "validate_with": "How do you track what is out on which date, and do customers ever ask the same availability question twice?"
+    },
+    {
+      "pain": "Deposits and balances are handled by hand, so it is easy for a booking to sit unconfirmed until the deposit is checked.",
+      "basis": "inferred",
+      "evidence": "Booking terms say a 50% deposit by EFT secures the booking and the balance is due 7 days before delivery. How deposits are checked is unknown.",
+      "validate_with": "How do you know a deposit has cleared, and who chases balances?"
+    },
+    {
+      "pain": "Photos of finished set-ups are not turned into regular posts because the team is busy delivering and collecting.",
+      "basis": "inferred",
+      "evidence": "The site lists Facebook, YouTube and Instagram accounts; how often they are updated is not known.",
+      "validate_with": "Who takes photos on delivery day, and do they end up on your social accounts?"
+    }
+  ],
+  "fit": {
+    "attainability": 4,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "Its own site sends every quote to WhatsApp, with a published quote form and email, and pages updated as recently as September 2026, so the fit with a WhatsApp-first tool is natural. It has a team of ten or more, so it may already have its own way of working, and no owner is named, so finding the right person may take a call. Poor fit if quotes are handled by a systemised back office and WhatsApp is only the front door."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One business with one WhatsApp number needs saved quote questions, a simple item list and post support, not a multi-brand plan.",
+    "upgrade_path": "Starter if it wants more connected channels, or Growth if it later runs more than one brand."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: quick replies and templates",
+      "status": "live",
+      "for_them": "A saved reply that asks for the event date, guest count, suburb and items in one message, so the first answer already has what is needed to check stock. Templates for delivery reminders need Meta approval when sent outside the 24-hour window."
+    },
+    {
+      "capability": "Hosted shop link with WhatsApp orders",
+      "status": "live",
+      "for_them": "A public page listing popular items and packages, where a request arrives as a pre-typed WhatsApp message to its own number. It is a request, not payment."
+    },
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send a photo of an item or a table set-up and the AI drafts a name, description and price guess for you to confirm with YES, NO or an edit, to keep the shop list current."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "An alert on WhatsApp for each request from the shop link, and a SOLD reply to mark it taken. Whether that suits hire bookings is something we would test together."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a delivery-day photo and get a caption back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on once Meta approves the permissions; until then posts are forwarded by hand."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Call to walk through a typical quote from first message to deposit.",
+        "Connect the WhatsApp Business number and set up the profile."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Write the standard quote-question reply from its own four questions (date, guests, suburb, items).",
+        "Try the Concierge with photos of five popular items and check the drafts."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up the hosted shop link with those items and test a request end to end.",
+        "Try the POST keyword on two delivery-day photos."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review the month: which replies were used and what still takes time.",
+        "Decide whether to continue and on which plan."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Quote requests that reached the standard question reply",
+    "Time from first message to first reply",
+    "Requests arriving from the shop link",
+    "Posts forwarded to WhatsApp Status from the POST keyword"
+  ],
+  "objections": [
+    {
+      "objection": "We already quote on WhatsApp and it works.",
+      "response": "It may well. We would not change how quotes are written. The question is whether a saved reply and an item list save some typing on the busiest weeks, and if not, we would tell you."
+    },
+    {
+      "objection": "Our prices and stock change, so a shop page will go out of date.",
+      "response": "A fair concern. We would list only stable items first, keep it to a request page rather than live stock, and you decide how often it is updated."
+    },
+    {
+      "objection": "We do not have time to learn a new tool.",
+      "response": "We set it up by hand with you and start with two things: the saved reply and the item list. Everything else is optional."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Bookings without a booking system: WhatsApp for a tradesperson",
+      "url": "https://fluxmuse.ai/blog/bookings-without-a-booking-system-whatsapp-for-a-tradesperson"
+    },
+    {
+      "title": "Catering orders that do not get lost in a thread",
+      "url": "https://fluxmuse.ai/blog/catering-orders-that-do-not-get-lost-in-a-thread"
+    }
+  ],
+  "gaps": [
+    "No owner or manager is named on the site.",
+    "The About page gives Kya Sands Business Park as its base while the contact page gives a Cosmo City collection address; which is the trading address is unconfirmed, so the location is stated broadly.",
+    "The site makes claims (event supply for large brands, a price-match promise) that were not checked and are not used.",
+    "Footer links list catering services that do not match the equipment hire content; a possible template leftover.",
+    "The site looks search-optimised; how much enquiry volume it actually gets is unknown.",
+    "Trading history is not stated; the homepage metadata gives a 2026 publish date, and how long it has traded is unknown.",
+    "The business's legal name is not shown on the pages read.",
+    "Whether the WhatsApp number is on WhatsApp Business is unknown.",
+    "Social accounts were not opened; their activity is unchecked."
+  ]
+}

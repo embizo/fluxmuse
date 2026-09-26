@@ -1,0 +1,206 @@
+{
+  "id": "14-the-sweat-shack",
+  "slot": "Fitness: boutique studio",
+  "name": "The Sweat Shack",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Fitness studio: spinning, rebounding, bootcamp, Yoga-lates and senior classes, plus a nutrition Wellness Club",
+  "location": "World of Wellness Centre, Rynfield, Benoni",
+  "wave": 1,
+  "why_wave": "Owner-run studio where the owner is also the instructor and the published WhatsApp number is hers.",
+  "one_line_pitch": "Turn your class timetable and pricing images into quick WhatsApp answers, and bring lapsed members back with consented messages.",
+  "public_facts": [
+    {
+      "fact": "Says it was founded in April 2021 and is based at the World of Wellness Centre in Rynfield, Benoni.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site says the studio is owned and operated by qualified instructor Michelle Gordon Watt.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The class timetable and pricing are shown on the website as images (files named 2026-Classes and PRICING-2026), not as text.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site's FAQ says to book classes through the Octiv Fitness App after signing up, or to WhatsApp Michelle if sign-up is a struggle; a WhatsApp number and info email address are in the site header.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site menu includes Fitness, a Wellness Club, an Info Hub and a Shop with a cart.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Wellness Club section lists nutrition and coaching packages, including a corporate wellness package.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site describes class types including rebounding, Yoga-lates, BoxFit, bootcamp and senior classes.",
+      "source": "https://thesweatshack.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The World of Wellness centre's site has a post dated 13 February 2025 saying senior classes at The Sweat Shack run on Wednesdays, with Michelle and her team, and gives her number for information.",
+      "source": "https://www.worldofwellness.co.za/post/senior-classes-now-on-offer-at-the-sweat-shack",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "World of Wellness",
+      "what": "wellness centre that hosts the studio",
+      "source": "https://www.worldofwellness.co.za/post/senior-classes-now-on-offer-at-the-sweat-shack"
+    }
+  ],
+  "channels_observed": [
+    "Website with Octiv sign-up link (thesweatshack.co.za)",
+    "WhatsApp number published on the website and on the World of Wellness site",
+    "Published business email on the website",
+    "Timetable and pricing posted as images on the website",
+    "Online shop with a cart"
+  ],
+  "decision_maker": "Michelle Gordon Watt, owner and lead instructor (named on the studio's own site).",
+  "approach": {
+    "route": "Email to the business address published on the website, or a WhatsApp message to the published studio number introducing FluxMuse once, with an opt-out.",
+    "contact_source": "https://thesweatshack.co.za/",
+    "opening_message": "Hello Michelle, I am [name] from FluxMuse, a new South African WhatsApp and marketing tool for small businesses. I noticed The Sweat Shack shows its 2026 timetable and pricing as images and takes bookings through Octiv and WhatsApp. We are opening with a small first group of businesses and setting them up by hand. Could we have 20 minutes to talk about how you handle class enquiries and lapsed members? If this is not relevant, just say so and I will not message again.",
+    "compliance_note": "A single one-to-one message to a business contact the studio publishes for enquiries, relevant to its work and with a clear opt-out, is the defensible route under POPIA s69; this is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Prospective members may ask you the same timetable and pricing questions, because both are images that cannot be searched or copied.",
+      "basis": "inferred",
+      "evidence": "your homepage shows the timetable and pricing as image files. We do not know whether people ask about them.",
+      "validate_with": "Which three questions do new enquirers ask most often on WhatsApp?"
+    },
+    {
+      "pain": "Enquiries that struggle with the booking app fall back to WhatsApp and land on your own number.",
+      "basis": "observed",
+      "evidence": "your site's FAQ tells people to WhatsApp you on your own number if Octiv sign-up is a struggle, so some enquiries are routed to you personally.",
+      "validate_with": "How many bookings or questions come through WhatsApp in a typical week, and who answers them during classes?"
+    },
+    {
+      "pain": "Members may lapse after a class pack or a season ends, and nobody has time to follow up.",
+      "basis": "inferred",
+      "evidence": "this is common for owner-run studios where the owner also teaches most classes.",
+      "validate_with": "What happens when a member's pack runs out, and do you contact them?"
+    },
+    {
+      "pain": "Promoting new classes such as the senior classes needs regular posts and clear images.",
+      "basis": "inferred",
+      "evidence": "you run several class types and a separate wellness offer, and the senior classes were promoted on your host centre's site.",
+      "validate_with": "Who creates your class promotions today and how long does it take?"
+    }
+  ],
+  "fit": {
+    "attainability": 4,
+    "revenue_potential": "R499/month (Starter)",
+    "reasoning": "A small owner-run studio with a published WhatsApp number, image-based timetable and pricing, and a real reason to keep lapsed members warm. It already uses Octiv for bookings and member management, so we must not try to replace it. Poor fit if Octiv already sends class and pack reminders she is happy with, or if she does not want to manage another WhatsApp workflow while teaching."
+  },
+  "recommended_plan": {
+    "tier": "starter",
+    "why": "You have WhatsApp plus a shop and nutrition packages, so three channels on a simple plan fits better than the single-number Micro plan.",
+    "upgrade_path": "Growth if you add sites or instructors who each need their own connected channels."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies and templates",
+      "status": "live",
+      "for_them": "Turn your timetable and pricing images into saved text replies, so a new enquirer gets class times and pack prices in one message. Templates for pack-expiry or come-back messages need Meta approval when sent outside the 24-hour window."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "A come-back message to members who have agreed to hear from your studio, for example when a new class starts. Only contacts with consent are included."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a class photo and get a caption back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Hosted shop link with WhatsApp orders and SOLD alerts",
+      "status": "live",
+      "for_them": "A simple shop page for your Wellness Club packages or shop items, where orders arrive as a pre-typed WhatsApp message and you reply SOLD. Payment stays as you take it today."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on once Meta approves the permissions. Until then, posts are forwarded to WhatsApp Status by hand."
+    },
+    {
+      "capability": "Daily digest message",
+      "status": "in_setup",
+      "for_them": "A morning summary of enquiries is being switched on. It needs a Meta-approved message template and is not yet available."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Call to understand how bookings, packs and Octiv work for you today.",
+        "Connect your studio's WhatsApp Business number and set up the profile."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Write text quick replies for timetable, pricing, first-class questions and location.",
+        "Draft come-back and pack-expiry templates and submit them for Meta approval."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Create the hosted shop link for your Wellness Club packages and test an order end to end.",
+        "Try the POST keyword with two class photos."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Send one consented come-back message to a small group as a test.",
+        "Review together what was used and decide whether to continue."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp enquiries answered by a saved reply versus by hand",
+    "Enquiries that turned into a first class booking, counted by you",
+    "Consented come-back messages sent and replies received",
+    "Orders arriving from the shop link"
+  ],
+  "objections": [
+    {
+      "objection": "I already use Octiv for bookings and packs.",
+      "response": "Keep it. We would not replace Octiv. The gap we would look at is the WhatsApp side around it: answers to enquiries and messages to people who have not booked in a while."
+    },
+    {
+      "objection": "I do not have time to run another tool while teaching.",
+      "response": "We would set it up by hand and start with saved replies only. We would review it together after four weeks and see honestly whether it is saving you time."
+    },
+    {
+      "objection": "You are new and have no track record.",
+      "response": "That is true. FluxMuse has no customers yet and we are opening with a small first group that we set up personally. The way to judge it is a short call about your own enquiries."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Rebooking regulars without nagging them",
+      "url": "https://fluxmuse.ai/blog/rebooking-regulars-without-nagging-them"
+    }
+  ],
+  "gaps": [
+    "Could not read the images, so timetable and prices are unknown.",
+    "Whether Octiv is configured to send reminders and pack-expiry notices is unknown.",
+    "A Facebook page (facebook.com/TheSweatShackEastrand) was cited earlier but the site does not link to it and a raw fetch returned an error, so it is dropped; posting activity is unknown. Instagram was not located.",
+    "Trading: site images were uploaded in July and August 2026, which supports current trading.",
+    "Unknown number of instructors or members; the WhatsApp number appears to be the owner's."
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "id": "11-classique-catering-creations",
+  "slot": "Caterer / food truck / artisan food producer",
+  "name": "Classique Catering Creations",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Halaal caterer: event catering, platters, savouries and daily home-cooked meals",
+  "location": "Laudium, Pretoria (Gauteng)",
+  "wave": 1,
+  "why_wave": "Its own website tells customers to WhatsApp to order or request a quote, and it published new blog posts in August and September 2026, so it is trading now and reachable through a form the business runs.",
+  "one_line_pitch": "Give platters and daily meals a price-listed shop link and order alerts on WhatsApp, and keep event quotes flowing into one place instead of a form, email, phone and chat thread.",
+  "public_facts": [
+    {
+      "fact": "The website describes Halaal-friendly catering for private functions, corporate events, weddings and family gatherings in Pretoria, Johannesburg and surrounding areas, including platters, savouries and daily home-cooked meals.",
+      "source": "https://classiquecatering.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website says orders for daily home-cooked meals should be placed at least two days in advance by WhatsApp or email, from one portion upward.",
+      "source": "https://classiquecatering.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website says customers can enquire through the website contact form, the request-a-quote page, phone, email or WhatsApp, and it carries a WhatsApp link with a pre-typed 'I would like to enquire about your catering services' message.",
+      "source": "https://classiquecatering.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website says an order is confirmed once full payment reflects in the bank account, and that proof of payment alone does not confirm it.",
+      "source": "https://classiquecatering.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Platters page lists prices, for example a sandwich platter at R550 and a cheese and cracker platter at R850 (large); the Savouries page lists the range (samoosas, pies, pizzas, kebabs and more) without prices.",
+      "source": "https://classiquecatering.co.za/platters/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The request-a-quote form asks for the items required, number of guests, date needed, whether delivery is needed, the location and a description of the order.",
+      "source": "https://classiquecatering.co.za/request-a-quote/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Contact page lists a business address in Laudium, Pretoria, an email address, two mobile numbers and an enquiry form with an 'Order Enquiry' option.",
+      "source": "https://classiquecatering.co.za/contact-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The blog shows posts dated 10 August 2026 and 10 September 2026, for example 'What Food Should You Serve at a Corporate Event?'.",
+      "source": "https://classiquecatering.co.za/blog/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The FAQ says repeat catering orders, once-off orders and food-only orders can all be arranged, and that a booking is secured once the quote is approved and the required payment is made.",
+      "source": "https://classiquecatering.co.za/faq/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with request-a-quote form, contact form (with an Order Enquiry option) and WhatsApp chat link (classiquecatering.co.za)",
+    "Published business email, two mobile numbers and a Laudium address (classiquecatering.co.za/contact-us/)",
+    "Blog with posts dated August and September 2026 (classiquecatering.co.za/blog/)"
+  ],
+  "decision_maker": "Owner or manager of the business; no person is named on the pages we opened.",
+  "approach": {
+    "route": "The website contact form (choose 'General Enquiry'), sent by a person. The published business email or the WhatsApp number the site lists for enquiries are the fallbacks.",
+    "contact_source": "https://classiquecatering.co.za/contact-us/",
+    "opening_message": "Hi, I'm [SENDER NAME] from FluxMuse, a small South African company that helps food businesses handle WhatsApp orders. Your website says customers can order or request a quote on WhatsApp, and it lists prices for platters. We're new and set up a small first group of businesses by hand. Could I have a 20-minute call to show you a price-listed shop link and order alerts? If this isn't for you, reply STOP and I won't message again.",
+    "compliance_note": "One relevant, person-to-person message through the enquiry route the business publishes, with a clear opt-out, is the defensible approach under POPIA s69; it is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Quote and order details may arrive through a form, email, phone and WhatsApp, each with a different amount of information, so date, guest count or venue can be missing and need chasing.",
+      "basis": "inferred",
+      "evidence": "The site lists five ways to enquire (form, quote page, phone, email, WhatsApp) and asks for date, guests, delivery and location on the quote form. How often details are missing was not observed.",
+      "validate_with": "When an enquiry comes in on WhatsApp instead of the form, how often do you still have to ask for the date, guest count or venue?"
+    },
+    {
+      "pain": "Savouries have no prices on the website, so price questions probably become one-by-one replies or quote requests.",
+      "basis": "observed",
+      "evidence": "The Savouries page lists the range with no prices, while the Platters page shows prices. How customers then ask is not observed.",
+      "validate_with": "Which items do customers ask the price of most, and where do those questions arrive?"
+    },
+    {
+      "pain": "Orders are only confirmed once full payment reflects in the bank, so someone has to match payments and proof of payment to orders, and small daily-meal orders can sit in a chat thread meanwhile.",
+      "basis": "inferred",
+      "evidence": "The site states the payment rule and asks for daily-meal orders two days ahead by WhatsApp or email. The effort of matching payments was not observed.",
+      "validate_with": "How do you keep track of which orders are paid and confirmed when several come in the same day?"
+    },
+    {
+      "pain": "A steady flow of blog posts and menus needs photos and captions, which compete with cooking and delivery time.",
+      "basis": "inferred",
+      "evidence": "The blog shows regular 2026 posts; who produces the content, or how often food photos are posted, was not observed.",
+      "validate_with": "Who takes and posts the food photos today, and does it happen weekly or only around big events?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "The site itself tells customers to order and enquire on WhatsApp, lists two contact numbers, and shows live 2026 activity, so the owner is reachable and the workflow is already WhatsApp-first. Poor-fit risks: most catering is custom-quoted, so a fixed-price shop link only helps for platters and daily meals; the business has a working website, form and email; and shop checkout is still in setup, so orders arrive as a WhatsApp message and payment stays EFT."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One business, a platters and daily-meals price list, and WhatsApp as the main ordering channel; Micro covers one WhatsApp number and the four channels a small caterer would use.",
+    "upgrade_path": "A second brand, more channels, or a beta evaluation of inbound AI Voice would justify looking at Growth."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send photos of each platter and savoury to FluxMuse on WhatsApp; the AI drafts a name, description and price guess, and you reply YES, NO or fix it. Newly launched, so we would do the first batch together."
+    },
+    {
+      "capability": "Hosted shop link (fluxmuse.ai/s/<name>)",
+      "status": "live",
+      "for_them": "One link showing platters, savouries and daily meals with your prices, so fewer price questions reach you. A customer's picks arrive as a pre-typed WhatsApp message to your own number."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "Each order from the link triggers a WhatsApp alert; you reply SOLD once it is paid and confirmed, giving a simple record of what is confirmed."
+    },
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies, broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Quick replies that ask for event date, guest count, venue and delivery need in the first answer, so enquiries arrive complete. Broadcast only to customers who have agreed to hear from you."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a photo of a finished platter and get a caption and cleaned-up image back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Checkout through FluxMuse (Paystack)",
+      "status": "in_setup",
+      "for_them": "Being switched on and not yet tested end to end with real money; fees and terms are still to be confirmed. For now payment stays as you run it today (bank payment confirmed before the order), and we would not depend on checkout."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to see how enquiries and orders arrive across form, email, phone and WhatsApp",
+        "Photograph the top platters, savouries and daily meals and send them through the WhatsApp Concierge",
+        "Confirm every price and item name with you before anything goes on the shop link"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Publish the hosted shop link and add it to the WhatsApp business profile and the website contact page",
+        "Set up quick replies for the details you always need (date, guests, venue, delivery) and for payment steps",
+        "Place a few test orders together to check the WhatsApp message and alert arrive properly"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Use the POST keyword for two or three platter photos and forward them to WhatsApp Status",
+        "Start marking confirmed orders SOLD each day",
+        "Add customers to a broadcast list only if they have agreed to messages"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review together how many orders and enquiries came from the link versus other routes",
+        "Fix the items, prices and quick replies that caused confusion",
+        "Decide together whether to keep going, based on what we measured"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from your shop link",
+    "Orders alerted and marked SOLD per week",
+    "Enquiries that arrive with date, guest count and venue already filled in",
+    "Price questions still asked in chat after the link goes live"
+  ],
+  "objections": [
+    {
+      "objection": "Orders and quotes already come in by WhatsApp and email, and that works.",
+      "response": "It may well work. What changes is small: a link with prices for platters and daily meals so fewer messages ask 'how much', and an alert you can mark SOLD. Orders still end up on your WhatsApp, and if it does not save time we would say so after the first four weeks."
+    },
+    {
+      "objection": "Every event is custom-quoted, so a shop link does not fit our business.",
+      "response": "Agreed for weddings and larger functions, and we would leave those as quotes. The link is for items with fixed prices, such as the platters and daily meals, and the quick replies help event enquiries arrive with the details you need."
+    },
+    {
+      "objection": "I do not want AI writing descriptions of Halaal food that could be wrong.",
+      "response": "Nothing goes live without your YES. The AI only drafts from your photos, you correct anything, and wording about Halaal and ingredients stays yours."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Catering orders that do not get lost in a thread",
+      "url": "https://fluxmuse.ai/blog/catering-orders-that-do-not-get-lost-in-a-thread"
+    }
+  ],
+  "gaps": [
+    "No owner or manager name is published on the pages we opened; the decision-maker is assumed to be whoever answers the enquiry route.",
+    "Business hours differ between the Contact page (Mon to Fri 9am to 5pm) and the Quote page (8am to 5pm), so hours are not quoted.",
+    "Team size, years in business, order volume and any customer numbers were not found and are not used.",
+    "No Instagram or Facebook page was reviewed; all facts come from the business's own website.",
+    "The Savouries page shows no prices, but a price list may be sent on request; not verified.",
+    "Blog title was derived from the URL slug (listed in the fluxmuse.ai sitemap) because the page renders client-side."
+  ]
+}

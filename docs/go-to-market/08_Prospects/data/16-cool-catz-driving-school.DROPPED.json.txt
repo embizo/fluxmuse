@@ -1,0 +1,203 @@
+{
+  "id": "16-cool-catz-driving-school",
+  "slot": "Education: driving school",
+  "name": "Cool Catz Driving School",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Driving school: learner's licence training, Code B, Code EB and automatic lessons",
+  "location": "Roodepoort North, Gauteng",
+  "wave": 1,
+  "why_wave": "An established owner-run school whose owner is named on the site and who publishes WhatsApp, phone, email and a quote route.",
+  "one_line_pitch": "Answer lesson and licence enquiries on WhatsApp consistently, and send lesson and test-date reminders through approved templates.",
+  "public_facts": [
+    {
+      "fact": "Describes itself as a driving school in Roodepoort North with 27 years of experience.",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The owner is named as Ben Bezuidenhout, and the school lists an address at Allen's Nek, Roodepoort.",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Services listed: learner's licence training, Code B, Code EB (with trailer), automatic Code B, online government test booking and car hire for test dates.",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes a phone and WhatsApp number, an info email address and a contact form on the homepage.",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site menu includes a Request a Quote option; no prices are shown on the pages we read, and it refers to combo packages.",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Says it can give test dates within 14 days of booking (the school's own claim).",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website footer links to a Facebook page for the school; a raw fetch of that page failed, so its content is unknown.",
+      "source": "https://www.facebook.com/coolcatzdrivingschool/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website menu includes Login, Register, Specials, Blog and Gallery pages; the newest blog posts listed on the homepage are dated November 2023.",
+      "source": "https://www.coolcatzdrivingschool.co.za/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with WhatsApp link, contact form and Request a Quote menu item (coolcatzdrivingschool.co.za)",
+    "Published phone and WhatsApp number",
+    "Published business email",
+    "Public Facebook page (facebook.com/coolcatzdrivingschool)",
+    "Login portal on the website (purpose not confirmed)"
+  ],
+  "decision_maker": "Ben Bezuidenhout, owner (named on the school's own site).",
+  "approach": {
+    "route": "The website contact form, or the business email published on the homepage.",
+    "contact_source": "https://www.coolcatzdrivingschool.co.za/",
+    "opening_message": "Hello Ben, I am [name] from FluxMuse, a new South African WhatsApp and marketing tool for small businesses. I noticed Cool Catz has been running for 27 years, keeps prices off the site, and takes quotes and lesson enquiries by WhatsApp, phone and form. We are opening with a small first group of businesses and setting them up by hand. Could we have 20 minutes to talk about how you handle lesson enquiries and reminders? If this is not relevant, tell me and I will not follow up.",
+    "compliance_note": "One relevant, one-to-one message through the contact route the business publishes, with an opt-out, is the defensible route under POPIA s69; this is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "The same questions (prices, package contents, test dates, what to bring) may come in repeatedly and be answered by hand.",
+      "basis": "inferred",
+      "evidence": "No prices appear on the homepage, and quotes are requested through a Request a Quote menu item, WhatsApp, phone or form (coolcatzdrivingschool.co.za). Volume is unknown.",
+      "validate_with": "Which questions do people ask first, and how many enquiries a week are there?"
+    },
+    {
+      "pain": "Lesson and test-day no-shows or late changes waste an instructor's time and the test-day car.",
+      "basis": "inferred",
+      "evidence": "Typical of lesson-based driving schools; not confirmed for this one.",
+      "validate_with": "How often do learners miss or change a lesson at short notice, and how do you remind them now?"
+    },
+    {
+      "pain": "Learners who finish the learner's licence stage are not asked to continue to lessons and a test booking.",
+      "basis": "inferred",
+      "evidence": "The school offers learner's, Code B and test-day car hire as separate services; follow-up between stages is a typical gap.",
+      "validate_with": "What happens after someone passes their learner's, and do you contact them?"
+    },
+    {
+      "pain": "Payment or deposit reminders for lesson packages rely on the owner remembering to ask.",
+      "basis": "inferred",
+      "evidence": "Combo packages are mentioned on the site with no shown prices; how they are paid is unknown.",
+      "validate_with": "How do learners pay for packages, and do you chase late payments?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "An established, owner-run school with WhatsApp already on the website and a clear repeat pattern of enquiries and lesson reminders. It may already run a bookings system behind its login portal, and older, phone-first customers may not want WhatsApp automation. Poor fit if scheduling is all done by phone by the owner and he prefers it that way. Attainability lowered because current trading is unconfirmed (latest visible website activity November 2023)."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One school number with a handful of saved replies and reminders fits the entry plan.",
+    "upgrade_path": "Starter or Growth if more instructors need their own connected numbers or channels."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: quick replies and templates",
+      "status": "live",
+      "for_them": "Saved replies for package questions, what to bring to a test and how to book. Lesson and test-day reminder templates go through Meta approval, as they are sent outside the 24-hour window."
+    },
+    {
+      "capability": "Answers in the customer's language",
+      "status": "live",
+      "for_them": "The assistant follows the language a learner writes in, useful for a Gauteng learner base with mixed home languages."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Messages such as holiday hours or test-date availability to people who have agreed to hear from the school."
+    },
+    {
+      "capability": "Hosted shop link with WhatsApp orders and SOLD alerts",
+      "status": "live",
+      "for_them": "A page listing lesson packages where a request arrives as a WhatsApp message to the school's own number; he replies SOLD when a package is booked."
+    },
+    {
+      "capability": "Checkout through FluxMuse (Paystack)",
+      "status": "in_setup",
+      "for_them": "Built but not yet tested with real money; we would not offer it until fees and terms are confirmed. Until then, payment stays as the school takes it now."
+    },
+    {
+      "capability": "Daily digest message",
+      "status": "in_setup",
+      "for_them": "A morning summary of new enquiries is being switched on; it depends on Meta template approval and is not yet available."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Call to map how an enquiry becomes a booked lesson today.",
+        "Connect the school's WhatsApp number and set up the profile."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Write saved replies for the most common questions.",
+        "Draft lesson and test-date reminder templates and submit for Meta approval."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up a hosted package page and test a request end to end.",
+        "Test reminders on the owner's own number."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review what was used and what saved time.",
+        "Decide whether to continue."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Enquiries answered with a saved reply",
+    "Reminder templates sent and learner replies",
+    "Lesson changes made at short notice before and after reminders, counted by the owner",
+    "Requests arriving from the package page"
+  ],
+  "objections": [
+    {
+      "objection": "My learners like to phone me.",
+      "response": "Phone stays. WhatsApp would sit beside it for people who prefer messages, and for reminders."
+    },
+    {
+      "objection": "I already have a login portal and booking process.",
+      "response": "We would not replace it. The call is to find whether reminders and enquiry replies are missing around it."
+    },
+    {
+      "objection": "Automated messages feel impersonal.",
+      "response": "We would keep them short, in his voice, and limit them to reminders and common answers. Anything else stays with him."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Keeping students enrolled after the first lesson",
+      "url": "https://fluxmuse.ai/blog/keeping-students-enrolled-after-the-first-lesson"
+    }
+  ],
+  "gaps": [
+    "The purpose of the login portal is not confirmed (may be a booking or student system).",
+    "The 98-99% pass-rate claims on the site are not used because they cannot be verified.",
+    "Facebook page content could not be read; posting activity and follower count are unknown.",
+    "Number of instructors is unknown.",
+    "This is a driving school, not tuition or early learning; it is a looser match for the education slot, and learners are mostly adults but some may be young; the pitch never targets or quotes learners.",
+    "Instagram account is linked from the site (per a page read) but was not opened.",
+    "TRADING NOT CONFIRMED FOR 2026: the newest blog posts on the homepage are dated November 2023 and the page carries no current-year date. Check the Facebook or Instagram (@coolcatzdriving) pages by hand before approaching.",
+    "The website mentions learners 'of all ages'; any pitch must stay about the business's admin, never about learners."
+  ]
+}

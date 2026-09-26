@@ -1,0 +1,190 @@
+{
+  "id": "04-sizwe-dhlomo",
+  "slot": "Media personality with a township restaurant",
+  "name": "Sizwe Dhlomo (Sizwe's Grills)",
+  "legal_or_trading_name": "Sizwe's Grills (trading name as listed)",
+  "segment": "creator",
+  "trade": "Fast-food and grill restaurant (Kagiso) run by a media personality",
+  "location": "Kagiso, Krugersdorp, Gauteng",
+  "wave": 2,
+  "why_wave": "Weakest record in the set: ownership and current trading rest on post titles and one summariser-read Instagram post. Candidate to DROP.",
+  "one_line_pitch": "Turn phone and DM orders for a busy takeaway and delivery kitchen into a WhatsApp menu and order flow the team can run from one number.",
+  "public_facts": [
+    {
+      "fact": "Restaurant Guru lists Sizwe Grills in Krugersdorp as a barbecue and fast-food place at 6321 Sobuza St, with dine-in, takeaway, delivery and no-contact delivery.",
+      "source": "https://restaurantguru.com/Sizwes-Grills-Krugersdorp",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Restaurant Guru listing shows a Google rating of 4.3 from 43 reviews and a business phone number for the restaurant.",
+      "source": "https://restaurantguru.com/Sizwes-Grills-Krugersdorp",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Restaurant Guru's own opening hours are inconsistent (its text and its hours table disagree), so no hours are recorded here.",
+      "source": "https://restaurantguru.com/Sizwes-Grills-Krugersdorp",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "An Instagram post dated 5 August 2025 from 'Sizwe's Grills' promotes a breakfast item and invites customers to order by phone; read through a page summariser only, the raw page did not load.",
+      "source": "https://www.instagram.com/p/DM9xbAvtVDS/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "A startupAFRICA Media post (Instagram and Facebook) is titled 'Meet Sizwe Dhlomo Founder of Sizwe's grill, a restaurant and butcher'; only the title, as shown in search results, was seen, not the post text.",
+      "source": "https://www.instagram.com/p/DFeve2rKwGT/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "A Facebook page titled 'Sizwe's Grills | Kagiso' appears in search results; the page returned an error when opened.",
+      "source": "https://www.facebook.com/Sizwegrills/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "Sizwe's Grills",
+      "what": "Barbecue and fast-food restaurant with takeaway and delivery (Krugersdorp/Kagiso); ownership by Sizwe Dhlomo rests on a post title only",
+      "source": "https://restaurantguru.com/Sizwes-Grills-Krugersdorp"
+    }
+  ],
+  "channels_observed": [
+    "Restaurant Guru listing with a business phone number (restaurantguru.com/Sizwes-Grills-Krugersdorp)",
+    "Instagram and Facebook pages for the restaurant exist per search results; neither loads without login, nothing else recorded"
+  ],
+  "decision_maker": "Not confirmed. A startupAFRICA post title names Sizwe Dhlomo as founder; who runs the restaurant day to day is unknown.",
+  "approach": {
+    "route": "Only if a human confirms ownership: message the restaurant's own Facebook page or call the business number on its listing and ask for the owner or manager. A warm introduction is better.",
+    "contact_source": "https://www.facebook.com/Sizwegrills/ and the business phone on https://restaurantguru.com/Sizwes-Grills-Krugersdorp; founder route: none found, needs warm intro.",
+    "opening_message": "Hi, I'm from FluxMuse, a new South African platform that helps food businesses take orders on WhatsApp. We are new and set each business up by hand. I saw that Sizwe's Grills offers takeaway and delivery, and I wondered how orders come in during the busy hours. Could I have 20 minutes with the owner or manager for a call? If this isn't relevant, tell me and I won't write again.",
+    "compliance_note": "A one-to-one, relevant message to the restaurant's own published business page or number with a clear opt-out is defensible under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Delivery orders taken by phone at peak times may be missed or misheard.",
+      "basis": "inferred",
+      "evidence": "Listing shows delivery and takeaway with a phone number; typical for takeaways.",
+      "validate_with": "How do orders come in during lunch and evening rush?"
+    },
+    {
+      "pain": "Menu and price changes need updating in several places.",
+      "basis": "inferred",
+      "evidence": "The restaurant appears on Facebook and Instagram per search results; we found no published menu.",
+      "validate_with": "How do customers see the current menu and prices?"
+    },
+    {
+      "pain": "Repeat customers could be reminded of specials, but there is no simple list.",
+      "basis": "inferred",
+      "evidence": "No customer list or opt-in mechanism seen.",
+      "validate_with": "Do you keep a list of regulars?"
+    },
+    {
+      "pain": "The owner's public profile brings in questions that a kitchen team must answer.",
+      "basis": "inferred",
+      "evidence": "A post title names a public figure as founder; the extent of his involvement is unconfirmed.",
+      "validate_with": "Who answers social messages for the restaurant?"
+    }
+  ],
+  "fit": {
+    "attainability": 1,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "A takeaway and delivery kitchen is an easy fit for WhatsApp ordering in principle, but nothing here is firmly established: the link to Sizwe Dhlomo rests on a post title we could not open, the two addresses conflict, and the only trading evidence is a summariser-read August 2025 post. Recommend DROP unless a human confirms the owner and a workable route."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One restaurant, one WhatsApp number and four channels fit Micro.",
+    "upgrade_path": "Starter or Growth only if more outlets or brands are added."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: number, profile, templates, quick replies",
+      "status": "live",
+      "for_them": "One order number with saved replies for menu, hours and delivery areas."
+    },
+    {
+      "capability": "Hosted shop link with orders arriving on WhatsApp",
+      "status": "live",
+      "for_them": "A public menu page where each order arrives as a pre-typed WhatsApp message to the restaurant."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "The manager is alerted on WhatsApp per order and can reply SOLD when an item runs out."
+    },
+    {
+      "capability": "WhatsApp Concierge: product photos to catalogue",
+      "status": "live",
+      "for_them": "Send menu photos and get catalogue entries drafted for approval. Newly launched; not yet run end to end by a merchant."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Daily specials only to regulars who opted in."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to walk through how orders arrive today",
+        "Confirm the WhatsApp number to use"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Set up the WhatsApp Business profile, quick replies and menu photos",
+        "Draft the answers to the top five questions"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Publish the shop link and test three orders with staff",
+        "Add order alerts for the manager"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review real orders, misses and timing",
+        "Decide whether to keep it running"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Orders arriving through the shop link",
+    "WhatsApp conversations started",
+    "Time from order to confirmation",
+    "Questions the assistant could not answer"
+  ],
+  "objections": [
+    {
+      "objection": "We already take orders by phone and delivery apps.",
+      "response": "That may be enough. WhatsApp would be an extra channel that keeps the order in writing; if apps already cover it, it may not be worth it."
+    },
+    {
+      "objection": "The kitchen is too busy to learn a new tool.",
+      "response": "We set it up by hand and the manager only sees a WhatsApp message per order."
+    },
+    {
+      "objection": "You're new and have no results.",
+      "response": "True. FluxMuse has no customers or results yet and sets up a small first group by hand."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "From first message to paid order: WhatsApp ordering for a restaurant",
+      "url": "https://fluxmuse.ai/blog/from-first-message-to-paid-order-whatsapp-ordering-for-a-restaurant"
+    }
+  ],
+  "gaps": [
+    "CANDIDATE TO DROP. That Sizwe Dhlomo owns this restaurant is supported only by the title of a startupAFRICA Media post seen in search results; neither the Instagram nor the Facebook post text could be read. The Wikipedia page returned 404 when fetched, so it was not used.",
+    "The Instagram post of 5 August 2025 was read only through a page summariser (the raw page is JavaScript-rendered). It is the only evidence of trading, and it is over a year old. Current 2026 trading is not established.",
+    "The listing's address is 6321 Sobuza St, Krugersdorp; the startupAFRICA post title (via search) gives Cnr Khutsa and Sebenzisa Drive, Kagiso. They may be one site or two, and the listing may be a different business called Sizwe Grills.",
+    "Restaurant Guru's opening hours contradict each other, so none are used. Whether a butchery still operates is unknown.",
+    "The Facebook page could not be opened. No published owner or business-enquiry route exists; the restaurant's phone or page reaches staff, not necessarily him.",
+    "No replacement creator-founder was added: none met the bar of two independent raw-text sources plus a published business route.",
+    "Wealth-related articles about him were deliberately not used, and no media-career facts are recorded."
+  ]
+}

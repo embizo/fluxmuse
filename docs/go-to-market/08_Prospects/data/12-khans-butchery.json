@@ -1,0 +1,215 @@
+{
+  "id": "12-khans-butchery",
+  "slot": "Butchery / grocery wholesaler serving repeat customers",
+  "name": "Khan's Butchery & MexiKhano's",
+  "legal_or_trading_name": "Trades as Khan's Butchery & MexiKhano's; the site's StoreStack terms name Omar Khans Butchery (Pty) Ltd as the operator.",
+  "segment": "sme",
+  "trade": "Halaal butchery with a takeaway counter (MexiKhano's), delivering to local families",
+  "location": "NTN Centre, Lenasia South, Johannesburg (Gauteng)",
+  "wave": 2,
+  "why_wave": "Its own site sends customers to WhatsApp for orders, specials, prices and bulk quotes, but the business already runs its own ordering page and loyalty app, so this will be a longer, more careful conversation.",
+  "one_line_pitch": "Turn the WhatsApp price and bulk-order questions you already answer into a specials and bulk-pack link with order alerts, and get WhatsApp Status posts for the weekly specials.",
+  "public_facts": [
+    {
+      "fact": "The website describes a halaal, Muslim-owned butchery at Shop 10, NTN Centre, Lenasia South, open seven days a week, selling beef, lamb, chicken, boerewors and ready-to-cook products, with a MexiKhano's takeaway food brand inside the shop.",
+      "source": "https://khansbutchery.online/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The About page calls it a family-owned halaal butchery whose team cuts and prepares meat in store.",
+      "source": "https://khansbutchery.online/about",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The homepage has 'Order on WhatsApp' buttons and lists a WhatsApp number and a landline; it says customers can order online in a few taps or WhatsApp if they prefer.",
+      "source": "https://khansbutchery.online/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Specials page does not list meat specials; it says to WhatsApp for today's specials and prices, and it lists a few MexiKhano's combo prices.",
+      "source": "https://khansbutchery.online/specials",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The FAQ says new specials are posted every Wednesday on TikTok, Instagram and Facebook, and that customers can WhatsApp to be added to a specials broadcast list.",
+      "source": "https://khansbutchery.online/faq",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The FAQ says bulk orders and braai packs for events are available and customers should WhatsApp their requirements to get a quote; delivery orders are placed on WhatsApp for Lenasia South, Lenasia, Ennerdale and Zakariyya Park.",
+      "source": "https://khansbutchery.online/faq",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The braai calculator works out kilograms of meat for a braai and opens a WhatsApp message with the list pre-typed for a quote.",
+      "source": "https://khansbutchery.online/braai-calculator",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The blog shows posts dated 26 March 2026 and 28 March 2026, and the footer carries a 2026 copyright.",
+      "source": "https://khansbutchery.online/blog",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The site has its own Order Online page (its menu loads by script and could not be read as plain text), a loyalty page in its menu and a footer saying it is 'Powered by StoreStack', described as loyalty, ordering and POS for South African shops.",
+      "source": "https://khansbutchery.online/order",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Terms page (last updated 29 May 2026) says the StoreStack loyalty service is operated by Omar Khans Butchery (Pty) Ltd, trading as Khan's Butchery & MexiKhano's.",
+      "source": "https://khansbutchery.online/terms",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "MexiKhano's",
+      "what": "halaal takeaway food brand operating inside the butchery",
+      "source": "https://khansbutchery.online/"
+    }
+  ],
+  "channels_observed": [
+    "Website with WhatsApp order buttons and a published WhatsApp number and landline (khansbutchery.online)",
+    "Own Order Online page, loyalty app and braai calculator (khansbutchery.online)",
+    "TikTok, Instagram and Facebook accounts linked from the site, with specials posted on Wednesdays per the FAQ"
+  ],
+  "decision_maker": "Owner or manager of a family-owned business; no person is named as owner on the pages we opened.",
+  "approach": {
+    "route": "WhatsApp message to the business number published on its own website for orders and enquiries (person-to-person, not a bulk send). Calling the published landline is the fallback.",
+    "contact_source": "https://khansbutchery.online/",
+    "opening_message": "Hi, I'm [SENDER NAME] from FluxMuse, a small South African company that helps shops handle WhatsApp orders. Your website asks customers to WhatsApp for today's specials, prices and bulk quotes. We're new and set up a small first group of businesses by hand. Could I have a 20-minute call to show how a specials link and order alerts could sit alongside what you already run? If this isn't for you, reply STOP and I won't message again.",
+    "compliance_note": "One relevant, person-to-person message to the WhatsApp number the business publishes for orders, with a clear opt-out, is the defensible route under POPIA s69; it is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Meat prices and specials are given out on WhatsApp rather than shown on the specials page, so each 'what are your specials' message needs a reply.",
+      "basis": "observed",
+      "evidence": "The Specials page says to WhatsApp for today's specials and prices and lists no meat prices (https://khansbutchery.online/specials). How many such messages arrive was not observed.",
+      "validate_with": "On a normal day, how many WhatsApp messages just ask for specials or prices, and who answers them?"
+    },
+    {
+      "pain": "Bulk and braai-pack quotes are handled one message at a time, and the requirements come in different shapes.",
+      "basis": "inferred",
+      "evidence": "The FAQ asks customers to WhatsApp requirements for a quote, and the braai calculator sends a pre-typed list (https://khansbutchery.online/faq). Quote volume and effort were not observed.",
+      "validate_with": "How many bulk or braai-pack quotes do you handle in a week, and what takes the most time in each one?"
+    },
+    {
+      "pain": "Delivery orders placed on WhatsApp arrive while the counter is busy, so they can be read late or missed.",
+      "basis": "inferred",
+      "evidence": "Delivery orders are placed on WhatsApp (https://khansbutchery.online/faq) in a shop open seven days a week; response times were not observed.",
+      "validate_with": "During a busy Saturday, how do you keep track of WhatsApp delivery orders next to the counter queue?"
+    },
+    {
+      "pain": "Keeping the specials broadcast list and the Wednesday posts going costs time in a shop open seven days.",
+      "basis": "inferred",
+      "evidence": "The FAQ describes a specials broadcast list and weekly posts on three social accounts (https://khansbutchery.online/faq); who does this and how long it takes was not observed.",
+      "validate_with": "Who prepares the Wednesday specials posts and the broadcast, and how long does it take each week?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "The site is clearly WhatsApp-first for prices, specials, bulk quotes and delivery, it is family-owned, and it shows live 2026 activity. The honest risk is large: the business already runs its own ordering page, loyalty app and till-linked prices (StoreStack), so it has built much of what FluxMuse would offer and may not see a need. The realistic angle is only the WhatsApp side (specials link, order alerts, Status posts), and shop checkout through FluxMuse is still in setup."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One shop, one WhatsApp number and a short list of specials and bulk packs; Micro covers one WhatsApp number and four channels.",
+    "upgrade_path": "A second outlet or a wider set of channels that clearly needs more than one number would justify looking at a larger plan later."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send photos of the week's specials and braai packs to FluxMuse on WhatsApp; the AI drafts a name, description and price guess and you reply YES, NO or fix it. Newly launched, so we would do the first batch together."
+    },
+    {
+      "capability": "Hosted shop link (fluxmuse.ai/s/<name>)",
+      "status": "live",
+      "for_them": "A link for specials and bulk and braai packs that customers can open instead of asking 'what are your specials'. Picks arrive as a pre-typed WhatsApp message to your own number, alongside your existing order page."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "Each order from the link triggers a WhatsApp alert, and you reply SOLD when it is packed or delivered, so busy-counter orders are less likely to be missed."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a photo of the week's lamb or braai pack and get a caption and cleaned-up image back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies, broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Quick replies for hours, delivery areas and how to ask for a bulk quote, and a broadcast list of customers who have agreed to receive specials."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to see which WhatsApp questions repeat and how this fits with your existing order page and till",
+        "Photograph this week's specials and two or three braai packs and send them through the WhatsApp Concierge",
+        "Confirm every price with you before anything goes on the shop link"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Publish the specials link and add it to the WhatsApp business profile and Status",
+        "Set up quick replies for hours, delivery areas and bulk-quote requests",
+        "Place a few test orders together to check the WhatsApp message and alert arrive properly"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Use the POST keyword for the Wednesday specials and forward them to WhatsApp Status",
+        "Start marking link orders SOLD each day",
+        "Add customers to the broadcast list only if they have agreed to messages"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review together how many orders and price questions came through the link versus direct chat",
+        "Fix the prices, items and quick replies that caused confusion",
+        "Decide together whether to keep going, based on what we measured"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from the specials link",
+    "Orders alerted and marked SOLD per week",
+    "'What are your specials or prices' messages still asked in chat after the link goes live",
+    "Specials posts forwarded to WhatsApp Status per week"
+  ],
+  "objections": [
+    {
+      "objection": "We already have our own order page and loyalty app.",
+      "response": "You do, and we would not replace them. The question is only whether the WhatsApp side (specials, bulk quotes, alerts) can be lighter. If your own tools already cover it, we would say so on the first call."
+    },
+    {
+      "objection": "Meat prices and specials change all the time, so a link would go out of date.",
+      "response": "That is a fair concern. Prices on the link are changed by replying on WhatsApp, and we would agree at the start how often it is realistic to update. If it turns into extra work, tell us and we will adjust how it is set up."
+    },
+    {
+      "objection": "WhatsApp and Wednesday posts already work for us.",
+      "response": "They may. What we would test is whether a link answers 'what are your specials' before it reaches you, and whether alerts make busy-counter orders easier to track. Orders still end up on your WhatsApp."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Order intake for a wholesaler without the spreadsheet",
+      "url": "https://fluxmuse.ai/blog/order-intake-for-a-wholesaler-without-the-spreadsheet"
+    }
+  ],
+  "gaps": [
+    "No owner or manager name is published; the legal name Omar Khans Butchery (Pty) Ltd appears only on the StoreStack terms page and is not treated as a named decision-maker.",
+    "The site publishes no contact form or email address, only a WhatsApp number and a landline, so the route is WhatsApp or phone.",
+    "The Order Online menu loads by script and could not be read as plain text, so what the ordering page offers (prices, checkout, payment) is unverified.",
+    "Whether the business also serves bulk repeat customers such as caterers or resellers is not stated; the site describes families and events.",
+    "Instagram, TikTok and Facebook were not reviewed; the Wednesday posting routine comes from the FAQ only.",
+    "The most recent blog post found is dated March 2026; the Terms page was updated 29 May 2026 and the footer shows 2026, so current trading is likely but not confirmed by a September 2026 dated item.",
+    "Blog title was derived from the URL slug (listed in the fluxmuse.ai sitemap) because the page renders client-side."
+  ]
+}

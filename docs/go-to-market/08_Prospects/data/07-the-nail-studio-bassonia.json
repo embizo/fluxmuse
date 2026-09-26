@@ -1,0 +1,200 @@
+{
+  "id": "07-the-nail-studio-bassonia",
+  "slot": "Beauty and fashion: nail and beauty studio",
+  "name": "The Nail Studio & Beauty Salon",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Nail and beauty studio (nails, brows, lashes, facials, waxing)",
+  "location": "Bassonia Shopping Centre, Johannesburg South",
+  "wave": 1,
+  "why_wave": "A single-location salon that publishes a WhatsApp number, an email and a website contact form, so the owner is directly reachable and can decide alone.",
+  "one_line_pitch": "Answer booking and price questions on WhatsApp faster, remind your regulars when a refill is due, and turn your specials into ready-to-post content.",
+  "public_facts": [
+    {
+      "fact": "The studio is at FF 4, Bassonia Shopping Centre, corner Comaro and Soetdoring Avenue, serving Johannesburg's southern suburbs.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website lists manicures, gel and acrylic nails, pedicures, nail art, brow and lash treatments, facials, waxing, massage, laser treatments and permanent makeup.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website invites clients to call or WhatsApp 067 080 3468 to book, and has a contact form and a 'book now' button.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website publishes an email address for the studio: thenailstudiosalon@gmail.com.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website offers 'Girls Day Out Packages', described as a pamper pedi party with wine or cappuccino service.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website links to Facebook (facebook.com/NailStudioAndBeauty) and Instagram (@nailstudioandbeauty) accounts.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram profile shows the same phone number and website, and posts dated September 2026 advertise a pedicure and gel-toe combo for R410 and laser packages.",
+      "source": "https://www.instagram.com/nailstudioandbeauty/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website lists RegimA facials, and Instagram posts (August and September 2026) advertise facials with prices.",
+      "source": "https://nailstudiosalon.co.za/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with a contact form and services list (nailstudiosalon.co.za)",
+    "Phone and WhatsApp number published on the website and Instagram",
+    "Published email address on the website",
+    "Instagram and Facebook accounts posting seasonal specials with prices"
+  ],
+  "decision_maker": "Owner or salon manager. No name is published on the pages we opened.",
+  "approach": {
+    "route": "Website contact form, or the published email address, sent by a person.",
+    "contact_source": "https://nailstudiosalon.co.za/",
+    "opening_message": "Hello, I'm [SENDER NAME] from FluxMuse, a new South African company that helps small beauty businesses handle WhatsApp bookings and turn their specials into ready-to-post content. I noticed your site takes bookings by phone and WhatsApp and that you post regular specials with prices on Instagram. Could we have a 20-minute call to see whether we could save you some typing? We are new and set people up by hand. If you would rather not hear from us, just reply and I won't contact you again.",
+    "compliance_note": "One relevant message through the studio's own published contact form or email with a clear opt-out is a defensible one-to-one approach under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Bookings for combinations (nails plus waxing or a facial) come by phone or WhatsApp and need back-and-forth to fit the time needed.",
+      "basis": "observed",
+      "evidence": "Your site lists many services, invites a call or WhatsApp to book, and has a contact form.",
+      "validate_with": "How many messages does it take to settle a booking that includes more than one treatment?"
+    },
+    {
+      "pain": "Instagram specials with prices lead to price and availability questions that someone must answer one by one.",
+      "basis": "observed",
+      "evidence": "Your Instagram posts advertise seasonal specials with prices.",
+      "validate_with": "Where do people reply to your specials, and how quickly can you answer them?"
+    },
+    {
+      "pain": "Group bookings such as Girls Day Out parties need dates, headcount and treatments confirmed by message.",
+      "basis": "observed",
+      "evidence": "Your site advertises Girls Day Out packages, described as pamper pedi parties.",
+      "validate_with": "How are party bookings arranged today, and do you take a deposit?"
+    },
+    {
+      "pain": "Gel and lash clients need refills every few weeks, and no-shows leave a therapist idle.",
+      "basis": "inferred",
+      "evidence": "This is the typical repeat cycle and no-show pattern for nails and lashes.",
+      "validate_with": "How do you remind clients about refills and handle late cancellations today?"
+    }
+  ],
+  "fit": {
+    "attainability": 4,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "A single studio with a published WhatsApp number and steady social posting is a straightforward first customer for quick replies, consented reminders and post content. It could be a poor fit because they may already use a booking system we did not see, the studio offers laser and permanent makeup where clients may need a consultation rather than a quick answer, and the owner may not want another tool."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One studio, one WhatsApp number and a few channels is exactly what Micro covers.",
+    "upgrade_path": "Starter or Growth only if you add a second branch or a separate brand, for example a skincare or product line."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies and templates",
+      "status": "live",
+      "for_them": "Ready answers for treatment prices, how long each takes, opening hours and location, plus a template for booking details."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Send refill reminders and news of seasonal specials to clients who agreed to receive them."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword), forwarded to WhatsApp Status",
+      "status": "live",
+      "for_them": "Send a nail-art or facial photo and get a caption back, ready to post on Status and copy to Instagram and Facebook."
+    },
+    {
+      "capability": "WhatsApp Concierge and hosted shop link",
+      "status": "live",
+      "for_them": "Photograph gift vouchers, party packages or skincare products to make a simple catalogue and a shop link where orders arrive on WhatsApp."
+    },
+    {
+      "capability": "Checkout through FluxMuse (Paystack) for deposits or packages",
+      "status": "in_setup",
+      "for_them": "Not yet tested with real money, so we would discuss it with you rather than rely on it."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "A 20-minute call to see how bookings and Instagram enquiries reach you",
+        "Set up your WhatsApp Business profile and greeting",
+        "List the most common questions and draft answers"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Turn on quick replies",
+        "Try the photo-to-caption flow on the current special and review it together",
+        "Decide how clients agree to receive reminders"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Send one message to consenting clients about a refill or special",
+        "Build a small shop link for vouchers or party packages if useful",
+        "Note which questions still need a person"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review what saved time and what did not",
+        "Decide together whether to continue and on which plan",
+        "Agree what to leave out"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from Instagram posts, Status or the shop link",
+    "Repeat questions answered by quick replies",
+    "Consenting clients reached by a reminder or special",
+    "Package or voucher enquiries received"
+  ],
+  "objections": [
+    {
+      "objection": "I already answer WhatsApp myself and it works.",
+      "response": "Then you may not need much. We would only look at the questions you retype daily and the posts that take time, and say so honestly if the saving is small."
+    },
+    {
+      "objection": "My clients book by phone call, not messages.",
+      "response": "That is fine. Quick replies and reminders only help for the clients who message. We would check on the call how many do."
+    },
+    {
+      "objection": "You are new. Who else uses this?",
+      "response": "No one yet. FluxMuse has no customers so far. We are opening with a small first group and setting each business up by hand."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Rebooking regulars without nagging them",
+      "url": "https://fluxmuse.ai/blog/rebooking-regulars-without-nagging-them"
+    }
+  ],
+  "gaps": [
+    "Owner name and team size are not published on the pages we opened.",
+    "Instagram profile details and post dates were read through a page summariser only; the posts dated 15 to 24 September 2026 indicate the studio is trading now, but re-check by hand.",
+    "Facebook page not opened; only the link on the website was seen.",
+    "We did not see whether an online booking system is used behind the contact form.",
+    "The email is a Gmail address published on the business's own website; the contact form is the preferred route.",
+    "The website footer says 2024; the site does not say who runs it.",
+    "The earlier claim that clients can book 'in person' is not on the website and was removed."
+  ]
+}

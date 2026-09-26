@@ -1,0 +1,212 @@
+{
+  "id": "08-lowkal-sa",
+  "slot": "Beauty and fashion: streetwear boutique",
+  "name": "LOWKAL SA",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Streetwear and casual fashion store with an online shop",
+  "location": "Pretoria Central, Gauteng",
+  "wave": 1,
+  "why_wave": "An independent Pretoria streetwear store with a published business email and phone, where the owner can decide alone.",
+  "one_line_pitch": "Answer size, stock and delivery questions on WhatsApp and turn new stock into ready-to-post content, alongside the online store you already run.",
+  "public_facts": [
+    {
+      "fact": "The About page calls LOWKAL SA 'an independent menswear and lifestyle boutique' in Pretoria Central, and the homepage carries the tagline 'Built Different. Worn Everywhere.'",
+      "source": "https://lowkalsa.co.za/pages/about-us",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The physical store is at 256 Sisulu Street (Louis Pasteur Building), Pretoria Central, with published weekday and Saturday trading hours.",
+      "source": "https://lowkalsa.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website publishes a business email (info@lowkalsa.co.za) and a phone number (+27 60 317 6878).",
+      "source": "https://lowkalsa.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Contact page lists that same number as its WhatsApp number and asks customers to use WhatsApp for the fastest response on order tracking, size guidance, returns and product availability.",
+      "source": "https://lowkalsa.co.za/pages/contact-us",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The online shop sells tops, bottoms, headwear and accessories, and its banner says nationwide delivery in 2-3 working days (the Contact page says about 2 to 4 business days).",
+      "source": "https://lowkalsa.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The jeans and trousers collection page has prices up to R550 and an availability filter that showed 87 products in stock and 44 out of stock on 26 September 2026.",
+      "source": "https://lowkalsa.co.za/collections/jeans-trousers",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The collection page and footer offer a signup for early access and exclusive offers.",
+      "source": "https://lowkalsa.co.za/collections/jeans-trousers",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram account @lowkalsa_ has the bio 'Premium Streetwear & Casual Wear', 'Pretoria, South Africa' and a link to the online shop, and shows posts dated 20 to 22 September 2026.",
+      "source": "https://www.instagram.com/lowkalsa_/?hl=en",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The homepage shows customer reviews that mention delivery within days, quality and fit.",
+      "source": "https://lowkalsa.co.za/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Online store with collections, availability filter and signup (lowkalsa.co.za)",
+    "Physical store in Pretoria Central (lowkalsa.co.za)",
+    "Published business email, phone and a WhatsApp number (lowkalsa.co.za/pages/contact-us)",
+    "Instagram, Facebook and TikTok accounts (footer of lowkalsa.co.za; instagram.com/lowkalsa_)",
+    "Customer reviews shown on the website"
+  ],
+  "decision_maker": "Owner or store manager. No name is published on the pages we opened.",
+  "approach": {
+    "route": "Email to the published business address, sent by a person.",
+    "contact_source": "https://lowkalsa.co.za/pages/contact-us",
+    "opening_message": "Hello, I'm [SENDER NAME] from FluxMuse, a new South African company that helps small fashion stores handle customer questions and posts on WhatsApp. I saw that LOWKAL SA runs a store in Pretoria Central and an online shop, and that your Contact page points customers to WhatsApp for sizing, stock and order questions. Could we have a 20-minute call to see whether we could take some of that load off your plate? We are new and set businesses up by hand. If you would rather not hear from us, reply 'no' and I won't write again.",
+    "compliance_note": "One relevant email to the address the business publishes on its own website, with a clear opt-out, is a defensible one-to-one approach under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Shoppers ask whether a size or item is in stock before buying, and some items are sold out.",
+      "basis": "observed",
+      "evidence": "Your Contact page invites WhatsApp questions on size guidance and product availability, and your collection page shows 44 products out of stock.",
+      "validate_with": "What are the top questions shoppers message you before ordering?"
+    },
+    {
+      "pain": "Order-tracking and delivery questions ('where is my parcel?') come in after purchase.",
+      "basis": "observed",
+      "evidence": "Your Contact page lists order tracking and returns among the topics customers should WhatsApp about, and your site states delivery timeframes.",
+      "validate_with": "How many delivery-status messages do you get in a normal week, and who replies?"
+    },
+    {
+      "pain": "New drops need posts, captions and photos across Instagram, Facebook and TikTok, which takes time from a small team.",
+      "basis": "observed",
+      "evidence": "You post new items regularly and have Instagram, Facebook and TikTok accounts.",
+      "validate_with": "Who makes your posts, and how long does a new drop take to announce?"
+    },
+    {
+      "pain": "Past buyers are hard to bring back when a new drop lands unless they have agreed to hear from you and can be reached in one place.",
+      "basis": "inferred",
+      "evidence": "Your site has a newsletter signup, but your own contact channels are email and phone.",
+      "validate_with": "How do you tell past customers about new stock today, and how many respond?"
+    }
+  ],
+  "fit": {
+    "attainability": 4,
+    "revenue_potential": "R499/month (Starter)",
+    "reasoning": "A store with a physical shop and an online store, steady Instagram posting and a Contact page that already tells customers to WhatsApp for sizing, stock and order questions has real repeat questions that quick replies could ease. It could be a poor fit because they already run a full online store with checkout, FluxMuse cannot sync a store catalogue today, and they may already handle WhatsApp comfortably on the number they publish."
+  },
+  "recommended_plan": {
+    "tier": "starter",
+    "why": "Your store, with an online shop and a physical location, needs a bit more headroom than a solo studio, but not multiple brands.",
+    "upgrade_path": "Growth if you later want separate brands or many more channels, or if WhatsApp order volume grows."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies and templates",
+      "status": "live",
+      "for_them": "Ready answers for sizing, delivery times, store hours and returns, with links back to the online shop."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Tell customers who agreed to hear from you about a new drop or restock."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword), forwarded to WhatsApp Status",
+      "status": "live",
+      "for_them": "Send a photo of new stock and get a caption back, ready to post on Status and copy to Instagram and TikTok."
+    },
+    {
+      "capability": "AI video clips (short, 720p) and voice-note transcription",
+      "status": "live",
+      "for_them": "Make short clips of new pieces for social, and turn customer voice notes into text so they are easy to read and answer."
+    },
+    {
+      "capability": "WhatsApp Concierge and hosted shop link with order alerts",
+      "status": "live",
+      "for_them": "For limited drops or in-store items, photos become a small catalogue with a shop link and WhatsApp order alerts, alongside your main online store."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "This depends on Meta approving the permissions. Until then, posts are forwarded to WhatsApp Status."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "A 20-minute call about which questions and orders reach you and by which channel",
+        "Set up your business WhatsApp number and profile if you use one",
+        "Draft quick replies for size, stock, delivery and returns"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Switch on quick replies and a greeting",
+        "Try the photo-to-caption flow on new stock and review it together",
+        "Agree how customers opt in to hear about drops"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Send one message to consenting customers about a drop",
+        "Try a short video clip for one new item",
+        "Note which questions still need a person"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review what saved time and what did not",
+        "Decide together whether to continue and on which plan",
+        "Agree what to leave off"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from posts, Status or links",
+    "Size, stock and delivery questions answered by quick replies",
+    "Consenting customers reached by a drop message",
+    "Orders arriving through a shop link"
+  ],
+  "objections": [
+    {
+      "objection": "We already have an online store with checkout.",
+      "response": "We would not replace it. FluxMuse cannot sync your catalogue today, so we would focus on WhatsApp replies and content around it. If your store already answers everything, this may not be needed."
+    },
+    {
+      "objection": "Customers mostly use Instagram and email, not WhatsApp.",
+      "response": "Possible. FluxMuse cannot read Instagram messages today, so the value depends on how many customers use WhatsApp. That is the first thing we would ask on the call."
+    },
+    {
+      "objection": "You are new. Have other stores used this?",
+      "response": "No. FluxMuse has no customers yet. We are working with a small first group of businesses and setting each one up by hand."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Why your WhatsApp number is worth more than your website",
+      "url": "https://fluxmuse.ai/blog/whatsapp-number-worth-more-than-website"
+    }
+  ],
+  "gaps": [
+    "Owner and team size are not published on the pages we opened.",
+    "Instagram bio and post dates were read through a page summariser only; re-check by hand.",
+    "The website publishes inconsistent details: the homepage banner says 2-3 working days delivery but the Contact page says 2 to 4 business days; footer hours (Mon to Fri 9-6) differ from the 'Visit Us' block (9-5); a second phone number (+27 12 345 6789) looks like a template placeholder and a 012 343 3499 landline and a Gmail address also appear. Only the WhatsApp/footer number and info@ address are used.",
+    "The store's platform and how orders are fulfilled are unknown.",
+    "The year the business started was seen only in a search snippet and is not used.",
+    "The 'Payment methods' footer shows no readable text, so payment methods are not claimed.",
+    "Instagram follower counts are not quoted.",
+    "Dipstreet (Braamfontein) was tried again: dipstreet.co.za does not connect (curl HTTP 000) and WebFetch returned nothing, so it remains unverified and was not swapped in."
+  ]
+}

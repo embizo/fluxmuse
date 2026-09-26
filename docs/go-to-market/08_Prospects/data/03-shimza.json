@@ -1,0 +1,215 @@
+{
+  "id": "03-shimza",
+  "slot": "DJ and producer with events, label and merch",
+  "name": "Shimza",
+  "legal_or_trading_name": "",
+  "segment": "creator",
+  "trade": "DJ, producer, event series (Kunye) and merch",
+  "location": "South Africa (Gauteng events; the Kunye HustleSasa page lists a Nairobi address)",
+  "wave": 3,
+  "why_wave": "Kunye events are verifiably on sale into 2027, but he already has a merch shop, Howler ticketing and a management route, so this is a later, relationship approach.",
+  "one_line_pitch": "Answer the event, ticket and merch questions that come in through DMs and WhatsApp, so your management isn't the bottleneck.",
+  "public_facts": [
+    {
+      "fact": "His official site has a merch shop with T-shirts and a cap priced from R500 to R1,050, with several items marked 'Out of Stock!'; the shop page footer says 2025.",
+      "source": "https://djshimza.com/shop/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The official site's booking section lists a bookings phone number, an info@ email labelled 'Management', and a separate booking email at Metropole Talent.",
+      "source": "https://djshimza.com",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Kunye page on HustleSasa describes KUNYE as Shimza's record label and event series (the page is credited 'Brought to you by Gondwana KE' and lists a Nairobi address).",
+      "source": "https://kunye.hustlesasa.shop/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Howler lists KUNYE | JOZI XI in Johannesburg on 7 November 2026 (12:00 to 22:00, over-18s only, cashless), with Shimza on the line-up.",
+      "source": "https://kunye.howler.co.za/events/kunye-jozi-xi-4221",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Howler's Kunye events page lists two events: KUNYE | JOZI XI (7 November 2026, from R400) and KUNYE New Year's Day in Cape Town (1 to 2 January 2027, from R450).",
+      "source": "https://www.howler.co.za/collections/197",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Ticketing for these events is through Howler, a ticketing platform.",
+      "source": "https://kunye.howler.co.za/events/kunye-jozi-xi-4221",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Beats of Africa carried an article (25 June 2024) titled 'Kunye and Shimza at National Botanical Gardens in Pretoria'; only the title was read.",
+      "source": "https://www.beatsofafrica.net/kunye-and-shimza-present-pretoria-iii-at-national-botanical-gardens/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Wikipedia lists a Sunset in Pretoria EP released on 19 June 2026, citing a Music In Africa report of 24 June 2026.",
+      "source": "https://en.wikipedia.org/wiki/Shimza",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "His own site's events section showed no upcoming events when read (its footer says 2025), so it lags the Howler listings; the site also has a demo-submission section and links to YouTube, Instagram, Facebook, X and SoundCloud.",
+      "source": "https://djshimza.com",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "Kunye",
+      "what": "Record label and event series; events listed on Howler through January 2027",
+      "source": "https://kunye.howler.co.za/events/kunye-jozi-xi-4221"
+    },
+    {
+      "name": "Shimza merch shop",
+      "what": "Online shop for T-shirts and a cap on djshimza.com",
+      "source": "https://djshimza.com/shop/"
+    }
+  ],
+  "channels_observed": [
+    "Official website with merch shop, events and booking page (djshimza.com)",
+    "Kunye events sold through Howler (kunye.howler.co.za; howler.co.za/collections/197)",
+    "Kunye page on HustleSasa (kunye.hustlesasa.shop), credited to Gondwana KE with a Nairobi address, phone and Gmail address; not used as a route",
+    "Social links listed on the site: YouTube, Instagram, Facebook, X, SoundCloud (content not read)"
+  ],
+  "decision_maker": "Shimza as founder of Kunye and his own brand; management via the contact listed on his site.",
+  "approach": {
+    "route": "The management email published on his official website (the phone number there is listed under Bookings). Ask to be pointed to whoever runs Kunye's business side.",
+    "contact_source": "https://djshimza.com (Bookings section: info@ address labelled Management)",
+    "opening_message": "Hello, I'm from FluxMuse, a new South African platform that helps creators handle WhatsApp and DM enquiries for events and merch. We are new and set businesses up by hand. Kunye has events on sale for November and January, and the site has a merch shop, so I wondered how event and merch questions reach your team. Could someone spare 20 minutes for a call? If this isn't relevant, tell me and I won't write again.",
+    "compliance_note": "A relevant, one-to-one message to the management address published on his official site with an opt-out is a defensible route under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Event promotion leads to a spike of DMs asking about tickets, venues and times.",
+      "basis": "inferred",
+      "evidence": "Kunye events are on sale on Howler for 7 November 2026 and 1 January 2027. The DM volume around them is our guess.",
+      "validate_with": "In the week before an event, what do people message you about?"
+    },
+    {
+      "pain": "Merch questions such as sizing, restocks and out-of-stock items may repeat.",
+      "basis": "inferred",
+      "evidence": "Your shop page shows several items out of stock. We did not see how customers ask about restocks.",
+      "validate_with": "How do you tell fans an item is back, or do you take pre-orders?"
+    },
+    {
+      "pain": "Booking and management enquiries mix with fan messages.",
+      "basis": "inferred",
+      "evidence": "Your site directs bookings to management contacts, while fans use social links.",
+      "validate_with": "Do fan and business messages end up in the same place?"
+    },
+    {
+      "pain": "Repeating event details across posts and stories takes time.",
+      "basis": "inferred",
+      "evidence": "Kunye is a regular event series, and this is typical for DJ-run events.",
+      "validate_with": "Who writes and posts event promotion?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R499/month (Starter) for Kunye first; R1,999 (Growth) if merch and label are separated",
+    "reasoning": "Kunye is verifiably active (events on sale to January 2027, a June 2026 EP), which gives real material. But he already has a merch shop with checkout, Howler for tickets and a management team, so the incremental value is DM and enquiry handling, not selling. Likely poor fit if management already has a workflow, or if Kunye's events are run mainly by third-party promoters (the HustleSasa page credits Gondwana KE)."
+  },
+  "recommended_plan": {
+    "tier": "starter",
+    "why": "One brand (Kunye) is enough to see whether DM and event handling helps you.",
+    "upgrade_path": "Growth if merch, label and events each need their own number and page."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: number, profile, templates, quick replies",
+      "status": "live",
+      "for_them": "A Kunye event number with saved replies for date, venue, ticket link and age policy."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Event announcements to people who opted in on a WhatsApp list."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Event captions and images ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Hosted shop link with orders arriving on WhatsApp",
+      "status": "live",
+      "for_them": "A simple pre-order page for restocks that sits alongside your existing merch shop."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Meta permissions are not approved yet, so we would not rely on it."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to map where event and merch questions arrive",
+        "Pick the next Kunye event as the test"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Set up the WhatsApp Business number, profile and event quick replies",
+        "Collect the most common questions from your team"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Send consented event announcements; use POST for captions",
+        "Test a restock pre-order link if wanted"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review conversations and missed questions",
+        "Decide with your team whether to keep or stop"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from event posts",
+    "Questions answered without team involvement",
+    "Restock or pre-order requests",
+    "Time to first reply"
+  ],
+  "objections": [
+    {
+      "objection": "My team and ticketing platform already handle this.",
+      "response": "Then we should not add anything. We only suggest a call to check whether fan questions still land in your DMs."
+    },
+    {
+      "objection": "Fans are used to Instagram, not WhatsApp.",
+      "response": "Fair. We would keep Instagram as your front door and use WhatsApp only where a reply or list is useful."
+    },
+    {
+      "objection": "You're new and have no track record.",
+      "response": "Yes. FluxMuse has no customers or results yet and sets up a small first group by hand."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "DJ business without the DMs",
+      "url": "https://fluxmuse.ai/blog/dj-business-without-the-dms"
+    },
+    {
+      "title": "Filling seats: promoting an event on a small budget",
+      "url": "https://fluxmuse.ai/blog/filling-seats-promoting-an-event-on-a-small-budget"
+    }
+  ],
+  "gaps": [
+    "The Kunye HustleSasa page shows a Nairobi address, a +254 phone number and a Gmail address, credited to Gondwana KE; how it relates to Shimza's South African business is unclear, so those contacts are not used.",
+    "Kunye's 2026 and 2027 events are verified only on Howler; the events page on djshimza.com is stale (latest dated entries are 2024 and 2025, footer says 2025), so Howler is the source for current activity.",
+    "Beats of Africa's article text was not read beyond its title and date (25 June 2024); the earlier wording 'present Pretoria III' came only from the URL and was removed.",
+    "The international booking email at Metropole Talent is a named individual's address and is deliberately not recorded here.",
+    "Wikipedia mentions a label affiliation that does not match the Kunye pages; left out.",
+    "Whether the shop or events use WhatsApp or DMs for support is unknown. Who actually runs Kunye's day-to-day (Shimza's team, Gondwana KE or a promoter) is unknown."
+  ]
+}
