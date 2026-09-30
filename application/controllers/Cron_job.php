@@ -3158,6 +3158,14 @@ class Cron_job extends Home
             $link=base_url().'cron_job/email_sending_command/'.$api_key;
             $this->call_curl_internal_cronjob($link);
         }   	
+
+        // Partner API: publish scheduled posts whose time has come
+        // (assets/backup_db/partner_api.sql / application/modules/partner_api).
+        // No $api_key check needed here -- run_due() only acts on rows an
+        // authenticated partner_api key already created; calling it early or
+        // repeatedly is harmless, same trust model as the calls above.
+        $link=base_url().'partner_api/posts/run_due';
+        $this->call_curl_internal_cronjob($link);
     }
 
 
