@@ -24,3 +24,5 @@ alongside the pilot campaign.
 2. Confirm the **ASSUMPTION** items in `00_FACTS_AND_ASSUMPTIONS.md`, especially use of funds, market-size sources and the commerce platform fee. (Settled: R25M seed that must reach profitability without a Series A; pilot of 12 brands in Gauteng.)
 3. If you change a number in the financial model, regenerate `model_summary.json` and update the investor deck and business plan so all three agree.
 4. Only claim Meta permissions that are approved. Instagram publishing, comments and DMs are still in App Review.
+
+- [08_Prospects](08_Prospects/README.md): first 20 SA prospects, tailored proposals and outreach playbook (2026-09-26)

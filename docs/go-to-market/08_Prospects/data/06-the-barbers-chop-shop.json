@@ -1,0 +1,213 @@
+{
+  "id": "06-the-barbers-chop-shop",
+  "slot": "Beauty and fashion: barbershop",
+  "name": "The Barbers Chop Shop",
+  "legal_or_trading_name": "The Barbers Chop Shop SA Pty Ltd (as shown in the website footer)",
+  "segment": "sme",
+  "trade": "Barbershop (two shops) with a retail product shop",
+  "location": "Maraisburg and Melville, Johannesburg",
+  "wave": 1,
+  "why_wave": "A small independent two-shop barbershop with a published business email, with no sign of a corporate marketing team.",
+  "one_line_pitch": "Give your two shops one WhatsApp front door for questions, rebooking reminders to consenting regulars and product orders, alongside the booking tool you already use.",
+  "public_facts": [
+    {
+      "fact": "The Barbers Chop Shop trades from two shops: 15 6th Avenue, Maraisburg and 4 Main Road, Melville, Johannesburg.",
+      "source": "https://thebarberschopshop.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The About page says the business started in a backroom in Maraisburg with two barbers, opened its first shop with four barbers, and has since opened a second branch where it now employs a team of ten people.",
+      "source": "https://thebarberschopshop.co.za/about-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The homepage lists operating times: Tuesday to Wednesday 9am to 5pm, Thursday to Friday 9am to 6pm, Saturday 9am to 6pm (Maraisburg closes at 3pm) and Sunday 9am to 2pm (Maraisburg closed).",
+      "source": "https://thebarberschopshop.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website links to online booking on Fresha, and the price-list page has a 'Proceed to booking' button.",
+      "source": "https://thebarberschopshop.co.za/pricelist/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The price-list page says 'Card payments accepted' and shows a Yoco logo.",
+      "source": "https://thebarberschopshop.co.za/pricelist/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website menu has a 'Shop Perfume' link; it points to shop.thebarberschopshop.co.za, which redirects to a separate perfume store (scentsperfume.co.za).",
+      "source": "https://thebarberschopshop.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The contact page publishes a business phone number and a business email address.",
+      "source": "https://thebarberschopshop.co.za/contact-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website links to TikTok, Instagram and Facebook accounts for the business.",
+      "source": "https://thebarberschopshop.co.za/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "Perfume shop (linked from the website)",
+      "what": "perfume store reached from the website's Shop Perfume link; whether it is owned by the barbershop is not confirmed",
+      "source": "https://thebarberschopshop.co.za/"
+    }
+  ],
+  "channels_observed": [
+    "Website with price list, gallery and a Shop Perfume link (thebarberschopshop.co.za)",
+    "Online booking through Fresha (linked from the website)",
+    "Published business phone and email (thebarberschopshop.co.za/contact-us)",
+    "TikTok, Instagram and Facebook accounts linked from the website",
+    "Card payments accepted, Yoco logo shown (thebarberschopshop.co.za/pricelist)"
+  ],
+  "decision_maker": "Owners or directors of the business. Names are not published on the pages we opened.",
+  "approach": {
+    "route": "Email to the published business address, sent by a person.",
+    "contact_source": "https://thebarberschopshop.co.za/contact-us/",
+    "opening_message": "Hello, I'm [SENDER NAME] from FluxMuse, a new South African company that helps small businesses run bookings, product orders and posts from WhatsApp. I read on your About page that The Barbers Chop Shop started in a backroom in Maraisburg and now has a second shop in Melville. Could we have a 20-minute call to see whether we could help alongside Fresha? We are new and set businesses up by hand. If you would rather not hear from us, reply 'no' and I won't write again.",
+    "compliance_note": "A single relevant business email to the address the company publishes for enquiries, with a clear opt-out, is a defensible one-to-one approach under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Regulars ask about availability, prices or which barber is available by phone or message, even though online booking exists.",
+      "basis": "inferred",
+      "evidence": "This is typical for a busy barbershop with several barbers and two locations. Your site publishes a phone number and email alongside your Fresha link.",
+      "validate_with": "What share of bookings and questions still come by phone or message rather than through Fresha?"
+    },
+    {
+      "pain": "Walk-in demand and booked slots compete, so quiet spots go unfilled while queues form at other times.",
+      "basis": "inferred",
+      "evidence": "This is a common barbershop pattern. Your site does not state a walk-in policy.",
+      "validate_with": "When are your quiet hours at each shop, and how do you fill them today?"
+    },
+    {
+      "pain": "Repeat cuts every few weeks depend on the client remembering to rebook.",
+      "basis": "inferred",
+      "evidence": "Typical repeat cycle for haircuts and beard trims.",
+      "validate_with": "Do you have a way to remind regular clients who have agreed to be contacted?"
+    },
+    {
+      "pain": "Selling perfume and other products online adds order questions on top of running two shops.",
+      "basis": "inferred",
+      "evidence": "Your website has a Shop Perfume link that leads to a separate perfume store. We have not confirmed whether the barbershop runs it.",
+      "validate_with": "How do product orders and delivery questions reach you now, and how much time do they take?"
+    },
+    {
+      "pain": "Producing regular photo and video content for two shops and a team of ten takes time.",
+      "basis": "inferred",
+      "evidence": "Your site lists TikTok, Instagram and Facebook accounts and a gallery.",
+      "validate_with": "Who makes your posts, and how often do they go out?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R499/month (Starter)",
+    "reasoning": "Two shops, a team the About page puts at ten and an online shop give them enough activity to use WhatsApp replies, consented rebooking messages and content help. It could be a poor fit because Fresha already covers booking and reminders, the owners' names and preferred channel are unknown, and the perfume shop may sit on a separate platform that FluxMuse cannot sync with today."
+  },
+  "recommended_plan": {
+    "tier": "starter",
+    "why": "One brand covering both shops with a small set of channels is enough to start, at a modest monthly price.",
+    "upgrade_path": "Growth if you want each shop as its own brand or need many more channels."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies and templates",
+      "status": "live",
+      "for_them": "Ready answers for hours at each shop, prices, address and how to book, with a link to Fresha, so the front desk stops retyping them."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "A short message to clients who agreed to hear from you, for example to fill a quiet afternoon or remind regulars it is time for a cut."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword), forwarded to WhatsApp Status",
+      "status": "live",
+      "for_them": "Send a photo of a fresh cut on WhatsApp and get a caption back, ready to post on Status and copy across to your other channels."
+    },
+    {
+      "capability": "WhatsApp Concierge and hosted shop link",
+      "status": "live",
+      "for_them": "Send product photos to build a small catalogue and a shop link where orders arrive as a WhatsApp message, as a lighter option beside your existing shop."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "A WhatsApp alert for each product order, and a reply of SOLD to mark it done."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "A 20-minute call about how bookings, walk-ins and product orders work at each of your shops",
+        "Set up the business WhatsApp number and profile",
+        "Draft quick replies for hours, prices and booking"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Switch on quick replies and a greeting",
+        "Try the photo-to-caption flow on real cuts and review together",
+        "Agree how clients opt in to hear from the shops"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Send a first message to consenting regulars about a quiet time",
+        "Set up a small shop link for two or three products",
+        "Note which questions still need a person"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review what saved time and what did not",
+        "Decide together whether to continue and on which plan",
+        "Agree what to drop"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from Status posts, links or the shop link",
+    "Questions answered by quick replies instead of by a person",
+    "Consenting clients reached by a broadcast",
+    "Product orders arriving through a shop link"
+  ],
+  "objections": [
+    {
+      "objection": "We already use Fresha for bookings and reminders.",
+      "response": "Fair, and we would keep it. FluxMuse handles the WhatsApp side and content around it. If Fresha already answers most questions, this may not be worth adding."
+    },
+    {
+      "objection": "My barbers are busy cutting and don't have time to learn another tool.",
+      "response": "The main steps are sending a photo or a word on WhatsApp, which most people already do. We set it up by hand and can start with one small thing."
+    },
+    {
+      "objection": "You are new. Do you have barbershops using this?",
+      "response": "No. FluxMuse is new and has no customers yet. We are working with a small first group of businesses and setting up each one personally."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Rebooking regulars without nagging them",
+      "url": "https://fluxmuse.ai/blog/rebooking-regulars-without-nagging-them"
+    }
+  ],
+  "gaps": [
+    "Owner or director names are not published, and it is not confirmed that the shop is owner-run.",
+    "The Shop Perfume link redirects to scentsperfume.co.za, a separate perfume store; we did not confirm the barbershop owns it, so it is not claimed as their online shop. The earlier 'OG Barber Guide' claim could not be found on the website and was removed.",
+    "Instagram (bio 'book online', posts dated up to 26 September 2026) was read through a page summariser only; the bio was truncated.",
+    "The About page has no date; the site footer says 2024, and the 'team of ten' may be dated. The opening message therefore does not quote headcount.",
+    "The Fresha booking page loaded but is JavaScript-driven; we did not read its contents.",
+    "No WhatsApp number was seen on the website.",
+    "Walk-in policy is not stated."
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "id": "18-soweto-sp-national-digital-marketing",
+  "slot": "Marketing agency: township / SMB-focused digital marketing",
+  "name": "SOWETO SP National Digital Marketing",
+  "legal_or_trading_name": "",
+  "segment": "agency",
+  "trade": "Digital marketing agency (social media, web, PPC, cybersecurity)",
+  "location": "Meadowlands, Soweto, Johannesburg",
+  "wave": 2,
+  "why_wave": "Agencies will ask for partner terms and references that do not exist yet, so approach after the first merchants are live and the partner price is set.",
+  "one_line_pitch": "Give your agency one place to make captions, images and short clips for your clients, and to set up and run WhatsApp for them.",
+  "public_facts": [
+    {
+      "fact": "Describes itself as a digital marketing agency that combines marketing with cybersecurity, under a 'Secure Growth' model.",
+      "source": "https://www.sowetosp.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Names Lebogang Mlangeni as CEO and founder and gives 2016 as the founding year; its about page says cybersecurity was added to its services in 2023.",
+      "source": "https://www.sowetosp.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Lists social media marketing, Google Ads and PPC, SEO, web design and development, content marketing, email marketing and brand strategy among its digital marketing services.",
+      "source": "https://www.sowetosp.co.za/services/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its contact page gives an address at 104b Vincent Road, Zone 2, Meadowlands, Johannesburg and business hours of Monday to Friday, 9AM to 6PM.",
+      "source": "https://www.sowetosp.co.za/contact/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its contact page publishes an email address, a phone number and a contact form (name, phone, email, message); the site also has a WhatsApp link.",
+      "source": "https://www.sowetosp.co.za/contact/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Links to Instagram, Twitter, Facebook and the CEO's LinkedIn from its website.",
+      "source": "https://www.sowetosp.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its about page lists three team members by name and role (CEO, Art Director, Digital Consultant) and lists 'Affordable Packages for SMEs' among its reasons to choose it.",
+      "source": "https://www.sowetosp.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its clients page shows three client testimonials, from named individuals, and no prices are published on the pages opened.",
+      "source": "https://www.sowetosp.co.za/clients/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with contact form, email, phone and WhatsApp link (sowetosp.co.za/contact)",
+    "Instagram, Twitter, Facebook and LinkedIn links on the website (sowetosp.co.za)"
+  ],
+  "decision_maker": "Founder and CEO, named on the agency's own site as Lebogang Mlangeni.",
+  "approach": {
+    "route": "The contact form or published business email on the agency's own website.",
+    "contact_source": "https://www.sowetosp.co.za/contact/",
+    "opening_message": "Hello, I'm [NAME] from FluxMuse, a new South African platform that helps small businesses make social content and handle WhatsApp. I saw that SOWETO SP was founded in 2016 and offers social media management to businesses. We are new and have no customers yet, so I'm only asking for a 20-minute call to hear how you handle content and WhatsApp for clients, and whether working together makes sense. If this isn't relevant, tell me and I won't contact you again.",
+    "compliance_note": "A single, human-sent business message through the agency's own published enquiry route with a clear opt-out is the defensible one-to-one approach under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Producing captions, images and clips for several small clients at once is time-consuming for a small team.",
+      "basis": "inferred",
+      "evidence": "you list social media management and content marketing as services. Your team size is not published.",
+      "validate_with": "How many client accounts do you post for in a normal month, and where does the time go?"
+    },
+    {
+      "pain": "Small township clients often talk to their customers on WhatsApp, and you may be asked to help with it.",
+      "basis": "inferred",
+      "evidence": "this is common for small business clients. You publish a WhatsApp option yourselves, but your site does not mention doing WhatsApp for clients.",
+      "validate_with": "Do clients ask you to set up or run their WhatsApp Business, and how do you handle that today?"
+    },
+    {
+      "pain": "Getting client approval and reporting on results for small clients may be manual.",
+      "basis": "inferred",
+      "evidence": "this is common for small agencies. Nothing on your site describes your approval or reporting process.",
+      "validate_with": "How do clients approve content and how do you report back to them?"
+    },
+    {
+      "pain": "Every new service (for example video clips or multilingual replies) has to be bought or built by a small team.",
+      "basis": "inferred",
+      "evidence": "you offer marketing plus cybersecurity, so your team's time is spread across two service lines.",
+      "validate_with": "Which client requests do you currently turn down or struggle to deliver?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R1,999/month (Growth), R9,999/month (Agency) if it moves many client brands onto the platform",
+    "reasoning": "A small, founder-led agency that already serves small businesses is a natural early channel, and the founder is reachable through the agency's own site. Weaknesses: team size and client count are unknown, so Growth (three brands) may be all it needs at first; it may see FluxMuse as a competitor for its clients; and Instagram and Facebook auto-publishing is not yet approved, which matters a lot to an agency that posts for clients. Partner terms are on request and not yet confirmed."
+  },
+  "recommended_plan": {
+    "tier": "growth",
+    "why": "Three brands and fifteen channels is enough to test FluxMuse on your own account and two client accounts before committing to a full multi-client set-up.",
+    "upgrade_path": "Agency (R9,999/month list price, unlimited brands, white-label; partner terms on request) becomes worth it if you want to run more than a handful of client brands under your own branding."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a client's product or venue photo on WhatsApp and get a caption and polished image back, ready to forward or use in that client's content."
+    },
+    {
+      "capability": "AI video clips (short, 720p by default)",
+      "status": "live",
+      "for_them": "Quick short clips for your clients' posts and Status without a video editor. Newly launched."
+    },
+    {
+      "capability": "WhatsApp Business setup for a client",
+      "status": "live",
+      "for_them": "Connect a client's number, set up the business profile, quick replies and templates, and broadcast to consented contacts, as a service your agency can offer."
+    },
+    {
+      "capability": "Answers in the customer's language and voice-note transcription",
+      "status": "live",
+      "for_them": "Your clients' customers can write or speak in their own language, and voice notes are turned into text for the client."
+    },
+    {
+      "capability": "TikTok posting (video only)",
+      "status": "live",
+      "for_them": "Post video to TikTok for your clients from one place."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on. The Meta permissions are not approved yet, so for now you would create content in FluxMuse and post it the way you do today."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Payment first, on the terms in section 7.",
+        "Set up your agency's own workspace and connect your WhatsApp number.",
+        "Pick one or two client brands to test with."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Create captions, images and a short clip for one client from real photos.",
+        "Show the client the results and note what needs changing."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up WhatsApp Business for one client (profile, quick replies, templates).",
+        "Work out together where this saves you time and where it does not."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review the numbers together: posts created, time saved per client, WhatsApp conversations.",
+        "Discuss partner terms and whether a fuller Agency set-up makes sense."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Posts (captions, images, clips) created per client",
+    "Time spent per client per week, as reported by you",
+    "WhatsApp conversations started for a client",
+    "Number of client brands moved onto the platform"
+  ],
+  "objections": [
+    {
+      "objection": "You might take my clients directly.",
+      "response": "It is a fair worry. The plan is for you to run clients under your own branding on the Agency tier. Partner terms are not yet set, and we would agree the rules in writing before any client is added."
+    },
+    {
+      "objection": "My clients need Facebook and Instagram posting done for them.",
+      "response": "Auto-publishing to Facebook and Instagram is not approved yet, so today you would create content in FluxMuse and post it as you do now. We will say plainly when it is switched on."
+    },
+    {
+      "objection": "You have no customers or results to show.",
+      "response": "That is true. FluxMuse is new and is opening with a small first group of businesses that we set up by hand. We would rather you test it on your own account than rely on claims."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "One content calendar for every client",
+      "url": "https://fluxmuse.ai/blog/one-content-calendar-every-client"
+    },
+    {
+      "title": "Reaching a community without a marketing budget",
+      "url": "https://fluxmuse.ai/blog/reaching-a-community-without-a-marketing-budget"
+    }
+  ],
+  "gaps": [
+    "Client count and typical client type are not published; the site says 'Affordable Packages for SMEs' but the township/SMB focus is otherwise inferred from the location and history line.",
+    "Facebook page could not be opened (Facebook blocks raw fetches), so its activity is unconfirmed; the site's own footer is 2026 and the site loads, so the agency appears to be trading.",
+    "The site publishes no prices.",
+    "Three team members are named on the about page, but the agency's real size is not stated.",
+    "Directory listings give the street as 'Rev Frederick S Modise Drive' while the agency's own contact page says 'Vincent Road'; I used the agency's own wording.",
+    "Blog titles were derived from slugs because fluxmuse.ai blog pages render client-side."
+  ]
+}

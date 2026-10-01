@@ -1,0 +1,200 @@
+{
+  "id": "05-giftedhands-salon-sa",
+  "slot": "Beauty and fashion: braiding studio",
+  "name": "Giftedhands Salon SA",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Hair braiding and natural-hair studio (with nail services and house calls)",
+  "location": "Centurion and Fourways, Gauteng (also house calls)",
+  "wave": 1,
+  "why_wave": "A small braiding team that already sells through an Instagram page and a booking link, so the owner can decide alone and there is no procurement step.",
+  "one_line_pitch": "Turn the questions and photos that arrive on WhatsApp into quick, consistent answers and ready-to-post content, so your stylists spend more time braiding.",
+  "public_facts": [
+    {
+      "fact": "The Instagram bio reads 'Luxury Knotless Braids & Protective Styles' and lists Centurion, Fourways and Housecalls.",
+      "source": "https://www.instagram.com/giftedhandssalonsa/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram bio links to an online booking page at take.app/giftedhandssalonsa.",
+      "source": "https://www.instagram.com/giftedhandssalonsa/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Take App booking page is titled 'Home of No Pain Braiding' and has sections for Hair Wash, Braids, Kids Braids, a Nails Pricelist and Memberships.",
+      "source": "https://take.app/giftedhandssalonsa",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "On the booking page, braids are listed from R450 to R2,400 depending on length and hair type, and nail services from R140 (French feet) upward.",
+      "source": "https://take.app/giftedhandssalonsa",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The booking page lists a physical address in Zwartkop (0157), Pretoria.",
+      "source": "https://take.app/giftedhandssalonsa",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "A third-party mobile-stylist directory (Homesalon) says Giftedhands Salon SA is a team of mobile stylists working the Pretoria and Centurion area, lists Midrand among its areas, and says to call or WhatsApp to book.",
+      "source": "https://homesalon.co.za/mobile-stylist/giftedhands-salon-sa/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The same directory listing has a review form that asks clients to rate communication, quality, time (was the person on time) and price.",
+      "source": "https://homesalon.co.za/mobile-stylist/giftedhands-salon-sa/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram account shows video posts dated 22 to 26 September 2026, so it is active this month.",
+      "source": "https://www.instagram.com/giftedhandssalonsa/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Instagram business account (@giftedhandssalonsa) with a link to a Take App booking page in the bio (instagram.com/giftedhandssalonsa)",
+    "Take App booking page with a price list (take.app/giftedhandssalonsa)",
+    "Third-party directory listing (Homesalon) that says to call or WhatsApp to book (homesalon.co.za)"
+  ],
+  "decision_maker": "Owner or lead stylist. The directory listing names the account handle '@Giftedhands' as the lead; no personal name is published on the pages we opened.",
+  "approach": {
+    "route": "Direct message to the public business Instagram account (@giftedhandssalonsa), sent by a person. No email address was found on the business's own pages.",
+    "contact_source": "https://www.instagram.com/giftedhandssalonsa/",
+    "opening_message": "Hi, I'm [SENDER NAME] from FluxMuse, a new South African company that helps small beauty businesses handle WhatsApp enquiries and product photos. I saw your bio sends clients to a booking link and that you cover Centurion, Fourways and house calls, which is a lot to coordinate. Could we have a 20-minute call to see if we could help? We are new and set people up by hand. If you would rather not hear from us, just say so and I won't message again.",
+    "compliance_note": "A single, relevant, person-to-person message to the business's own public business account with a clear opt-out is the defensible route under POPIA s69; it is not bulk or automated."
+  },
+  "pains": [
+    {
+      "pain": "Price questions take back-and-forth because braid prices vary a lot by length, size and hair type.",
+      "basis": "observed",
+      "evidence": "Your booking page shows braid prices ranging from roughly R450 to R2,400 depending on length and hair type.",
+      "validate_with": "How many messages does it usually take to agree a style, size and price with a new client?"
+    },
+    {
+      "pain": "No-shows and late arrivals cost stylist time, and collecting a deposit is awkward if it happens outside the booking tool.",
+      "basis": "inferred",
+      "evidence": "This is typical for braiding, where a single appointment can take several hours.",
+      "validate_with": "How do you handle deposits and no-shows today, and how often does a booked slot go unused?"
+    },
+    {
+      "pain": "Covering two areas plus house calls means the same questions (where, when, how far, what to prepare) are answered again and again.",
+      "basis": "observed",
+      "evidence": "Your Instagram bio lists Centurion, Fourways and house calls, and a home-salon directory lists Pretoria, Centurion and Midrand areas.",
+      "validate_with": "Which three questions do you answer most often, and who answers them?"
+    },
+    {
+      "pain": "Braids need redoing every several weeks, so past clients are the best source of bookings but are rarely reminded.",
+      "basis": "inferred",
+      "evidence": "This is the typical repeat-visit pattern for protective styles.",
+      "validate_with": "Do you keep a list of past clients you can message, and do they know you may contact them?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "A busy Instagram-led braiding team is a natural fit for WhatsApp quick replies, a shop link for products and easy content. It could be a poor fit because they already use Take App for bookings and may see no reason to add a tool, and because their pains sit largely on Instagram DMs, which FluxMuse cannot read or answer today. We found no published phone or email, so reaching the decision-maker relies on Instagram."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "A single studio brand with one WhatsApp number and up to four channels covers what your team needs, at the lowest price that includes WhatsApp.",
+    "upgrade_path": "Starter or Growth only if you later run separate brands for each location or want several WhatsApp numbers."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies and templates",
+      "status": "live",
+      "for_them": "Save ready answers for price ranges by length, what to bring, how long a style takes and how to reach the Centurion and Fourways studios or book a house call, so your stylists stop retyping them."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Send a short message to clients who agreed to hear from you when it is time to redo their braids or when a slot opens up."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword), forwarded to WhatsApp Status",
+      "status": "live",
+      "for_them": "Send a finished-style photo on WhatsApp and get a caption back, ready to post on Status and copy to Instagram."
+    },
+    {
+      "capability": "WhatsApp Concierge and hosted shop link",
+      "status": "live",
+      "for_them": "If you sell hair products or add-ons, send product photos and get a catalogue and a shop link where orders arrive as a WhatsApp message."
+    },
+    {
+      "capability": "Checkout through FluxMuse (Paystack) for booking deposits or products",
+      "status": "in_setup",
+      "for_them": "Not yet tested end to end with real money, so we would only discuss it with you, not rely on it."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "A 20-minute call to confirm how bookings and price questions reach you today",
+        "Connect or set up your business WhatsApp number and profile",
+        "List the top questions and draft quick replies together"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Turn on quick replies and a greeting",
+        "Send finished-style photos to the AI caption flow and review the results together",
+        "Decide which past clients have agreed to be messaged"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Send one broadcast to consented past clients",
+        "Add hair products or add-ons to a shop link if relevant",
+        "Note which questions still take manual replies"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review what saved time and what did not",
+        "Decide together whether to continue and on which plan",
+        "Agree what to leave off"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from your Status posts or shop link",
+    "Number of repeat questions answered by quick replies",
+    "Booking requests that arrive on WhatsApp",
+    "Past clients reached by a consented broadcast"
+  ],
+  "objections": [
+    {
+      "objection": "I already take bookings on Take App.",
+      "response": "Understood, and we would not replace it. FluxMuse would sit next to it, handling WhatsApp questions and content. If your current setup works well, we may not be the right fit."
+    },
+    {
+      "objection": "Most of my enquiries come through Instagram DMs.",
+      "response": "That is a real limit. FluxMuse cannot read or reply to Instagram DMs today because that access is not approved. What it can do now is WhatsApp and content, and we will tell you plainly if that is not where your time goes."
+    },
+    {
+      "objection": "You are new. Have other salons used this?",
+      "response": "No. FluxMuse is new and has no customers yet. We are opening with a small first group of businesses and setting each one up by hand, so you would get direct attention and a say in what we build."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Rebooking regulars without nagging them",
+      "url": "https://fluxmuse.ai/blog/rebooking-regulars-without-nagging-them"
+    }
+  ],
+  "gaps": [
+    "Instagram profile text and post dates were read through a page summariser only; Instagram does not load as raw text. Re-check the bio by hand before sending.",
+    "No email address is published on the pages we could open. The Take App page's own page description contains a phone number and address, but we did not treat it as a cold-contact route (not quoted here); the route is an Instagram DM.",
+    "Facebook page and Threads account were NOT confirmed (the Take App and directory pages do not link to a Facebook page); removed from the facts.",
+    "Follower counts differed between sources (about 47.7K on Instagram, 48K on the booking page), so none are quoted.",
+    "Owner name not published; team size not stated on their own pages.",
+    "The WhatsApp booking statement comes from a third-party directory listing (which also lists only Pretoria and Centurion in its description) and may be dated.",
+    "Not confirmed whether a deposit is taken through Take App. The Zwartkop address may be a home or service address and is not quoted in any outreach.",
+    "Trading status: Instagram posts dated 22 to 26 September 2026 and a 2026 copyright on the booking page indicate the business is currently active."
+  ]
+}

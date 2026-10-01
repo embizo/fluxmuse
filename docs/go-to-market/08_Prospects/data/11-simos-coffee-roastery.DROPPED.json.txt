@@ -1,0 +1,202 @@
+{
+  "id": "11-simos-coffee-roastery",
+  "slot": "Coffee roaster / craft beverage brand",
+  "name": "Simo's Coffee Roastery",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Coffee roastery with an on-site coffee shop and online shop",
+  "location": "Lynnwood Road, eastern Pretoria",
+  "wave": 1,
+  "why_wave": "Small owner-run roastery whose site lists a WhatsApp number and admin email; current trading still needs a hand check.",
+  "one_line_pitch": "Give regular buyers a WhatsApp reorder path and a steady stream of fresh-roast posts, without adding a second system next to the roastery's online shop.",
+  "public_facts": [
+    {
+      "fact": "The website describes a gourmet coffee roastery at Karoo Square on Lynnwood Road, eastern Pretoria, that says it has been in operation since 2013 and roasts on demand.",
+      "source": "https://www.simoscoffee.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website says the roastery also owns a small coffee shop where customers can sit and enjoy coffee.",
+      "source": "https://www.simoscoffee.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website footer lists Santie Lourens with a WhatsApp number and an admin email address; it does not state a job title.",
+      "source": "https://www.simoscoffee.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website says it currently roasts with a 15kg manual roaster.",
+      "source": "https://www.simoscoffee.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The homepage shows blends including Italian, Espresso Gold and Karoo Blend with rand prices.",
+      "source": "https://www.simoscoffee.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The shop is organised into coffee, coffee equipment, cleaning and care products, tea and hot chocolate, and jams and preserves (read through a summariser; the shop page is script-rendered).",
+      "source": "https://www.simoscoffee.co.za/shop/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The shipping policy states orders are processed within 2-3 business days, standard delivery costs R102, orders over R900 ship free, delivery is by courier and in-store pickup can be selected.",
+      "source": "https://www.simoscoffee.co.za/shipping-policy/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram bio (summariser-only) describes a gourmet roastery on Lynnwood Road in the east of Pretoria with freshly roasted coffee delivered; the newest post dates visible to the summariser were in November 2025.",
+      "source": "https://www.instagram.com/simoscoffee/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Online shop and a WhatsApp number in the website footer (simoscoffee.co.za)",
+    "Instagram @simoscoffee, Facebook and Google Maps links in the site footer",
+    "Admin email address in the website footer"
+  ],
+  "decision_maker": "The owner or manager; Santie Lourens is named in the website footer as the contact (no title is stated there).",
+  "approach": {
+    "route": "Email to the admin address published on the website footer, or a WhatsApp message to the number published there, written by a person.",
+    "contact_source": "https://www.simoscoffee.co.za/",
+    "opening_message": "Hi Santie, I'm from FluxMuse, a new South African company helping small food and drink businesses with WhatsApp orders and posts. I saw your roastery has been roasting on demand in Lynnwood since 2013 and lists a WhatsApp number next to your online shop. We are opening with a small first group and set things up by hand. Could I have 20 minutes to show you how? If not for you, reply STOP and I won't message again.",
+    "compliance_note": "A single relevant business message to the email or WhatsApp number the business publishes for orders, with an opt-out, is a defensible one-to-one approach under POPIA s69; it is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Regular customers reorder beans by WhatsApp or email, so each reorder is typed and confirmed by hand.",
+      "basis": "inferred",
+      "evidence": "A WhatsApp number and email are listed in the footer next to the online shop (https://www.simoscoffee.co.za/); that customers reorder this way is a guess typical of roasters.",
+      "validate_with": "What share of your orders are repeat customers, and how do they usually reorder?"
+    },
+    {
+      "pain": "The shop lists many product types, but there is no visible way to see what was roasted this week or what is running low.",
+      "basis": "inferred",
+      "evidence": "Roasting on demand and several blends are described on the site; no availability notes were seen (https://www.simoscoffee.co.za/).",
+      "validate_with": "How do customers find out about new roasts or when a blend is out of stock?"
+    },
+    {
+      "pain": "Content depends on the owner finding time between roasting, the coffee shop and admin.",
+      "basis": "inferred",
+      "evidence": "A one-roaster business with an on-site shop; the Instagram posts appear irregular in date (https://www.instagram.com/simoscoffee/).",
+      "validate_with": "Who makes the posts today, and what would you post if it took two minutes?"
+    },
+    {
+      "pain": "Delivery cost (R102, free over R900) may push small buyers to abandon or ask questions by message.",
+      "basis": "inferred",
+      "evidence": "Shipping policy states these terms (https://www.simoscoffee.co.za/shipping-policy/); whether customers query them was not observed.",
+      "validate_with": "Do customers ask you about delivery or minimum spend before ordering?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "Owner-named, a published WhatsApp number and email, and a trade with natural repeat buyers. Poor-fit risks: there is already a working online shop with checkout, so the gap is smaller than for a WhatsApp-only business; the benefit depends on how many orders really come through WhatsApp; and FluxMuse checkout is still in setup, so it would not replace the shop and would only add a WhatsApp path. Current trading is not confirmed (newest visible Instagram post November 2025), so attainability is lowered until that is checked."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "One brand, one WhatsApp number, and the roastery's own online shop stays as it is.",
+    "upgrade_path": "If wholesale accounts (cafes, offices) grow into a large repeat-order flow over WhatsApp, a bigger plan could be worth reviewing."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send photos of the current blends and bag sizes; the AI drafts names, tasting-style descriptions and a price guess for you to confirm. Newly launched, so we set up the first batch together."
+    },
+    {
+      "capability": "Hosted shop link (fluxmuse.ai/s/<name>)",
+      "status": "live",
+      "for_them": "A short WhatsApp-friendly link to this week's roasts for regular customers; orders arrive as a pre-typed WhatsApp message to your number, and the main website shop stays as it is."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "A WhatsApp alert per reorder, and a SOLD reply once it is paid and packed, so nothing gets lost in a busy roasting week."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Photo of a fresh roast in, caption and image back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "WhatsApp Business setup: quick replies and broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Quick replies for delivery cost, pickup and grind options, and a broadcast list for customers who agreed to hear about new roasts."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Meta approvals are not in yet; for now posts go to WhatsApp Status. We would not rely on it."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to see how repeat orders come in and which blends sell most",
+        "Photograph and add the top blends and bag sizes to the catalogue via the Concierge",
+        "Confirm every price and description with you"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Publish the shop link and share it with a few regular customers on WhatsApp",
+        "Set up quick replies for delivery, pickup and grind options",
+        "Run two test orders to check alerts"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Use the POST keyword for a fresh-roast post each week and forward it to WhatsApp Status",
+        "Mark orders SOLD once packed",
+        "Invite regulars to opt in to a new-roast list"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review how many reorders came through the link versus the website and email",
+        "Adjust the catalogue and quick replies",
+        "Decide together whether it is worth continuing"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from your shop link",
+    "Repeat customers reordering through the link",
+    "Orders marked SOLD per week",
+    "Customers who opt in to a new-roast list"
+  ],
+  "objections": [
+    {
+      "objection": "I already have an online shop that works.",
+      "response": "We would keep it. This adds a quick WhatsApp path for regulars and simpler posts, and if most of your orders already come through the shop it may not be worth it; we would measure that first."
+    },
+    {
+      "objection": "My customers are not on WhatsApp for orders.",
+      "response": "Fair. Your site lists a WhatsApp number, so we would check how many use it. If it is very few, we would say so on the first call."
+    },
+    {
+      "objection": "I don't have time to set up something new.",
+      "response": "The set-up is done by hand with you over WhatsApp: photos in, YES or NO back. We are new and opening with a small first group, so we would rather do the work with you than hand you a manual."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Order intake for a wholesaler without the spreadsheet",
+      "url": "https://fluxmuse.ai/blog/order-intake-for-a-wholesaler-without-the-spreadsheet"
+    }
+  ],
+  "gaps": [
+    "Could not confirm headcount, whether cafes or offices buy wholesale, or how many orders come by WhatsApp versus the website.",
+    "Trading in 2026 is NOT confirmed: the website footer says 2020 and the newest Instagram posts a summariser could see are from November 2025. The founder should check the business is still active (for example the Google Maps listing) before approaching.",
+    "The name Santie Lourens is on the site footer only, with no title; the earlier 'proprietor' label was not on the page and is dropped.",
+    "The website does not itself list WhatsApp or email as order routes; they are contact details in the footer.",
+    "Blog title derived from the URL slug because the page renders client-side (slug is in the fluxmuse.ai sitemap)."
+  ]
+}

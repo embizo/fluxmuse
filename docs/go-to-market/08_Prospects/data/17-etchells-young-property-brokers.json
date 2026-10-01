@@ -1,0 +1,214 @@
+{
+  "id": "17-etchells-young-property-brokers",
+  "slot": "Property: independent estate / rental agency (Gauteng)",
+  "name": "Etchells & Young Property Brokers",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Boutique estate agency: residential rentals, rental management and sales",
+  "location": "Ferndale, Randburg, Johannesburg (covers Randburg, Sandton, Fourways, Roodepoort)",
+  "wave": 3,
+  "why_wave": "Not a small owner-led shop: the agency's own site lists 19 practitioners (11 full status, 8 interns) and it says it has a marketing team, so this is a slower, multi-person decision. Wave 3 unless a principal opens the door.",
+  "one_line_pitch": "Help your agency answer rental enquiries and tenant and landlord messages on WhatsApp faster, and turn your listing photos into ready-to-send posts, without adding admin.",
+  "public_facts": [
+    {
+      "fact": "Calls itself a boutique estate agency with 21 years of local expertise, and says rentals and rental management are its core business alongside sales.",
+      "source": "https://www.etchellsandyoung.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Lists Randburg, Sandton, Fourways and Roodepoort as the areas it operates in.",
+      "source": "https://www.etchellsandyoung.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its contact page publishes an office at 261 Surrey Ave, Ferndale, an office landline, an online contact form and a WhatsApp link.",
+      "source": "https://www.etchellsandyoung.co.za/contact-us",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Links to Facebook, Instagram, LinkedIn, TikTok, X and YouTube accounts from its website.",
+      "source": "https://www.etchellsandyoung.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its Property24 agency profile says it specialises in sectional title residential rentals, rental management and sales in the greater Randburg and Sandton areas.",
+      "source": "https://www.property24.com/estate-agents/etchells-and-young-property-brokers/9381",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Property24 profile showed 120 rental listings and 109 sale listings on the retrieval date, and names 23 agents, 8 of them interns.",
+      "source": "https://www.property24.com/estate-agents/etchells-and-young-property-brokers/9381",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "States that it is registered with the Property Practitioners Regulatory Authority (PPRA).",
+      "source": "https://www.etchellsandyoung.co.za/contact-us",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes landlord and seller guides on its website.",
+      "source": "https://www.etchellsandyoung.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its own practitioners page lists 19 property practitioners by name (11 full status, 8 interns), with a mix of rentals and sales roles across Randburg, Sandton and Fourways.",
+      "source": "https://www.etchellsandyoung.co.za/our-property-practitioners",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its company page says Etchells & Young was established in 2005 by Aubrie Etchells and added rentals in 2006.",
+      "source": "https://www.etchellsandyoung.co.za/real-estate-services",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website contact page with a form, a WhatsApp link and an office landline (etchellsandyoung.co.za/contact-us)",
+    "Listings on Property24 (property24.com agency profile)",
+    "Website footer links to Facebook, Instagram, LinkedIn, TikTok, X and YouTube (etchellsandyoung.co.za)"
+  ],
+  "decision_maker": "Aubrie Etchells is named on the agency's own company page as the person who established it in 2005. Who runs it day to day now is not published, so confirm the principal or head of rentals on the first call.",
+  "approach": {
+    "route": "The website contact form on the agency's own contact page (a WhatsApp option is also listed there).",
+    "contact_source": "https://www.etchellsandyoung.co.za/contact-us",
+    "opening_message": "Hello, I'm [NAME] from FluxMuse, a new South African platform that helps small businesses handle WhatsApp enquiries and post to social media. I saw that Etchells & Young offers rentals and rental management and publishes a WhatsApp link and Property24 listings. We are new and have no track record yet, so I'd only ask for a 20-minute call to hear how enquiries and tenant messages are handled today. If it isn't relevant, tell me and I won't contact you again.",
+    "compliance_note": "A single, human-sent, one-to-one business approach through the agency's own published enquiry form, with a clear opt-out, is the defensible route under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Rental enquiries reach you from several places (Property24, your website, WhatsApp, social), and the answer may depend on which agent sees them first.",
+      "basis": "inferred",
+      "evidence": "this is common for portal-led rentals. You list 120 rental listings on Property24, and you publish a website form and a WhatsApp option.",
+      "validate_with": "When a rental enquiry arrives after hours, who sees it, and how long does it usually take to get a first reply?"
+    },
+    {
+      "pain": "Arranging viewings and confirming or rescheduling them takes back-and-forth messages.",
+      "basis": "inferred",
+      "evidence": "this is common for agencies with many rental listings and several agents. Nothing on your site describes your viewing process.",
+      "validate_with": "How are viewings booked and confirmed today, and how often do people not turn up?"
+    },
+    {
+      "pain": "Tenant and landlord follow-up (documents, inspections, maintenance updates) may be handled one message at a time.",
+      "basis": "inferred",
+      "evidence": "your homepage describes rental management as a core business. How you handle follow-up is not published.",
+      "validate_with": "Which tenant or landlord messages take up most of your team's time in a normal week?"
+    },
+    {
+      "pain": "Every listing needs photos, captions and social posts, and this may be done inconsistently across agents.",
+      "basis": "inferred",
+      "evidence": "your website shows a presence on six social platforms. We did not assess how often each one is used.",
+      "validate_with": "Who creates and posts your listing content, and how much of it is repeated by hand across platforms?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R499/month (Starter), possibly R1,999/month (Growth) if several agents or channels are added",
+    "reasoning": "A rental-focused agency with real listing volume and a WhatsApp route is a sensible test of FluxMuse's WhatsApp tools. It is a poor fit if the agency's main flow is inside Property24 or its own property software, since FluxMuse does not connect to portals or property systems and would only cover the WhatsApp and social edges. With 19 practitioners on its own site and a marketing team it mentions itself, the decision may sit with a principal who is hard to reach and may already have people doing the content, and Instagram and Facebook auto-publishing is not yet approved, so the social benefit today is content creation and forwarding to WhatsApp Status rather than automatic posting."
+  },
+  "recommended_plan": {
+    "tier": "starter",
+    "why": "One brand with one WhatsApp line and a few channels is enough to test your enquiry handling and listing content properly before adding anything else.",
+    "upgrade_path": "Growth (R1,999/month) becomes worth it if you want more brands or channels, for example a separate sales brand or several agent-level pages."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: number connection, profile, quick replies and templates",
+      "status": "live",
+      "for_them": "Set up your agency's WhatsApp line with a proper business profile and saved quick replies for the questions rental enquiries usually raise (availability, deposit, viewing times). Newly launched, no business has run it end to end yet."
+    },
+    {
+      "capability": "Answers in the customer's language",
+      "status": "live",
+      "for_them": "Replies follow the language a prospective tenant writes in, useful in a multilingual metro. Newly launched."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "An agent sends a listing photo on WhatsApp and gets back a caption and a polished image to forward to WhatsApp Status or other channels."
+    },
+    {
+      "capability": "Voice-note transcription on WhatsApp",
+      "status": "live",
+      "for_them": "Landlords and tenants often send voice notes. These can be turned into text so nothing is missed or retyped."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Tell landlords and tenants who have agreed to receive messages about new listings or reminders, using approved templates."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on. The Meta permissions are not approved yet, so today the value is content creation and forwarding, not automatic posting."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Payment first, on the terms in section 7.",
+        "Set up the WhatsApp Business profile and connect the number your agency chooses.",
+        "List the ten most common enquiry questions together and draft quick replies."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Load approved templates for viewing confirmations and reminders.",
+        "Have two or three of your agents try the POST keyword on real listing photos and give feedback."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Review real conversations together: which replies were useful, what was missing.",
+        "Adjust replies and templates, and agree what to do with your consented contact lists."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Look at the numbers together: conversations started, response times and posts created.",
+        "Decide whether to continue, adjust or add channels. No lead numbers are promised."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from enquiries",
+    "Time from first message to first reply",
+    "Viewings booked through WhatsApp",
+    "Listing posts created from photos"
+  ],
+  "objections": [
+    {
+      "objection": "Our enquiries come from Property24 and our own property system, not WhatsApp.",
+      "response": "That is fair, and FluxMuse does not connect to portals or property software. It would cover your WhatsApp line and social content, so whether it is worth it depends on how much of your enquiry handling already lives there."
+    },
+    {
+      "objection": "We already have staff answering messages.",
+      "response": "The aim is not to replace your agents but to give them saved replies, language matching and transcribed voice notes so they spend less time retyping. We are new and would set it up with you by hand."
+    },
+    {
+      "objection": "Will it post our listings to Facebook and Instagram automatically?",
+      "response": "Not yet. Auto-publishing to Facebook Pages and Instagram is being switched on, but the Meta permissions are not approved. Today FluxMuse creates the caption and image and you forward or post it."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Answering a property enquiry before the competition does",
+      "url": "https://fluxmuse.ai/blog/answering-a-property-enquiry-before-the-competition-does"
+    },
+    {
+      "title": "Listing photos that actually get clicks",
+      "url": "https://fluxmuse.ai/blog/listing-photos-that-actually-get-clicks"
+    }
+  ],
+  "gaps": [
+    "Size, checked on the agency's own pages: 19 practitioners listed (11 full status, 8 interns); Property24 names 23 agents. It is not a one-owner practice. The site also says a marketing team runs ads across social, Google and print, so content may already be handled in-house.",
+    "Aubrie Etchells is named as founder (2005), but nothing published says who owns or leads the agency today.",
+    "How enquiries and viewings are actually handled is not published; all pains are inferred.",
+    "Facebook page was not opened; only the link from the website was seen.",
+    "Blog titles were derived from slugs because fluxmuse.ai blog pages render client-side and returned no title.",
+    "The website's practitioner pages publish individual mobile numbers; none are used here. A genuinely small alternative was not verified: DD Rental Management (ddrentalmanagement.co.za) describes itself as an independent, landlord-run rental manager, but its site looks dated (Google+ reference) and current trading was not confirmed, so it is not recommended."
+  ]
+}

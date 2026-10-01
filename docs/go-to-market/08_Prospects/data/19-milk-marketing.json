@@ -1,0 +1,204 @@
+{
+  "id": "19-milk-marketing",
+  "slot": "Marketing agency: content and creative studio",
+  "name": "Milk Marketing",
+  "legal_or_trading_name": "",
+  "segment": "agency",
+  "trade": "Digital marketing agency: social media, design, web and paid ads",
+  "location": "Pretoria, Gauteng",
+  "wave": 2,
+  "why_wave": "The largest ticket on the list (Agency, R9,999), but agencies will ask for partner terms and references that do not exist yet, so approach after the first merchants are live and the partner price is set.",
+  "one_line_pitch": "Give your studio one workspace to turn client photos into captions, images and short clips, and to set up WhatsApp for your clients, without adding headcount.",
+  "public_facts": [
+    {
+      "fact": "Describes itself as a strategy-led digital marketing agency based in Pretoria.",
+      "source": "https://milkmarketing.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Lists social media marketing and content creation, web design and development, brand strategy and logo design, email marketing and paid ads (Google, Facebook, Instagram) as services.",
+      "source": "https://milkmarketing.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Names Annabelle as Founder and Marketing Director on its website.",
+      "source": "https://milkmarketing.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Introduces a team of seven people by first name and role on its homepage: a founder, a marketing manager, four digital marketing specialists and a web developer.",
+      "source": "https://milkmarketing.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its contact page publishes an email address, a phone number, a contact form and an address in Waterkloof Heights, Pretoria.",
+      "source": "https://milkmarketing.co.za/contact/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its homepage embeds a feed of recent Instagram posts, one of which begins 'WE'RE HIRING'.",
+      "source": "https://milkmarketing.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Links to Instagram, Facebook and LinkedIn from its website, and the footer is dated 2026.",
+      "source": "https://milkmarketing.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its Our Story page says it works with businesses across Pretoria and South Africa.",
+      "source": "https://milkmarketing.co.za/our-story/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with a contact form and published email (milkmarketing.co.za/contact)",
+    "Instagram feed embedded on the homepage, from the account milk_marketing_agency",
+    "Facebook and LinkedIn links on the website"
+  ],
+  "decision_maker": "Founder and Marketing Director (named on the agency's own site as Annabelle).",
+  "approach": {
+    "route": "The business email address published on the agency's own website.",
+    "contact_source": "https://milkmarketing.co.za/contact/",
+    "opening_message": "Hello Annabelle, I'm [NAME] from FluxMuse, a new South African platform for small-business social content and WhatsApp. I noticed Milk Marketing offers social media, design and paid ads to Pretoria brands. We are new and have no customers yet, so I'm only asking for a 20-minute call to hear how your team produces content across clients and whether a partner conversation would be worthwhile. If this isn't relevant, tell me and I won't contact you again.",
+    "compliance_note": "A single human-sent message to the business email the agency publishes for enquiries, with a clear opt-out, is the defensible one-to-one route under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Producing captions, images and video for many client accounts on a fixed team size limits how many clients you can take on.",
+      "basis": "inferred",
+      "evidence": "your site lists social content among your services and shows a team of seven, and your homepage Instagram feed includes a post beginning 'WE'RE HIRING'. Your client count is not published.",
+      "validate_with": "How many client accounts does each person handle, and what stops you taking on more?"
+    },
+    {
+      "pain": "Content approvals and back-and-forth with small clients on WhatsApp are hard to track.",
+      "basis": "inferred",
+      "evidence": "this is common for agencies working with owner-managed clients. Your approval process is not published.",
+      "validate_with": "How do clients approve content today, and where does it get stuck?"
+    },
+    {
+      "pain": "Clients may ask you to help with WhatsApp Business (replies, catalogue, broadcasts), which you do not yet offer as a service.",
+      "basis": "inferred",
+      "evidence": "your listed services do not mention WhatsApp.",
+      "validate_with": "Have clients asked you about WhatsApp, and how have you answered?"
+    },
+    {
+      "pain": "Reporting to each client takes time that is not billed.",
+      "basis": "inferred",
+      "evidence": "this is common in small agencies. Nothing is published about your reporting.",
+      "validate_with": "How long does monthly reporting take per client?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R9,999/month (Agency) if it moves a real client roster onto the platform; R1,999/month (Growth) for a first test",
+    "reasoning": "About seven people, a named founder, a published email and a client-facing social presence make this the most realistic agency candidate in this batch. Risks: it may see FluxMuse as a competitor or want to keep its own content tools; Instagram and Facebook auto-publishing, which such a studio relies on, is not yet approved; and its client count is unknown, so Agency (R9,999) may be more than it needs at first. Partner terms are unconfirmed and are on request."
+  },
+  "recommended_plan": {
+    "tier": "agency",
+    "why": "With several employees and multiple client brands, you fit unlimited brands, white-label and the 80-channel allowance, which Growth's three brands would not cover.",
+    "upgrade_path": "If you have fewer than about three clients to start with, Growth (R1,999/month) is the cheaper first step, and Agency follows when more brands come across."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "A client's photo sent on WhatsApp comes back as a caption and polished image for your studio to refine and forward. Newly launched."
+    },
+    {
+      "capability": "AI video clips (short, 720p by default)",
+      "status": "live",
+      "for_them": "Short clips for reels and Status without a full edit, as a starting point for your creative team."
+    },
+    {
+      "capability": "WhatsApp Business setup",
+      "status": "live",
+      "for_them": "A new service line for you: connect a client's number, set up the profile, quick replies and templates, and broadcast to consented contacts."
+    },
+    {
+      "capability": "Voice-note transcription and answers in the customer's language",
+      "status": "live",
+      "for_them": "Client voice notes become text your team can act on, and replies follow the customer's language."
+    },
+    {
+      "capability": "TikTok posting (video only)",
+      "status": "live",
+      "for_them": "Post your clients' videos to TikTok from one place."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on. Meta permissions are not approved yet, so for now you keep posting the way you do today."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Payment first, on the terms in section 7.",
+        "Set up your agency workspace and connect your WhatsApp number.",
+        "Choose two client brands to test with."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Create captions, images and a short clip for those clients from their real photos.",
+        "Have your creative team compare the output with your normal process."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up WhatsApp Business for one client.",
+        "Agree how content approval would run for those clients."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review numbers together: posts created, time saved, WhatsApp conversations.",
+        "Discuss partner terms and whether to bring more clients across."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Posts (captions, images, clips) created per client",
+    "Time saved per client per week, reported by you",
+    "Number of client brands moved onto the platform",
+    "WhatsApp conversations started for clients"
+  ],
+  "objections": [
+    {
+      "objection": "We already have our own content process and tools.",
+      "response": "FluxMuse would not replace your creative work. It would give your team a faster first draft and a way to offer WhatsApp to clients, and we would only add it where it saves time."
+    },
+    {
+      "objection": "We need to post to Facebook and Instagram for clients.",
+      "response": "Not automatically yet. Auto-publishing is being switched on but the Meta permissions are not approved, so today you would create in FluxMuse and post as you do now."
+    },
+    {
+      "objection": "Will you go around us to our clients?",
+      "response": "That is a fair question. Who owns the client relationship is something the partner terms need to settle, and we would settle it in writing before you add any client. Partner terms are on request and not finalised."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "One content calendar for every client",
+      "url": "https://fluxmuse.ai/blog/one-content-calendar-every-client"
+    },
+    {
+      "title": "Approvals that do not wait for a laptop",
+      "url": "https://fluxmuse.ai/blog/approvals-that-do-not-wait-for-a-laptop"
+    }
+  ],
+  "gaps": [
+    "Annabelle's surname is not on the pages I opened, so the first name only is used.",
+    "Client count and how many clients are on social retainers are not published.",
+    "Instagram itself is login-walled and could not be read; only the feed embedded on the agency's own homepage was seen, so the earlier bio, highlights and vacancy-role details were dropped as unverified.",
+    "A search result for a different agency named Milk (Mumbai) exists; this is the Pretoria agency at milkmarketing.co.za.",
+    "The homepage shows client testimonials by initials; no client names are used here.",
+    "Blog titles were derived from slugs because fluxmuse.ai blog pages render client-side."
+  ]
+}

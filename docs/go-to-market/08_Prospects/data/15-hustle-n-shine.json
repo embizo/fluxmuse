@@ -1,0 +1,201 @@
+{
+  "id": "15-hustle-n-shine",
+  "slot": "Automotive: mobile car detailing",
+  "name": "Hustle n Shine",
+  "legal_or_trading_name": "Hustle N Shine Mobile Detailing (Pty) Ltd (name as shown on its booking page listing)",
+  "segment": "solo",
+  "trade": "Premium mobile car detailing",
+  "location": "Bedfordview, Johannesburg",
+  "wave": 1,
+  "why_wave": "A new owner-operated business where the founder handles enquiries himself and quotes go through WhatsApp.",
+  "one_line_pitch": "Make quote requests on WhatsApp faster and more consistent, and turn your finished jobs into ready-to-forward posts.",
+  "public_facts": [
+    {
+      "fact": "Presents itself as a premium mobile car detailing service in Bedfordview, Johannesburg.",
+      "source": "https://hustlenshine.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The About page says the business was established in 2026 by mechanical engineer Anver Sekadi.",
+      "source": "https://hustlenshine.co.za/about",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Services listed include Essential, Signature and Executive detail packages, ceramic coating, paint enhancement, interior deep cleaning, engine bay detailing and headlight restoration.",
+      "source": "https://hustlenshine.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "No prices are shown on the homepage; the Request a quote buttons link to WhatsApp.",
+      "source": "https://hustlenshine.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes a contact page with a form, the same phone/WhatsApp number and an email address (info@hustlenshine.co.za).",
+      "source": "https://hustlenshine.co.za/contact",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Says it serves private clients, corporate offices and dealerships, and travels to clients' homes and workplaces.",
+      "source": "https://hustlenshine.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The homepage shows a 5.0 Google rating; it says '13 reviews' near the top and 'based on 9 reviews' lower down, so no count is used here.",
+      "source": "https://hustlenshine.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Uses Instagram (@hnsmobiledetailing) and TikTok (@hns.mobile.detail) to show its work, according to its website.",
+      "source": "https://hustlenshine.co.za/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with a Request a quote button that opens WhatsApp (hustlenshine.co.za)",
+    "Contact form and published business email (hustlenshine.co.za/contact)",
+    "Phone number that is also the WhatsApp number",
+    "Instagram and TikTok accounts linked from the website"
+  ],
+  "decision_maker": "Anver Sekadi, founder (named on the business's own About page).",
+  "approach": {
+    "route": "The website contact form, or the published business email.",
+    "contact_source": "https://hustlenshine.co.za/contact",
+    "opening_message": "Hello Anver, I am [name] from FluxMuse, a new South African WhatsApp and marketing tool for small businesses. I noticed Hustle n Shine keeps prices off the site and takes quote requests on WhatsApp, which is common for detailers but means every enquiry is a fresh conversation. We are opening with a small first group of businesses and setting them up by hand. Could we have 20 minutes to talk about how you handle quotes? If this is not relevant, tell me and I will not follow up.",
+    "compliance_note": "One relevant, one-to-one message through the contact route the business publishes, with an opt-out, is the defensible route under POPIA s69; this is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Every quote request starts a new WhatsApp conversation, asking for the car model, condition and location again.",
+      "basis": "inferred",
+      "evidence": "your prices are not listed and your Request a quote buttons open WhatsApp. We do not know how the conversation goes from there.",
+      "validate_with": "What do you need to know before you can quote, and how many messages does that usually take?"
+    },
+    {
+      "pain": "Customers who send you photos of their car for a quote are hard to keep track of across chats.",
+      "basis": "inferred",
+      "evidence": "photo-based quoting is common in detailing. We have not confirmed it for your business.",
+      "validate_with": "Do customers send photos, and how do you keep track of quote requests you have not yet answered?"
+    },
+    {
+      "pain": "As a one-person mobile service, you cannot reply while working on a car, so enquiries wait until the job ends.",
+      "basis": "inferred",
+      "evidence": "a mobile detailer works on site with the client's car, and your About page names the founder as the person behind the business. It does not say who answers enquiries.",
+      "validate_with": "How long does a quote request usually wait for a first reply?"
+    },
+    {
+      "pain": "Finished jobs may not be turned into regular before-and-after posts while you are still building your name as a new business.",
+      "basis": "inferred",
+      "evidence": "your business was established in 2026 and shows its work on Instagram and TikTok. We do not know how often you post.",
+      "validate_with": "How often do you post your work and how long does it take?"
+    }
+  ],
+  "fit": {
+    "attainability": 4,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "A new, owner-operated business that already funnels enquiries to WhatsApp and needs visible work to build trust, so the fit is natural. It is very young and small, so budget may be tight, and a mobile detailer may prefer to keep quoting personal. Poor fit if he sees quoting as his selling moment and does not want any part of it structured."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "You are one owner with one WhatsApp number, so saved quote questions and post support fit better than a multi-brand plan.",
+    "upgrade_path": "Starter if you later connect more channels or hire a second detailer with their own number."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: quick replies and templates",
+      "status": "live",
+      "for_them": "A saved reply that asks the same questions every time (car make and model, condition, suburb, preferred day), so you can quote from one message. Templates for job-day reminders need Meta approval when sent outside the 24-hour window."
+    },
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send photos of a package or a finished car and the AI drafts a package description and price guess for you to confirm with YES, NO or an edit, to build a simple service list."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a finished-job photo and get a caption back on WhatsApp, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Hosted shop link with WhatsApp orders",
+      "status": "live",
+      "for_them": "A public page listing your packages, where a request arrives as a pre-typed WhatsApp message to your own number."
+    },
+    {
+      "capability": "AI video clips",
+      "status": "live",
+      "for_them": "Short 720p clips built from your work photos for Instagram or TikTok, forwarded on WhatsApp by hand."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on once Meta approves the permissions. Until then, posts are forwarded by hand."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Call to walk through a typical quote conversation from first message to booking.",
+        "Connect your WhatsApp Business number and set up the profile."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Write the standard quote-question reply and a package list from your own descriptions.",
+        "Try the Concierge with photos of three packages."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up the hosted shop link and test a request end to end.",
+        "Try the POST keyword on two finished cars, with the customer's permission where a car is identifiable."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review the month: which replies were used, what took time.",
+        "Decide whether to continue and on which plan."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Quote requests that reached the standard question reply",
+    "Time from first message to first reply",
+    "Requests arriving from the shop link",
+    "Posts forwarded to WhatsApp Status from the POST keyword"
+  ],
+  "objections": [
+    {
+      "objection": "I prefer to quote personally so customers feel looked after.",
+      "response": "The saved reply only collects the details up front. You still write the quote and the personal touch stays with you. If it feels impersonal, we change or drop it."
+    },
+    {
+      "objection": "I am too new to spend money on tools.",
+      "response": "That is a reasonable concern, and the entry plan is small. We would suggest starting with only the pieces that save you time and skipping the rest."
+    },
+    {
+      "objection": "Instagram and TikTok already bring in my work.",
+      "response": "They may well. We are not replacing them. The question is whether interested people then get a quick, consistent answer on WhatsApp."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Bookings without a booking system: WhatsApp for a tradesperson",
+      "url": "https://fluxmuse.ai/blog/bookings-without-a-booking-system-whatsapp-for-a-tradesperson"
+    }
+  ],
+  "gaps": [
+    "The business is very new (2026 per its own site); trading history is thin.",
+    "The site says Bedfordview; a search summary suggested Germiston. Only the site's wording is used.",
+    "Google review count differs between pages of the site, so it is not used.",
+    "Whether customers send photos for quotes is not observed.",
+    "Whether the WhatsApp number is on WhatsApp Business is unknown.",
+    "An earlier note about an online booking page on book.heygoldie.com could not be found on the site and is dropped.",
+    "The site is written in the plural ('our team') so 'one-person business' is not confirmed."
+  ]
+}

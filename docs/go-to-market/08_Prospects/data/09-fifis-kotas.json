@@ -1,0 +1,202 @@
+{
+  "id": "09-fifis-kotas",
+  "slot": "Township or neighbourhood restaurant / kota takeaway",
+  "name": "Fifi's Kotas",
+  "legal_or_trading_name": "",
+  "segment": "solo",
+  "trade": "Kota, dagwood and burger takeaway",
+  "location": "Palmridge, Katlehong (Ekurhuleni), Gauteng",
+  "wave": 1,
+  "why_wave": "A one-site takeaway whose own website says orders go straight to WhatsApp, so the person answering that number is very likely the decision-maker.",
+  "one_line_pitch": "Turn the WhatsApp orders you already get into a tidy menu link with prices, and get order alerts you can mark SOLD, without changing how you cook or collect.",
+  "public_facts": [
+    {
+      "fact": "The business's own website lists a single address: 6696 Sontonga Road, Palmridge, Katlehong.",
+      "source": "https://fifiskotas.netlify.app/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website says customers should place orders directly on WhatsApp, and it links to a WhatsApp chat with a pre-typed 'I'd like to place an order' message.",
+      "source": "https://fifiskotas.netlify.app/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website lists kotas, dagwoods, burgers, fried chips and drinks, described as made fresh to order.",
+      "source": "https://fifiskotas.netlify.app/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website does not show prices for the menu items.",
+      "source": "https://fifiskotas.netlify.app/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website lists a WhatsApp/phone number and links to Facebook, Instagram (@fifiskotas) and TikTok (@fifiskotas) accounts.",
+      "source": "https://fifiskotas.netlify.app/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website's footer is dated 2025 and its logo is a placeholder image, so it looks like a very simple site.",
+      "source": "https://fifiskotas.netlify.app/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram profile bio (read through a summariser, not raw text) describes fresh kotas, burgers, fries and drinks in Palmridge.",
+      "source": "https://www.instagram.com/fifiskotas/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Instagram posts dated August to mid-September 2026 were visible (summariser-only), including a combo-price post and a 'closed for the day' post, which suggests the account is active.",
+      "source": "https://www.instagram.com/fifiskotas/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with a WhatsApp order button and pre-typed order message (fifiskotas.netlify.app)",
+    "Facebook, Instagram and TikTok accounts linked from the website (@fifiskotas)",
+    "Combo prices appeared in an Instagram post (summariser-only); the website shows no prices"
+  ],
+  "decision_maker": "Owner-operator; no name is published on the website or Instagram profile.",
+  "approach": {
+    "route": "WhatsApp message to the business number published on its own website (person-to-person, not a bulk send). A message to the public Instagram account is the fallback.",
+    "contact_source": "https://fifiskotas.netlify.app/",
+    "opening_message": "Hi, I'm from FluxMuse, a small South African company that helps food businesses handle WhatsApp orders. I saw on your website that customers order kotas straight on WhatsApp, and that the prices are on your Instagram rather than the website. We're new and setting up a small first group of businesses by hand. Could I have a 20-minute call to show you a menu link with prices? If this isn't for you, just say STOP and I won't message again.",
+    "compliance_note": "One relevant, person-to-person message to the WhatsApp number the business publishes for orders, with a clear opt-out, is the defensible route under POPIA s69; it is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "At lunch and after-school peaks, WhatsApp orders arrive faster than you can read them, and you have to answer 'how much is the kota with...?' one message at a time.",
+      "basis": "inferred",
+      "evidence": "This is typical for a one-kitchen takeaway that takes orders only on WhatsApp. Your website states that orders go directly on WhatsApp and shows no prices.",
+      "validate_with": "On a busy day, how many WhatsApp messages come in during the lunch rush, and how many are just asking for the price?"
+    },
+    {
+      "pain": "Prices and combos live in Instagram posts and change, so customers may be quoted from an old picture.",
+      "basis": "inferred",
+      "evidence": "Your website has no price list, and combo prices appear only as posts on Instagram.",
+      "validate_with": "When you change a price or a combo, where do you update it, and do customers still send you the old one?"
+    },
+    {
+      "pain": "Orders are only a chat thread, so a missed or late message becomes a lost or wrong order, and there is no simple record of what was sold.",
+      "basis": "inferred",
+      "evidence": "Your website describes ordering as WhatsApp only. We could see no order form or record system.",
+      "validate_with": "How do you keep track of which orders are paid, ready and collected during a rush?"
+    },
+    {
+      "pain": "You have little time to make daily posts about specials, so the social pages depend on quiet hours.",
+      "basis": "inferred",
+      "evidence": "Small owner-run takeaways usually cook and serve with very few staff. Your Instagram account shows photo posts but no fixed schedule.",
+      "validate_with": "Who takes and posts the food photos today, and how often does it happen in a normal week?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "The business already takes every order on WhatsApp, the owner is reachable on the number the site publishes, and the pain of price questions during peak hours is common in the trade. Poor-fit risks: it looks like a very small operation with a small social audience, the margin per kota is low so R289 may feel heavy, and if customers mostly find them on Uber Eats or walk in, WhatsApp tooling adds less. Shop checkout is still in setup, so orders arrive as a WhatsApp message, and someone must be on the number to act on it."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "You have one kitchen with one WhatsApp number and a simple menu. Micro covers a single WhatsApp number and the four channels a small takeaway will actually use.",
+    "upgrade_path": "A second outlet, or a shop link that brings in more orders than one number can handle, would be the reason to look at a bigger plan later."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send a photo of each kota, dagwood and combo to FluxMuse on WhatsApp; the AI drafts the name, description and a price guess, and you reply YES, NO or fix it. Newly launched, so we would do the first batch together."
+    },
+    {
+      "capability": "Hosted shop link (fluxmuse.ai/s/<name>)",
+      "status": "live",
+      "for_them": "One link with the full menu and current prices to put in the Instagram bio and WhatsApp status. When a customer picks items, the order arrives as a pre-typed WhatsApp message to your own number."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "Each order from the link triggers a WhatsApp alert, and you reply SOLD when it has been paid or collected, so there is a simple record of the day."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Send a food photo and get a caption and a cleaned-up image back on WhatsApp, ready to forward to WhatsApp Status for daily specials."
+    },
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies, broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Set up the business profile, quick replies for the questions asked most (prices, hours, where to find you) and a list of customers who have agreed to hear about specials."
+    },
+    {
+      "capability": "Checkout through FluxMuse (Paystack)",
+      "status": "in_setup",
+      "for_them": "Not yet tested end to end with real money, so today orders still end with cash or EFT arranged over WhatsApp. We would not depend on it."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to see how orders arrive on a normal day and which questions repeat",
+        "Photograph the top 8 to 10 items and combos, and send them through the WhatsApp Concierge",
+        "Confirm every price with you before anything goes on the shop link"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Publish the hosted shop link and put it in the Instagram bio and WhatsApp business profile",
+        "Set up quick replies for hours, location and 'how do I order'",
+        "Place a few test orders together to check the WhatsApp message and alert arrive properly"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Use the POST keyword for two or three daily specials and forward them to WhatsApp Status",
+        "Start marking orders SOLD each day",
+        "Add customers to the broadcast list only if they have agreed to messages"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review together how many orders came from the link versus direct chat",
+        "Fix the menu, prices and quick replies that caused confusion",
+        "Decide together whether to keep going, based on what we measured"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from your shop link",
+    "Orders alerted and marked SOLD per week",
+    "Price and menu questions still asked in chat after the link goes live",
+    "Specials posted to WhatsApp Status per week"
+  ],
+  "objections": [
+    {
+      "objection": "Customers already WhatsApp me and it works.",
+      "response": "It may well work. What we would change is small: a menu link with prices so fewer messages ask 'how much', plus an alert you can mark SOLD. Orders still end up on your WhatsApp, and if it does not save you time we would say so after the first four weeks."
+    },
+    {
+      "objection": "I don't have time to set this up in the middle of the lunch rush.",
+      "response": "You would send photos on WhatsApp and reply YES or NO; we do the set-up by hand, in the quiet hours you choose. We are new, so we are opening with a small first group and doing the work with you."
+    },
+    {
+      "objection": "R289 a month is a lot for a kota business.",
+      "response": "That is a fair concern given kota margins. The honest test is whether the link and alerts save you time or bring in orders you would otherwise miss; we would agree what to measure before you decide."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "From first message to paid order: WhatsApp ordering for a restaurant",
+      "url": "https://fluxmuse.ai/blog/from-first-message-to-paid-order-whatsapp-ordering-for-a-restaurant"
+    }
+  ],
+  "gaps": [
+    "No owner name is published; the decision-maker is assumed to be the owner who answers the WhatsApp number.",
+    "Trading status rests on the website and Instagram posts dated to 2026-09-16 (Instagram read through a summariser only: Instagram serves a login shell to raw fetches). The Instagram profile appeared to have roughly 10 followers, so the audience is tiny; I could not confirm a Google Business listing or press.",
+    "Instagram details are summariser-only. 'Uber Eats' and 'occasional closure announcements' were not verified and are not used.",
+    "Opening hours, staff numbers and any price list were not found.",
+    "Blog title was derived from the URL slug because the page renders client-side (slug is listed in the fluxmuse.ai sitemap)."
+  ]
+}

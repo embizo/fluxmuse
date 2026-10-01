@@ -1,0 +1,211 @@
+{
+  "id": "02-lerato-nxumalo",
+  "slot": "Actress and content creator with a fashion brand and a new beauty salon",
+  "name": "Lerato Nxumalo",
+  "legal_or_trading_name": "",
+  "segment": "creator",
+  "trade": "Actress and content creator; founder of blaHoody (clothing) and By Lovely Suites (beauty salon)",
+  "location": "Midrand, Johannesburg",
+  "wave": 1,
+  "why_wave": "The salon was under construction in July 2026, so the booking set-up decisions are being made right now and the timing is unusually good.",
+  "one_line_pitch": "A WhatsApp booking and enquiry set-up for your new salon and your online hoodie brand, so DMs about appointments and orders get a quick, consistent answer.",
+  "public_facts": [
+    {
+      "fact": "Wikipedia describes her as an actress, influencer, content creator and entrepreneur, with roles in Durban Gen (2020 to 2023), Scandal! (2023 to 2024) and Genesis (2025 to 2026), and says she focused on social media content creation from 2024.",
+      "source": "https://en.wikipedia.org/wiki/Lerato_Nxumalo",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Briefly reported on 6 July 2025 that she said she was launching her 'very first business', blaHoody, the following week.",
+      "source": "https://briefly.co.za/entertainment/celebrities/219416-former-scandal-actress-lerato-nxumalo-launches-clothing-business/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Wikipedia says blaHoody, launched July 2025, specialises in comfort-wear hoodies and is primarily an online business.",
+      "source": "https://en.wikipedia.org/wiki/Lerato_Nxumalo",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "blaHoody has its own online store (blahoody.com) with a winter lounge collection, a cart and checkout, a contact page with a contact form and a customer-service email, and a 2026 copyright footer.",
+      "source": "https://www.blahoody.com/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "SA Varsity Newz (29 July 2026) reports By Lovely Suites, a luxury beauty salon in Midrand, as her first-ever physical store, with construction underway.",
+      "source": "https://www.savarsitynewz.co.za/2026/07/29/from-screen-to-salon-lerato-nxumalo-launches-luxury-beauty-destination-by-lovely-suites/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The same article lists luxury wigs, installations and braiding, nail bars, eyelash extensions, aesthetic treatments and VIP private suites.",
+      "source": "https://www.savarsitynewz.co.za/2026/07/29/from-screen-to-salon-lerato-nxumalo-launches-luxury-beauty-destination-by-lovely-suites/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The article gives no opening date and does not say how bookings will be taken.",
+      "source": "https://www.savarsitynewz.co.za/2026/07/29/from-screen-to-salon-lerato-nxumalo-launches-luxury-beauty-destination-by-lovely-suites/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Wikipedia says she founded By Lovely Suites in Midrand in July 2026, as her first physical shop.",
+      "source": "https://en.wikipedia.org/wiki/Lerato_Nxumalo",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "blaHoody",
+      "what": "Comfort-wear hoodie and loungewear brand, launched July 2025, sold through its own online store",
+      "source": "https://www.blahoody.com/"
+    },
+    {
+      "name": "By Lovely Suites",
+      "what": "Luxury beauty salon in Midrand: wigs, braids, nails, lashes, aesthetics; under construction as of 29 July 2026",
+      "source": "https://www.savarsitynewz.co.za/2026/07/29/from-screen-to-salon-lerato-nxumalo-launches-luxury-beauty-destination-by-lovely-suites/"
+    }
+  ],
+  "channels_observed": [
+    "blaHoody online store with a contact page (contact form and customer-service email) at blahoody.com/pages/contact; the store's footer says 2026",
+    "TikTok and Instagram accounts (@lratonxumalo) exist; the pages did not load without login, so nothing is recorded from them",
+    "A search result suggested the salon lists a WhatsApp number for bookings on a Facebook post; that page could not be opened, so it is not verified and no number is recorded"
+  ],
+  "decision_maker": "Lerato Nxumalo, founder-owner of both businesses.",
+  "approach": {
+    "route": "Use the contact form on blaHoody's own website, which is her own business, and say plainly that the message is also about the salon. A warm introduction is better. Do not use any salon customer WhatsApp booking number to pitch.",
+    "contact_source": "https://www.blahoody.com/pages/contact (contact form and customer-service email published by the business). If it goes unanswered: none found, needs warm intro.",
+    "opening_message": "Hi Lerato, I'm from FluxMuse, a new South African platform that helps small businesses handle WhatsApp enquiries and bookings. We are new and set each business up by hand. I saw that By Lovely Suites in Midrand was under construction in late July and that blaHoody runs its own online store. I'm curious how appointment questions will reach you once the salon opens. Could we have a 20-minute call? If this isn't relevant, tell me and I won't write again.",
+    "compliance_note": "A relevant, one-to-one message through the business contact form on her own store, with an opt-out, is a defensible route under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "Appointment requests for your new salon may arrive as DMs and comments on your personal accounts, mixed with fan messages.",
+      "basis": "inferred",
+      "evidence": "The salon was announced through social channels (SA Varsity Newz). This is typical for creator-owned salons.",
+      "validate_with": "Where will clients book once the salon opens, and who will answer?"
+    },
+    {
+      "pain": "Your salon services (wigs, braids, lashes, nails) each need different durations, deposits and prep questions.",
+      "basis": "inferred",
+      "evidence": "Your multi-service menu is listed in the SA Varsity Newz article.",
+      "validate_with": "What do you need to know before you can confirm an appointment?"
+    },
+    {
+      "pain": "Hoodie customers may still ask about sizing, delivery and stock by DM, even though your store takes orders.",
+      "basis": "inferred",
+      "evidence": "blaHoody has a full online store with checkout, so we do not think orders are the pain. Support questions are our guess.",
+      "validate_with": "What do blaHoody customers message you about that the store does not answer?"
+    },
+    {
+      "pain": "Two businesses plus content work leave little time to answer messages promptly.",
+      "basis": "inferred",
+      "evidence": "You run two ventures alongside acting and content creation, per Wikipedia and SA Varsity Newz.",
+      "validate_with": "How many messages a day do you and your team handle, and what is the slowest part?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R289/month (Micro) for the salon; R1,999/month (Growth) only if blaHoody needs its own channel",
+    "reasoning": "Strong timing and a plausible WhatsApp-shaped problem: a new appointment business with a creator's inbound. blaHoody already has a working online store, so the real opening is the salon. Poor-fit risks: the salon may already be open with its own booking method (a search result hinted at a WhatsApp booking number, unverified), staff may handle messages, and a salon owner in build-out may not want another tool."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "The salon is the clear place to start and needs one WhatsApp number. blaHoody already has an online store.",
+    "upgrade_path": "Growth if blaHoody also needs its own number and page."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: number, profile, templates, quick replies",
+      "status": "live",
+      "for_them": "A salon booking number with saved replies for services, prices, prep and location."
+    },
+    {
+      "capability": "Answers in the customer's language",
+      "status": "live",
+      "for_them": "The assistant follows the client's language when answering common questions."
+    },
+    {
+      "capability": "Hosted shop link with orders arriving on WhatsApp",
+      "status": "live",
+      "for_them": "A public services and price page for the salon, where each request arrives as a pre-typed WhatsApp message to your number."
+    },
+    {
+      "capability": "WhatsApp Concierge: product photos to catalogue",
+      "status": "live",
+      "for_them": "Send photos of salon services or price lists on WhatsApp and get catalogue entries drafted for approval. Newly launched; no merchant has run it end to end yet."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Captions and images for the salon opening and hoodie drops, ready to forward to WhatsApp Status."
+    },
+    {
+      "capability": "Checkout through FluxMuse (Paystack, South African bank accounts)",
+      "status": "in_setup",
+      "for_them": "This would allow deposits or hoodie payments. It is built but not yet tested with real money, so we would not offer it yet."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "A 20-minute call to walk through your current booking and order flow",
+        "Decide whether to start with the salon, blaHoody or both"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Connect the WhatsApp Business number and write the profile and quick replies",
+        "List the questions clients ask before booking"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up the salon services link and test a request end to end with your team",
+        "Draft templates for appointment confirmations"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review real conversations and what was missed",
+        "Agree what to change before opening week or the next busy period"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started per business",
+    "Appointment requests answered within an agreed time",
+    "Service requests arriving through the salon link",
+    "Questions the assistant could not answer"
+  ],
+  "objections": [
+    {
+      "objection": "I already take bookings on WhatsApp and Instagram.",
+      "response": "That works at small volume. We would only add saved answers and one place to see requests. If it is already smooth, you should not switch."
+    },
+    {
+      "objection": "The salon isn't open yet, so it's too early.",
+      "response": "Understood. Setting up before opening is usually easier than changing habits after, but a call later is fine."
+    },
+    {
+      "objection": "You're new and have no clients.",
+      "response": "True. FluxMuse has no customers or results yet and is setting up a small first group by hand. You can judge it on a working set-up for your salon."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Answering every DM at 9pm: AI replies for a salon",
+      "url": "https://fluxmuse.ai/blog/answering-every-dm-at-9pm-ai-replies-for-a-salon"
+    }
+  ],
+  "gaps": [
+    "The salon's opening date is unknown; it was under construction on 29 July 2026 and may already be open, with its own booking method, by the time anyone writes.",
+    "A search-result snippet suggested a By Lovely Suites Facebook post lists a WhatsApp booking number. The page returned an error when opened, so this is UNVERIFIED and no number is recorded.",
+    "The earlier claim that a contact email and WhatsApp link appear on her TikTok profile could not be confirmed (the profile does not load without login) and was removed. The only verified business route is blaHoody's own contact page.",
+    "Wikipedia says the salon was 'founded' in July 2026 while SA Varsity Newz says construction was underway on 29 July 2026; treat it as not yet confirmed open.",
+    "The news24.com article of 27 July 2026 returned 403 and is not cited. The salon name is spelled 'By Lovely Suites' in most sources but 'By Lovely Suits' in that headline.",
+    "blaHoody is confirmed trading (own store, 2026 footer, winter collection), but its DM and WhatsApp handling is unknown. The store shows a customer-service email and a contact form only.",
+    "Her Instagram and TikTok posts could not be read. Personal details in the sources (marriage, age) were deliberately not recorded."
+  ]
+}

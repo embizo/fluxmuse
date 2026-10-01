@@ -1,0 +1,203 @@
+{
+  "id": "10-baked-by-nataleen",
+  "slot": "Custom cake / bakery business taking orders by DM and WhatsApp",
+  "name": "Baked by Nataleen",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Custom cakes, desserts, catering and baking courses",
+  "location": "Pretoria North, Pretoria (also Polokwane for courses)",
+  "wave": 1,
+  "why_wave": "Founder-led bakery whose own site names the founder and lists a contact form, email and WhatsApp for orders.",
+  "one_line_pitch": "Turn your photo-heavy cake enquiries into a tidy catalogue and a shop link with clear prices, with alerts when someone wants to order, so enquiries are not lost between DMs and WhatsApp.",
+  "public_facts": [
+    {
+      "fact": "The website presents the business as offering custom cakes, desserts, catering and confectionery courses.",
+      "source": "https://www.bakedbynataleen.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website's About text names Nataleen Vorster as the brainchild of the business and says she runs the kitchen; it says she first brought her baking skills to the Pioneer Museum's Boeremarket in 2009.",
+      "source": "https://www.bakedbynataleen.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The website lists an online shop and cart, a contact form, a sales email address, a phone number and a WhatsApp link, and the address 135 Erich Mayer Street, Pretoria North.",
+      "source": "https://www.bakedbynataleen.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The birthday cakes page says delivery is to Pretoria, Centurion, Pretoria East and elsewhere in Gauteng at a fee, and lists cakes and cupcakes priced from R180 up to R5,395.",
+      "source": "https://www.bakedbynataleen.co.za/cakes-for-sale/birthday-cakes/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The contact page lists a sales email address, a phone number, a link to a contact form and the business address; its deposit wording (50% non-refundable) is in the class-booking terms.",
+      "source": "https://www.bakedbynataleen.co.za/contact-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram bio (summariser-only) describes custom and themed cakes or cupcakes for birthday parties and special occasions, weekday opening hours, a WhatsApp/phone number, and links to the website and a Linktree.",
+      "source": "https://www.instagram.com/bakedbynataleen/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Instagram (summariser-only) shows highlights for birthday, wedding and baby shower cakes, cupcakes, cakesicles and party combos, and posts dated up to 2026-09-25, with a September specials promotion.",
+      "source": "https://www.instagram.com/bakedbynataleen/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "Baked by Nataleen baking courses",
+      "what": "confectionery classes in Pretoria and Polokwane",
+      "source": "https://www.bakedbynataleen.co.za/"
+    }
+  ],
+  "channels_observed": [
+    "Website with online shop, contact form, email, phone and WhatsApp (bakedbynataleen.co.za)",
+    "Instagram @bakedbynataleen with a WhatsApp number and Linktree in the bio",
+    "Facebook page listed on the contact page"
+  ],
+  "decision_maker": "Founder and head baker, Chef Nataleen Vorster (named on the business's own website).",
+  "approach": {
+    "route": "Website contact form, or the sales email published on the site, as a single human-written message.",
+    "contact_source": "https://www.bakedbynataleen.co.za/contact-us/",
+    "opening_message": "Hi Nataleen, I'm from FluxMuse, a new South African company that helps small food businesses handle WhatsApp orders. I noticed your site offers cakes, catering and courses, with orders by form, email, phone and WhatsApp. That looks like a lot of doors into one business. We are opening with a small first group and setting up by hand. Could we have a 20-minute call? If this isn't relevant, reply STOP and I won't contact you again.",
+    "compliance_note": "A single relevant business message sent through the enquiry form and email the business publishes, with an opt-out, is a defensible one-to-one approach under POPIA s69; it is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Cake enquiries can reach you across your form, email, phone and WhatsApp, so a photo request could be answered late or lost.",
+      "basis": "inferred",
+      "evidence": "cake businesses often take enquiries on several channels. Your site lists a form, email, phone and WhatsApp link, and your Instagram bio adds another route. We do not know whether any enquiries are actually missed.",
+      "validate_with": "Which channel do most cake requests arrive on, and how do you make sure none get missed?"
+    },
+    {
+      "pain": "Custom cakes need a design, size, date and deposit agreed before baking, and this back-and-forth is long and repeated for each order.",
+      "basis": "inferred",
+      "evidence": "this is common in custom cake trades, and your contact page mentions a deposit to secure bookings.",
+      "validate_with": "What details do you have to ask every customer before you can quote, and how long does that usually take?"
+    },
+    {
+      "pain": "You offer catering and courses beside cakes, which may mean one small team switches between very different enquiries.",
+      "basis": "observed",
+      "evidence": "your site lists custom cakes, catering and confectionery courses. We do not know how big your team is.",
+      "validate_with": "Which of the three lines takes most of your enquiry time?"
+    },
+    {
+      "pain": "You produce lots of photo content, but only some of it may turn into shareable, priced, ready-to-order items.",
+      "basis": "inferred",
+      "evidence": "your Instagram shows many cake categories and party bundles. We did not check whether each one has a current price online.",
+      "validate_with": "Do customers ask for the price of designs they saw on Instagram, and how often?"
+    }
+  ],
+  "fit": {
+    "attainability": 3,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "The business is founder-led, has a published route to her, and clearly spans many enquiry channels and product lines. Poor-fit risks: she already runs an online shop and website, so she may consider the problem solved; the value of a shop link is limited for one-off custom designs that need a personal quote; and shop checkout is still in setup, so orders arrive as a WhatsApp message."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "You run one kitchen and one brand. Micro adds one WhatsApp number and the extra channels without paying for multi-brand plans.",
+    "upgrade_path": "If catering or courses become a separate brand with its own number, a bigger plan would be worth reviewing together."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send photos of your standard cakes, cupcakes, cakesicles and party packs on WhatsApp. The AI drafts names, descriptions and a price guess, and you confirm or correct each one. Newly launched, no business has run it end to end yet, so we would do the first batch together."
+    },
+    {
+      "capability": "Hosted shop link (fluxmuse.ai/s/<name>)",
+      "status": "live",
+      "for_them": "A single link to your ready-made range with prices, for Instagram and WhatsApp. Customers who want something custom tap through and the request arrives as a pre-typed WhatsApp message to you."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "A WhatsApp alert for each request and a SOLD reply once a deposit is confirmed, so your open enquiries are visible in one place."
+    },
+    {
+      "capability": "WhatsApp Business setup: quick replies and templates",
+      "status": "live",
+      "for_them": "Quick replies for lead times, delivery areas and what you need from a customer (date, servings, flavour, design photo), so you do not type the same questions each time."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Photo in, caption and cleaned-up image back on WhatsApp, ready to forward to WhatsApp Status for your seasonal party bundles."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Meta approvals are not in yet, so until then your posts go to WhatsApp Status. We would not rely on it."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to map how a cake enquiry travels from first message to paid deposit",
+        "Choose 8 to 12 ready-to-order products for your catalogue",
+        "Send those photos through the Concierge and confirm each price"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Publish your shop link and add it to your Instagram and WhatsApp profile",
+        "Write quick replies for lead times, delivery and the info you need for a custom quote",
+        "Test the order alert with two dummy orders"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Use the POST keyword for one seasonal offer and forward it to WhatsApp Status",
+        "Mark real orders SOLD after deposits are confirmed",
+        "Start a consented customer list for cake-season reminders"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review together how many enquiries came from the link and how many still needed back-and-forth",
+        "Adjust your catalogue, prices and quick replies",
+        "Decide whether to continue, based on what we measured"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from your shop link",
+    "Enquiries that arrive with the design, date and servings already stated",
+    "Orders marked SOLD per week",
+    "Time you spend per enquiry before a quote is sent"
+  ],
+  "objections": [
+    {
+      "objection": "I already have a website and an online shop.",
+      "response": "Yes, and we would not replace it. FluxMuse focuses on the WhatsApp side: getting photos into a catalogue quickly, alerts when someone enquires, and quick replies for the questions you answer every time."
+    },
+    {
+      "objection": "Custom cakes cannot go in a shop; every order is different.",
+      "response": "Agreed for bespoke designs. The link is for your standard items and as a clean way to start a custom conversation, so the customer arrives with size, date and design already filled in."
+    },
+    {
+      "objection": "I don't have time to learn another tool.",
+      "response": "You would send photos on WhatsApp and reply YES or NO, and we set it up by hand. We are new and are working with a small first group, so we would rather do the work with you than hand you a manual."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Catering orders that do not get lost in a thread",
+      "url": "https://fluxmuse.ai/blog/catering-orders-that-do-not-get-lost-in-a-thread"
+    }
+  ],
+  "gaps": [
+    "The contact page still carries older class rules (such as masks) and the homepage carries a Black Friday banner; the deposit wording is about class bookings and was not confirmed for cakes.",
+    "Parts of the site look out of date; current trading rests on Instagram posts dated 2026-09-14 to 2026-09-25 (summariser-only, since Instagram serves a login shell to raw fetches).",
+    "Instagram follower count and highlight names are summariser-only and are not used beyond what is listed.",
+    "Whether she uses WhatsApp Business, and how many staff she has, is unknown.",
+    "Blog title derived from the URL slug because the page renders client-side (slug is in the fluxmuse.ai sitemap)."
+  ]
+}

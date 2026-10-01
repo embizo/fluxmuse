@@ -1,0 +1,210 @@
+{
+  "id": "20-juicy-designs",
+  "slot": "Marketing agency: performance and ads shop",
+  "name": "Juicy Designs",
+  "legal_or_trading_name": "",
+  "segment": "agency",
+  "trade": "Digital marketing agency: paid ads, SEO, social media management and web",
+  "location": "Die Wilgers, Pretoria, Gauteng",
+  "wave": 2,
+  "why_wave": "A founder-led agency with a published email, but its site shows a broad, performance-led offer (ads, SEO, web, design) with prices above the smallest businesses, so the fit with FluxMuse is narrower and depends on Meta approvals that are not yet in place.",
+  "one_line_pitch": "Give your agency a quick way to make organic captions, images and clips for your social clients, and to offer WhatsApp set-up alongside your ad campaigns.",
+  "public_facts": [
+    {
+      "fact": "Describes itself as a founder-led digital marketing agency in Pretoria, established in 2015 by Cobus van der Westhuizen and Wynand van der Westhuizen.",
+      "source": "https://www.juicydesigns.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Says clients work directly with the founders, with no account managers.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its Bizcommunity company profile lists 6 employees.",
+      "source": "https://www.bizcommunity.com/Company/JuicyDesigns",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Lists a wide range of services on its own site: SEO and AI-search work, Google Ads, Meta and other social advertising, social media management and content, email and SMS marketing, influencer work, PR, web design, branding, graphic design and printing.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes 'from' prices on its own site: social media management from R6,000 a month and Google Ads management from R6,000 a month (ad spend separate); its homepage says packages start from R5,000 a month.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its homepage describes Cobus as Google Ads Certified and Wynand as a Meta Business Partner.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "States that it has served more than 64 clients since 2015.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Its homepage publishes an email address, a phone number and a WhatsApp link.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Links to Facebook, Instagram, LinkedIn, X and TikTok from its website.",
+      "source": "https://www.juicydesigns.co.za/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with published email, phone and WhatsApp option (juicydesigns.co.za)",
+    "Facebook, Instagram, LinkedIn, X and TikTok links on the website",
+    "Service pages and a blog on its own site"
+  ],
+  "decision_maker": "Cobus van der Westhuizen (Co-founder and CEO) and Wynand van der Westhuizen (Creative Director), named on the agency's own about page; clients are said to work with the founders directly.",
+  "approach": {
+    "route": "The business email address published on the agency's own website.",
+    "contact_source": "https://www.juicydesigns.co.za/",
+    "opening_message": "Hello, I'm [NAME] from FluxMuse, a new South African platform for small-business social content and WhatsApp. I saw that Juicy Designs runs Meta and Google ads and social media management, and that clients work directly with the founders. We are new and have no customers yet, so I'm only asking for a 20-minute call to hear how organic content and WhatsApp are handled alongside the ads work, and whether a partnership makes sense. If this isn't relevant, tell me and I won't contact you again.",
+    "compliance_note": "A single human-sent message to the business email the agency publishes, with a clear opt-out, is the defensible one-to-one route under POPIA s69."
+  },
+  "pains": [
+    {
+      "pain": "With two founders working directly with clients, organic content and social management for each client may be limited by founder time.",
+      "basis": "inferred",
+      "evidence": "you say clients work directly with the founders, and Bizcommunity lists 6 employees. Whether this causes a bottleneck is a question for you, not something we know.",
+      "validate_with": "How much of each client's organic content is done by the founders and how much by the team?"
+    },
+    {
+      "pain": "Clients running ads also get leads arriving on WhatsApp that you may not handle.",
+      "basis": "inferred",
+      "evidence": "you run Meta advertising and publish a WhatsApp number yourselves. Nothing is published about WhatsApp handling for clients.",
+      "validate_with": "Where do leads from your clients' ads land, and who replies to them?"
+    },
+    {
+      "pain": "Producing many captions, images and short videos for social retainers is repetitive work.",
+      "basis": "inferred",
+      "evidence": "you publish a social media management offer from R6,000 a month.",
+      "validate_with": "Which parts of a retainer take longest each month?"
+    },
+    {
+      "pain": "Reporting across ads, social and web to many clients takes time.",
+      "basis": "inferred",
+      "evidence": "this is common for a multi-service agency. Nothing is published about your reporting.",
+      "validate_with": "How long does monthly reporting take per client and which parts could you drop?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R1,999/month (Growth), R9,999/month (Agency) only if it moves a broad social roster across",
+    "reasoning": "Two hands-on founders and a published email make it reachable, and organic social plus WhatsApp is a real gap next to paid ads. But the business runs on Google and Meta ad performance; FluxMuse does not run tenant ads yet (click-to-WhatsApp ads are not offered to tenants), Instagram and Facebook auto-publishing is not approved, and the founders may see a platform like ours as a competitor for their retainers. The agency's price points suggest clients above the smallest businesses, so the small-business fit is less clear."
+  },
+  "recommended_plan": {
+    "tier": "growth",
+    "why": "You have six staff and two founders, so three brands and fifteen channels is enough to test on your own account and two clients.",
+    "upgrade_path": "Agency (R9,999/month list price; partner terms on request) becomes worth it if you move more than a handful of client brands and want white-label."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Produce first-draft organic captions and images for your social clients from photos sent on WhatsApp, to be reviewed by your team."
+    },
+    {
+      "capability": "AI video clips (short, 720p by default)",
+      "status": "live",
+      "for_them": "Short clips for social posts without a full edit. Newly launched."
+    },
+    {
+      "capability": "WhatsApp Business setup",
+      "status": "live",
+      "for_them": "Set up a client's WhatsApp line, profile, quick replies and templates so leads from their ads have somewhere to land."
+    },
+    {
+      "capability": "Voice-note transcription and answers in the customer's language",
+      "status": "live",
+      "for_them": "Voice notes become text, and replies follow the customer's language, useful for multilingual leads."
+    },
+    {
+      "capability": "TikTok posting (video only)",
+      "status": "live",
+      "for_them": "Post video to TikTok for your clients from one place, since you already advertise on TikTok."
+    },
+    {
+      "capability": "Auto-publishing to Facebook Pages and Instagram",
+      "status": "in_setup",
+      "for_them": "Being switched on. Meta permissions are not approved yet, so you would keep posting your usual way for now."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Payment first, on the terms in section 7.",
+        "Set up the workspace and connect your agency's WhatsApp number.",
+        "Choose one client whose leads arrive on WhatsApp."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Create captions, images and a clip from that client's real photos.",
+        "Compare with your team's normal process and note what needs fixing."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Set up WhatsApp Business for the client with quick replies and templates.",
+        "Look at where ad leads land and how they are answered."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review numbers together: posts created, time saved, WhatsApp conversations.",
+        "Discuss partner terms and whether to bring more clients on."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "Organic posts created per client",
+    "Founder or team time saved per client per week, as reported by you",
+    "WhatsApp conversations started for a client",
+    "Client brands moved onto the platform"
+  ],
+  "objections": [
+    {
+      "objection": "Our value is ad performance, not organic content.",
+      "response": "Agreed, and FluxMuse does not run ads for clients yet. It would only help with organic content and WhatsApp handling, so it is worth it only if that takes real time for you today."
+    },
+    {
+      "objection": "We need Facebook and Instagram posting to be automatic.",
+      "response": "Not yet. Auto-publishing is being switched on but the Meta permissions are not approved, so today you would create in FluxMuse and post as you do now."
+    },
+    {
+      "objection": "You are a competitor for our retainers.",
+      "response": "That is a fair question. On the Agency tier you can run clients under your own branding. How the client relationship is handled belongs in the partner terms, which are on request and not finalised, and we would settle it in writing before you add any client."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "One content calendar for every client",
+      "url": "https://fluxmuse.ai/blog/one-content-calendar-every-client"
+    },
+    {
+      "title": "One draft, every channel: social publishing without the copy-paste",
+      "url": "https://fluxmuse.ai/blog/one-draft-every-channel-social-publishing-without-the-copy-paste"
+    }
+  ],
+  "gaps": [
+    "Its contact page and social media service page returned only a bot-verification screen, so the contact form and its approval and reporting process could not be checked; the email, phone and WhatsApp link were seen on the homepage.",
+    "The physical address appears on Bizcommunity, not on pages I could open on its own site, so it is not used.",
+    "Team size (6) comes from Bizcommunity only, undated.",
+    "The site names clients and publishes ROAS, rating and lead-growth claims; none are used here.",
+    "How many of its 64+ clients are small businesses on social retainers is unknown.",
+    "Earlier draft prices (R5,000 social, R7,500 Google Ads) did not match the current pricing pages (R6,000 each) and were corrected.",
+    "Blog titles were derived from slugs because fluxmuse.ai blog pages render client-side."
+  ]
+}

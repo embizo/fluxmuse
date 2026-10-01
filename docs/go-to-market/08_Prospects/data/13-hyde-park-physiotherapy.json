@@ -1,0 +1,196 @@
+{
+  "id": "13-hyde-park-physiotherapy",
+  "slot": "Appointment-based: private physiotherapy practice",
+  "name": "Hyde Park Physiotherapy",
+  "legal_or_trading_name": "",
+  "segment": "solo",
+  "trade": "Private one-on-one physiotherapy, sports massage and Pilates practice",
+  "location": "Hyde Park Corner, Sandton, Johannesburg",
+  "wave": 2,
+  "why_wave": "Healthcare admin is sensitive and this practice already has online booking, so approach after we have worked with simpler businesses first.",
+  "one_line_pitch": "Help your practice keep its diary full by handling WhatsApp scheduling questions and appointment reminders on your own number, with admin only and no patient information involved.",
+  "public_facts": [
+    {
+      "fact": "Describes itself as a private, one-on-one practice in the Hyde Park Corner Office Tower in Sandton, offering physiotherapy, sports massage and Pilates.",
+      "source": "https://hydeparkphysio.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Carmen Baier is named on the About page as the physiotherapist who runs the practice, with 15+ years of experience.",
+      "source": "https://hydeparkphysio.co.za/about/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Offers booking online (real-time availability, up to a month ahead or as late as four hours before), by phone during office hours, or by WhatsApp message or email with preferred times.",
+      "source": "https://hydeparkphysio.co.za/book-your-appointment/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "States a cancellation rule: reschedule or cancel at least 4 business hours before the appointment to avoid a late-cancellation fee, and says it will try to offer the slot to someone else.",
+      "source": "https://hydeparkphysio.co.za/book-your-appointment/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes one number for phone and WhatsApp, and asks for no WhatsApp calls (messages only).",
+      "source": "https://hydeparkphysio.co.za/contact-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "Publishes a practice email address and a Suite 404 street address at Hyde Park Corner on its contact page.",
+      "source": "https://hydeparkphysio.co.za/contact-us/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "States phone office hours as Monday to Friday, 07:30 to 17:00.",
+      "source": "https://hydeparkphysio.co.za/book-your-appointment/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The practice has a public Setmore booking page showing opening hours, a 4-hour cancellation policy and a 5.0 rating from 85 reviews.",
+      "source": "https://hydeparkphysiosa.setmore.com/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Website with online booking portal (hydeparkphysio.co.za/book-your-appointment)",
+    "One number for phone and WhatsApp messages (no WhatsApp calls), published on the contact page",
+    "Published practice email on the contact page",
+    "Setmore booking page (hydeparkphysiosa.setmore.com)"
+  ],
+  "decision_maker": "Carmen Baier, physiotherapist and owner (named on the practice's own About page).",
+  "approach": {
+    "route": "Email to the practice address published on the contact page, as a single human-written admin message. Do not message the WhatsApp number, which the practice publishes for booking messages.",
+    "contact_source": "https://hydeparkphysio.co.za/contact-us/",
+    "opening_message": "Hello Carmen, I am [name] from FluxMuse, a new South African WhatsApp and marketing tool for small businesses. I noticed Hyde Park Physiotherapy offers online booking as well as a WhatsApp line, with a clear late-cancellation policy. We are opening with a small first group of businesses and I would value 20 minutes to ask how your admin around reminders and rebooking works today. This is about admin only, never patient information. If it is not relevant, tell me and I will not follow up.",
+    "compliance_note": "A single one-to-one business email to a published business address about a relevant service, with a clear opt-out, is the defensible route under POPIA s69; this is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Late cancellations and no-shows leave gaps in your diary that are hard to refill at short notice.",
+      "basis": "inferred",
+      "evidence": "appointment-based practices commonly face this, and your booking page publishes a 4-business-hour cancellation rule with a fee, which suggests late cancellations are a real cost.",
+      "validate_with": "How many appointments a month are cancelled or missed with under four hours' notice, and how do you refill them?"
+    },
+    {
+      "pain": "Scheduling questions arrive by WhatsApp and phone, and one person has to answer them between patients.",
+      "basis": "inferred",
+      "evidence": "your booking page invites preferred times by WhatsApp or email and lists phone hours. We do not know whether replies are slow.",
+      "validate_with": "Who answers the WhatsApp line during treatment sessions, and how long do replies usually take?"
+    },
+    {
+      "pain": "Patients who finish a course of treatment may not be gently invited back for maintenance sessions, sports massage or Pilates.",
+      "basis": "inferred",
+      "evidence": "you offer several services (physiotherapy, sports massage, Pilates), and cross-referral between them is a typical gap for small practices.",
+      "validate_with": "Do you currently invite past patients to book sports massage or Pilates, and how?"
+    },
+    {
+      "pain": "Reminders and rebooking may run through your booking tool but not through the channel patients actually reply on.",
+      "basis": "inferred",
+      "evidence": "online booking plus a separate WhatsApp line means two places to check. We do not know whether your Setmore reminders are switched on.",
+      "validate_with": "What reminders do patients receive today and where do they reply?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R289/month (Micro)",
+    "reasoning": "A solo owner with an existing online booking tool and a clear cancellation policy, so the diary may already be well managed and the gain modest. Healthcare admin is sensitive: patient data is special personal information under POPIA, so the owner may reasonably refuse any tool that touches patient conversations, and we would need to keep to admin-only messages. Could be a poor fit if Setmore already handles reminders to her satisfaction."
+  },
+  "recommended_plan": {
+    "tier": "micro",
+    "why": "You are one practitioner with one WhatsApp number, so a single connected number and a few channels fit better than a multi-brand plan.",
+    "upgrade_path": "Starter or Growth only if you add practitioners or want several channels connected."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Business setup: profile, quick replies and message templates",
+      "status": "live",
+      "for_them": "Set up saved replies for the questions that come to your line (location and parking, what to bring, how to book), so the answer is one tap between patients. Templates cover reminder wording, subject to Meta approval for messages sent outside the 24-hour window."
+    },
+    {
+      "capability": "Answers in the customer's language",
+      "status": "live",
+      "for_them": "General enquiries such as location and opening hours can be answered in the language the person writes in. Anything clinical is handed to you. The assistant is not used for clinical questions."
+    },
+    {
+      "capability": "Broadcast to consented contacts",
+      "status": "live",
+      "for_them": "A short admin notice to people who have agreed to hear from your practice, for example holiday hours or newly opened Pilates slots. No patient details are involved."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "A caption and image for general wellness or practice-news posts come back on WhatsApp, ready to forward to WhatsApp Status. Nothing about individual patients."
+    },
+    {
+      "capability": "Daily digest message",
+      "status": "in_setup",
+      "for_them": "A morning summary of the day's enquiries is being switched on. It depends on a Meta-approved message template and is not yet available."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "Call to understand how booking, reminders and cancellations are handled today.",
+        "Agree strictly what the assistant may and may not do (admin only, no clinical content).",
+        "Connect your practice's WhatsApp Business number, or agree whether to use a separate number."
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Write quick replies for location, parking, what to bring and how to book.",
+        "Draft reminder and rebooking message templates and submit them for Meta approval."
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Test the quick replies and templates with your own number.",
+        "Decide with you which past-patient messages are appropriate and consented."
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review the month together: which questions repeat, what was useful, what to drop.",
+        "Decide whether to continue on the same plan."
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations that ended in a booking request",
+    "Time between an admin message arriving and the first reply",
+    "Late cancellations before and after reminder wording is tested, as your own count",
+    "Which quick replies are used most"
+  ],
+  "objections": [
+    {
+      "objection": "Patient information is special personal information under POPIA and I will not put it into another tool.",
+      "response": "That is a fair concern. We would keep the scope to admin only: opening hours, booking questions and reminders, with no clinical notes or health details stored or generated. You decide what goes through the tool, and we would set that out in writing before anything is switched on."
+    },
+    {
+      "objection": "My online booking system already sends reminders.",
+      "response": "It may well cover that. The question for the call is whether patients reply to those reminders on WhatsApp, and whether anything is missing, such as rebooking invitations. If nothing is missing, this is not for you."
+    },
+    {
+      "objection": "I am too busy to learn a new tool.",
+      "response": "We set it up by hand and start with a few saved replies. If it takes more than a few minutes of your week to run, we have set it up wrongly."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Fewer no-shows for a physiotherapy practice",
+      "url": "https://fluxmuse.ai/blog/fewer-no-shows-for-a-physiotherapy-practice"
+    }
+  ],
+  "gaps": [
+    "Could not confirm whether Setmore reminders are switched on or what they say.",
+    "No public information on patient volume, staff, or reply times. The About page does not say she is the only practitioner, so that is not claimed.",
+    "The practice email listed on the booking page (reception@) differs from the one on the contact page (carmen@); only the contact page address is used.",
+    "Trading currency: page footers say 2025 and the Setmore page shows current opening hours; I could not find a 2026 dated post. Worth a quick check.",
+    "The About page contains personal history about the previous owner; none of it is used.",
+    "Could not open Google Business or social pages. Whether the WhatsApp number runs on WhatsApp Business is unknown."
+  ]
+}

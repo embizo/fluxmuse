@@ -1,0 +1,197 @@
+{
+  "id": "12-zuma-meatworks",
+  "slot": "Butchery / grocery wholesaler serving repeat customers",
+  "name": "Zuma Meatworks",
+  "legal_or_trading_name": "",
+  "segment": "sme",
+  "trade": "Online butchery and meat distribution",
+  "location": "Johannesburg CBD, Gauteng",
+  "wave": 2,
+  "why_wave": "No owner is named anywhere I could open, and it already has its own online store, so the route in is less direct than for a WhatsApp-only owner-operator.",
+  "one_line_pitch": "Give repeat buyers a quick WhatsApp reorder path, and turn price lists and specials into clean, current posts and order alerts.",
+  "public_facts": [
+    {
+      "fact": "The website is an online store (hosted on the TheOmniTeQ platform) with categories for burger patties, meat combos, polony, processed meat, sliced cold meat and viennas.",
+      "source": "https://zumameatworks.theomniteq.com/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The store says customers can browse, order, pay and track a purchase, and offers a cart, checkout, order tracking and account sign-in.",
+      "source": "https://zumameatworks.theomniteq.com/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The store shows rand prices per item (for example a 450g pack at R60) and 'Out of stock' labels on some items.",
+      "source": "https://zumameatworks.theomniteq.com/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The store lists meat combos: a Student Bundle, a Golden Comfort Hamper and a Family Plus Hamper.",
+      "source": "https://zumameatworks.theomniteq.com/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The store lists a Johannesburg CBD location with postal code 2194 (no street address) and a 2026 copyright line.",
+      "source": "https://zumameatworks.theomniteq.com/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram bio (summariser-only) reads 'Your everyday essential' with a phone number and a link to the store website.",
+      "source": "https://www.instagram.com/zuma_meatworks/",
+      "retrieved": "2026-09-26"
+    },
+    {
+      "fact": "The Instagram story highlights (summariser-only) include 'Pricelist', 'Offerings' and 'Fulfilments', and posts were dated through September 2026.",
+      "source": "https://www.instagram.com/zuma_meatworks/",
+      "retrieved": "2026-09-26"
+    }
+  ],
+  "businesses": [],
+  "channels_observed": [
+    "Own online store with cart, checkout and order tracking (zumameatworks.theomniteq.com)",
+    "Instagram @zuma_meatworks with a phone number in the profile and price lists in highlights",
+    "Facebook page and TikTok account were suggested by search results only; not opened"
+  ],
+  "decision_maker": "Owner or operations lead; no name is published on any page I could open.",
+  "approach": {
+    "route": "Message the phone number published on the business's Instagram profile (WhatsApp if it has it), or the public Instagram account, as a single human-written note.",
+    "contact_source": "https://www.instagram.com/zuma_meatworks/",
+    "opening_message": "Hi, I'm from FluxMuse, a new South African company that helps small businesses handle WhatsApp orders and posts. I saw Zuma Meatworks sells meat packs online and shares price lists on Instagram. For repeat buyers, a WhatsApp reorder path might save you typing. We are opening with a small first group and set things up by hand. Could I have 20 minutes to show you? If this isn't for you, reply STOP and I won't message again.",
+    "compliance_note": "One relevant business message to the number the business publishes on its own public profile, with an opt-out, is a defensible one-to-one approach under POPIA s69; it is not legal advice."
+  },
+  "pains": [
+    {
+      "pain": "Repeat buyers reorder the same packs weekly and each reorder is typed and confirmed by hand.",
+      "basis": "inferred",
+      "evidence": "Typical for a food distributor selling by the kilo and in combos; the site sells packs and combos (https://zumameatworks.theomniteq.com/).",
+      "validate_with": "What share of your weekly orders are the same customers ordering the same things?"
+    },
+    {
+      "pain": "Price lists and specials are posted as Instagram content, so buyers may act on an out-of-date list.",
+      "basis": "inferred",
+      "evidence": "Instagram highlights include one named 'Pricelist' (summariser-only, https://www.instagram.com/zuma_meatworks/); whether it goes out of date is not known.",
+      "validate_with": "How often do prices change, and how do customers find the latest list?"
+    },
+    {
+      "pain": "Stock availability changes daily for a cold-chain business, and customers do not know what is available before ordering.",
+      "basis": "inferred",
+      "evidence": "Typical for fresh and frozen distribution. The store does mark some items 'Out of stock' (https://zumameatworks.theomniteq.com/), so availability is partly shown online; how customers on Instagram or the phone learn stock is not known.",
+      "validate_with": "How do you tell customers that something is out of stock or that packing has closed for the day?"
+    },
+    {
+      "pain": "Two order paths (website and phone or WhatsApp) mean someone must reconcile which orders are paid and packed.",
+      "basis": "inferred",
+      "evidence": "The site has a checkout while the Instagram bio lists a phone number (https://www.instagram.com/zuma_meatworks/); whether orders come both ways is not known.",
+      "validate_with": "What share of orders come through the website versus WhatsApp or phone?"
+    }
+  ],
+  "fit": {
+    "attainability": 2,
+    "revenue_potential": "R499/month (Starter)",
+    "reasoning": "A young, online-first meat business with repeat customers and delivery. Poor-fit risks: it already has a proper online store with checkout and tracking, built by a third-party platform, so the FluxMuse benefit is narrower; no owner is named; shop checkout is still in setup, so FluxMuse cannot replace its store; and I could not confirm who the customers are (households or trade)."
+  },
+  "recommended_plan": {
+    "tier": "starter",
+    "why": "A distributor with more customers and more orders per week than a single-kitchen shop; Starter is the sensible first step, and the pricing page should be checked against volume.",
+    "upgrade_path": "If trade or multi-depot ordering over WhatsApp grows, Growth (R1,999) becomes worth reviewing."
+  },
+  "what_we_would_do": [
+    {
+      "capability": "WhatsApp Concierge: photos to catalogue",
+      "status": "live",
+      "for_them": "Send product photos of packs and combos on WhatsApp; the AI drafts names, descriptions and a price guess, and you confirm. Newly launched, so we would do the first batch together."
+    },
+    {
+      "capability": "Hosted shop link (fluxmuse.ai/s/<name>)",
+      "status": "live",
+      "for_them": "A WhatsApp-friendly shop link for repeat buyers showing today's packs and prices, with orders arriving as a pre-typed WhatsApp message to your own number. The existing online store stays."
+    },
+    {
+      "capability": "Order alerts and SOLD",
+      "status": "live",
+      "for_them": "An alert per WhatsApp reorder and a SOLD reply once packed, so each customer's order is visible."
+    },
+    {
+      "capability": "WhatsApp Business setup: quick replies, templates and broadcast to consented contacts",
+      "status": "live",
+      "for_them": "Quick replies for cut-off times and delivery, and a broadcast to customers who agreed to receive weekly specials."
+    },
+    {
+      "capability": "AI captions and images for posts (POST keyword)",
+      "status": "live",
+      "for_them": "Photo in, caption and image back on WhatsApp for a weekly special, ready for WhatsApp Status."
+    },
+    {
+      "capability": "Daily digest message",
+      "status": "in_setup",
+      "for_them": "A daily summary of orders is being switched on and needs a Meta-approved template first, so it is not available yet."
+    }
+  ],
+  "first_30_days": [
+    {
+      "week": 1,
+      "actions": [
+        "20-minute call to see how repeat customers order and how the website and WhatsApp fit together",
+        "Photograph the top packs and combos and add them via the Concierge",
+        "Confirm prices and pack sizes with you"
+      ]
+    },
+    {
+      "week": 2,
+      "actions": [
+        "Publish the shop link and share it with a small group of regular buyers",
+        "Set up quick replies for cut-off times and delivery",
+        "Run test orders to check alerts"
+      ]
+    },
+    {
+      "week": 3,
+      "actions": [
+        "Use the POST keyword for weekly specials to WhatsApp Status",
+        "Mark orders SOLD once packed",
+        "Build an opt-in list for weekly price updates"
+      ]
+    },
+    {
+      "week": 4,
+      "actions": [
+        "Review reorders coming through the link versus the store",
+        "Fix the catalogue and quick replies",
+        "Decide together whether to continue"
+      ]
+    }
+  ],
+  "we_would_track": [
+    "WhatsApp conversations started from your shop link",
+    "Repeat customers reordering through WhatsApp",
+    "Orders marked SOLD per week",
+    "Customers who opt in to weekly specials"
+  ],
+  "objections": [
+    {
+      "objection": "I already have an online store with checkout and tracking.",
+      "response": "Yes, and it stays. FluxMuse would only add a fast WhatsApp reorder path and simpler posts; if most customers already use the store, we would say it is not worth it."
+    },
+    {
+      "objection": "My customers just phone or WhatsApp me and that is fine.",
+      "response": "That is the group we would help: a link with current prices and an alert per order, so nothing is buried in a chat."
+    },
+    {
+      "objection": "I am not sure a new company can be relied on.",
+      "response": "Fair. FluxMuse is new, has no customer track record yet, and is opening with a small first group set up by hand. We would agree what to measure on the call and you decide after seeing it."
+    }
+  ],
+  "related_reading": [
+    {
+      "title": "Order intake for a wholesaler without the spreadsheet",
+      "url": "https://fluxmuse.ai/blog/order-intake-for-a-wholesaler-without-the-spreadsheet"
+    }
+  ],
+  "gaps": [
+    "The main site www.zumameatworks.com would not load (DNS failed for me), so I only opened the theomniteq-hosted store and the Instagram profile. Search-result snippets mentioned a founding date, WhatsApp numbers and a same-day cut-off, but I did not open them and they are not used.",
+    "No owner or team name found; headcount unknown.",
+    "Customer mix (households versus trade, spaza or caterers) is unconfirmed, so it may not be a repeat trade customer business.",
+    "The Instagram bio and highlights are summariser-only (Instagram serves a login shell to raw fetches). The earlier claim of 'delivery-box posts' and 'Johannesburg' in the bio was not confirmed and is dropped.",
+    "Blog title derived from the URL slug because the page renders client-side (slug is in the fluxmuse.ai sitemap)."
+  ]
+}
