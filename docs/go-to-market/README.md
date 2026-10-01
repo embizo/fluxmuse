@@ -14,7 +14,7 @@ alongside the pilot campaign.
 | 05 | Business Plan | Investors, banks, DFIs, grant funders | `05_Business_Plan/` |
 | 06 | Financial Model & Projections | Investors, internal planning | `06_Financial_Model/` |
 | 07 | Gauteng pilot case study placeholders | Decks, proposals, website | `07_Case_Studies/` |
-| 08 | Flux Loop refinement (ideas from HubSpot's Loop talk; product proposals) | Internal | `08_Flux_Loop/` |
+| 08 | Flux Loop refinement notes + Taste Profile onboarding template | Internal, pilot onboarding | `08_Flux_Loop/` |
 | — | Shared visuals (logos, screenshots, infographics, charts) | All of the above | `assets/` (see `assets/ASSETS_INDEX.md`) |
 | — | Build scripts to regenerate the pack | Internal | `_build/` |
 

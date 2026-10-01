@@ -267,7 +267,7 @@ sprint report is fine) so that:
 | # | Item | Stage | Depends on | Size |
 |---|---|---|---|---|
 | 1 | Run the pilot in two-week sprints with a manual sprint report | Learn | Founder decision | Small, ops only |
-| 2 | Taste Profile v1 as the first onboarding deliverable (doc template) | Plan | Nothing | Small, ops only |
+| 2 | Taste Profile v1 as the first onboarding deliverable (`Taste_Profile_Template.md`) | Plan | Nothing | Small, ops only |
 | 3 | Value-first metrics in Analyst dashboards and reports | Learn | Nothing | Small |
 | 4 | Taste Profile stored per brand and read by Creator, Ads and chatbot | Plan/Create | Nothing | Medium |
 | 5 | Idea sprint + double-down + per-channel repurposing in Creator | Create | 4 | Medium |
