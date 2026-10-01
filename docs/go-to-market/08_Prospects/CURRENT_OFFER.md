@@ -6,7 +6,11 @@ Prepared **2026-09-26** from the live pricing tables and the founder's decisions
 
 ## 1. Prices (live in `subscription_tiers`, read 2026-09-26)
 
-ZAR per month. Annual billing is 10× the monthly price for 12 months. VAT treatment: `[[CONFIRM]]`.
+ZAR per month. Annual billing is 10× the monthly price for 12 months.
+
+**VAT: Fluxmuse (Pty) Ltd is not VAT-registered** (no active tax types on eFiling as of 24 Sept; see compliance pack). Prices above
+are the actual amount charged — **no VAT is added, and no VAT is mentioned** in proposals or copy. Revisit this note once a VAT
+number is activated.
 
 | Band | Tier | Monthly | Annual | Brands | Channels | Notes |
 |---|---|---|---|---|---|---|
@@ -22,23 +26,30 @@ ZAR per month. Annual billing is 10× the monthly price for 12 months. VAT treat
 
 - **AI credits:** 1 credit is about R1 of real provider cost (chat 1, image 2, 8-second 720p video 7). Monthly
   allowances changed on 24 Sept, so **never quote per-tier credit numbers**; point to the pricing page.
-- **Launch pricing:** the `founding-member-za` promotion is enabled in the database: **30% off the first two monthly
-  billing cycles** for South African sign-ups. It is a discount, not a free period. Re-confirm it is still active
-  before quoting. The generator shows it as one optional line (`SHOW_FOUNDING_MEMBER` in
-  `_build/prospects/build_prospects.py`).
-- **Partner wholesale:** the earlier decision was "30% off the Agency tier". Agency list price is now **R9,999**, so
-  30% off would be about **R6,999**, not the R5,599 in the older pack. **Founder to confirm before any agency
-  proposal quotes a partner price.** Until then agency proposals show list price and say "partner terms on request".
+- **Launch pricing: CONFIRMED 2026-10-01, still live.** The `founding-member-za` promotion stays on: **30% off the first
+  two monthly billing cycles** for South African sign-ups. It is a discount, not a free period. The generator shows it
+  as one optional line (`SHOW_FOUNDING_MEMBER = True` in `_build/prospects/build_prospects.py`).
+- **Partner wholesale: CONFIRMED 2026-10-01 — R6,999** (30% off the current R9,999 Agency list price). Replaces the
+  R5,599 figure in the 11 Sept pack. Agency proposals now quote this as the partner price.
 
-## 2. Policy (founder, 25 Sept: "pay first")
+## 2. Policy (founder, 25 Sept "pay first"; terms confirmed 2026-10-01)
 
 - **No free trials and no "first month free"** in any offer or copy, unless the founder approves it for a named account.
-- **Payment first, backed by a money-back guarantee.** The founder floated ~30 days; it is **not finalised**. Proposals
-  use the placeholder `[[GUARANTEE TERMS]]`, set once in the generator config.
-- **FluxMuse guarantees leads, not sales**, and only against a measurable, auditable lead definition. **That definition
-  doesn't exist yet**, so proposals do not promise a lead number. A candidate definition is in
-  `Outreach_Playbook.md` for the founder to decide.
+- **No money-back guarantee.** CONFIRMED 2026-10-01: Fluxmuse backs the offer with the lead guarantee below, not a refund.
+  Don't write "money-back", "refund" or any guarantee-of-sale language.
+- **Lead guarantee, CONFIRMED 2026-10-01: 3 qualified leads in 30 days** of go-live, using the tracked definition in
+  `Outreach_Playbook.md` §"A candidate lead definition" (unique WhatsApp numbers starting a conversation through a
+  FluxMuse-tracked entry point). If fewer than 3 land in 30 days and the merchant held up their side (shared the link,
+  posted at least weekly), extend support at no extra charge until 3 are reached — not a cash refund.
 - **Sales should flow through FluxMuse checkout** (oversight). Steer merchants to shop checkout, not off-platform.
+- **Demo on a prospect's public catalogue (Outreach_Playbook.md option D): CONFIRMED 2026-10-01, approved.** Building a
+  demo shop from a prospect's own public photos and showing it live on the call is not a trial — no account access, no
+  usage, nothing to cancel — and may be used for any wave.
+- **Checkout fee wording, CONFIRMED 2026-10-01 — pass-through, named:** "Card payments carry Paystack's standard fee
+  (2.9% + R1), deducted before payout; EFT is 2%." No separate FluxMuse service fee on top. Use only once FluxMuse
+  checkout has been tested end to end with real money (still IN SETUP, §3).
+- **Sender identity, CONFIRMED 2026-10-01:** Thabo Malebadi, thabo@fluxmuse.com (the only domain that receives mail).
+  Pre-flight item 4 in `Outreach_Playbook.md` is resolved.
 
 ## 3. What is real today (label every capability with one of these three)
 

@@ -33,10 +33,15 @@ DATA = OUT / "data"
 AS_AT = "26 September 2026"
 
 # ---- constants that mirror CURRENT_OFFER.md (edit here when the offer changes) ------------------------
-SHOW_FOUNDING_MEMBER = True          # one optional line; re-confirm the promotion is still enabled
-GUARANTEE_TERMS = "[[GUARANTEE TERMS: money-back guarantee, terms to be confirmed by the founder]]"
-CHECKOUT_FEE_WORDING = "[[FOUNDER TO CONFIRM CHECKOUT FEE WORDING]]"
-VAT_NOTE = "Prices are in South African rand (ZAR). VAT treatment: [[CONFIRM VAT TREATMENT]]."
+SHOW_FOUNDING_MEMBER = True          # CONFIRMED 2026-10-01: promotion stays on
+GUARANTEE_TERMS = ("We back this with 3 qualified leads in your first 30 days, using the lead definition set out "
+                    "below. If you hold up your side (share the link, post about it weekly) and fewer than 3 arrive, "
+                    "we keep working with you at no extra cost until you have 3.")  # CONFIRMED 2026-10-01
+CHECKOUT_FEE_WORDING = ("card payments carry Paystack's standard fee (2.9% + R1), deducted before payout; "
+                         "EFT is 2%. No separate Fluxmuse fee is added on top.")  # CONFIRMED 2026-10-01
+VAT_NOTE = ("Prices are in South African rand (ZAR). Fluxmuse Pty Ltd is not VAT-registered, so no VAT is added "
+            "to these prices.")  # CONFIRMED 2026-10-01
+PARTNER_PRICE_AGENCY = 6999           # CONFIRMED 2026-10-01: 30% off the R9,999 Agency list price
 TIERS = {  # code: (display name, monthly ZAR, annual ZAR, what the plan includes)
     "nano": ("Nano", 149, 1490, "1 brand, 3 channels"),
     "micro": ("Micro", 289, 2890, "1 brand, 4 channels, 1 WhatsApp number"),
@@ -256,8 +261,10 @@ def plan_rows(rec):
     rows.append(("How payment works", "Payment is taken first, when you subscribe. " + GUARANTEE_TERMS))
     if SHOW_FOUNDING_MEMBER and code in FOUNDING_TIERS:
         rows.append(("South African launch pricing",
-                     "30% off your first two monthly billing cycles is applied at checkout while the offer is open. "
-                     "[[CONFIRM the offer is still active before sending]]"))
+                     "30% off your first two monthly billing cycles is applied at checkout while the offer is open."))
+    if code == "agency":
+        rows.append(("Partner price", f"{money(PARTNER_PRICE_AGENCY)} per month if you resell FluxMuse to your own "
+                     "clients under a partner agreement, instead of the list price above."))
     extra = "Meta charges for some WhatsApp conversations, and AI images and video use your monthly AI credits. " \
             "We will show you both before you pay."
     if any("checkout" in (c["capability"] + c["for_them"]).lower() for c in rec["what_we_would_do"]):
@@ -272,7 +279,7 @@ def build_proposal(rec, outdir):
     d.footer_text = f"Fluxmuse Pty Ltd · fluxmuse.ai · Confidential proposal for {n}"
     d.cover_page("Proposal", f"A WhatsApp-first plan for {n}", f"{rec['trade']} · {rec['location']}",
                  [("Prepared for", n), ("Date", f"{AS_AT} (draft)"),
-                  ("Prepared by", "[[SENDER NAME]], [[SENDER TITLE]], Fluxmuse Pty Ltd\n[[SENDER EMAIL]] · [[SENDER WHATSAPP]]"),
+                  ("Prepared by", "Thabo Malebadi, Founder, Fluxmuse Pty Ltd\nthabo@fluxmuse.com · [[SENDER WHATSAPP]]"),
                   ("Valid for", "30 days from the date it is sent")],
                  f"Confidential. Prepared for {n} only. {VAT_NOTE}")
 
@@ -335,7 +342,7 @@ def build_proposal(rec, outdir):
 
     d.h1("9. Next step")
     d.para("A 20-minute call to walk through this and decide whether it is worth doing. No obligation.")
-    d.kv_table([("Who", "[[SENDER NAME]], Fluxmuse Pty Ltd"), ("Email", "[[SENDER EMAIL]]"),
+    d.kv_table([("Who", "Thabo Malebadi, Fluxmuse Pty Ltd"), ("Email", "thabo@fluxmuse.com"),
                 ("WhatsApp", "[[SENDER WHATSAPP]]")], caption="Layout: contact", size=10)
     d.para("If you would rather we did not contact you again, tell us and we will stop.", size=9.5, color=GREY)
 

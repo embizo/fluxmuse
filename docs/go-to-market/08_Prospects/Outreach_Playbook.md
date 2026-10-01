@@ -6,9 +6,9 @@ Prepared 2026-09-26. Read with [CURRENT_OFFER.md](CURRENT_OFFER.md), [Prospect_L
 ## The answer in two sentences
 
 Send the wave-1 messages (owner-operators who decide alone) over the next two weeks, but **only after you have run the
-Concierge end to end on a real phone and settled the guarantee**, because a pay-first offer with no proof converts only if
-the prospect can see it working. Hold Khuli Chana and the other creator-founders until one real merchant is using the product,
-because you can approach each of them **once**.
+Concierge end to end on a real phone** — the guarantee is settled (3 qualified leads in 30 days, see below), but a pay-first
+offer with no proof converts only if the prospect can see it working. Hold Khuli Chana and the other creator-founders until
+one real merchant is using the product, because you can approach each of them **once**.
 
 **Confidence:** about 70% on the sequencing. **Expect about one paying merchant from these 20 cold, pay-first approaches, not
 20.** On the assumptions in the Pipeline maths sheet (25% reply, 60% take a call, 30% buy) that is roughly 3% end to end, so
@@ -45,14 +45,20 @@ put it in any proposal.
 
 ## Pre-flight: do these before the first message
 
-1. **Real-phone test of the Concierge end to end:** photo, catalogue entry, shop link, order alert, SOLD. Your own notes name this as the gate.
-2. **Decide the guarantee terms and the lead definition** (candidate below). Proposals carry `[[GUARANTEE TERMS]]` until you do.
-3. **Confirm the Founding Member promotion is still on**, or set `SHOW_FOUNDING_MEMBER = False` in `_build/prospects/build_prospects.py` and rebuild.
-4. **Sender identity:** a named person on an `@fluxmuse.com` address (only that domain receives mail) and a WhatsApp number that is *not* the Fluxy bot number.
+1. **Real-phone test of the Concierge end to end:** photo, catalogue entry, shop link, order alert, SOLD. Your own notes name this as the gate. **Still open — nothing below replaces it.**
+2. ~~Decide the guarantee terms and the lead definition~~ **DONE, 2026-10-01.** No money-back guarantee: the backstop is 3
+   qualified leads in 30 days (definition below), with free extended support, not a cash refund, if you fall short. Both are
+   in `CURRENT_OFFER.md` §2 and baked into every proposal.
+3. ~~Confirm the Founding Member promotion~~ **DONE, 2026-10-01: still on**, 30% off the first two billing cycles.
+4. ~~Sender identity~~ **DONE, 2026-10-01: Thabo Malebadi, thabo@fluxmuse.com.** Still need a WhatsApp number for outreach that
+   is *not* the Fluxy bot number — proposals carry `[[SENDER WHATSAPP]]` until you give one.
 5. **A 90-second screen recording** of the Concierge flow on a demo shop. This is your proof asset.
-6. **VAT wording and the POPIA line** in each proposal (legal review).
-7. **Live-check each contact route** by hand. The fact-check pass confirmed the pages exist; it did not test the forms or inboxes.
-8. **Refresh the stale pack** (list at the end), so a prospect who opens the deck doesn't meet the retired trial.
+6. ~~VAT wording~~ **DONE, 2026-10-01: Fluxmuse is not VAT-registered, so no VAT is charged or mentioned.** This overrides
+   an earlier draft instruction to write "excl. VAT" — you have no active VAT number, so that would have been false.
+   **POPIA line still needs legal review** before sending.
+7. ~~Approve option D (demo on a prospect's public catalogue)~~ **DONE, 2026-10-01: approved for every wave**, not just wave 1.
+8. **Live-check each contact route** by hand. The fact-check pass confirmed the pages exist; it did not test the forms or inboxes.
+9. **Refresh the stale pack** (list at the end), so a prospect who opens the deck doesn't meet the retired trial.
 
 ## Sequencing
 
@@ -97,7 +103,7 @@ I'm at [contact]. All the best with [specific thing about their business]."
 |---|---|
 | 0-3 | Who we are, and say plainly that we're new and have no customer numbers yet |
 | 3-10 | Their current flow: test the hypotheses in the brief; write down their words |
-| 10-15 | Demo on their own catalogue (built beforehand from public photos), if you approve option D |
+| 10-15 | Demo on their own catalogue (built beforehand from public photos) — option D, approved |
 | 15-18 | Plan, price, payment first, guarantee |
 | 18-20 | A clear next step: yes, no, or a dated "not now" |
 
@@ -107,17 +113,18 @@ Don't pitch features they didn't ask about. Never claim results.
 
 | They say | Honest answer |
 |---|---|
-| "Why pay before I see results?" | We're new, and payment first is how we keep the service sustainable. [[GUARANTEE TERMS]]. Start on the smallest plan. Ask to see the demo first. |
+| "Why pay before I see results?" | We're new, and payment first is how we keep the service sustainable. We back it with 3 qualified leads in your first 30 days — if fewer arrive and you've held up your side, we keep working at no extra cost until you have 3. Start on the smallest plan. Ask to see the demo first. |
 | "You have no customers." | True. We set it up by hand, show you the numbers weekly, and stand behind it. |
 | "I already use Fresha, Octiv, Setmore or Shopify." | Keep them. We sit beside them for WhatsApp and content. Where we don't help, we'll say so. |
-| "Is my customers' data safe? POPIA?" | Messages go only to opted-in people, every broadcast has an opt-out, and you can export or delete. [[LEGAL WORDING]] |
+| "Is my customers' data safe? POPIA?" | Messages go only to opted-in people, every broadcast has an opt-out, and you can export or delete. [[LEGAL WORDING: pending POPIA legal review]] |
 | "Will it post to Instagram for me?" | Not yet: Meta approval is pending. Today it writes the caption and sends it to your WhatsApp to forward to Status or copy across. We'll tell you when auto-posting is on. |
 | "R289 is too much." | Nano is R149, the lowest paid plan. Don't discount. |
 | "I don't have time." | We set it up by hand. You send photos. |
 
-## A candidate lead definition (your decision)
+## The lead definition — CONFIRMED 2026-10-01
 
-You guarantee **leads, not sales**, and only against something measurable and auditable. A proposal:
+**3 qualified leads in 30 days** of go-live, backed by extended support at no extra cost (not a cash refund) if the merchant
+held up their side and fewer arrived. "Qualified lead":
 
 | Field | Definition |
 |---|---|
@@ -125,9 +132,11 @@ You guarantee **leads, not sales**, and only against something measurable and au
 | Entry points that count | Shop-link click-to-chat, a FluxMuse short link or QR code, or a click-to-WhatsApp ad referral |
 | Excluded | The merchant's own staff and test numbers, and repeat numbers within 30 days |
 | Evidence | `shop_events` and `lead_events` rows, with timestamp and source |
-| The merchant's part | Share the link and post at least N times a week. **Without this the guarantee is unfair to you.** |
+| The merchant's part | Share the link and post at least weekly. **Without this the guarantee is unfair to you.** |
 
-The number of leads to guarantee (`N`) is undecided, and I haven't put one in any proposal.
+This is live in every proposal via `GUARANTEE_TERMS` in `_build/prospects/build_prospects.py`. The `shop_events`/`lead_events`
+tables that evidence a lead have not been checked for existence in the live schema — do that before anyone goes to 30 days
+and you need to prove the count.
 
 ## Measures and kill criteria
 
