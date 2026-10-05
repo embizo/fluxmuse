@@ -632,10 +632,11 @@ class FMDoc:
         self._run(p, "MUSE", font=HEAD_FONT, size=30, color=SLATE, bold=True)
         self.para("AI Marketing & WhatsApp Commerce for Africa", size=11, color=GREY, after=26)
         if self.sample:
-            self.callout("SAMPLE: illustrative",
-                         ["A pre-filled example for a Gauteng braiding & hair studio. It is not a real client, "
-                          "and every number in it is a target (goal), not a result. Replace the [[PLACEHOLDERS]] "
-                          "before using any wording with a real prospect."],
+            self.callout("EXAMPLE: not a real client, no real results",
+                         ["A worked example of a proposal to a prospect: an imagined braiding & hair studio. It is "
+                          "not a real client and describes no real results. FluxMuse has no customers or results yet; "
+                          "every number in it is a target (goal) to agree with the prospect. Replace the "
+                          "[[PLACEHOLDERS]] before using any wording with a real prospect."],
                          fill="FFF1A8", accent=DEEP, caption="Layout: sample banner")
         self.eyebrow(eyebrow)
         p = self.doc.add_paragraph(style="Title")
@@ -646,11 +647,11 @@ class FMDoc:
         rows = [(client_label, self.client_ph),
                 ("Date", "[[DD MONTH YYYY]]"),
                 ("Proposal number", "[[FM-PRO-YYYY-###]]"),
-                ("Prepared by", "[[NAME]], [[TITLE]], Fluxmuse Pty Ltd\n[[EMAIL]] · [[PHONE / WHATSAPP]]"),
+                ("Prepared by", "Thabo Malebadi, Founder, Fluxmuse (Pty) Ltd\nthabo@fluxmuse.com · [[PHONE / WHATSAPP]]"),
                 ("Valid until", "[[DATE + 30 days]]")] + list(extra_rows)
         self.kv_table(rows, caption="Layout: proposal details")
-        self.para(f"Confidential. Prepared for {self.client_ph} only. Prices in South African rand (ZAR) and "
-                  "exclusive of VAT unless stated [[CONFIRM VAT TREATMENT]].", size=8.5, color=GREY, before=10)
+        self.para(f"Confidential. Prepared for {self.client_ph} only. Prices in South African rand (ZAR); "
+                  "the price shown is the amount charged.", size=8.5, color=GREY, before=10)
         self.page_break()
 
     def toc(self):

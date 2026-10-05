@@ -16,7 +16,11 @@ OUT = HERE.parent.parent / "03_Proposal_Templates"
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
 FORBIDDEN = [r"200\+", r"4\.9", r"SnapScan", r"Stitch", r"lifetime", r"for life", r"life of (your|the) account",
-             r"40\s*[–-]\s*60\s*%", r"guarantee", r"Flutterwave", r"PayFast", r"M-Pesa", r"R5,599[^.]{0,40}(first 2|2 months)"]
+             r"40\s*[–-]\s*60\s*%", r"money[- ]back", r"refund", r"guarantee[sd]? (results|sales|roi|revenue)",
+             r"Flutterwave", r"PayFast", r"M-Pesa", r"free trial", r"14[- ]day", r"14 days", r"free month",
+             r"try (it )?free", r"risk[- ]free", r"no card required", r"\bpilot", r"7,999", r"5,599", r"1 Dec",
+             r"31 Jan", r"trusted by", r"\bproven\b", r"\bour customers", r"\bVAT\b", r"\b10x\b", r"23 (African )?countries",
+             r"five (payment )?rails", r"Gauteng pilot"]
 INTERNAL_ONLY = ["home-hero.png", "home_mobile.png", "home-full.png", "for-agencies", "features-hero", "features-full",
                  "pricing-za-full", "pricing-ng", "pricing-ke", "demo-step-04", "demo-step-05", "demo.png", "demo-full",
                  "browser-demo", "laptop-demo"]

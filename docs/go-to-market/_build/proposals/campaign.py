@@ -14,7 +14,8 @@ def build_campaign(out_path):
         "Black Friday / Cyber Monday, Back-to-school, Product launch, or Other). Delete the notes for the other types.",
         "[ ] Keep FluxMuse fees, optional services and pass-through costs (ad spend, Meta message fees) in their "
         "separate budget tables. Never blend them into one FluxMuse price.",
-        "[ ] Checkout inside WhatsApp needs Growth or Scale. Plan Instagram as manual posting until Meta approves it.",
+        "[ ] Checkout through FluxMuse is being switched on: plan orders to arrive on WhatsApp and be paid the client's "
+        "usual way. Facebook and Instagram auto-posting await Meta approval: plan manual posting.",
     ])
     d.toc()
     d.page_break()
@@ -45,77 +46,67 @@ def build_campaign(out_path):
         "**Key message:** [[WHAT WE WANT CUSTOMERS TO FEEL AND DO]]",
         "**Why it works for [[CLIENT NAME]]:** [[INSIGHT ABOUT THE AUDIENCE OR SEASON]]",
         "**Hook lines:** English: [[ ]] · isiZulu: [[ ]] · Sesotho: [[ ]] · Afrikaans: [[ ]]",
-        "**Call to action:** “Chat to order” via WhatsApp short link or QR code: [[wa.me LINK]]",
+        "**Call to action:** \u201cChat to order\u201d via the FluxMuse shop link or QR code: fluxmuse.ai/s/[[NAME]]",
     ])
     d.h2("How FluxMuse runs the campaign")
-    d.para("The Strategist sets goals, channel mix and budget; the Creator writes copy and images in each language; the "
-           "Publisher schedules posts and broadcasts; buyers order and pay in WhatsApp; the Analyst feeds results back "
-           "into the next round of content.")
+    d.para("FluxMuse turns product photos into a shop link, writes captions and images for each post in each "
+           "language, sends broadcasts to opted-in customers, and alerts you on WhatsApp for every order. We review "
+           "what brought leads and adjust the next round.")
     d.figure("infographics/how-fluxmuse-works.png",
-             "One loop run by your AI marketing team: plan, create, publish, sell, learn.",
-             "Loop diagram: Plan (Strategist), Create (Creator), Publish (Publisher), Sell (WhatsApp commerce) and "
-             "Learn (Analyst) around a central AI marketing team.")
+             "One loop: plan, create, publish, sell, learn. Some steps are being switched on (section 4).",
+             "Loop diagram: plan, create, publish, sell and learn around FluxMuse.")
 
     # 3 ----------------------------------------------------------------------------------------
     d.h1("3. Audience and segments")
     d.table(["Segment", "Who", "Reached through", "Message", "Size"], [
         ("Opted-in WhatsApp customers", "Past buyers who opted in", "WhatsApp broadcast", "Early access [[ ]]", "[[N]]"),
-        ("Lapsed buyers", "No order in [[90]] days (churn-risk score)", "WhatsApp, SMS, email", "Welcome-back offer", "[[N]]"),
-        ("Loyalty members / VIPs", "Top customers by spend", "WhatsApp", "VIP preview", "[[N]]"),
-        ("Social followers", "Facebook Page followers", "Posts, Messenger", "Launch and countdown", "[[N]]"),
-        ("New prospects", "[[AGE, AREA, INTERESTS]]", "Paid ads to WhatsApp", "Hero offer", "[[N]]"),
-        ("Abandoned carts", "Started checkout, didn't pay", "Automatic recovery message", "Reminder + [[INCENTIVE]]", "Live"),
+        ("Lapsed buyers who opted in", "No order in [[90]] days", "WhatsApp broadcast", "Welcome-back offer", "[[N]]"),
+        ("Status viewers", "People who see your WhatsApp Status", "Forwarded posts", "Launch and countdown", "[[N]]"),
+        ("Social followers", "Facebook, Instagram and TikTok followers", "Posts (TikTok via FluxMuse; others by hand)", "Hero offer", "[[N]]"),
+        ("New prospects", "[[AGE, AREA, INTERESTS]]", "Shop link and QR code", "Hero offer", "[[N]]"),
     ], [3.4, 3.8, 3.6, 3.8, 2.4], "Audience segments", size=9)
-    d.para("Segments come from FluxMuse customer segmentation, lead scoring and churn-risk scoring. WhatsApp, SMS and "
-           "email broadcasts go only to people who opted in (POPIA).", size=9.5)
+    d.para("WhatsApp broadcasts go only to people who opted in (POPIA), with an opt-out in every message.", size=9.5)
 
     # 4 ----------------------------------------------------------------------------------------
     d.h1("4. Channel plan")
     d.table(["Channel", "Role in the campaign", "Formats", "Status"], [
-        ("WhatsApp broadcasts and templates", "Main sales channel: announce, remind, recover", "Meta-approved templates, catalog messages", "Live"),
-        ("WhatsApp chatbot and Flows", "Answer questions, take orders 24/7", "FAQ bot, order flow, checkout", "Live (checkout on Growth)"),
-        ("Facebook Page", "Reach and social proof", "Posts, countdowns, carousels", "Live"),
-        ("Instagram", "Visual reach", "Posts, reels, stories", "Pending Meta approval: post manually"),
-        ("Email", "Detail and gifting guides", "Sequence of [[N]] emails", "Live"),
-        ("SMS", "Short reminders and deadlines", "Last-chance SMS", "Live"),
-        ("USSD", "Reach feature-phone customers", "Menu: offer, store locator, [[ ]]", "Live (Growth)"),
-        ("Link-in-bio", "One link for all offers", "Link page with WhatsApp CTA", "Live"),
-        ("Landing page", "Campaign hub, T&Cs, QR to WhatsApp", "FluxMuse landing page builder", "Live"),
+        ("WhatsApp broadcasts and templates", "Main channel: announce, remind", "Meta-approved templates", "Live (newly launched)"),
+        ("Shop link and QR code", "Where buyers choose and order", "fluxmuse.ai/s/[[NAME]]", "Live (newly launched)"),
+        ("Order alerts", "Every order on your WhatsApp; reply SOLD", "WhatsApp message", "Live (newly launched)"),
+        ("WhatsApp Status", "Daily reach", "AI captions and images (POST)", "Live (newly launched)"),
+        ("TikTok", "Video reach", "Short AI video clips", "Live (newly launched)"),
+        ("Facebook Page and Instagram", "Reach", "Posts made by FluxMuse, posted by hand", "Auto-posting being switched on"),
+        ("Checkout through FluxMuse", "Pay in the flow", "Paystack", "Being switched on"),
     ], [3.6, 4.8, 4.8, 3.8], "Channel plan", size=9)
     d.figure("infographics/omnichannel-hub.png",
-             "Every channel your buyers use, one AI team. Instagram is pending Meta approval and not live yet.",
-             "Hub diagram: FluxMuse AI team at the centre connected to WhatsApp, Facebook Pages, Messenger, email, "
-             "SMS, USSD, website chat widget, link-in-bio and landing pages, with Instagram dashed as in Meta review.")
+             "Channels around one WhatsApp-first hub. Facebook and Instagram auto-posting are being switched on.",
+             "Hub diagram with FluxMuse at the centre connected to the channels a business uses.")
 
     # 5 ----------------------------------------------------------------------------------------
     d.h1("5. Content calendar")
     d.para("Weeks relative to launch. Adjust to the campaign type (e.g. Black Friday peak = W3).", size=9.5)
     d.table(["Channel", "W-2 Prep", "W1 Tease", "W2 Launch", "W3 Peak", "W4 Last chance", "W+1 Thank you"], [
-        ("WhatsApp", "Templates to Meta; opt-in drive", "“Coming soon” to VIPs", "Launch broadcast + catalog", "Reminder + bundles", "Last-chance broadcast", "Thank-you + review ask"),
-        ("Facebook Page", "Page refresh", "2 teaser posts", "Launch post + pinned", "3 posts + countdown", "Final countdown", "Best-sellers recap"),
-        ("Instagram*", "Grid plan", "Teasers (manual)", "Launch (manual)", "Reels (manual)", "Stories (manual)", "Recap (manual)"),
-        ("Email", "List clean-up", "Save-the-date", "Launch email", "Gift guide", "Last chance", "Thank you"),
-        ("SMS / USSD", "USSD menu set", "–", "Launch SMS", "–", "Deadline SMS", "–"),
-        ("Landing page / link-in-bio", "Build page", "Waitlist live", "Offer live", "Update stock", "Countdown", "Archive"),
+        ("WhatsApp", "Templates to Meta; opt-in drive", "\u201cComing soon\u201d to opted-in VIPs", "Launch broadcast + shop link", "Reminder", "Last-chance broadcast", "Thank-you"),
+        ("WhatsApp Status", "Plan posts", "Teasers", "Launch post", "Daily posts", "Countdown", "Best-sellers"),
+        ("TikTok", "Plan clips", "Teaser clip", "Launch clip", "2 clips", "Countdown clip", "Recap clip"),
+        ("Facebook / Instagram*", "Grid plan", "Teasers (by hand)", "Launch (by hand)", "Posts (by hand)", "Stories (by hand)", "Recap (by hand)"),
+        ("Shop link", "Products in", "Link shared", "Offer live", "Update stock", "Countdown", "Archive"),
     ], [2.6, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4], "Content calendar by week and channel", size=8)
-    d.para("*Instagram is pending Meta approval; plan manual posting until it is live in FluxMuse. Every cell: "
-           "[[CONTENT DETAIL]] to be confirmed in the approvals workflow.", size=8.5, color=GREY)
+    d.para("*Facebook and Instagram auto-posting are waiting for Meta approval; FluxMuse makes the posts and you post "
+           "them by hand until then. Every cell: [[CONTENT DETAIL]] to be confirmed before scheduling.", size=8.5, color=GREY)
 
     # 6 ----------------------------------------------------------------------------------------
     d.h1("6. WhatsApp commerce funnel")
     d.table(["Stage", "What happens", "FluxMuse feature", "KPI", "Target (goal)"], [
-        ("1. Short link or QR", "Buyer taps an ad, post or QR code", "wa.me short links, QR codes", "Link clicks", "[[N]]"),
-        ("2. Chatbot", "Greets, answers questions, shows offers", "Chatbot, WhatsApp Flows", "Conversations started", "[[N]]"),
-        ("3. Catalog", "Buyer browses products in chat", "WhatsApp catalog", "Catalog views", "[[N]]"),
-        ("4. Checkout", "Cart and payment inside WhatsApp", "Cart checkout; Yoco, Ozow, Paystack", "Chat-to-order conversion", "[[e.g. 5%]]"),
-        ("5. Confirmation", "Order confirmed, status updates", "Orders and notifications", "Orders · GMV (R)", "[[N]] · [[R]]"),
-        ("6. Recovery", "Reminder if the cart isn't paid", "Abandoned-cart recovery", "Carts recovered", "[[e.g. 10%]]"),
-        ("7. Retarget", "Follow-up offer to buyers and browsers", "Segments, broadcasts, loyalty", "Repeat orders", "[[N]]"),
+        ("1. Link or QR", "Buyer taps a post, Status or QR code", "Shop link, QR code", "Link visits", "[[N]]"),
+        ("2. Shop", "Buyer browses products", "Hosted shop (Concierge catalogue)", "Qualified leads", "[[N]]"),
+        ("3. Order", "Order arrives as a WhatsApp message", "Order alerts, SOLD", "Orders", "[[N]]"),
+        ("4. Payment", "Paid the business's usual way", "Checkout through FluxMuse: being switched on", "Orders paid", "[[N]]"),
+        ("5. Follow-up", "Offer to buyers who opted in", "Broadcasts", "Repeat orders", "[[N]]"),
     ], [2.8, 4.2, 4.0, 3.4, 2.6], "WhatsApp commerce funnel", size=9)
     d.figure("infographics/whatsapp-commerce-flow.png",
-             "From first tap to repeat order inside WhatsApp. Catalog and checkout in chat are on Growth and Scale.",
-             "WhatsApp commerce flow: discover, chat, catalog, cart, pay with local rails, confirmed and loyalty, with "
-             "abandoned-cart recovery and retargeting loops.")
+             "From first tap to an order on WhatsApp. Checkout through FluxMuse is being switched on.",
+             "WhatsApp commerce flow from a shared link to an order alert on the merchant's WhatsApp.")
 
     # 7 ----------------------------------------------------------------------------------------
     d.h1("7. Timeline")
@@ -123,7 +114,7 @@ def build_campaign(out_path):
     g = lambda spec: tuple(spec.get(w, "") for w in weeks)
     rows = [
         ("Brief sign-off and big idea",) + g({"W-3": "##"}),
-        ("Plan upgrade, catalog and payments",) + g({"W-3": "#", "W-2": "##"}),
+        ("Plan, shop products and link",) + g({"W-3": "#", "W-2": "##"}),
         ("WhatsApp templates to Meta for approval",) + g({"W-2": "##", "W-1": "#"}),
         ("Content production and approvals",) + g({"W-2": "#", "W-1": "##", "W1": "#"}),
         ("Opt-in drive (QR, link, in-store)",) + g({"W-2": "#", "W-1": "#", "W1": "#"}),
@@ -141,14 +132,15 @@ def build_campaign(out_path):
     d.para("Three separate parts. Only part A and any part B services you choose are FluxMuse charges.")
     d.h2("A. FluxMuse plan")
     d.table(["Plan", "Price", "Campaign months", "Subtotal"], [
-        ("Growth (needed for WhatsApp checkout)", "R1,999/mo (Founding Member R1,399 for the first 2 monthly bills*)", "[[N]]", "[[R]]"),
-        ("Scale (multi-brand, API, priority support)", "R4,999/mo (Founding Member R3,499 for the first 2 monthly bills*)", "[[N]]", "[[R]]"),
+        ("Starter", "R499/mo (Founding Member R349 for the first two monthly bills*)", "[[N]]", "[[R]]"),
+        ("Growth (3 brands, 15 channels)", "R1,999/mo (Founding Member R1,399 for the first two monthly bills*)", "[[N]]", "[[R]]"),
+        ("Scale (10 brands, 40 channels)", "R4,999/mo (Founding Member R3,499 for the first two monthly bills*)", "[[N]]", "[[R]]"),
     ], [5.0, 7.0, 2.4, 2.6], "Budget part A: FluxMuse plan", size=9, aligns=[None, None, "center", "right"])
-    d.para("*South African sign-ups from 1 December 2026 to 31 January 2027 only. Delete the plan you don't recommend.",
+    d.para("*" + C.FOUNDING_LINE + " Payment first; no trial. Delete the plans you don't recommend.",
            size=8.5, color=GREY)
     d.h2("B. Optional FluxMuse services")
     d.table(["Service", "Fee", "Include"], [
-        ("Campaign set-up (catalog, flows, templates, landing page)", "[[TBC]]", "[ ] "),
+        ("Campaign set-up (shop products, templates, QR codes)", "[[TBC]]", "[ ] "),
         ("Creative review and design", "[[TBC]]", "[ ] "),
         ("Campaign management during live weeks", "[[TBC]]", "[ ] "),
         ("Post-campaign report and workshop", "[[TBC]]", "[ ] "),
@@ -157,38 +149,31 @@ def build_campaign(out_path):
     d.table(["Cost", "Paid to", "Estimate"], [
         ("Ad spend (Meta [[/ other]])", "Ad platform", "[[estimate R]]"),
         ("WhatsApp conversation and template message fees", "Meta", "[[estimate R]]"),
-        ("SMS sending", "SMS provider", "[[estimate R]]"),
-        ("Payment processing fees", "Yoco / Ozow / Paystack", "[[provider rates]]"),
         ("Printing (QR flyers, in-store)", "Printer", "[[estimate R]]"),
     ], [8.0, 5.0, 4.0], "Budget part C: pass-through costs", aligns=[None, None, "right"])
     d.h2("Budget summary")
-    d.table(["Part", "Amount (excl. VAT)"], [
+    d.table(["Part", "Amount"], [
         ("A. FluxMuse plan", "[[R]]"), ("B. Optional FluxMuse services", "[[R]]"),
         ("C. Pass-through costs (estimate)", "[[R]]"), ("Total campaign budget", "[[R]]"),
     ], [11.0, 6.0], "Budget summary", aligns=[None, "right"], total_rows=(3,))
-    d.para("Campaign Financing (instalment plans for campaign spend) may be available: [[CONFIRM ELIGIBILITY]].", size=9.5)
+    d.callout("Our lead guarantee", [C.GUARANTEE])
 
     # 9 ----------------------------------------------------------------------------------------
     d.h1("9. KPIs and targets")
     d.para("Targets are goals agreed before launch, not promised results.", bold=True)
     d.table(["KPI", "Baseline (last comparable period)", "Target (goal)", "Source"], [
-        ("Reach and impressions", "[[ ]]", "[[ ]]", "Social metrics, ads"),
-        ("Short-link clicks and QR scans", "[[ ]]", "[[ ]]", "Short links"),
-        ("WhatsApp conversations started", "[[ ]]", "[[ ]]", "Inbox"),
-        ("Chat-to-order conversion", "[[ ]]", "[[ ]]", "Orders"),
-        ("Orders and GMV (R)", "[[ ]]", "[[ ]]", "Orders"),
-        ("Average order value (R)", "[[ ]]", "[[ ]]", "Orders"),
-        ("Abandoned carts recovered", "[[ ]]", "[[ ]]", "Recovery report"),
-        ("Median first-reply time", "[[ ]]", "[[ ]]", "Inbox"),
-        ("Cost per conversation (R)", "[[ ]]", "[[ ]]", "Ads + Meta fees"),
-        ("Return on ad spend", "[[ ]]", "[[ ]]", "Ads + orders"),
+        ("Shop link visits and QR scans", "[[ ]]", "[[ ]]", "Shop link"),
+        ("Qualified leads", "[[ ]]", "[[ ]]", "FluxMuse tracking"),
+        ("Orders alerted", "[[ ]]", "[[ ]]", "Order alerts"),
+        ("Posts and clips made", "[[ ]]", "[[ ]]", "POST history"),
+        ("Opted-in contacts", "[[ ]]", "[[ ]]", "Contact list"),
         ("Opt-outs (keep low)", "[[ ]]", "[[ ]]", "Broadcasts"),
     ], [5.4, 4.2, 3.4, 4.0], "Campaign KPI targets (goals)", size=9)
 
     # 10 ---------------------------------------------------------------------------------------
     d.h1("10. Reporting cadence")
     d.table(["When", "What", "Who"], [
-        ("Daily during live weeks", "Dashboard check: orders, conversations, spend, stock; quick fixes", "[[FLUXMUSE LEAD]]"),
+        ("Daily during live weeks", "Check orders, leads and stock; quick fixes", C.SENDER),
         ("Weekly", "Short report and 20-minute call: KPIs vs targets, next week's changes", "Both teams"),
         ("Peak day", "Live monitoring and escalation line: [[PHONE / WHATSAPP]]", "[[NAMES]]"),
         ("W+2", "Final campaign report: results vs targets, learnings, next campaign", "Both teams"),
@@ -196,13 +181,13 @@ def build_campaign(out_path):
 
     # 11 ---------------------------------------------------------------------------------------
     d.h1("11. Approvals workflow")
-    d.para("FluxMuse campaigns support approvals, so nothing goes live without sign-off.")
+    d.para("Nothing goes out without your sign-off.")
     d.table(["Step", "Who", "What happens", "Turnaround"], [
-        ("1. Draft", "Creator agent + [[FLUXMUSE LEAD]]", "Copy, images and broadcast drafts in each language", "[[N]] days"),
+        ("1. Draft", "FluxMuse AI + " + C.SENDER, "Captions, images and broadcast drafts in each language", "[[N]] days"),
         ("2. Internal review", "[[FLUXMUSE REVIEWER]]", "Brand fit, facts, offer terms", "[[N]] day"),
-        ("3. Client approval", f"[[APPROVER AT {CL}]]", "Approve or comment in FluxMuse", "[[N]] days"),
+        ("3. Client approval", f"[[APPROVER AT {CL}]]", "Approve or comment on WhatsApp", "[[N]] days"),
         ("4. Compliance check", "Both", "Opt-in lists, Meta template approval, promotion T&Cs", "Before scheduling"),
-        ("5. Schedule and publish", "Publisher agent", "Scheduled by channel and time", "Automatic"),
+        ("5. Publish", "FluxMuse and client", "Broadcasts and TikTok via FluxMuse; other posts by hand", "Per calendar"),
         ("6. Live changes", "[[APPROVER]]", "Price or stock changes re-approved", "Same day"),
     ], [3.2, 4.2, 6.4, 3.2], "Approvals workflow", size=9)
 
@@ -210,13 +195,13 @@ def build_campaign(out_path):
     d.h1("12. Risks and mitigations")
     d.table(["Risk", "Likelihood", "Impact", "Mitigation", "Owner"], [
         ("Meta rejects a WhatsApp template", "[[L/M/H]]", "Launch delay", "Submit templates in W-2 with backups", "FluxMuse"),
-        ("Instagram not approved in time", "[[L/M/H]]", "Less reach", "Manual Instagram posting; lean on WhatsApp and Facebook", "Client"),
+        ("Meta auto-posting not approved in time", "[[L/M/H]]", "More manual work", "Post Facebook and Instagram by hand; lean on WhatsApp and TikTok", "Client"),
         ("Small opted-in contact list", "[[L/M/H]]", "Low broadcast reach", "Opt-in drive with QR, link and in-store prompts from W-2", "Both"),
-        ("Stock runs out", "[[L/M/H]]", "Unhappy buyers", "Catalog synced with store; stock limits in copy", "Client"),
+        ("Stock runs out", "[[L/M/H]]", "Unhappy buyers", "Mark items SOLD; stock limits in copy", "Client"),
         ("Message fatigue and opt-outs", "[[L/M/H]]", "List shrinks", "Frequency cap of [[N]] broadcasts a week; segment offers", "FluxMuse"),
-        ("Payment or connectivity outages", "[[L/M/H]]", "Lost orders", "Several payment options; cart recovery; confirm orders later", "Both"),
+        ("Payment or connectivity outages", "[[L/M/H]]", "Lost orders", "Orders kept on WhatsApp; confirm later", "Both"),
         ("Ad costs spike near peak", "[[L/M/H]]", "Budget overrun", "Cap daily spend; shift to owned channels", "Client"),
-        ("POPIA complaint", "[[L/M/H]]", "Reputational", "Opted-in lists only; suppression and opt-outs honoured", "Both"),
+        ("POPIA complaint", "[[L/M/H]]", "Reputational", "Opted-in lists only; opt-outs honoured", "Both"),
     ], [3.8, 2.0, 2.4, 6.2, 2.6], "Risks and mitigations", size=8.5)
 
     # 13 ---------------------------------------------------------------------------------------
@@ -227,7 +212,7 @@ def build_campaign(out_path):
     C.terms(d, 14, short=True)
     C.acceptance(d, 15, [
         "Campaign plan as described, launching [[DATE]]",
-        "FluxMuse plan: [[Growth / Scale]], [[monthly / annual]]",
+        "FluxMuse plan: [[Starter / Growth / Scale]], [[monthly / annual]]",
         "Optional services: [[LIST]]",
         "Pass-through budget estimate of [[R]] noted (paid to providers)",
     ], terms_num=14)

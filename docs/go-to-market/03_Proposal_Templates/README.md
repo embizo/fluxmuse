@@ -1,93 +1,81 @@
 # FluxMuse proposal templates
 
-Word templates for the three South African launch segments, plus a campaign proposal and a filled-in sample.
-All prices and claims come from `../00_FACTS_AND_ASSUMPTIONS.md`; if the facts file changes, rebuild (see the
-end of this file) rather than editing prices by hand in every template.
+Word templates for the South African launch segments, plus a campaign proposal and a worked example.
+All prices and claims come from `../08_Prospects/CURRENT_OFFER.md` (1 Oct 2026). If that file changes, rebuild
+(see the end of this file) rather than editing prices by hand in every template.
 
 Each template opens with a yellow **"How to use this template"** box. Work through it, then delete it.
 
 ## Which template to use
 
-| Prospect | Template | Pages (approx.) | Main plan in the template |
+| Prospect | Template | Pages (approx.) | Main plans in the template |
 |---|---|---|---|
-| **Solo entrepreneur** (1–5 people: braiding and beauty, fashion resellers, home bakers, coaches, informal retailers) | `FluxMuse_Proposal_Solo_Entrepreneur.docx` | 8 | Starter R499 → Growth R1,999 |
-| **SME** (5–200 staff) wanting the platform and a 60-day pilot | `FluxMuse_Proposal_SME_Growth.docx` | 16 | Growth R1,999 → Scale R4,999 |
-| **SME** running one specific campaign (festive season, Black Friday, back-to-school, product launch) | `FluxMuse_Proposal_Brand_Campaign.docx` | 11 | Growth or Scale, with separate budget tables |
-| **Agency or freelancer** managing several SMB clients | `FluxMuse_Proposal_Agency_Partner.docx` | 9 | Partner wholesale R5,599/mo (Agency tier, 30% off) |
-| **Gauteng pilot brand** converting on 1 December 2026 | `FluxMuse_Proposal_Sample_Braiding_Studio.docx` as the model, or the Solo template, with **pilot pricing** (below) | 8 | Pilot price for the first 2 monthly bills |
+| **Solo entrepreneur or side-hustle** (braiding and beauty, fashion resellers, home bakers, informal retailers) | `FluxMuse_Proposal_Solo_Entrepreneur.docx` | 8 | Nano R149 or Micro R289, Starter R499 as the step up |
+| **SME** (5–200 staff) wanting set-up and a 60-day growth plan | `FluxMuse_Proposal_SME_Growth.docx` | 12 | Starter R499, Growth R1,999, Scale R4,999 |
+| **SME** running one campaign (festive season, Black Friday, back-to-school, product launch) | `FluxMuse_Proposal_Brand_Campaign.docx` | 11 | Starter, Growth or Scale, with separate budget tables |
+| **Agency or freelancer** managing several clients | `FluxMuse_Proposal_Agency_Partner.docx` | 9 | Agency list R9,999/mo; partner wholesale R6,999/mo |
+| Worked example to learn from | `FluxMuse_Proposal_Sample_Braiding_Studio.docx` | 8 | An imagined braiding studio on Micro. Not a real client, no results |
 
-Also in this folder: `Proposal_Snippets.md` (cover email, WhatsApp intro, follow-ups, objection handling and a
-regional pricing insert for Nigeria, Kenya, Ghana and USD markets).
+Also in this folder: `Proposal_Snippets.md` (cover email, WhatsApp intro, follow-ups and objection handling).
 
-Page counts are estimates from an approximate A4 preview, not from Word. Check the real count in Word after filling in.
+Page counts are estimates. Check the real count in Word after filling in.
 
-### Pilot brands
+## The offer in one place
 
-The 12 Gauteng pilot brands convert on deepened Founding Member terms, in exchange for a case study and logo
-permission: Starter **R249**, Growth **R999**, Scale **R2,499**, Agency **R3,999** for the first 2 monthly bills
-from 1 December 2026, then list price. In the Sample or Solo template:
-- replace the Founding Member rows and paragraph in "Plans for you" and the acceptance choices with the pilot prices;
-- swap Figure 3 for `../assets/infographics/founding-member-offer_pilot.png` (pilot brands only, never for other prospects);
-- delete the other offer so the client sees one price.
-
-The Sample is a pre-filled illustration for a braiding studio. Copy its tone and detail, not its wording, and
-delete the SAMPLE banner if you adapt it.
+- **Nine tiers, ZAR per month** (annual = 10× monthly for 12 months): Free R0, Nano R149, Micro R289, Starter R499,
+  Growth R1,999, Scale R4,999, Corporate R6,999, Agency R9,999, Custom by consultation.
+- **Payment first.** Every paid plan starts with payment. The Free plan is a permanent plan (1 brand, 1 channel, no
+  card), not a trial; mention it as an option, don't lead with it.
+- **Founding Member** (live now, no end date set): South African sign-ups pay 30% less for their first two monthly
+  bills on Starter, Growth and Scale (R349, R1,399, R3,499). A discount, not a free period. Not on Agency or partner
+  wholesale. `[[FOUNDER TO CONFIRM]]` whether it also covers Nano and Micro.
+- **Lead guarantee:** 3 qualified leads in 30 days of go-live (unique WhatsApp numbers that start a conversation
+  through a FluxMuse-tracked link or QR). If fewer arrive and the merchant shared the link and posted at least weekly,
+  we keep supporting them at no extra charge until 3 arrive. Always quote it with these conditions.
+- **Agency partners:** wholesale R6,999/mo (30% off R9,999). Partner economics are always labelled illustrative:
+  20 clients × R1,500 = R30,000, minus R6,999 = R23,001/mo gross spread before the partner's own costs.
+- **Sender:** Thabo Malebadi, thabo@fluxmuse.com. Product at fluxmuse.ai.
 
 ## Fill-in checklist
 
-- [ ] Pick the right template from the table above and save a copy named `FluxMuse_Proposal_[[CLIENT]]_[[YYYY-MM-DD]].docx`.
-- [ ] Cover: client name, date, proposal number `FM-PRO-YYYY-###`, your name, title, email and WhatsApp, valid-until date (30 days).
+- [ ] Pick the right template and save a copy named `FluxMuse_Proposal_[[CLIENT]]_[[YYYY-MM-DD]].docx`.
+- [ ] Cover: client name, date, proposal number `FM-PRO-YYYY-###`, WhatsApp number, valid-until date (30 days).
 - [ ] Search for `[[` and replace every placeholder. Filled fields keep yellow shading so a reviewer can check them.
-- [ ] Use the client's own words for the problem ("What we heard"), and tick only the pains they actually raised.
+- [ ] Use the client's own words in "What we heard", and tick only the pains they raised. Pains are hypotheses until confirmed.
 - [ ] Choose one recommended plan and give a one-sentence reason.
-- [ ] Prices: copy only from the facts file. Delete the offer that doesn't apply (Founding Member, pilot, or neither).
-- [ ] KPI tables: baselines stay `[[ ]]` until measured; the target column is labelled **Target (goal)** and is agreed with the client.
-- [ ] Payments: list only rails the client will really use (Yoco, Ozow, Paystack in South Africa).
-- [ ] Integrations and optional services: keep only what applies; optional service fees stay `[[TBC]]` until the founder publishes a services price list.
-- [ ] Non-South African client: use Appendix A (SME template) or the regional insert in `Proposal_Snippets.md`; delete Appendix A for South Africa-only clients.
+- [ ] KPI tables: the target column is labelled **Target (goal)** and is agreed with the client.
+- [ ] Optional service fees stay `[[TBC]]` until the founder publishes a services price list.
 - [ ] Terms and POPIA: leave every `[[LEGAL REVIEW REQUIRED]]` for legal counsel.
 - [ ] Get a second person to review, then clear the yellow shading (Home › Shading › No Colour) and search for `[[` once more.
-- [ ] Delete the "How to use this template" box, update the contents list (right-click › Update Field), check the page count, save as PDF and send with the cover email.
+- [ ] Delete the "How to use this template" box, update the contents list, save as PDF and send with the cover email.
 
 ## Rules
 
-1. **No results before consented pilot data.** No customer counts, ratings, testimonials, case-study numbers or "results achieved" until pilot data exists with the brand's signed consent (from December 2026). Until 30 November 2026 say "pilot underway, results December 2026". KPI numbers are always targets (goals). Aggregate pilot figures need data from at least 8 brands.
-2. **Screenshots:** never use internal-only screenshots: `home-hero.png`, `home_mobile.png`, `home-full.png`, `for-agencies-*`, `features-*`, `pricing-za-full.png`, `pricing-ng*`, `pricing-ke*`. Don't use images that show SnapScan (`demo.png`, `demo-full.png`, desktop `demo-step-*`, steps 04–05, `browser-demo`, `laptop-demo`). Don't use anything from `assets/charts/`. Check `../assets/ASSETS_INDEX.md` before adding an image.
-3. **Unverified website claims: never copy them.** Not "200+ businesses", not "4.9 rating", not the agency testimonial, not the home-page price block, not "40–60% reseller margins".
-4. **Gated countries:** quote prices only in the 23 rail-covered countries. Botswana and Namibia are "coming soon" and waitlist only. South Sudan and Zimbabwe are waitlist only until subscription collection is confirmed. Everywhere else is waitlist only: no prices, no checkout links.
-5. **Legal review:** the Terms section, the POPIA roles, the acceptance wording and anything marked `[[LEGAL REVIEW REQUIRED]]` are completed by legal counsel. Don't write your own terms, refunds, liability or service levels.
-6. **Instagram:** publishing, comments and DMs are pending Meta approval. Don't promise them as live; plan manual Instagram posting in campaigns.
-7. **WhatsApp checkout** (catalog, cart and payment in the chat) needs Growth or higher. Starter includes the AI team, chatbot and scheduled content.
-8. **Founding Member** applies to Starter, Growth and Scale only (South Africa: 1 December 2026 to 31 January 2027; Nigeria, Kenya, Ghana: the first 60 days after each country's launch). Never on Agency, and never combined with partner wholesale pricing.
-9. **Founding Member perks duration is undecided** (`[[FOUNDER DECISION]]`). Say "Founding Member badge and priority support" with no duration. Never promise the perks for life or for the life of the account.
-10. **Agencies:** R5,599/mo is the ongoing partner wholesale price, never a launch discount. Partner economics are always labelled illustrative (20 × R1,500 = R30,000 − R5,599 = R24,401/mo gross spread, before the partner's own costs). Don't quote a fixed margin percentage.
-11. **Referral commission is undecided** (`[[FOUNDER DECISION: referral commission %]]`). Don't offer agencies or pilot brands a commission until the founder sets it.
-12. **Payment rails:** only Yoco, Ozow, Paystack, pawaPay and Fincra ("all five live September 2026"). No other payment providers in the rails story.
-13. **Whole-rand prices only**, no cents. Prices exclude VAT unless stated: `[[CONFIRM VAT TREATMENT]]`.
-14. **POPIA:** message only opted-in contacts, and blur customer names and phone numbers in any screenshot you share.
+1. **No social proof.** FluxMuse has no paying customers, no cohort and no results yet. Don't write customer counts, ratings, testimonials or case-study numbers. The honest line: "we're opening with a small first group of businesses, and we set you up by hand." Case studies come later, only with written consent.
+2. **Label every capability.** Live features are "newly launched": WhatsApp Concierge, hosted shop link, order alerts and SOLD, AI captions and images (POST), short AI video clips, voice-note transcription, WhatsApp Business set-up and broadcasts to consented contacts, answers in the customer's language, TikTok video posting.
+3. **Being switched on, don't present as live:** Facebook and Instagram auto-posting (Meta approval), checkout through FluxMuse (not yet tested end to end with real money), AI Voice (beta, evaluated together), daily digest, FluxLoop ads, Shopify/WooCommerce/Takealot sync.
+4. **Not available:** Instagram DMs and comments, X posting, paid checkout outside South Africa. Prospects outside South Africa join the waitlist; don't send them prices.
+5. **Checkout fee wording** ("Card payments carry Paystack's standard fee (2.9% + R1), deducted before payout; EFT is 2%") is used only once checkout through FluxMuse has been tested end to end. Until then say it is being switched on.
+6. **No trials and no cash-back offers.** Only the lead guarantee, with its conditions. Don't promise sales, revenue or ROI.
+7. **No VAT line.** Fluxmuse (Pty) Ltd is not VAT-registered; the price shown is the amount charged.
+8. **Never quote per-tier AI credit numbers.** Point to fluxmuse.ai/pricing.
+9. **Screenshots:** check `../assets/ASSETS_INDEX.md` before adding an image. Don't use internal-only screenshots or anything from `assets/charts/`.
+10. **Referral commission is undecided** (`[[FOUNDER DECISION: referral commission %]]`). Don't offer one.
+11. **POPIA:** message only people who opted in or a business's own published enquiry channel, one to one, human-sent, with an opt-out. Blur customer names and numbers in any screenshot you share.
 
 ## Founder decisions and placeholders still open
 
-- `[[FOUNDER DECISION]]` Founding Member perks duration.
+- `[[FOUNDER TO CONFIRM]]` whether Founding Member covers Nano and Micro, and whether Nano includes its own WhatsApp number.
+- `[[FOUNDER TO CONFIRM]]` reseller billing, partner directory and sub-account limits on the Agency tier.
 - `[[FOUNDER DECISION: referral commission %]]`, basis, duration and payout for partner referrals.
-- `[[FOUNDER DECISION]]` Local Founding Member price points and launch dates for Nigeria, Kenya and Ghana.
-- `[[TBC]]` Optional FluxMuse service fees (hands-on set-up, catalog build, content review, campaign management, training).
-- `[[TBC]]` Partner obligations (minimum commitment, first-line support, reporting) and co-marketing items.
-- `[[CONFIRM VAT TREATMENT]]` on all prices.
+- `[[TBC]]` Optional FluxMuse service fees and partner obligations.
+- `[[FEE WORDING ONLY ONCE CHECKOUT IS TESTED]]` in every "How you'll get paid" section.
 - `[[FLUXMUSE INFORMATION OFFICER NAME AND EMAIL]]` and hosting regions for the POPIA clause.
-- `[[CONFIRM]]` whether an existing WhatsApp Business app number can stay on the app alongside FluxMuse.
-- `[[CONFIRM]]` how AI credits are shared across Agency sub-accounts, and the white-label scope (app, reports, custom domain).
-- `[[LEGAL REVIEW REQUIRED]]` All terms, operator agreement, cancellation and refunds, liability, governing law.
-- `[[COMMISSION VECTOR LOGO]]` before any printed proposal (the source logo raster is small and has a clipped "F").
+- `[[LEGAL REVIEW REQUIRED]]` All terms, operator agreement, cancellation, the lead guarantee wording, liability, governing law.
 
 ## Rebuilding and checking
 
 ```bash
-PY=python   # needs python-docx and Pillow (PyMuPDF for page previews)
-$PY docs/go-to-market/_build/proposals/build_proposals.py   # writes the five .docx files here
-$PY docs/go-to-market/_build/proposals/qa_proposals.py      # structure, placeholders, table headers, forbidden claims
-# optional approximate page previews (headless Chrome):
-$PY docs/go-to-market/_build/proposals/preview_proposals.py html /tmp/pv
-CDP_UDD=/tmp/pv-udd node docs/go-to-market/_build/proposals/preview_proposals.mjs /tmp/pv
-$PY docs/go-to-market/_build/proposals/preview_proposals.py png /tmp/pv
+python3 docs/go-to-market/_build/proposals/build_proposals.py   # writes the five .docx files here
+python3 docs/go-to-market/_build/proposals/qa_proposals.py      # structure, placeholders, table headers, forbidden claims
 ```
