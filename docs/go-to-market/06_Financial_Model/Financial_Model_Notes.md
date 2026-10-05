@@ -2,14 +2,14 @@
 
 **Files:** `FluxMuse_Financial_Model.xlsx` (live formulas, Base selected), `model_summary.json` (the outputs other documents quote), charts in `../assets/charts/`.
 **Rebuild:** `python3 docs/go-to-market/_build/financial_model.py` from the repo root. This regenerates the workbook, the JSON and all 48 chart PNGs (12 charts, 4 variants each).
-**Status:** forward-looking projections, model date 5 Oct 2026, version v3. It replaces v2 (11 Sep 2026) and follows the current offer in `08_Prospects/CURRENT_OFFER.md` and the live product tables. FluxMuse has no paying customers yet, so every volume and rate below is an assumption. Inputs flagged `[[CONFIRM]]` show in red on the Assumptions sheet and need founder sign-off.
+**Status:** forward-looking projections, model date 5 Oct 2026, version v3 (R46M seed). It replaces v2 (11 Sep 2026) and follows the current offer in `08_Prospects/CURRENT_OFFER.md` and the live product tables. FluxMuse has no paying customers yet, so every volume and rate below is an assumption. Inputs flagged `[[CONFIRM]]` show in red on the Assumptions sheet and need founder sign-off.
 
-**The short version.** On the current offer, the Base case does **not** reach EBITDA break-even on the R25M seed alone. Cash falls below the R3.0M buffer in Jan 2029, runs out in Mar 2029 and bottoms at **-R17.0M in Nov 2030**. EBITDA turns positive in **Jan 2031** and stays positive. Closing the gap needs about **R20.0M** more funding, or one of the levers in §3. No input was tuned to change this result.
+**The short version.** On the current offer the R25M seed is not enough: the Base case would run out of cash in Mar 2029 and bottom at -R17.0M in Nov 2030. The founder decided on 5 Oct 2026 to keep the hiring plan and size the seed to the model. The smallest seed (landing Feb 2027) at which Base passes the test is **R45.1M**, so the seed input is now **R46M** (≈US$2.49M) `[[CONFIRM]]`. On R46M, Base keeps cash above the R3.0M buffer every month (low **R4.00M in Nov 2030**) and breaks even on EBITDA in **Jan 2031**, with no Series A. Conservative still fails. No other assumption changed.
 
 **Integrity:**
 - **Mirror check.** The Python build mirrors the workbook independently. It evaluates all 43,529 formulas with its own Excel evaluator and compares 43,327 cells against the mirror: every monthly, annual and key-output cell plus the Use_of_Funds reconciliation. The build stops on any mismatch. Current build: **0 mismatches, 0 evaluation errors.**
 - **Hand checks.** Four cells are also checked by hand: a South African Solo Nano cohort balance (month 13), Nigeria's partner-wholesale Agency revenue (month 40), the active Free-user balance in South Africa (month 7) and the FY2 revenue roll-up. All match.
-- **Recalculation.** The saved file was recalculated separately with the open-source `formulas` engine: 48,886 cells, **0 `#REF`, `#DIV/0` or `#N/A` errors**. FY1-FY5 revenue, EBITDA, closing cash and paying workspaces (20 values) all matched the JSON, as did the break-even month (Jan 2031) and the profitability flag ("No").
+- **Recalculation.** The saved file was recalculated separately with the open-source `formulas` engine: 48,876 cells, **0 `#REF`, `#DIV/0` or `#N/A` errors**. FY1-FY5 revenue, EBITDA, closing cash and paying workspaces (20 values) all matched the JSON, as did the break-even month (Jan 2031) and the profitability flag ("Yes" on R46M).
 
 ---
 
@@ -30,27 +30,29 @@
 | Subscription ARR (R m) | 3.9 | 12.7 | 32.0 | 63.0 | 99.9 |
 | Net subscription ARPA (R / month) | 1,355 | 1,441 | 1,546 | 1,640 | 1,784 |
 | Founding Member discount cost (R) | 32,143 | 0 | 0 | 0 | 0 |
-| Closing cash (R m) / headcount | 18.7 / 13 | 7.5 / 23 | -8.2 / 41 | -16.8 / 67 | -9.7 / 70 |
+| Closing cash (R m) / headcount | 39.7 / 13 | 28.5 / 23 | 12.8 / 41 | 4.2 / 67 | 11.3 / 70 |
 
 Paying workspaces by tier, Sep 2031: Nano 763, Micro 886, Starter 1,142, Growth 1,222, Scale 380, Corporate 24, Agency 203, Custom 8.
 
-**Cash (Base)**
+**Cash (Base, R46M seed)**
 
 | Output | Value |
 |---|---|
-| Seed | R25.0M (≈US$1.35M), lands Feb 2027 `[[CONFIRM]]` |
+| Seed | **R46.0M** (≈US$2.49M), lands Feb 2027 `[[CONFIRM]]`. Sized to the v3 Base case (founder decision 2026-10-05); was R25M |
+| Smallest passing seed | R45.1M (searched in R0.1M steps), rounded up to the next R1M |
 | Series A | none (input kept at R0) |
 | Pre-seed bridge required | **R66,279**: cash dips to -R66k in Jan 2027 on R500k opening cash `[[CONFIRM]]` |
-| First month below the R3.0M buffer | **Jan 2029** |
-| Cash runs out (below zero) | **Mar 2029**, 25 months after the seed |
-| Minimum cash | **-R17.00M in Nov 2030** |
-| Funding gap | **R20.0M** to hold the R3.0M buffer; R17.0M to stay above zero |
+| Minimum cash from the seed month on | **R4.00M in Nov 2030**, R1.00M above the R3.0M buffer |
+| First month below the buffer | never |
 | EBITDA break-even | first **Jan 2031**, sustained from Jan 2031 |
 | Operating cash flow positive | first **Dec 2030**, sustained from Dec 2030 |
+| Runway at seed close | 53.5 months at the burn of the first 12 months after the seed |
 | Market launches | Nigeria **Oct 2028**, Kenya **Jan 2029**, Ghana **Apr 2029**, Rest of Africa (USD) **Nov 2029**, Botswana & Namibia off |
-| Profitable on the R25M seed alone | **No** |
+| Profitable on the seed alone | **Yes** |
 
-## 2. Scenarios
+The headroom is thin. Break-even comes 47 months after the seed, and the trough is only R1.0M above the buffer.
+
+## 2. Scenarios (all on the R46M seed)
 
 | | Conservative | Base | Upside |
 |---|---|---|---|
@@ -61,13 +63,13 @@ Paying workspaces by tier, Sep 2031: Nano 763, Micro 886, Starter 1,142, Growth 
 | Headcount FY1 / FY3 / FY5 | 13 / 23 / 48 | 13 / 41 / 70 | 17 / 67 / 135 |
 | EBITDA ≥ 0 sustained from | not by Sep 2031 | Jan 2031 | Jul 2030 |
 | Operating cash flow ≥ 0 sustained from | not by Sep 2031 | Dec 2030 | Jan 2030 |
-| Minimum post-seed cash | -R20.47M (Sep 2031) | -R17.00M (Nov 2030) | -R10.84M (Dec 2029) |
-| First month below the buffer | Jun 2029 | Jan 2029 | Sep 2028 |
+| Minimum post-seed cash | R0.53M (Sep 2031) | R4.00M (Nov 2030) | R10.16M (Dec 2029) |
+| First month below the buffer | May 2031 | never | never |
 | Pre-seed bridge | R74.9k | R66.3k | R54.9k |
 | Launches NG / KE / GH / Rest | Nov 2029 / Apr 2030 / Sep 2030 / Sep 2031 | Oct 2028 / Jan 2029 / Apr 2029 / Nov 2029 | Apr 2028 / Jul 2028 / Sep 2028 / Mar 2029 |
-| Profitable on R25M alone | **No** | **No** | **No** |
+| Profitable on the seed alone | **No** | **Yes** | **Yes** |
 
-Upside fails too: it hires faster (0.80x gates, to the 135-FTE ceiling) and the trough comes in Dec 2029, before revenue catches up.
+**Conservative still fails on R46M.** Cash stays above zero but falls below the buffer from May 2031 (short R2.47M), and EBITDA never turns positive within the horizon. Smallest single fixes: a 2.50x gate multiplier, or a 31% cut to every non-founder salary. Not adopted.
 
 **Scenario drivers** (columns D:F on Assumptions, switched by the selector in B6; unchanged from v2 except where noted)
 
@@ -82,29 +84,29 @@ Upside fails too: it hires faster (0.80x gates, to the 135-FTE ceiling) and the 
 | Hiring & launch MRR-gate multiplier | 1.40x | 1.00x | 0.80x |
 | FluxMuse fee on checkout GMV | 0% | 0% | **0%** (was 0.75% in v2) |
 
-## 3. Constraint check: does the R25M seed still reach break-even?
+## 3. Constraint check and seed sizing
 
 The constraint is unchanged: no Series A; closing cash ≥ R3.0M every month from Feb 2027; EBITDA and operating cash flow reach break-even and stay there. The Cash_Flow sheet evaluates it live (`PROFITABLE ON THE SEED ALONE?`) and the Cover repeats it.
 
-| Test | Conservative | Base | Upside |
+| Test (R46M seed) | Conservative | Base | Upside |
 |---|---|---|---|
 | No Series A | Yes | Yes | Yes |
-| Cash ≥ R3.0M every month from the seed | No: low -R20.47M, Sep 2031 | No: low -R17.00M, Nov 2030 | No: low -R10.84M, Dec 2029 |
+| Cash ≥ R3.0M every month from the seed | No: low R0.53M, Sep 2031 | Yes: low R4.00M, Nov 2030 | Yes: low R10.16M, Dec 2029 |
 | EBITDA break-even reached and sustained | No | Yes, from Jan 2031 | Yes, from Jul 2030 |
 | Operating cash flow positive and sustained | No | Yes, from Dec 2030 | Yes, from Jan 2030 |
-| **Result** | **Fail** | **Fail** | **Fail** |
+| **Result** | **Fail** | **Pass** | **Pass** |
 
-**Honest answer: no.** The base case reaches EBITDA break-even only in Jan 2031, after spending about R20M more than the seed provides (to hold the buffer). It does not reach break-even without a Series A or another source of cash.
+**Seed sizing.** On R25M, Base failed: cash below the buffer from Jan 2029, below zero from Mar 2029, low -R17.0M in Nov 2030, a R20.0M gap. The build searched the seed in R0.1M steps with everything else fixed. R45.0M leaves the low at R2.997M (fails by R2.8k); **R45.1M passes**. Rounded up to **R46M**, the low is R4.00M. The R46M figure buys R1M of headroom, not a margin of safety: if Free users upgrade at 0.25% a month instead of 0.5%, minimum cash falls to -R0.72M and the test fails again.
 
 **Why v2 passed and v3 does not.** Four changes, all from the current offer, not from tuning:
 - **Lower revenue per customer.** Solo buyers now land mostly on Nano (R149) and Micro (R289), not Starter (R499). Solo ARPA falls from about R809 to R291 a month (FY3), and SMEs from R2,769 to R2,024 as Starter joins their mix.
 - **Fewer and slower paying customers.** No trial: 5% of Solo and 8% of SME sign-ups pay at once (v2 assumed 11% and 14% trial conversion). Most sign-ups join Free and upgrade slowly (0.5% a month). FY5 paying workspaces: 4,627 against 8,816.
 - **Higher AI cost.** The product prices a credit at R0.15 of provider cost. v2 assumed R0.012. FY1-FY2 gross margin is much lower, and the Free plan adds R0.1M-R1.6M a year of cost.
-- **The cost base did not change.** The hiring plan, MRR gates, office, G&A and legal base are as in v2. Fixed costs that v2 covered with R73M of FY3 revenue now face R25M.
+- **The cost base did not change.** The hiring plan, MRR gates, office, G&A and legal base are as in v2. Fixed costs that v2 covered with R73M of FY3 revenue now face R25.5M.
 
 Partner wholesale at R6,999 (was R5,599) and the new Corporate line help, but agencies and corporates are small in number.
 
-**Levers that would fix it (each moved alone; none adopted).** The build searches for the smallest single change that passes the test:
+**Other levers that would have fixed it on R25M (each moved alone; none adopted):**
 
 | Lever | Value that passes | What it means |
 |---|---|---|
@@ -113,12 +115,9 @@ Partner wholesale at R6,999 (was R5,599) and the new Corporate line help, but ag
 | Sign-up volume | **3.25x** plan | About 490 South African sign-ups in Oct 2026 instead of 150 |
 | Conversion (direct paid and Free upgrades) | **3.05x** | e.g. Solo 15% and SME 24% paying at sign-up |
 | Free-to-paid upgrades | **3.5% a month** (plan 0.5%) | Well above freemium norms |
-| Seed size | **R46M** instead of R25M | |
-| Extra funding | **R20.0M** | To hold the buffer (R17.0M to stay above zero) |
+| Seed size | **R45.1M**, adopted as R46M | Founder decision 2026-10-05 |
 
-The most realistic route is a mix: hire on slower gates (the 2.05x result shows hiring pace is the biggest lever), steer Solo sign-ups toward Micro and Starter, and prove that SMEs convert better than assumed before the seed is spent. Volume alone would need more than three times the planned sign-ups.
-
-**Conservative.** As modelled (1.40x gates) cash falls to -R20.47M by Sep 2031. Smallest single fixes: a 2.75x gate multiplier, or a 35% cut to every non-founder salary.
+Beyond the larger seed, the safest route is a mix: hire on slower gates (the 2.05x result shows hiring pace is the biggest lever), steer Solo sign-ups toward Micro and Starter, and prove that SMEs convert better than assumed before the seed is spent. Volume alone would need more than three times the planned sign-ups.
 
 **Pre-seed bridge.** Every scenario needs R55k-R75k before the seed lands (lowest cash Jan 2027). Opening cash above about R570k, a founder loan or an earlier close would cover it.
 
@@ -174,35 +173,46 @@ There are no regional wholesale prices in the product. The model uses the Corpor
 
 **Cost discipline.** Unchanged from v2. Every non-founder hire waits for its earliest month, the seed, and last month's net MRR ≥ gate x scenario multiplier. Paid spend = MIN(desired, R40k floor + 35% of last month's MRR in Base), switched off where CAC payback exceeds 12 months `[[CONFIRM]]`. Brand = MIN(ceiling, R25k + 4% of MRR).
 
-## 5. Use of funds (R25M) against modelled spend
+## 5. Use of funds (R46M) against modelled spend
 
-The allocation is unchanged: 40 / 30 / 15 / 15 = R10.0M / R7.5M / R3.75M / R3.75M.
+The percentages are unchanged: 40 / 30 / 15 / 15.
 
-| Category | Allocation | Spend, 18 months (Feb 2027-Jul 2028) | Share, 18 months | Spend, 24 months (Feb 2027-Jan 2029) | Share, 24 months | Gap at 24 months |
-|---|---|---|---|---|---|---|
-| Product & engineering | 40% | R11.17M | 45.7% | R17.60M | 43.1% | +3.1 pp |
-| Sales & marketing / partner programme | 30% | R6.91M | 28.3% | R10.90M | 26.7% | -3.3 pp |
-| NG/KE/GH expansion & payments compliance | 15% | R0.36M | 1.5% | R2.38M | 5.8% | **-9.2 pp** |
-| Operations & working capital | 15% | R6.00M | 24.6% | R9.91M | 24.3% | **+9.3 pp** |
-| Total gross spend | | R24.43M | | R40.79M | | |
-| less revenue collected | | R8.93M | | R17.43M | | |
-| **Net cash consumed from the seed** | | **R15.51M** | | **R23.36M** | | |
-| Seed remaining at the end of the window | | R9.49M | | R1.64M | | |
+| Category | Share | Amount (R) | ≈ US$ |
+|---|---|---|---|
+| Product & engineering | 40% | R18.4M | $0.99M |
+| Sales & marketing / partner programme | 30% | R13.8M | $0.75M |
+| NG/KE/GH expansion & payments compliance | 15% | R6.9M | $0.37M |
+| Operations & working capital | 15% | R6.9M | $0.37M |
+| **Total** | 100% | **R46.0M** | **$2.49M** |
 
-Expansion spend is low because NG/KE/GH now start late in the 24-month window. Operations runs over 15% because customer success, hosting, AI and support scale with customers. After 24 months only R1.6M of the seed is left, which is why cash breaks the buffer in Jan 2029.
+Modelled spend does not depend on the seed size (hiring is gated on MRR), so the reconciliation shares are as before:
 
-## 6. FX shock: ZAR 15% stronger (Base)
+| Category | Spend, 18 months (Feb 2027-Jul 2028) | Share | Spend, 24 months (Feb 2027-Jan 2029) | Share | Gap at 24 months |
+|---|---|---|---|---|---|
+| Product & engineering | R11.17M | 45.7% | R17.60M | 43.1% | +3.1 pp |
+| Sales & marketing / partner programme | R6.91M | 28.3% | R10.90M | 26.7% | -3.3 pp |
+| NG/KE/GH expansion & payments compliance | R0.36M | 1.5% | R2.38M | 5.8% | **-9.2 pp** |
+| Operations & working capital | R6.00M | 24.6% | R9.91M | 24.3% | **+9.3 pp** |
+| Total gross spend | R24.43M | | R40.79M | | |
+| less revenue collected | R8.93M | | R17.43M | | |
+| **Net cash consumed from the seed** | **R15.51M** | | **R23.36M** | | |
+| Seed remaining at the end of the window | R30.49M | | R22.64M | | |
 
-The shock now applies from Apr 2029 (month 31), after the later NG/KE/GH plan months.
+Expansion is under-spent against 15% because NG/KE/GH start late in the window. Operations runs over 15% because customer success, hosting, AI and support scale with customers. About R22.6M is still unspent after 24 months. It carries the business through the long loss-making stretch to the Nov 2030 trough.
+
+## 6. FX shock: ZAR 15% stronger (Base, R46M)
+
+The shock applies from Apr 2029 (month 31), after the later NG/KE/GH plan months.
 
 | Output | Base | ZAR +15%, repricing on | ZAR +15%, no repricing |
 |---|---|---|---|
 | FY3 revenue | R25.49M | R25.44M (-R0.05M) | R24.98M (-R0.51M) |
 | FY5 revenue | R93.52M | R93.66M (+R0.14M) | R86.12M (-R7.40M) |
 | FY5 EBITDA | R4.50M | R4.47M (-R0.03M) | -R0.88M (-R5.38M) |
-| Minimum post-seed cash | -R17.00M (Nov 2030) | -R16.47M (Nov 2030) | -R20.08M (Mar 2031) |
+| Minimum post-seed cash | R4.00M (Nov 2030) | R4.53M (Nov 2030) | R0.92M (Mar 2031) |
+| Profitable on the seed alone | Yes | Yes | **No** |
 
-Repricing discipline is still the main FX control: without it, FY5 EBITDA turns negative and the funding gap grows by about R3.1M.
+Repricing discipline is the main FX control: without it, the shock breaks the buffer.
 
 ## 7. Unit economics, FY3 (Base)
 
@@ -239,13 +249,15 @@ Repricing discipline is still the main FX control: without it, FY5 EBITDA turns 
 | Solo paid CAC | R2,200 | R1,500 | Cheaper entry-tier buyers |
 | Processing | 2.9% | 3.0% | Paystack 2.9% + R1 |
 | FX shock month | Oct 2028 | Apr 2029 | Later launches |
-| Hiring, gates, cap, seed, buffer, use of funds | | unchanged | Not tuned |
-| Base result | FY5 R238.0M, EBITDA 28%, break-even Mar 2029, low cash R7.96M; passes | FY5 R93.5M, EBITDA 5%, break-even Jan 2031, low cash -R17.0M; **fails** | Lower ARPA, no trial, higher AI cost, same cost base |
+| Seed | R25M | **R46M** (smallest passing R45.1M, rounded up) | Founder decision 2026-10-05: keep the hiring plan, size the seed to the model |
+| Hiring, gates, cap, seed month, buffer, use-of-funds % | | unchanged | Not tuned |
+| Base result | FY5 R238.0M, EBITDA 28%, break-even Mar 2029, low cash R7.96M on R25M | FY5 R93.5M, EBITDA 5%, break-even Jan 2031; low cash -R17.0M on R25M, **R4.00M on R46M** | Lower ARPA, no trial, higher AI cost, same cost base |
 
 ## 9. Every new or changed assumption (`[[CONFIRM]]` on the Assumptions sheet)
 
 | Assumption | Value | Why this value |
 |---|---|---|
+| Seed amount | R46M (was R25M) | Sized to the v3 Base case (founder decision 2026-10-05) |
 | Seed month | Feb 2027 (unchanged) | No pilot results gate it now; kept for comparability |
 | First group | 4 a month, Oct 2026-Jan 2027, 50% Solo, R10k a month set-up | Founders can onboard about one business a week by hand alongside the build |
 | SA sign-ups at launch | 150 a month | Organic only before the seed; below v2's 250 trials |
@@ -278,8 +290,8 @@ Repricing discipline is still the main FX control: without it, FY5 EBITDA turns 
 
 ## 10. Known limitations
 
-- **Volume and conversion are guesses.** There are no paying customers. The Base Sensitivity grid shows no churn x volume cell that passes: even at 0.7x churn and 1.3x volume, minimum cash is -R8.75M.
-- **Free conversion matters.** At 0.25% a month minimum cash is -R21.7M and FY5 EBITDA -R2.3M; at 1.0% it is -R10.2M and +R15.2M. Measure it from the first month.
+- **Volume and conversion are guesses.** There are no paying customers. On R46M, the Base Sensitivity grid fails at 0.85x volume with base churn (low R0.80M) and at base volume with 1.15x churn (low R2.95M).
+- **Free conversion matters.** On R46M: at 0.25% a month minimum cash is -R0.72M (fails) and FY5 EBITDA -R2.3M; at 1.0% it is R10.76M and +R15.2M. Measure it from the first month.
 - **Simplified dynamics.** Customers are fractional; launch and hiring decisions are one-way; gates use last month's MRR. No downgrades. Free users who go dormant never come back. Sign-ups that pay at once and Free users split Solo/SME by the same share.
 - **AI cost.** Utilisation (40%) is assumed; the R0.15 peg is the platform's own figure, not a measured average. AI Voice minutes on Corporate/Agency prepaid balances are neither revenue nor cost here.
 - **Founding Member.** The +20% uplift and 8% churn between bills are assumptions; annual-plan treatment is unconfirmed.
@@ -300,7 +312,7 @@ Repricing discipline is still the main FX control: without it, FY5 EBITDA turns 
 ## 12. Founder confirmations needed
 
 - **Cash and seed.** Opening cash at 1 Oct 2026 (R500k) and how to cover the R66k pre-seed bridge; seed month (Feb 2027) and instrument.
-- **The seed test.** The Base case needs about R20M more, or a lever from §3. Decide which: slower hiring gates (2.05x), a smaller cost base, a larger raise (about R46M), or a planned Series A or bridge.
+- **The seed.** R46M (≈US$2.49M) instead of R25M, sized to Base with R1.0M of headroom. Conservative still fails on it; consider slower hiring gates as a fallback if early conversion runs below plan.
 - **First group** size, mix and set-up cost.
 - **Funnel**: sign-ups at launch, pay-at-sign-up rates, Free upgrade and dormancy rates, Free hosting cost.
 - **Mixes, upgrades and churn** for the new tiers, and the Corporate and Custom deal volumes.
@@ -318,4 +330,5 @@ Readers of the JSON (business plan, investor deck, `_build/business_plan/derive_
 - **Renamed:** tier `Enterprise` → `Custom` in every tier-keyed map (`annual[].ending_customers_by_tier`, `price_tables.zar_list_monthly`, `price_tables.local_monthly.*`, `price_tables.zar_value_at_parity.*`, `unit_economics_fy3.by_tier`). The **segment** is still called `Enterprise`.
 - **Narrowed:** `founding_member.windows`, `founding_member.discount_cost_by_market_fy_zar`, `annual[].founding_member_discount_by_market_zar` and `monthly_base.markers.founding_member_window_indices` now hold South Africa only (Nigeria, Kenya, Ghana removed). `founding_member.option_comparison` keys are now `Founding Member (default)` and `None` (was `B Founding Member (default)`, `A Launch Sprint`, `None`).
 - **Added:** segment `Corporate` in every segment-keyed map; tiers `Nano`, `Micro`, `Corporate`, `Custom`; `Free` in `price_tables.zar_list_monthly`; `annual[].free_plan`; top-level `free_plan`, `first_group`, `base_levers_to_pass_r25m_test`, `free_conversion_sensitivity`; `monthly_base.active_free_users`; `price_tables.bands`, `custom_modelled_as`, `vat`, `partner_wholesale_monthly.local_basis`.
-- **Meaning changed, same key:** `profitable_on_seed_alone` is now `false` in every scenario; `annual[].revenue_by_stream_zar.ai_credit_topups` is now credit-pack revenue; `commerce_platform_fees` is 0 in every scenario; `markets.launch_months.*.South Africa` is `Oct 2026`.
+- **Seed:** `seed_zar`, `seed_usd`, `cash.seed_raise_zar`, `cash.seed_raise_usd`, `use_of_funds.seed_zar` and every `use_of_funds.allocation[].amount_*` now reflect R46M. New block `seed_sizing` (`adopted_seed_zar`, `previous_seed_zar`, `smallest_passing_seed_zar_base`, `search_step_zar`, `rounding`, `note`). `base_levers_to_pass_r25m_test` keeps its name; on R46M it holds only `profitable_as_modelled: true` and two zero gaps.
+- **Meaning changed, same key:** `profitable_on_seed_alone` is now `true` for Base and Upside and `false` for Conservative; `annual[].revenue_by_stream_zar.ai_credit_topups` is now credit-pack revenue; `commerce_platform_fees` is 0 in every scenario; `markets.launch_months.*.South Africa` is `Oct 2026`.
