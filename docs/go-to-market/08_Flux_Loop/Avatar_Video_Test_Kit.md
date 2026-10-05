@@ -30,7 +30,7 @@ channels they publish themselves, never in bulk (POPIA s69,
 |---|---|
 | At least 3 solo entrepreneurs (beauty, fashion, food) | Biggest launch segment, and the camera-shy problem is sharpest there |
 | At least 2 SMEs | They have more products and budget, and are likelier Growth upgrades |
-| At least 2 brands whose customers mostly speak isiZulu or Sesotho | Tests the local-voice promise, the riskiest assumption |
+| At least 2 brands whose customers mostly speak Afrikaans | Tests the local-voice promise. Other languages (isiZulu, Sesotho and more) are deferred to later sprints |
 | At least 1 owner who already films themselves | Tests whether the avatar beats the real owner |
 | Already posting on WhatsApp Status or Facebook at least weekly | We need a real posting habit to measure against |
 
@@ -111,9 +111,10 @@ and a plain or softly blurred background.
 | Edit (all formats) | CapCut | — |
 
 **Check the voice first**, before making any video: can each tool say the
-script naturally in isiZulu, Sesotho and South African English? Record the
-answer in §6. If none can do isiZulu or Sesotho naturally, the local-language
-promise fails in version 1, which is a key finding.
+script naturally in South African English and Afrikaans? Record the answer
+in §6. If none can do Afrikaans naturally, the local-language promise fails in
+version 1, which is a key finding. isiZulu, Sesotho and the other languages
+are tested in later sprints, as businesses that need them come on board.
 
 **Keep a log for every video:** tool, cost in rands (credits converted), number
 of attempts, minutes of staff time, and what went wrong (lips out of sync, odd
@@ -184,11 +185,11 @@ One row per brand per format.
 
 **Voice check** (before any videos):
 
-| Tool | South African English | isiZulu | Sesotho | Notes |
-|---|---|---|---|---|
-| `[[Google TTS]]` | `[[natural / OK / poor / not available]]` | | | |
-| `[[Veo speech]]` | | | | |
-| `[[other]]` | | | | |
+| Tool | South African English | Afrikaans | Notes |
+|---|---|---|---|
+| `[[Google TTS]]` | `[[natural / OK / poor / not available]]` | | |
+| `[[Veo speech]]` |  | | |
+| `[[other]]` |  | | |
 
 **Quality bar for format A:** a video fails if any one of these is true: lips
 visibly out of sync, distorted teeth, hands or face, a mispronounced brand or
@@ -207,7 +208,7 @@ At the end of the sprint, fill this in and decide.
 | **It works at least as well** | Across brands, A brings at least as many conversations per post as B | `[[ ]]` |
 | **No trust damage** | No owner reports customers calling it fake or a scam; no more than 1 such comment per brand | `[[ ]]` |
 | **Quality** | At least 80% of format A videos pass the quality bar within 2 attempts | `[[ ]]` |
-| **Local voice** | At least one tool sounds natural in isiZulu or Sesotho | `[[ ]]` |
+| **Local voice** | At least one tool sounds natural in Afrikaans | `[[ ]]` |
 | **Cost** | Real cost per finished A video, including failed attempts, known and under `[[R ]]` | `[[ ]]` |
 
 **What to do with the result:**

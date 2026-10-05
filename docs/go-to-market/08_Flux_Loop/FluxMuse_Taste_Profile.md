@@ -226,7 +226,7 @@ The same post, written two ways.
 > Still answering DMs at 11pm? 📱 Send FluxMuse your product photos on
 > WhatsApp and get a shop link back, plus an assistant that replies to
 > customers in their language while you sleep. From R149 a month. Message us
-> "HI" and Thabo will set you up himself.
+> "HI" and our team is ready to set your business up.
 
 The generic version breaks four rules: hype words, no real moment from the
 customer's day, no price, and a free-trial offer.

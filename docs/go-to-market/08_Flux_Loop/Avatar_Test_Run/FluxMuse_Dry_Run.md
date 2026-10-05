@@ -10,7 +10,7 @@ answers)
 
 **Product and offer:** the Nano plan, R149 a month, with Founding Member
 (30% off the first two monthly bills for South African sign-ups). Both are
-real and live. **Proof:** a verified Meta Tech Provider; Thabo sets the first
+real and live. **Proof:** a verified Meta Tech Provider; our team sets the first
 group up by hand. No customer claims, ever.
 
 ---
@@ -24,7 +24,7 @@ Built from the Taste Profile's hook "Still answering DMs at 11pm?"
 | Hook | 0–4 s | "Still answering DMs at eleven at night?" |
 | Proof | 4–20 s | "Send FluxMuse your product photos on WhatsApp and get a shop link back. Our assistant answers your customers in their language, day and night, and you get a WhatsApp alert for every order." |
 | Offer | 20–25 s | "It's R149 a month. Sign up in South Africa now and your first two months are 30% off." |
-| Call to action | 25–30 s | "Tap the link and say hi. Thabo will set you up himself." |
+| Call to action | 25–30 s | "Tap the link and say hi. Our team is ready to set your business up." |
 
 **Caption** (all formats): `Still answering DMs at 11pm? 📱 Shop link from your photos, replies in your customers' language, an alert for every order. From R149/month. Tap to chat: <link>`
 
@@ -59,7 +59,7 @@ large text over `how-fluxmuse-works_square` for the first 4 seconds.
 ## Format C: founder selfie (`AV00C`)
 Thabo records two vertical phone clips in good light:
 - **Hook (4 s):** "Still answering DMs at eleven at night?"
-- **Call to action (4 s):** "Tap the link and say hi. I'll set you up myself."
+- **Call to action (4 s):** "Tap the link and say hi. Our team is ready to set your business up."
 
 Cut them around the same middle section, with Thabo's own voice or the
 voiceover over it.
@@ -89,3 +89,29 @@ voiceover over it.
 Record everything on the sheet as business `00`. Leave business 00 out of the
 gate calculations: it's FluxMuse, not a test business. The **Gates** tab
 already excludes it.
+
+---
+
+## Status (5 Oct 2026)
+
+| Format | Status | What's needed |
+|---|---|---|
+| **B** (`AV00B`) | **Voiced version rendered:** `dry_run_output/AV00B.mp4`, 24 s, 1080×1920, Kokoro-82M (Apache 2.0) voice `bf_emma` (British English; Kokoro has no South African voice), captions burned in over the dark infographics. Voice generated here on CPU with kokoro-onnx. CTA re-voiced and re-rendered 5 Oct after the founder asked for the team line instead of a named person. Variants with `bf_isabella` and `bm_george` were made for the voice choice. The earlier no-voice timing draft is kept alongside. | Thabo picks the voice and watches it before anything is posted. |
+| **A** (`AV00A`) | **In progress.** Avatar 1 generated on Higgsfield (Soul 2.0, job `63fb3eae-96ad-4c0b-a31c-9072b1fdd90d`, seed 366169, 1 credit; it's in the FluxMuse Higgsfield gallery). The image couldn't be downloaded into the build environment (its CDN is blocked there), so the talking clips aren't made yet. SadTalker weights are downloaded for a CPU run. | Save the avatar from Higgsfield and upload it to the session; then SadTalker hook/CTA clips and `assemble_video.py A`. |
+| **C** (`AV00C`) | **Not filmed.** | Two 4-second vertical clips by Thabo himself. Not made with someone else's photo or a generated "Thabo": format C tests the real owner's face, and a fake founder is what the trust gate forbids. Record on the sheet as "owner didn't film" until then; the kit counts that as a result. |
+
+**Assembler:** `docs/go-to-market/_build/avatar_test/assemble_video.py` (ffmpeg via the
+`imageio-ffmpeg` pip package, Poppins/Inter for captions). Examples:
+
+```
+python3 docs/go-to-market/_build/avatar_test/assemble_video.py B --audio <unzipped>/audio
+python3 docs/go-to-market/_build/avatar_test/assemble_video.py A --audio <unzipped>/audio --clips <unzipped>/clips
+python3 docs/go-to-market/_build/avatar_test/assemble_video.py C --audio <unzipped>/audio --clips <dir with selfie_hook.mp4, selfie_cta.mp4>
+```
+
+Format A carries the "AI presenter" label for the whole video. Nothing is
+posted until the voiced versions exist and Thabo has watched them.
+
+**Noted from the draft:** the infographics' small print is hard to read at
+phone size, so the captions carry the message. If the voiced version still
+feels busy, make simpler single-message stills for the proof and offer beats.

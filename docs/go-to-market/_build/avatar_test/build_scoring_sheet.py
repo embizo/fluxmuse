@@ -127,19 +127,21 @@ def videos_sheet(wb):
 
 def voice_sheet(wb):
     ws = wb.create_sheet("Voice check")
-    title(ws, "Voice check (before any video)", "Rated by a fluent speaker of each language: natural / OK / poor / not available. Script: Production_Prompts.md §2.")
-    cols = ["Tool / model", "South African English", "isiZulu", "Sesotho", "Rated by (initials)", "Notes"]
-    header(ws, 3, cols, [30, 18, 14, 14, 14, 40])
-    tools = ["Higgsfield: ElevenLabs v4", "Higgsfield: Text to Speech v2 (MiniMax)", "Higgsfield: Seed Audio",
-             "Google Cloud Text-to-Speech", "Veo (speech in video)", "Other:"]
+    title(ws, "Voice check (before any video)", "South African English and Afrikaans, rated by a fluent speaker: natural / OK / poor / not available. Other languages are deferred to later sprints. Script: Production_Prompts.md §2.")
+    cols = ["Tool / model", "South African English", "Afrikaans", "Rated by (initials)", "Notes"]
+    header(ws, 3, cols, [40, 18, 14, 14, 44])
+    tools = ["Higgsfield: ElevenLabs v4 (supports Afrikaans)", "Higgsfield: Text to Speech v2 (MiniMax)",
+             "Google Cloud Text-to-Speech (af-ZA voices)", "Meta MMS-TTS afr (Colab; internal check only, non-commercial)",
+             "Kokoro-82M (Colab; English only)", "Other:"]
     dv = DataValidation(type="list", formula1='"natural,OK,poor,not available"', allow_blank=True)
     ws.add_data_validation(dv)
     for i, t in enumerate(tools):
         r = 4 + i
         ws.cell(row=r, column=1, value=t)
-        for c in range(2, 7):
+        for c in range(2, 6):
             ws.cell(row=r, column=c).fill = INPUT_FILL
-    dv.add("B4:D9")
+    ws["C8"] = "not available"  # Kokoro has no Afrikaans voice
+    dv.add("B4:C9")
 
 
 def tracking_sheet(wb):
@@ -190,7 +192,7 @@ def gates_sheet(wb):
     passed_a = f'COUNTIFS({C},"A",{Q},1,{K},"Y",{L},"<=2")'
     good_a = f'COUNTIFS({C},"A",{Q},1,{K},"Y")'
     cost_a = f'SUMIFS({M},{C},"A",{Q},1)'
-    voice = "'Voice check'!$C$4:$D$9"
+    voice = "'Voice check'!$C$4:$C$9"  # the Afrikaans column
 
     gates = [
         ("Owners post it", "At least half of the owners who reviewed format A actually posted it (needs at least 6 businesses)",
@@ -205,7 +207,7 @@ def gates_sheet(wb):
         ("Quality", "At least 80% of format A videos pass the quality bar within 2 attempts",
          f'=IF({scored_a}=0,"",TEXT({passed_a}/{scored_a},"0%")&" of "&{scored_a})',
          f'=IF({scored_a}=0,"NEED DATA",IF({passed_a}/{scored_a}>=0.8,"PASS","FAIL"))'),
-        ("Local voice", "At least one tool rated natural in isiZulu or Sesotho by a fluent speaker",
+        ("Local voice", "At least one tool rated natural in Afrikaans by a fluent speaker",
          f'=COUNTIF({voice},"natural")&" natural rating(s)"',
          f'=IF(COUNTIF({voice},"natural")>0,"PASS",IF(COUNTA({voice})=0,"NEED DATA","FAIL"))'),
         ("Cost", "Real cost per finished format A video (all attempts, incl. failed) is at or under the limit in B4",
@@ -246,8 +248,8 @@ def fill_sample(wb):
             v.cell(row=r, column=12, value=2)
             v.cell(row=r, column=13, value=60)
     vc = wb["Voice check"]
-    vc["C4"] = "OK"
-    vc["D5"] = "natural"
+    vc["B4"] = "OK"
+    vc["C5"] = "natural"
     wb["Gates"]["B4"] = 80
 
 

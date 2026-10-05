@@ -20,9 +20,9 @@ The account needs credits first: it was on the free plan with 1.52 credits on
 free Colab T4. It uses SDXL or FLUX.1 [schnell] for avatars, Kokoro for the
 English voice and SadTalker for talking clips, all with licences that allow
 commercial use (check each one, and every model SadTalker downloads, before
-publishing). Meta MMS covers the isiZulu and Sesotho voice check, but it is
+publishing). Meta MMS covers the Afrikaans voice check, but it is
 non-commercial, so it's for the internal check only and never in a published
-video. Expect SadTalker's lip-sync to be weaker than the paid tools: that's
+video; a publishable Afrikaans voice needs Google Cloud TTS or ElevenLabs. Expect SadTalker's lip-sync to be weaker than the paid tools: that's
 exactly what the quality bar measures.
 
 ---
@@ -58,21 +58,28 @@ more than 2 businesses.
 
 ## 2. Voice-check script
 
-Generate the same short script with each voice tool, in each language. A
-fluent speaker of each language rates every clip **natural / OK / poor / not
-available** on the **Voice check** tab. **Don't rate isiZulu or Sesotho
-yourself unless you're fluent.**
+Generate the same short script with each voice tool, in **South African
+English and Afrikaans**. A fluent speaker rates every clip **natural / OK /
+poor / not available** on the **Voice check** tab. isiZulu, Sesotho and the
+other languages are deferred (founder decision 2026-10-05): test them in later
+sprints as businesses that need them come on board.
 
 **South African English (source):**
 > Sawubona! Are you still answering DMs at eleven at night? Send us your product photos on WhatsApp and we'll send you back a shop link, plus an assistant that answers your customers in their language. It's from R149 a month. Message us today.
 
-**isiZulu and Sesotho:** have a fluent speaker translate the English source
-before generating. Don't use machine translation for this test, because the
-point is to judge the voice, not the translation. Paste the approved text
-here:
+**Afrikaans** (translation written by Claude on 2026-10-05; have an Afrikaans
+speaker read it once before it goes into anything published):
+> Hallo! Antwoord jy nog om elfuur in die aand op DM's? Stuur vir ons jou produkfoto's op WhatsApp en ons stuur vir jou 'n winkelskakel terug, plus 'n assistent wat jou kliënte in hul eie taal antwoord. Dit kos vanaf R149 per maand. Stuur vandag nog vir ons 'n boodskap.
 
-- isiZulu: `[[translation by a fluent speaker]]`
-- Sesotho: `[[translation by a fluent speaker]]`
+For text-to-speech, write the price out: "vanaf eenhonderd nege-en-veertig rand
+per maand", so it isn't read as "R een vier nege".
+
+**Afrikaans voice tools (checked 2026-10-05):** Kokoro and Piper have no
+Afrikaans voice. Meta MMS-TTS (`facebook/mms-tts-afr`) does, but it is
+non-commercial, so it serves the internal voice check only. For a publishable
+Afrikaans voiceover use a commercial tool: Google Cloud Text-to-Speech
+(`af-ZA` voices) or ElevenLabs (via Higgsfield, which supports Afrikaans).
+Options for every other language are in `Language_Voice_Options.md`.
 
 **Also listen for:**
 - The brand name "FluxMuse" pronounced the same way every time.
