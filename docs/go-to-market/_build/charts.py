@@ -398,7 +398,7 @@ def chart_tam(D, T, suffix):
     ax.set_xlim(-1.05, 1.05)
     ax.set_ylim(-2.02, 1.02)
     items = [("TAM", f"{ms['tam_msmes'] / 1e6:,.0f} million", "MSMEs in Sub-Saharan Africa (IFC / World Bank est.)"),
-             ("SAM", f"{ms['sam_smbs'] / 1e6:,.1f} million", "Digitally active SMBs in the 23 rail-covered countries that sell via social / WhatsApp and can pay ≥US$25/mo"),
+             ("SAM", f"{ms['sam_smbs'] / 1e6:,.1f} million", "Digitally active SMBs in the countries our payment partners cover (most not yet on sale) that sell via social / WhatsApp and can pay ≥US$25/mo"),
              ("SOM", f"{ms['som_paying_workspaces']:,}", f"Paying workspaces by FY5 (~{ms['som_share_of_sam_pct']}% of SAM). Base case reaches {D['annual'][4]['ending_paying_workspaces']:,}")]
     for k, (lab, big, desc) in enumerate(items):
         y = 0.72 - k * 0.24

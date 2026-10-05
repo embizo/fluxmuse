@@ -479,7 +479,7 @@ def write_market_sizing(wb):
     _hdr_row(ws, 4, 1, 4)
     rows = [
         ("TAM: MSMEs in Sub-Saharan Africa", 44000000, "businesses", "IFC / World Bank est. (~44M MSMEs)", True, "n0"),
-        ("SAM: digitally active SMBs in the 23 rail-covered countries selling via social/WhatsApp, able to pay >= US$25/mo", 3500000, "businesses", "Planning estimate (facts file §5)", True, "n0"),
+        ("SAM: digitally active SMBs in the countries our payment partners cover (most not yet on sale) selling via social/WhatsApp, able to pay >= US$25/mo", 3500000, "businesses", "Planning estimate (facts file §5)", True, "n0"),
         ("SOM share of SAM (5-year)", 0.005, "%", "Planning estimate: ~0.5% of SAM", True, "pct"),
         ("SOM: paying workspaces by FY5", "=B6*B7", "workspaces", "Formula: SAM x SOM share", False, "n0"),
         ("Minimum price point used for SAM value", 25, "US$ / month", "SAM definition: can pay >= US$25/mo", True, "usd"),
