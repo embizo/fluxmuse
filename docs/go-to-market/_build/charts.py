@@ -39,7 +39,7 @@ THEMES = {
                  on_orange="#0F1419", neg="#90A4AE"),
 }
 SIZES = {"": (10.0, 6.25, 200), "_16x9": (9.6, 5.4, 200)}
-FOOT = "Source: FluxMuse Financial Model v3 (Base case, R25M seed), 5 Oct 2026. Forward-looking projections; no paying customers yet, every input is an assumption."
+FOOT = "Source: FluxMuse Financial Model v3 (Base case, R46M seed), 5 Oct 2026. Forward-looking projections; no paying customers yet, every input is an assumption."
 FY = ["FY1", "FY2", "FY3", "FY4", "FY5"]
 FY_SUB = ["Oct 26-Sep 27", "Oct 27-Sep 28", "Oct 28-Sep 29", "Oct 29-Sep 30", "Oct 30-Sep 31"]
 MARKET_COLOURS = [("South Africa", "orange"), ("Nigeria", "green"), ("Kenya", "blue"), ("Ghana", "violet"),
@@ -352,7 +352,7 @@ def chart_scenarios(D, T, suffix):
     S = D["scenarios"]
     names = ["Conservative", "Base", "Upside"]
     fig = new_fig(T, suffix)
-    header(fig, T, "Scenarios: FY5 revenue and EBITDA, R25m seed and no Series A",
+    header(fig, T, "Scenarios: FY5 revenue and EBITDA, R46m seed and no Series A",
            "R million, FY5 (Oct 2030-Sep 2031). No Series A in any scenario; hiring and launches gated on MRR")
     legend_row(fig, T, [("FY5 revenue", T["orange"]), ("FY5 EBITDA", T["slate"])], 0.80)
     ax = fig.add_axes([0.08, 0.22, 0.88, 0.51])
@@ -439,7 +439,7 @@ def chart_cash_runway(D, T, suffix):
     cash = cash[:n]
     tr = mk["min_post_seed_cash_month_index"]
     fig = new_fig(T, suffix)
-    header(fig, T, "Cash runway on the R25m seed",
+    header(fig, T, "Cash runway on the R46m seed",
            f"Base case, monthly closing cash vs the R3.0m buffer, {labels[0]} - {labels[n - 1]}. No Series A"
            + ("" if D["profitable_on_seed_alone"]["Base"] else ". Base runs out of seed cash"))
     ax = fig.add_axes([0.08, 0.12, 0.88, 0.70])
@@ -457,7 +457,7 @@ def chart_cash_runway(D, T, suffix):
     xt = ax.get_xaxis_transform()
     marks = [(mk["first_group_last_month_index"], f"First group by hand\nto {labels[mk['first_group_last_month_index']]}", 0),
              (min(mk["founding_member_window_indices"].get("South Africa", [2])), "Founding Member\noffer (shaded)", 1),
-             (seed, f"Seed R25m lands\n{labels[seed]}", 2)]
+             (seed, f"Seed R46m lands\n{labels[seed]}", 2)]
     for k, name in enumerate(["Nigeria", "Kenya", "Ghana"]):
         if launches.get(name) is not None and launches[name] < n:
             marks.append((launches[name], f"{name} launch\n{labels[launches[name]]}", k))
@@ -545,7 +545,7 @@ def chart_fx_shock(D, T, suffix):
         d = R[names[2]][key] - base
         ax.text(0.5, -0.06, f"no repricing: {'+' if d >= 0 else '-'}R{abs(d) / 1e6:,.1f}m", transform=ax.transAxes, ha="center", va="top", fontsize=9, color=T["muted"])
     prof = all(R[n]["profitable_on_seed_alone"] for n in names)
-    fig.text(0.04, 0.085, "Profitable on the R25m seed alone in all three cases" if prof else ("Base already misses the R25m profitability test; the shock changes the size of the gap" if not R[names[0]]["profitable_on_seed_alone"] else "The shock breaks the R25m profitability constraint in at least one case"),
+    fig.text(0.04, 0.085, "Profitable on the R46m seed alone in all three cases" if prof else ("Base already misses the R46m profitability test; the shock changes the size of the gap" if not R[names[0]]["profitable_on_seed_alone"] else "The shock breaks the R46m profitability constraint in at least one case"),
              fontsize=10, fontweight="bold", color=T["ink"])
     footer(fig, T, "Repricing on = quarterly review restores ZAR value one quarter after drift exceeds 10%. Source: FluxMuse Financial Model v3, Sensitivity sheet.")
     return fig

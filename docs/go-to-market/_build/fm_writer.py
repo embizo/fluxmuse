@@ -263,7 +263,7 @@ SUBTITLES = {
     "Revenue_Build": "Monthly, Oct 2026 - Sep 2031. Launch gates, FX & repricing, sign-ups, Free plan funnel, acquisition by market & segment with the marketing cap, cohorts, gross -> discounts -> net revenue.",
     "Costs": "Monthly MRR-gated headcount plan, COGS (incl. Free plan AI cost) and operating expenses (lean pre-seed mode until the seed lands).",
     "P&L": "Monthly profit and loss (ZAR). EBITDA excludes D&A (immaterial: equipment is expensed).",
-    "Cash_Flow": "Monthly cash flow & funding (R25M seed only), R3.0M buffer test, runway and key outputs. No VAT flows (not VAT-registered).",
+    "Cash_Flow": "Monthly cash flow & funding (R46M seed only), R3.0M buffer test, runway and key outputs. No VAT flows (not VAT-registered).",
 }
 
 
@@ -409,7 +409,7 @@ UOF_CELLS = {}   # (window n, category index or 'total'/'rev'/'net') -> address,
 
 def write_use_of_funds(wb, p):
     ws = wb.create_sheet("Use_of_Funds")
-    _title(ws, "Use of Funds", "Seed R25M split (facts file §7). Percentages are inputs; amounts are formulas on the seed amount.")
+    _title(ws, "Use of Funds", "Seed R46M split (facts file §7). Percentages are inputs; amounts are formulas on the seed amount.")
     for k, h in enumerate(["Category", "Share", "Amount (R)", "≈ US$", "What it buys (hires & milestones)"]):
         ws.cell(row=4, column=k + 1, value=h)
     _hdr_row(ws, 4, 1, 5)
@@ -578,7 +578,8 @@ CHANGES_FROM_V2 = [
     ("Markets", "South Africa only until NG/KE/GH checkout is live. Plan months moved later: Nigeria Apr 2028, Kenya Jul 2028, Ghana Oct 2028, Rest of Africa (USD) May 2029 [[CONFIRM]]. BW/NA still off."),
     ("AI cost", "1 credit = R0.15 of provider cost (ai-credit-math.ts, platform_billing_config). Allowances at live levels; Corporate, Agency and Custom run on their own keys (no AI cost). Packs R300 for 1,000 credits, no overage."),
     ("Commerce & VAT", "No FluxMuse fee on checkout: Paystack fees pass through to the merchant (0% in every scenario). Not VAT-registered: no VAT in revenue. Agency setup fee removed (not in the live price list)."),
-    ("Unchanged", "R25M seed in Feb 2027, 40/30/15/15 use of funds, R3.0M buffer, MRR-gated hiring and launches, paid cap, scenario switch, FX drift and repricing."),
+    ("Seed", "R25M -> R46M (founder decision 5 Oct 2026): the smallest seed at which Base holds the R3.0M buffer and breaks even with no Series A is about R45.0M, rounded up [[CONFIRM]]."),
+    ("Unchanged", "Feb 2027 seed month, 40/30/15/15 use of funds, R3.0M buffer, MRR-gated hiring and launches, paid cap, scenario switch, FX drift and repricing."),
 ]
 
 
@@ -586,7 +587,7 @@ def write_cover(wb):
     ws = wb["Cover"]
     _cell(ws, "A1", "FluxMuse Financial Model", Font(name=FONT, size=22, bold=True, color=ORANGE))
     _cell(ws, "A2", "AI marketing team & WhatsApp commerce for African SMBs | Fluxmuse Pty Ltd", Font(name=FONT, size=11, color=SLATE))
-    info = [("Version", f"{VERSION} (current offer: 9 tiers, no trials, R25M seed test)"), ("Model date", MODEL_DATE),
+    info = [("Version", f"{VERSION} (current offer: 9 tiers, no trials, R46M seed test)"), ("Model date", MODEL_DATE),
             ("Horizon", "60 months: Oct 2026 - Sep 2031 (FY1-FY5, fiscal year Oct-Sep). Month 1 = Oct 2026"),
             ("Currency", "ZAR (R); US$ at R18.50 = US$1 (input on Assumptions)")]
     for k, (a, b) in enumerate(info):
@@ -613,7 +614,7 @@ def write_cover(wb):
     r += 1
     ws.cell(row=r, column=1, value="Constraint check & key outputs (live formulas, selected scenario)")
     _hdr_row(ws, r, 1, 7)
-    for lab, key, fmt in [("Profitable on the R25M seed alone?", "k_profitable", None),
+    for lab, key, fmt in [("Profitable on the R46M seed alone?", "k_profitable", None),
                           ("EBITDA break-even (first month)", "k_be", None), ("EBITDA break-even (sustained)", "k_be_sus", None),
                           ("Operating cash flow positive (first month)", "k_cfpos", None), ("Operating cash flow positive (sustained)", "k_cfpos_sus", None),
                           ("Minimum closing cash from the seed month on", "k_min_post", "zar"), ("Month of minimum post-seed cash", "k_min_post_month", None),
@@ -645,7 +646,7 @@ def write_cover(wb):
         ("Annual_Summary", "FY1-FY5 roll-up: revenue, discounts, margins, EBITDA, cash, customers by segment/market/tier, ARR, ARPA, headcount."),
         ("Cash_Flow", "Working capital, funding (seed only), cash vs R3.0M buffer, runway, break-even, bridge, launch months and the constraint check."),
         ("Unit_Economics", "ARPA, churn, LTV, CAC, LTV:CAC and payback by segment (tier memo); magic number, burn multiple, Rule of 40."),
-        ("Use_of_Funds", "R25M allocation and reconciliation against modelled spend in the 18 and 24 months after close."),
+        ("Use_of_Funds", "R46M allocation and reconciliation against modelled spend in the 18 and 24 months after close."),
         ("Sensitivity", "Scenario comparison, FX shock, Founding Member vs none, Free-to-paid conversion, Conservative shortfall & fix, churn x volume grids (build-time values)."),
         ("Market_Sizing", "TAM / SAM / SOM (estimates) linked to modelled FY5 workspaces."),
     ]

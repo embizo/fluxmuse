@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the FluxMuse investor financial model (v3: current offer, nine tiers, no trials; R25M seed test).
+"""Build the FluxMuse investor financial model (v3: current offer, nine tiers, no trials; R46M seed test).
 
     venv/bin/python docs/go-to-market/_build/financial_model.py [--no-charts]
 
@@ -96,7 +96,7 @@ def smallest_fix(scen_idx, base_ov):
 
 
 def lever_fix(scen_idx, key, start, step, n, base_ov=None):
-    """Smallest value of one lever (start + k * step, k = 0..n) that passes the R25M constraint; None if none does."""
+    """Smallest value of one lever (start + k * step, k = 0..n) that passes the R46M constraint; None if none does."""
     base_ov = base_ov or {}
     grid = [round(start + step * k, 4) for k in range(n + 1)]
     if not ok(pack(scen_idx, {**base_ov, key: grid[-1]})):
@@ -112,7 +112,7 @@ def lever_fix(scen_idx, key, start, step, n, base_ov=None):
 
 
 def base_levers(res):
-    """Base case: which single lever, moved alone, restores profitability on the R25M seed (honest diagnostics, not adopted)."""
+    """Base case: which single lever, moved alone, restores profitability on the R46M seed (honest diagnostics, not adopted)."""
     b = res["Base"]
     out = {"profitable_as_modelled": ok(b), "funding_gap_to_hold_buffer_zar": b["SV"]["k_buf_short"],
            "funding_gap_to_stay_above_zero_zar": b["SV"]["k_funding_gap"]}
@@ -181,12 +181,12 @@ def sensitivity(res):
                  ("Pre-seed bridge required (R)", "zar", lambda r: r["SV"]["k_bridge"]),
                  ("Launches NG / KE / GH / Rest", "text", lambda r: " / ".join(r["SV"][f"k_launch_{m}"] for m in ("NG", "KE", "GH", "RoA"))),
                  ("FY5 closing cash (R)", "zar", lambda r: r["AV"]["a_close_cash"][5]),
-                 ("Profitable on the R25M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
+                 ("Profitable on the R46M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
     blocks = [blk("Scenario comparison (seed only; Series A off)", I.SCENARIOS, res, std_rows)]
     fx_rows = [("FY3 total revenue (R)", "zar", lambda r: r["AV"]["a_rev"][3]), ("FY5 total revenue (R)", "zar", lambda r: r["AV"]["a_rev"][5]),
                ("FY3 EBITDA (R)", "zar", lambda r: r["AV"]["a_ebitda"][3]), ("FY5 EBITDA (R)", "zar", lambda r: r["AV"]["a_ebitda"][5]),
                ("Minimum post-seed cash (R)", "zar", lambda r: r["SV"]["k_min_post"]),
-               ("Profitable on the R25M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
+               ("Profitable on the R46M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
     blocks.append(blk(f"FX shock (Base): ZAR 15% stronger vs NGN/KES/GHS/USD from {F.mlabel(res['Base']['p']['fx_shock_month'])}, after the NG/KE/GH plan months", list(fx), fx, fx_rows,
                       "Repricing on = the quarterly policy restores ZAR value one quarter after drift exceeds 10%."))
     d_rows = [("FY1 total revenue (R)", "zar", lambda r: r["AV"]["a_rev"][1]), ("FY2 total revenue (R)", "zar", lambda r: r["AV"]["a_rev"][2]),
@@ -194,7 +194,7 @@ def sensitivity(res):
               ("Launch-offer discount cost FY1-FY3 (R)", "zar", lambda r: sum(r["AV"]["a_fm_cost"][1:4])),
               ("FY5 EBITDA (R)", "zar", lambda r: r["AV"]["a_ebitda"][5]),
               ("Minimum post-seed cash (R)", "zar", lambda r: r["SV"]["k_min_post"]),
-              ("Profitable on the R25M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
+              ("Profitable on the R46M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
     blocks.append(blk("Founding Member (Base): live offer vs no offer", list(disc), disc, d_rows,
                       "None also removes the +20% sign-up uplift assumed while the offer runs."))
     p_rows = [("FY1 Free users upgrading to paid", "n0", lambda r: r["AV"]["a_free_conv"][1]),
@@ -204,7 +204,7 @@ def sensitivity(res):
               ("FY5 EBITDA (R)", "zar", lambda r: r["AV"]["a_ebitda"][5]),
               ("Pre-seed bridge required (R)", "zar", lambda r: r["SV"]["k_bridge"]),
               ("Minimum post-seed cash (R)", "zar", lambda r: r["SV"]["k_min_post"]),
-              ("Profitable on the R25M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
+              ("Profitable on the R46M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
     blocks.append(blk("Free-to-paid conversion of active Free users (Base)", list(pilot), pilot, p_rows))
     c_rows = [("Minimum post-seed cash (R)", "zar", lambda r: r["SV"]["k_min_post"]),
               ("Month of minimum post-seed cash", "text", lambda r: r["SV"]["k_min_post_month"]),
@@ -212,7 +212,7 @@ def sensitivity(res):
               ("EBITDA break-even (sustained)", "text", lambda r: r["SV"]["k_be_sus"]),
               ("FY5 EBITDA (R)", "zar", lambda r: r["AV"]["a_ebitda"][5]),
               ("FY5 headcount", "n0", lambda r: r["AV"]["a_fte"][5]),
-              ("Profitable on the R25M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
+              ("Profitable on the R46M seed alone?", "text", lambda r: r["SV"]["k_profitable"])]
     cruns = {"Conservative as modelled": cons, "Conservative with Base gates (1.00x)": cons_basegates}
     note = (f"Smallest fix from '{diag['fix_from']}': raise the hiring & launch MRR-gate multiplier to {diag['gm_fix']}x"
             f", or cut all non-founder salaries by {diag['cut_fix']}%." if (diag["gm_fix"] or diag["cut_fix"] is not None) else
@@ -224,8 +224,8 @@ def sensitivity(res):
           ("Sign-up volume multiplier (all markets)", levers.get("signup_volume_multiplier"), "x"),
           ("Conversion multiplier (direct paid and Free upgrades)", levers.get("conversion_multiplier"), "x"),
           ("Free-to-paid upgrades per month", levers.get("free_upgrade_pct_per_month"), "rate"),
-          ("Seed size instead of R25M", levers.get("seed_amount_zar"), "zar")]
-    blocks.append({"title": "Base: does it reach break-even on the R25M seed? Single levers that would restore the test (each moved alone; NOT adopted)",
+          ("Seed size needed", levers.get("seed_amount_zar"), "zar")]
+    blocks.append({"title": "Base: does it reach break-even on the R46M seed? Single levers that would restore the test (each moved alone; NOT adopted)",
                    "cols": ["Value needed"], "note": "Blank = no value in the searched range passes on its own. Funding gap to hold the R3.0M buffer: "
                    f"R{levers['funding_gap_to_hold_buffer_zar'] / 1e6:,.1f}M.",
                    "rows": [(lab, "text", [("not within range" if v is None else (f"{v:.2f}x" if u == "x" else f"{v}%" if u == "%" else f"{v:.2%}" if u == "rate" else f"R{v / 1e6:,.0f}M"))])
@@ -498,7 +498,7 @@ def summary_json(res, sens, uof):
         f"Cost discipline: every non-founder hire waits for its earliest month, the seed, and an MRR gate x scenario multiplier (Conservative {scen_defs['Conservative']['gate_mult']}x, Base {scen_defs['Base']['gate_mult']}x, Upside {scen_defs['Upside']['gate_mult']}x); paid acquisition = MIN(desired, R{p['paid_floor']:,.0f} + {scen_defs['Base']['cap_pct']:.0%} of last month's MRR in Base) and off where CAC payback > {p['pb_max']} months. Paid CAC Solo R{p['cac_SO']:,.0f} [[CONFIRM]], SME R{p['cac_SM']:,.0f}.",
         f"Other revenue: AI-credit packs (R300 for 1,000 credits, {p['topup_attach']:.0%} of metered workspaces a month [[CONFIRM]]), WhatsApp messages resold at Meta cost +25%, R25,000 Custom setup fee [[CONFIRM]]. No agency setup fee. No FluxMuse checkout fee: Paystack fees pass through to the merchant (0% in every scenario). Campaign Financing excluded.",
         f"COGS: AI at R0.15 of provider cost per credit (ai-credit-math.ts and platform_billing_config), falling 10% a year, 40% utilisation of the live allowances; Corporate, Agency and Custom use their own AI keys. Free users cost {p['free_credits']} credits a month at 40% use plus R{p['free_hosting']:g} hosting. Hosting R30k/month + R35 per workspace after the seed, 3.0% processing + 1.5% mobile-money/FX on non-SA revenue, R50 per workspace support, customer success team in COGS.",
-        "Funding & tax: R25M seed only; Series A input kept at R0. Tax 27% only once cumulative EBITDA is positive; D&A, interest and VAT ignored (not VAT-registered).",
+        "Funding & tax: R46M seed only; Series A input kept at R0. Tax 27% only once cumulative EBITDA is positive; D&A, interest and VAT ignored (not VAT-registered).",
     ]
     confirmations = [
         f"Opening cash at 1 Oct 2026 (default R{p['opening_cash']:,.0f}) and how to cover the R{SV['k_bridge']:,.0f} pre-seed bridge if the seed lands {F.mlabel(p['seed_month'])}.",
@@ -636,6 +636,10 @@ def summary_json(res, sens, uof):
             "smallest_uniform_non_founder_salary_cut_pct_that_passes": diag["cut_fix"],
         },
         "calibration_iterations": iterations,
+        "seed_sizing": {"adopted_seed_zar": r0(p["seed_amount"]), "previous_seed_zar": 25000000,
+                        "smallest_passing_seed_zar_base": r0(lever_fix(2, "seed_amount", 25000000, 100000, 250)),
+                        "search_step_zar": 100000, "rounding": "up to the next R1M",
+                        "note": "Sized to the v3 Base case (founder decision 2026-10-05); was R25M. Hiring plan and every other assumption unchanged. [[CONFIRM]]"},
         "base_levers_to_pass_r25m_test": {k: (r0(v) if k.endswith("_zar") and v is not None else v) for k, v in sens["levers"].items()},
         "sensitivity_base": {
             "rows_churn_multiplier": sens["grid"]["churn"], "cols_new_customer_volume_multiplier": sens["grid"]["vol"],
