@@ -36,7 +36,7 @@ try {
     printBackground: true, preferCSSPageSize: true, transferMode: 'ReturnAsStream',
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
-    footerTemplate: '<div style="width:100%;font:8px Arial,sans-serif;color:#5B6570;padding:0 13mm;display:flex;justify-content:space-between"><span>FluxMuse Brand Kit v1.0 · September 2026</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
+    footerTemplate: '<div style="width:100%;font:8px Arial,sans-serif;color:#5B6570;padding:0 13mm;display:flex;justify-content:space-between"><span>FluxMuse Brand Kit v1.1 · October 2026</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
     marginTop: 0.43, marginBottom: 0.5,
   });
   const chunks = [];

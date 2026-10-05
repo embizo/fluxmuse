@@ -30,9 +30,18 @@ DECKS = HERE.parent.parent / "02_Brand_Pitch_Deck"
 EMU_IN = 914400
 
 FORBIDDEN = [r"200\+", r"\b4\.9\b", r"snapscan", r"stitch", r"lifetime", r"for life", r"life of your account",
-             r"40\s*[–-]\s*60\s*%", r"guarantee", r"flutterwave", r"payfast", r"m-pesa",
+             r"40\s*[–-]\s*60\s*%", r"flutterwave", r"payfast", r"m-pesa",
+             # "guarantee" is allowed only as the lead guarantee (CURRENT_OFFER.md §2)
+             r"(money|refund|sales|results?|roi)[- ]?(back )?guarantee", r"guaranteed",
+             # CURRENT_OFFER.md §5 "Never write" and §7 stale facts
+             r"free trial", r"free month", r"14[- ]day", r"days free", r"try (it )?free", r"risk[- ]free",
+             r"no card required", r"\bpilot", r"\bour customers", r"trusted by", r"\bproven\b", r"\b10x\b",
+             r"money[- ]?back", r"refund", r"\bVAT\b", r"7,999", r"5,599", r"24,401", r"79,990", r"55,990",
+             r"19,999", r"23 countries", r"(five|5) (payment )?rails", r"1 Dec", r"31 Jan", r"from R499",
+             r"\d[\d,]* AI credits", r"testimonial", r"gauteng",
+             r"(instagram|facebook)[^.\n]{0,30}\b(is|are) live",
              # a Founding Member price must never be shown for the Agency tier
-             r"founding member[^.\n]{0,60}(R5,599|R3,999|R5,599/mo)", r"(R5,599|R3,999)[^.\n]{0,40}founding member"]
+             r"founding member[^.\n]{0,20}R6,999", r"R6,999[^.\n]{0,40}founding member"]
 LEFTOVER = r"lorem|ipsum|\bTODO\b|\bx{3,}\b|\[insert|click to (add|edit)"
 MIN_PT = {"body": 14, "card": 14, "chip": 14, "placeholder": 14, "table": 14, "title": 24, "eyebrow": 11,
           "caption": 10, "footer": 10, "slidenum": 10}
@@ -205,6 +214,9 @@ def analyse(path: Path, pv_dir: Path):
             for m in re.finditer(pat, joined, flags=re.I):
                 ctx = joined[max(0, m.start() - 40): m.end() + 40].replace("\n", " ")
                 issues.append((where, "FORBIDDEN", f"'{m.group(0)}' in: ...{ctx}..."))
+        # the lead guarantee may only appear with its conditions (CURRENT_OFFER.md §2)
+        if re.search(r"qualified leads", joined, flags=re.I) and not re.search(r"posted|posts? (at least )?weekly", joined, flags=re.I):
+            issues.append((where, "guarantee", "lead guarantee shown without its conditions"))
         if re.search(LEFTOVER, joined, flags=re.I):
             issues.append((where, "leftover", re.search(LEFTOVER, joined, flags=re.I).group(0)))
         layout["slides"].append(sl)

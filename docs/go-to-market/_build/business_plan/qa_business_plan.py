@@ -18,8 +18,16 @@ DOCX = OUT / "FluxMuse_Business_Plan.docx"
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
 FORBIDDEN = [r"200\+", r"(?<![\d.])4\.9(?!\d)\s*(?:star|rating|/5)?", r"SnapScan", r"Stitch", r"\blifetime\b(?!\s+value)", r"for life",
-             r"life of (your|the) account", r"40\s*[–-]\s*60\s*%", r"guarantee", r"Flutterwave",
-             r"PayFast", r"M-Pesa", r"R18\.5M", r"18,500,000", r"R335\b",
+             r"life of (your|the) account", r"40\s*[–-]\s*60\s*%", r"money.back", r"refund",
+             r"guaranteed (results|sales|ROI)", r"Flutterwave",
+             # CURRENT_OFFER.md §5 never-write list, and stale 11 Sept / model v2 facts
+             r"(?<!no )free trials?", r"free month", r"14.days? free", r"14-day", r"try it free", r"risk.free",
+             r"no card required", r"our customers", r"trusted by", r"\bproven\b", r"\b10x\b(?! monthly)", r"Gauteng pilot",
+             r"pilot (brand|cohort|result|ends|starts|underway|data)", r"12 brands", r"1 Dec(ember)? 2026",
+             r"31 Jan(uary)? 2027", r"R7,999", r"R5,599", r"23 (African |rail.covered )?countries",
+             r"five (secured |payment )?rails", r"R25 ?m(illion)?\b", r"US\$1\.35", r"R238", r"Mar(ch)? 2029",
+             r"Financial Model v2", r"Instagram[^.]{0,30}\b(is|are) live",
+             r"PayFast", r"M-Pesa", r"R18\.5M", r"18,500,000", r"R335\b(?!,)",
              r"R5,599[^.]{0,40}(first 2|2 months)"]
 INTERNAL_ONLY = ["home-hero.png", "home_mobile.png", "home-full.png", "for-agencies", "features-hero",
                  "features-full", "pricing-za-full", "pricing-ng", "pricing-ke", "demo-step-04",
@@ -30,7 +38,7 @@ M = json.loads((GTM / "06_Financial_Model" / "model_summary.json").read_text())
 D = json.loads((HERE / "derived_tables.json").read_text())
 FACTS = (GTM / "00_FACTS_AND_ASSUMPTIONS.md").read_text()
 NOTES = (GTM / "06_Financial_Model" / "Financial_Model_Notes.md").read_text()
-CASE = (GTM / "07_Case_Studies" / "Gauteng_Pilot_Case_Studies.md").read_text()
+CASE = (GTM / "08_Prospects" / "CURRENT_OFFER.md").read_text() + (GTM / "07_Case_Studies" / "First_Group_Case_Studies.md").read_text()
 
 
 def all_text(doc):
@@ -80,6 +88,9 @@ def model_number_strings():
     for a in M["annual"]:
         add_money(a["revenue_by_stream_zar"]["enterprise_setup_fees"]
                   + a["revenue_by_stream_zar"]["agency_setup_fees"])
+    for cur, v in M["price_tables"]["partner_wholesale_monthly"].items():
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            add(f"{v * 10:,}")
     for dr, ar in zip(D["cash_flow_rows_fy_sum"]["d_dr"], D["cash_flow_rows_fy_sum"]["d_ar"]):
         add_money(dr - ar)
     return ok
@@ -95,10 +106,9 @@ def number_trace(text):
     # page furniture, years, small counts and prose numbers that are not financial claims
     allow = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "15", "16", "18",
              "19", "20", "23", "25", "30", "35", "40", "45", "50", "60", "65", "70", "75", "80", "85", "90",
-             "100", "0.5", "1.5", "2.5", "3.0", "3.5", "4.0", "0.75", "27", "28", "21", "22", "29", "31",
-             "33", "36", "39", "44", "48", "68", "92", "135", "499", "999", "249", "349", "1,399", "3,499",
-             "2,499", "3,999", "1,999", "4,999", "5,599", "7,999", "19,999", "1,500", "30,000", "24,401",
-             "150,000", "500,000", "25,000", "2,200", "6,500"}
+             "100", "0.5", "1.5", "2.5", "3.0", "3.5", "4.0", "27", "28", "21", "22", "29", "31",
+             "33", "36", "39", "44", "48", "149", "289", "499", "1,999", "4,999", "6,999", "9,999", "19,999",
+             "1,500", "30,000", "23,001", "40,000", "25,000", "6,500"}
     bad = []
     for m in NUM_RE.finditer(text):
         val = m.group(1) or m.group(3)
@@ -208,10 +218,17 @@ def check():
         errs.append("possible results claim")
 
     # required disclosures
-    for needed in ["forward-looking", "Meta App Review", "est.", "Target (goal)", "illustrative",
-                   "Financial Model v2"]:
+    for needed in ["forward-looking", "being switched on", "est.", "Target (goal)", "illustrative",
+                   f"Financial Model {M['version']}", "no paying customers", "Conservative case fails",
+                   "headroom is thin", "[[CONFIRM]]", "R46 million", "R46m"]:
         if needed.lower() not in text.lower():
             errs.append(f"missing required wording: {needed}")
+
+    # the ask must be R46M and must match the model
+    if M["seed_zar"] != 46_000_000:
+        errs.append(f"model seed is {M['seed_zar']}, expected R46M")
+    if text.count("R46m") + text.count("R46 million") < 5:
+        errs.append("R46M ask not stated prominently")
 
     # footer / header
     if "Business plan" not in text or "Page" not in text:

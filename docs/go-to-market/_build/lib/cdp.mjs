@@ -5,7 +5,8 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// CHROME_PATH lets the build run off macOS (e.g. a Linux CI box or cloud session).
+const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export async function launch({ port = 9333, userDataDir } = {}) {
@@ -14,6 +15,8 @@ export async function launch({ port = 9333, userDataDir } = {}) {
     `--remote-debugging-port=${port}`, '--headless=new', `--user-data-dir=${udd}`,
     '--no-first-run', '--no-default-browser-check', '--hide-scrollbars',
     '--allow-file-access-from-files', '--force-color-profile=srgb', '--font-render-hinting=none',
+    // Chromium refuses to start as root without this (containers, cloud sessions).
+    ...(process.getuid?.() === 0 ? ['--no-sandbox'] : []),
     'about:blank',
   ], { stdio: 'ignore', detached: false });
   let ver;

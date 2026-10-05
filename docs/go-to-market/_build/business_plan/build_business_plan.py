@@ -11,7 +11,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from bp_doc import DEEP, DOC_DATE, GTM, M, TINT, VERSION, BPDoc  # noqa: E402
+from bp_doc import DEEP, DOC_DATE, GTM, M, MODEL_LINE, SEED_M, TINT, VERSION, BPDoc  # noqa: E402
 import bp_s1, bp_s2, bp_s3, bp_s4, bp_s5  # noqa: E402
 
 OUT = GTM / "05_Business_Plan"
@@ -38,7 +38,7 @@ SECTIONS = [
 APPENDICES = [
     "Appendix A. Pricing tables",
     "Appendix B. Payment rails and country coverage",
-    "Appendix C. Gauteng pilot and case-study template",
+    "Appendix C. First group and case-study template",
     "Appendix D. Detailed financial tables",
     "Appendix E. Model assumptions and open confirmations",
     "Appendix F. Glossary",
@@ -50,37 +50,39 @@ def document_control(d):
     d.kv_table([
         ("Document", "FluxMuse Business Plan"),
         ("Version", f"{VERSION} · {DOC_DATE}"),
-        ("Status", "Draft for founder review. Contains [[PLACEHOLDERS]] that must be completed"),
-        ("Prepared by", "[[FOUNDER NAME, TITLE]], Fluxmuse Pty Ltd"),
+        ("Status", "Draft for founder review. Contains [[PLACEHOLDERS]] and [[CONFIRM]] items that must be "
+                   "completed"),
+        ("Prepared by", "Thabo Malebadi, [[TITLE]], Fluxmuse (Pty) Ltd"),
         ("Approved by", "[[APPROVER NAME AND DATE]]"),
-        ("Financial model", "FluxMuse Financial Model v2, model date 11 September 2026, Base case selected"),
+        ("Financial model", f"{MODEL_LINE}, Base case selected"),
+        ("Sources", "00_FACTS_AND_ASSUMPTIONS.md; 08_Prospects/CURRENT_OFFER.md; "
+                    "06_Financial_Model/Financial_Model_Notes.md"),
         ("Distribution", "Confidential. [[RECIPIENT]] only"),
     ], widths=(4.4, 12.6), caption="Layout: document control")
 
     d.h2("Forward-looking statements")
     d.para("This plan contains forward-looking statements: projections of revenue, costs, cash, headcount, "
            "market launches and customer numbers. **They are projections, not results, and not a promise of "
-           "performance.** Every financial figure is drawn from the FluxMuse Financial Model v2 (Base case "
-           "unless stated). The model's assumptions are listed in Appendix E and will be replaced with "
-           "measured data as the Gauteng pilot and the South African launch produce it. Actual outcomes will "
-           "differ, potentially materially, because of demand, competition, exchange rates, platform policy "
-           "decisions by Meta, payment-provider performance, regulation and execution.")
+           f"performance.** Every financial figure is drawn from the {MODEL_LINE} (Base case unless stated). "
+           "FluxMuse has no paying customers yet, so every volume and rate is an assumption. The assumptions are "
+           "listed in Appendix E and will be replaced with measured data as the South African launch produces "
+           "it. Actual outcomes will differ, potentially materially, because of demand, competition, exchange "
+           "rates, decisions by Meta, payment-provider onboarding, regulation and execution.")
 
     d.h2("What this plan does not claim")
     d.bullets([
-        "**No customer results.** The Gauteng pilot runs to 30 November 2026. There are no customer counts, "
-        "ratings, testimonials or outcome figures anywhere in this document, and none will be used until "
-        "consented pilot data exists from December 2026.",
-        "**No unapproved capability.** Features in Meta App Review, including Instagram publishing, comments "
-        "and DMs, are identified as pending and are never described as live.",
-        "**No invented market data.** Market-size figures are labelled as estimates with their sources, and "
-        "must be re-verified before external use.",
+        "**No customers, no pilot, no results.** There are no customer counts, ratings, testimonials or "
+        "outcome figures anywhere in this document. Case studies come later, only with measured data and "
+        "signed consent.",
+        "**No unapproved capability.** Features waiting on Meta, a real-money checkout test or a beta are "
+        "described as being switched on, never as live.",
+        "**No payment coverage that is not live.** Paid checkout is open in South Africa only.",
+        "**No invented market data.** Market-size figures are labelled as estimates with their sources.",
         "**No valuation or return projection.** Instrument, valuation and terms are for negotiation.",
     ])
-    d.para("Market estimates are attributed to their sources in section 5. Third-party names, including Meta, "
-           "WhatsApp and the payment providers, are used descriptively and remain the property of their "
-           "owners. Nothing in this plan is an offer of securities; any investment would be made on separate, "
-           "legally reviewed terms. **[[LEGAL REVIEW OF THIS DISCLAIMER]]**")
+    d.para("Third-party names, including Meta, WhatsApp, TikTok and the payment providers, are used "
+           "descriptively and remain the property of their owners. Nothing in this plan is an offer of "
+           "securities. **[[LEGAL REVIEW OF THIS DISCLAIMER]]**")
     d.page_break()
 
 
@@ -106,8 +108,8 @@ def build(path=None):
     bp_s5.appendices(d)
     out = Path(path or (OUT / NAME))
     out.parent.mkdir(parents=True, exist_ok=True)
-    d.doc.core_properties.keywords = "FluxMuse, business plan, seed, R25M, Fluxmuse Pty Ltd"
-    d.save(out, "FluxMuse Business Plan", "Business plan supporting a R25M seed raise, Fluxmuse Pty Ltd")
+    d.doc.core_properties.keywords = f"FluxMuse, business plan, seed, {SEED_M}, Fluxmuse (Pty) Ltd"
+    d.save(out, "FluxMuse Business Plan", f"Business plan supporting a {SEED_M} seed raise, Fluxmuse (Pty) Ltd")
     return d
 
 

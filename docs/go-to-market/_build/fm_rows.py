@@ -1,4 +1,4 @@
-"""FluxMuse financial model v2: monthly row definitions.
+"""FluxMuse financial model v3: monthly row definitions.
 
 Each row carries TWO independent implementations:
   xl(m) -> Excel formula text for month m (written to the workbook)
@@ -14,8 +14,8 @@ from collections import defaultdict
 
 from openpyxl.utils import get_column_letter
 
-from fm_inputs import (AD, DEPTS, FX_MKTS, MARKET_SHORT, MARKET_STOCKS, MARKETS, NONZA, ROLES, SEG_SHORT,
-                       SEGMENTS, ST, STOCKS, TIER_NAME, TIERS, WAVE1, WINDOW_MKTS)
+from fm_inputs import (AD, DEPTS, FX_MKTS, MARKET_SHORT, MARKET_STOCKS, MARKETS, NONZA, ROLES, SEG_MIX, SEG_SHORT,
+                       SEGMENTS, ST, STOCKS, TIER_NAME, TIERS, UPG, UPG_IN, WAVE1, WINDOW_MKTS)
 
 M = 60
 MONTHS = range(1, M + 1)
@@ -108,11 +108,11 @@ RB, C, PL, CF = "Revenue_Build", "Costs", "P&L", "Cash_Flow"
 # =============================================================================
 # REVENUE BUILD (1): timeline, market launches (MRR-gated), FX & repricing
 # =============================================================================
-SEC(RB, "Timeline: lean pre-seed mode, pilot, previous-month MRR (drives every gate and cap)")
+SEC(RB, "Timeline: lean pre-seed mode, first group set up by hand, previous-month MRR (drives every gate and cap)")
 R(RB, "post_seed", "Seed has landed (1) / lean pre-seed mode (0)", "flag", "n0",
   lambda m: f"IF({MN(m)}>={AD('seed_month')},1,0)", lambda m: 1.0 if m >= P["seed_month"] else 0.0)
-R(RB, "pilot_on", "Pilot running (12 brands, not paying)", "flag", "n0",
-  lambda m: f"IF({MN(m)}<={AD('pilot_end_month')},1,0)", lambda m: 1.0 if m <= P["pilot_end_month"] else 0.0)
+R(RB, "first_on", "First group being set up by hand (paying from day one)", "flag", "n0",
+  lambda m: f"IF({MN(m)}<={AD('first_group_end')},1,0)", lambda m: 1.0 if m <= P["first_group_end"] else 0.0)
 R(RB, "mrr_prev", "Net subscription MRR, previous month", "R", "zar",
   lambda m: "0" if m == 1 else X("subrev_net", m - 1), lambda m: v("subrev_net", m - 1))
 
@@ -138,10 +138,9 @@ for r in MARKETS:
       lambda m, r=r: f"{X('launched_' + r, m)}-{XL('launched_' + r, m)}",
       lambda m, r=r: v("launched_" + r, m) - v("launched_" + r, m - 1))
 for r in WINDOW_MKTS:
-    R(RB, f"win_{r}", f"Founding Member launch window open: {MARKET_SHORT[r]}", "flag", "n0",
-      lambda m, r=r: (f"IF({AD('fm_window')}=0,0,IF({AD('fm_window')}=1,{X('launched_' + r, m)}-{XL('launched_' + r, m, 1)},"
-                      f"{X('launched_' + r, m)}-{XL('launched_' + r, m, 2)}))"),
-      lambda m, r=r: 0.0 if P["fm_window"] == 0 else v("launched_" + r, m) - v("launched_" + r, m - int(P["fm_window"])))
+    R(RB, f"win_{r}", f"Founding Member offer running: {MARKET_SHORT[r]}", "flag", "n0",
+      lambda m, r=r: (f"IF(AND({AD('disc_option')}=1,{MN(m)}>={AD('fm_start')},{MN(m)}<={AD('fm_end')}),{X('launched_' + r, m)},0)"),
+      lambda m, r=r: v("launched_" + r, m) if (P["disc_option"] == 1 and P["fm_start"] <= m <= P["fm_end"]) else 0.0)
 
 SEC(RB, "FX drift & quarterly repricing (ZAR value of fixed local / USD price points; 1.000 = parity at Sept 2026 rates)")
 for r in FX_MKTS:
@@ -239,17 +238,17 @@ R(C, "pm_team_cost", "of which partnerships managers", "R", "zar", lambda m: plu
 # =============================================================================
 # REVENUE BUILD (2): acquisition by market & segment, with the paid-marketing cap
 # =============================================================================
-SEC(RB, "Self-serve trials by market (start in each market's launch month)")
-R(RB, "g_m", "Monthly trial growth rate (scenario, by fiscal year)", "% m/m", "pct", lambda m: choose_fy("g_fy", m),
+SEC(RB, "Self-serve sign-ups (Free + paid) by market (start in each market's launch month; no trials)")
+R(RB, "g_m", "Monthly sign-up growth rate (scenario, by fiscal year)", "% m/m", "pct", lambda m: choose_fy("g_fy", m),
   lambda m: P[f"g_fy{fy_of(m)}"])
 for r in MARKETS:
-    R(RB, f"trials_{r}", f"Self-serve trials: {MARKET_SHORT[r]}", "trials", "n0",
+    R(RB, f"trials_{r}", f"Self-serve sign-ups: {MARKET_SHORT[r]}", "sign-ups", "n0",
       lambda m, r=r: (f"IF({X('launched_' + r, m)}=0,0,{AD('trials_launch_' + r)}*{AD('vol_mult')})" if m == 1 else
                       f"IF({X('launched_' + r, m)}=0,0,IF({X('launched_' + r, m - 1)}=0,{AD('trials_launch_' + r)}*{AD('vol_mult')},"
                       f"{X('trials_' + r, m - 1)}*(1+{X('g_m', m)})))"),
       lambda m, r=r: 0.0 if v("launched_" + r, m) == 0 else (
           P["trials_launch_" + r] * P["vol_mult"] if v("launched_" + r, m - 1) == 0 else v("trials_" + r, m - 1) * (1 + v("g_m", m))))
-R(RB, "trials_total", "Total self-serve trials", "trials", "n0", lambda m: plus([f"trials_{r}" for r in MARKETS], m),
+R(RB, "trials_total", "Total self-serve sign-ups", "sign-ups", "n0", lambda m: plus([f"trials_{r}" for r in MARKETS], m),
   lambda m: sum(v(f"trials_{r}", m) for r in MARKETS), bold=True)
 
 
@@ -261,14 +260,36 @@ def _upl_py(r, m):
     return (1 + P["fm_uplift_eff"] * v("win_" + r, m)) if r in WINDOW_MKTS else 1.0
 
 
-SEC(RB, "Sign-ups wanted before the marketing cap (trials x segment share x conversion x launch-window uplift)")
+SEC(RB, "Direct paid sign-ups wanted before the marketing cap (sign-ups x segment share x pay-at-sign-up rate x Founding Member uplift)")
 for r in MARKETS:
-    R(RB, f"des_SO_{r}", f"Solo sign-ups wanted: {MARKET_SHORT[r]}", "workspaces", "n1",
+    R(RB, f"des_SO_{r}", f"Solo direct paid sign-ups wanted: {MARKET_SHORT[r]}", "workspaces", "n1",
       lambda m, r=r: f"{X('trials_' + r, m)}*{AD('solo_share')}*{AD('conv_SO')}*{AD('conv_mult')}" + _upl_xl(r, m),
       lambda m, r=r: v("trials_" + r, m) * P["solo_share"] * P["conv_SO"] * P["conv_mult"] * _upl_py(r, m))
-    R(RB, f"des_SM_{r}", f"SME sign-ups wanted: {MARKET_SHORT[r]}", "workspaces", "n1",
+    R(RB, f"des_SM_{r}", f"SME direct paid sign-ups wanted: {MARKET_SHORT[r]}", "workspaces", "n1",
       lambda m, r=r: f"{X('trials_' + r, m)}*(1-{AD('solo_share')})*{AD('conv_SM')}*{AD('conv_mult')}" + _upl_xl(r, m),
       lambda m, r=r: v("trials_" + r, m) * (1 - P["solo_share"]) * P["conv_SM"] * P["conv_mult"] * _upl_py(r, m))
+
+SEC(RB, "Free plan funnel: sign-ups who don't pay join Free (60 AI credits/month); active Free users upgrade or go dormant")
+for r in MARKETS:
+    nm = MARKET_SHORT[r]
+    R(RB, f"free_open_{r}", f"Active Free users: {nm}: opening", "users", "n0",
+      lambda m, r=r: "0" if m == 1 else X(f"free_close_{r}", m - 1), lambda m, r=r: v(f"free_close_{r}", m - 1))
+    R(RB, f"free_new_{r}", f"New Free users: {nm}", "users", "n0",
+      lambda m, r=r: f"{X('trials_' + r, m)}*(1-{AD('direct_blend')})", lambda m, r=r: v("trials_" + r, m) * (1 - P["direct_blend"]))
+    R(RB, f"free_conv_{r}", f"Free users upgrading to a paid plan: {nm}", "workspaces", "n1",
+      lambda m, r=r: f"{X(f'free_open_{r}', m)}*{AD('free_conv')}*{AD('conv_mult')}",
+      lambda m, r=r: v(f"free_open_{r}", m) * P["free_conv"] * P["conv_mult"])
+    R(RB, f"free_dorm_{r}", f"Free users going dormant: {nm}", "users", "n0",
+      lambda m, r=r: f"{X(f'free_open_{r}', m)}*{AD('free_dormancy')}", lambda m, r=r: v(f"free_open_{r}", m) * P["free_dormancy"])
+    R(RB, f"free_close_{r}", f"Active Free users: {nm}: closing", "users", "n0",
+      lambda m, r=r: f"{X(f'free_open_{r}', m)}+{X(f'free_new_{r}', m)}-{X(f'free_conv_{r}', m)}-{X(f'free_dorm_{r}', m)}",
+      lambda m, r=r: v(f"free_open_{r}", m) + v(f"free_new_{r}", m) - v(f"free_conv_{r}", m) - v(f"free_dorm_{r}", m), bold=True)
+R(RB, "free_active", "Active Free users: all markets", "users", "n0", lambda m: plus([f"free_close_{r}" for r in MARKETS], m),
+  lambda m: sum(v(f"free_close_{r}", m) for r in MARKETS), bold=True)
+R(RB, "free_new_total", "New Free users: all markets", "users", "n0", lambda m: plus([f"free_new_{r}" for r in MARKETS], m),
+  lambda m: sum(v(f"free_new_{r}", m) for r in MARKETS))
+R(RB, "free_conv_total", "Free users upgrading to paid: all markets", "workspaces", "n1", lambda m: plus([f"free_conv_{r}" for r in MARKETS], m),
+  lambda m: sum(v(f"free_conv_{r}", m) for r in MARKETS))
 
 SEC(RB, "COST DISCIPLINE: paid acquisition budget = MIN(desired, floor + cap % x last month's MRR); zero before the seed")
 R(RB, "paid_share", "Share of sign-ups needing paid acquisition", "%", "pct", lambda m: choose_fy("paid_share_fy", m),
@@ -287,17 +308,12 @@ def _cidx_py(r):
     return 1.0 if r == "ZA" else P["cac_idx_" + r]
 
 
-ARPA_MIX = {"SO": ("so_mix_G", "S", "G"), "SM": ("sm_mix_Sc", "G", "Sc")}
-
-
 def _arpa_xl(sg, r):
-    k, t1, t2 = ARPA_MIX[sg]
-    return f"((1-{AD(k)})*{pr(r, t1)}+{AD(k)}*{pr(r, t2)})"
+    return "(" + "+".join(f"{AD(k)}*{pr(r, t)}" for t, k in SEG_MIX[sg]) + ")"
 
 
 def _arpa_py(sg, r):
-    k, t1, t2 = ARPA_MIX[sg]
-    return (1 - P[k]) * P[f"price_{r}_{t1}"] + P[k] * P[f"price_{r}_{t2}"]
+    return sum(P[k] * P[f"price_{r}_{t}"] for t, k in SEG_MIX[sg])
 
 
 SEC(RB, "COST DISCIPLINE: CAC payback test by segment & market (paid acquisition off where payback > maximum)")
@@ -331,15 +347,27 @@ for sg in ("SO", "SM"):
 R(RB, "paid_spend", "Paid acquisition spend: total", "R", "zar", lambda m: plus(["paid_spend_SO", "paid_spend_SM"], m),
   lambda m: v("paid_spend_SO", m) + v("paid_spend_SM", m), bold=True)
 
-SEC(RB, "New paying customers by market & segment")
+SEC(RB, "New paying customers by market & segment (direct paid after the cap + Free upgrades + first group set up by hand)")
+R(RB, "first_new", "First group set up by hand (South Africa, paying list price less Founding Member)", "workspaces", "n1",
+  lambda m: f"{X('first_on', m)}*{X('launched_ZA', m)}*{AD('first_group_n')}",
+  lambda m: v("first_on", m) * v("launched_ZA", m) * P["first_group_n"])
+def _segsh_xl(sg, k):
+    return AD(k) if sg == "SO" else f"(1-{AD(k)})"
+
+
+def _segsh_py(sg, k):
+    return P[k] if sg == "SO" else 1 - P[k]
+
+
 for r in MARKETS:
     for sg in ("SO", "SM"):
         R(RB, f"new_{sg}_{r}", f"New {SEG_SHORT[sg]}: {MARKET_SHORT[r]}", "workspaces", "n1",
-          lambda m, r=r, sg=sg: f"{X(f'des_{sg}_{r}', m)}*(1-{X('paid_share', m)}+{X('paid_share', m)}*{X('paid_k', m)}*{X(f'pbok_{sg}_{r}', m)})",
-          lambda m, r=r, sg=sg: v(f"des_{sg}_{r}", m) * (1 - v("paid_share", m) + v("paid_share", m) * v("paid_k", m) * v(f"pbok_{sg}_{r}", m)))
-R(RB, "pilot_new", "Pilot brands converting (Pilot Founding terms)", "workspaces", "n1",
-  lambda m: f"IF({MN(m)}={AD('pilot_convert_month')},{AD('pilot_brands')}*{AD('pilot_conv')},0)",
-  lambda m: P["pilot_brands"] * P["pilot_conv"] if m == P["pilot_convert_month"] else 0.0)
+          lambda m, r=r, sg=sg: (f"{X(f'des_{sg}_{r}', m)}*(1-{X('paid_share', m)}+{X('paid_share', m)}*{X('paid_k', m)}*{X(f'pbok_{sg}_{r}', m)})"
+                                 f"+{X(f'free_conv_{r}', m)}*{_segsh_xl(sg, 'solo_share')}"
+                                 + (f"+{X('first_new', m)}*{_segsh_xl(sg, 'first_mix_SO')}" if r == "ZA" else "")),
+          lambda m, r=r, sg=sg: (v(f"des_{sg}_{r}", m) * (1 - v("paid_share", m) + v("paid_share", m) * v("paid_k", m) * v(f"pbok_{sg}_{r}", m))
+                                 + v(f"free_conv_{r}", m) * _segsh_py(sg, "solo_share")
+                                 + (v("first_new", m) * _segsh_py(sg, "first_mix_SO") if r == "ZA" else 0.0)))
 R(RB, "new_AG_ZA", "New agencies: South Africa (inbound + partnerships managers)", "agencies", "n2",
   lambda m: f"{X('launched_ZA', m)}*{AD('agency_inbound_ZA')}+{X('pm_active', m)}*{AD('agencies_per_pm')}",
   lambda m: v("launched_ZA", m) * P["agency_inbound_ZA"] + v("pm_active", m) * P["agencies_per_pm"])
@@ -347,7 +375,10 @@ for r in WAVE1:
     R(RB, f"new_AG_{r}", f"New agencies: {MARKET_SHORT[r]} (inbound + country lead)", "agencies", "n2",
       lambda m, r=r: f"{X('launched_' + r, m)}*{AD('agency_inbound_' + r)}+{X('lead_' + r, m)}*{AD('agencies_per_lead')}",
       lambda m, r=r: v("launched_" + r, m) * P["agency_inbound_" + r] + v("lead_" + r, m) * P["agencies_per_lead"])
-R(RB, "ent_new", "New inbound enterprise deals (SA)", "deals", "n2",
+R(RB, "corp_new", "New inbound Corporate deals (SA)", "deals", "n2",
+  lambda m: f"{X('launched_ZA', m)}*{choose_fy('corp_fy', m)}/12*{AD('ent_mult')}",
+  lambda m: v("launched_ZA", m) * P[f"corp_fy{fy_of(m)}"] / 12 * P["ent_mult"])
+R(RB, "ent_new", "New inbound Custom (Enterprise) deals (SA)", "deals", "n2",
   lambda m: f"{X('launched_ZA', m)}*{choose_fy('ent_fy', m)}/12*{AD('ent_mult')}",
   lambda m: v("launched_ZA", m) * P[f"ent_fy{fy_of(m)}"] / 12 * P["ent_mult"])
 
@@ -355,37 +386,29 @@ R(RB, "ent_new", "New inbound enterprise deals (SA)", "deals", "n2",
 # REVENUE BUILD (3): cohort stocks by market, segment & tier
 # =============================================================================
 SEC(RB, "Customer cohorts by market, segment & tier: opening, new (incl. upgrades in), churned, upgraded out, closing")
-UPG = {"SO_S": ("upg_SO", "SO_G"), "SM_G": ("upg_SM", "SM_Sc")}
+MIXKEY = {t_st: k for sg in SEG_MIX for t, k in SEG_MIX[sg] for t_st in [f"{sg}_{t}"]}
 
 
 def _new_xl(sk, r, st, m):
-    if st == "SO_S":
-        s = f"{X('new_SO_' + r, m)}*(1-{AD('so_mix_G')})" + (f"+{X('pilot_new', m)}*{AD('pilot_mix_SO')}" if r == "ZA" else "")
-    elif st == "SO_G":
-        s = f"{X('new_SO_' + r, m)}*{AD('so_mix_G')}+{X(f'upg_{r}_SO_S', m)}"
-    elif st == "SM_G":
-        s = f"{X('new_SM_' + r, m)}*(1-{AD('sm_mix_Sc')})" + (f"+{X('pilot_new', m)}*{AD('pilot_mix_SM')}" if r == "ZA" else "")
-    elif st == "SM_Sc":
-        s = f"{X('new_SM_' + r, m)}*{AD('sm_mix_Sc')}+{X(f'upg_{r}_SM_G', m)}"
-    elif st == "AG_A":
-        s = X("new_AG_" + r, m) + (f"+{X('pilot_new', m)}*{AD('pilot_mix_AG')}" if r == "ZA" else "")
-    else:
-        s = X("ent_new", m)
-    return s
+    seg = ST[st][0]
+    if seg in ("SO", "SM"):
+        s = f"{X(f'new_{seg}_' + r, m)}*{AD(MIXKEY[st])}"
+        return s + (f"+{X(f'upg_{r}_{UPG_IN[st]}', m)}" if st in UPG_IN else "")
+    if st == "AG_A":
+        return X("new_AG_" + r, m)
+    if st == "CO_Co":
+        return X("corp_new", m)
+    return X("ent_new", m)
 
 
 def _new_py(sk, r, st, m):
-    za = r == "ZA"
-    if st == "SO_S":
-        return v("new_SO_" + r, m) * (1 - P["so_mix_G"]) + (v("pilot_new", m) * P["pilot_mix_SO"] if za else 0.0)
-    if st == "SO_G":
-        return v("new_SO_" + r, m) * P["so_mix_G"] + v(f"upg_{r}_SO_S", m)
-    if st == "SM_G":
-        return v("new_SM_" + r, m) * (1 - P["sm_mix_Sc"]) + (v("pilot_new", m) * P["pilot_mix_SM"] if za else 0.0)
-    if st == "SM_Sc":
-        return v("new_SM_" + r, m) * P["sm_mix_Sc"] + v(f"upg_{r}_SM_G", m)
+    seg = ST[st][0]
+    if seg in ("SO", "SM"):
+        return v(f"new_{seg}_" + r, m) * P[MIXKEY[st]] + (v(f"upg_{r}_{UPG_IN[st]}", m) if st in UPG_IN else 0.0)
     if st == "AG_A":
-        return v("new_AG_" + r, m) + (v("pilot_new", m) * P["pilot_mix_AG"] if za else 0.0)
+        return v("new_AG_" + r, m)
+    if st == "CO_Co":
+        return v("corp_new", m)
     return v("ent_new", m)
 
 
@@ -472,88 +495,60 @@ for t in TIERS:
 R(RB, "subrev_gross", "Gross subscription revenue (before launch discounts)", "R", "zar",
   lambda m: plus([f"subgross_{r}" for r in MARKETS], m), lambda m: sum(v(f"subgross_{r}", m) for r in MARKETS), bold=True)
 
-SEC(RB, "Launch discounts: Founding Member on Solo & SME sign-ups (not Agency; no stacking with partner wholesale). Monthly: % off first bills; annual: fee recognised over 12 + bonus months. Pilot terms")
+SEC(RB, "Launch discount: Founding Member, 30% off the first 2 monthly bills for South African Solo & SME sign-ups while the offer runs (not Agency, Corporate or Custom; no stacking with partner wholesale; annual plans not discounted)")
 
 
 def _base_xl(r, m):
-    return (f"{X('win_' + r, m)}*{X('price_esc_f', m)}{vf_xl(r, m)}*({X('new_SO_' + r, m)}*((1-{AD('so_mix_G')})*{pr(r, 'S')}+{AD('so_mix_G')}*{pr(r, 'G')})"
-            f"+{X('new_SM_' + r, m)}*((1-{AD('sm_mix_Sc')})*{pr(r, 'G')}+{AD('sm_mix_Sc')}*{pr(r, 'Sc')}))")
+    return (f"{X('win_' + r, m)}*{X('price_esc_f', m)}{vf_xl(r, m)}*({X('new_SO_' + r, m)}*{_arpa_xl('SO', r)}"
+            f"+{X('new_SM_' + r, m)}*{_arpa_xl('SM', r)})")
 
 
 def _base_py(r, m):
-    return (v("win_" + r, m) * v("price_esc_f", m) * vf_py(r, m)
-            * (v("new_SO_" + r, m) * ((1 - P["so_mix_G"]) * P[f"price_{r}_S"] + P["so_mix_G"] * P[f"price_{r}_G"])
-               + v("new_SM_" + r, m) * ((1 - P["sm_mix_Sc"]) * P[f"price_{r}_G"] + P["sm_mix_Sc"] * P[f"price_{r}_Sc"])))
+    return v("win_" + r, m) * v("price_esc_f", m) * vf_py(r, m) * (v("new_SO_" + r, m) * _arpa_py("SO", r) + v("new_SM_" + r, m) * _arpa_py("SM", r))
 
 
 for r in WINDOW_MKTS:
     nm = MARKET_SHORT[r]
-    R(RB, f"fm_base_{r}", f"List MRR of new Solo & SME sign-ups inside the launch window: {nm}", "R", "zar",
+    R(RB, f"fm_base_{r}", f"List MRR of new Solo & SME sign-ups while the offer runs: {nm}", "R", "zar",
       lambda m, r=r: _base_xl(r, m), lambda m, r=r: _base_py(r, m))
-    R(RB, f"fm_mo_{r}", f"Founding Member discount, monthly plans: {nm}", "R", "zar",
-      lambda m, r=r: (f"(1-{AD('annual_share')})*{AD('fm_mo_disc')}*(IF({AD('fm_mo_months')}>=1,{X('fm_base_' + r, m)},0)"
-                      f"+IF({AD('fm_mo_months')}>=2,{XL('fm_base_' + r, m)}*(1-{AD('fm_new_churn')}),0))"),
-      lambda m, r=r: (1 - P["annual_share"]) * P["fm_mo_disc"] * ((v("fm_base_" + r, m) if P["fm_mo_months"] >= 1 else 0.0)
-                                                                  + (v("fm_base_" + r, m - 1) * (1 - P["fm_new_churn"]) if P["fm_mo_months"] >= 2 else 0.0)))
-    R(RB, f"fm_ann_{r}", f"Annual-plan Founding Members inside their 12 + bonus month term (list MRR): {nm}", "R", "zar",
-      lambda m, r=r: (f"{X('fm_base_' + r, m)}*{AD('annual_share')}" if m == 1 else
-                      f"{X('fm_ann_' + r, m - 1)}+({X('fm_base_' + r, m)}-IF({AD('fm_bonus')}=2,{XL('fm_base_' + r, m, 14)},"
-                      f"IF({AD('fm_bonus')}=1,{XL('fm_base_' + r, m, 13)},{XL('fm_base_' + r, m, 12)})))*{AD('annual_share')}"),
-      lambda m, r=r: v("fm_ann_" + r, m - 1) + (v("fm_base_" + r, m) - v("fm_base_" + r, m - (12 + int(P["fm_bonus"])))) * P["annual_share"])
-    R(RB, f"fm_ann_disc_{r}", f"Founding Member discount, annual plans (bonus months): {nm}", "R", "zar",
-      lambda m, r=r: f"{X('fm_ann_' + r, m)}*{AD('annual_months')}*(1/12-1/(12+{AD('fm_bonus')}))",
-      lambda m, r=r: v("fm_ann_" + r, m) * P["annual_months"] * (1 / 12 - 1 / (12 + P["fm_bonus"])))
-    R(RB, f"fm_disc_{r}", f"Founding Member discount: {nm}", "R", "zar",
-      lambda m, r=r: f"{X('fm_mo_' + r, m)}+{X('fm_ann_disc_' + r, m)}", lambda m, r=r: v("fm_mo_" + r, m) + v("fm_ann_disc_" + r, m), bold=True)
+    R(RB, f"fm_disc_{r}", f"Founding Member discount (monthly plans: bill 1 this month, bill 2 next month): {nm}", "R", "zar",
+      lambda m, r=r: f"(1-{AD('annual_share')})*{AD('fm_mo_disc')}*({X('fm_base_' + r, m)}+{XL('fm_base_' + r, m)}*(1-{AD('fm_new_churn')}))",
+      lambda m, r=r: (1 - P["annual_share"]) * P["fm_mo_disc"] * (v("fm_base_" + r, m) + v("fm_base_" + r, m - 1) * (1 - P["fm_new_churn"])),
+      bold=True)
 R(RB, "fm_disc_total", "Founding Member discount: all markets", "R", "zar", lambda m: plus([f"fm_disc_{r}" for r in WINDOW_MKTS], m),
   lambda m: sum(v(f"fm_disc_{r}", m) for r in WINDOW_MKTS), bold=True)
-R(RB, "pilot_val", "Converting pilot brands: gross MRR as booked (Agency at partner wholesale blend)", "R", "zar",
-  lambda m: (f"{X('pilot_new', m)}*{X('price_esc_f', m)}*({AD('pilot_mix_SO')}*{pr('ZA', 'S')}+{AD('pilot_mix_SM')}*{pr('ZA', 'G')}"
-             f"+{AD('pilot_mix_AG')}*{pr_ag_xl('ZA')})"),
-  lambda m: v("pilot_new", m) * v("price_esc_f", m) * (P["pilot_mix_SO"] * P["price_ZA_S"] + P["pilot_mix_SM"] * P["price_ZA_G"]
-                                                       + P["pilot_mix_AG"] * pr_ag_py("ZA")))
-R(RB, "pilot_pay", "Converting pilot brands: pilot price (list x (1 - pilot discount): R249 / R999 / R3,999)", "R", "zar",
-  lambda m: (f"{X('pilot_new', m)}*{X('price_esc_f', m)}*(1-{AD('pilot_disc')})*({AD('pilot_mix_SO')}*{pr('ZA', 'S')}+{AD('pilot_mix_SM')}*{pr('ZA', 'G')}"
-             f"+{AD('pilot_mix_AG')}*{pr('ZA', 'A')})"),
-  lambda m: v("pilot_new", m) * v("price_esc_f", m) * (1 - P["pilot_disc"]) * (P["pilot_mix_SO"] * P["price_ZA_S"] + P["pilot_mix_SM"] * P["price_ZA_G"]
-                                                                                + P["pilot_mix_AG"] * P["price_ZA_A"]))
-R(RB, "pilot_gap", "Pilot discount per bill (gross booked minus pilot price)", "R", "zar",
-  lambda m: f"MAX(0,{X('pilot_val', m)}-{X('pilot_pay', m)})", lambda m: max(0.0, v("pilot_val", m) - v("pilot_pay", m)))
-R(RB, "pilot_disc_rev", "Pilot Founding terms discount (50% off first 2 bills)", "R", "zar",
-  lambda m: (f"IF({AD('pilot_disc_months')}>=1,{X('pilot_gap', m)},0)"
-             f"+IF({AD('pilot_disc_months')}>=2,{XL('pilot_gap', m)}*(1-{AD('fm_new_churn')}),0)"),
-  lambda m: ((v("pilot_gap", m) if P["pilot_disc_months"] >= 1 else 0.0)
-             + (v("pilot_gap", m - 1) * (1 - P["fm_new_churn"]) if P["pilot_disc_months"] >= 2 else 0.0)), bold=True)
-R(RB, "disc_total", "Total launch discounts", "R", "zar", lambda m: plus(["fm_disc_total", "pilot_disc_rev"], m),
-  lambda m: v("fm_disc_total", m) + v("pilot_disc_rev", m), bold=True)
-R(RB, "subrev_net", "NET SUBSCRIPTION REVENUE (MRR after launch discounts)", "R", "zar",
+R(RB, "disc_total", "Total launch discounts", "R", "zar", lambda m: X("fm_disc_total", m), lambda m: v("fm_disc_total", m), bold=True)
+R(RB, "subrev_net", "NET SUBSCRIPTION REVENUE (MRR after launch discounts; no VAT: not VAT-registered)", "R", "zar",
   lambda m: f"{X('subrev_gross', m)}-{X('disc_total', m)}", lambda m: v("subrev_gross", m) - v("disc_total", m), bold=True)
 for r in MARKETS:
     R(RB, f"subnet_{r}", f"Net subscription revenue: {MARKET_SHORT[r]}", "R", "zar",
-      lambda m, r=r: X("subgross_" + r, m) + (f"-{X('fm_disc_' + r, m)}" if r in WINDOW_MKTS else "") + (f"-{X('pilot_disc_rev', m)}" if r == "ZA" else ""),
-      lambda m, r=r: v("subgross_" + r, m) - (v("fm_disc_" + r, m) if r in WINDOW_MKTS else 0.0) - (v("pilot_disc_rev", m) if r == "ZA" else 0.0))
+      lambda m, r=r: X("subgross_" + r, m) + (f"-{X('fm_disc_' + r, m)}" if r in WINDOW_MKTS else ""),
+      lambda m, r=r: v("subgross_" + r, m) - (v("fm_disc_" + r, m) if r in WINDOW_MKTS else 0.0))
 
 SEC(RB, "Usage & transaction revenue")
-R(RB, "topup_rev", "AI-credit top-ups", "R", "zar",
-  lambda m: f"{X('tot_close', m)}*{AD('topup_attach')}*{AD('topup_pack')}*{X('price_esc_f', m)}",
-  lambda m: v("tot_close", m) * P["topup_attach"] * P["topup_pack"] * v("price_esc_f", m))
+METERED = ["N", "Mi", "S", "G", "Sc"]
+R(RB, "metered_ws", "Workspaces on metered AI plans (Nano to Scale; Corporate, Agency, Custom use their own keys)", "workspaces", "n0",
+  lambda m: plus([f"tier_close_{t}" for t in METERED], m), lambda m: sum(v(f"tier_close_{t}", m) for t in METERED))
+R(RB, "topup_rev", "AI-credit packs (prepaid; no overage)", "R", "zar",
+  lambda m: f"{X('metered_ws', m)}*{AD('topup_attach')}*{AD('topup_pack')}*{X('price_esc_f', m)}",
+  lambda m: v("metered_ws", m) * P["topup_attach"] * P["topup_pack"] * v("price_esc_f", m))
 R(RB, "wa_msgs", "Billable WhatsApp messages", "messages", "n0",
   lambda m: "+".join(f"{X(f'tier_close_{t}', m)}*{AD('wa_msgs_' + t)}" for t in TIERS),
   lambda m: sum(v(f"tier_close_{t}", m) * P["wa_msgs_" + t] for t in TIERS))
 R(RB, "wa_rev", "WhatsApp messaging (Meta fees resold with markup)", "R", "zar",
   lambda m: f"{X('wa_msgs', m)}*{AD('wa_meta_cost')}*(1+{AD('wa_markup')})", lambda m: v("wa_msgs", m) * P["wa_meta_cost"] * (1 + P["wa_markup"]))
-R(RB, "stores", "Commerce-eligible workspaces (Growth, Scale, Enterprise)", "workspaces", "n0",
-  lambda m: plus(["tier_close_G", "tier_close_Sc", "tier_close_E"], m),
-  lambda m: v("tier_close_G", m) + v("tier_close_Sc", m) + v("tier_close_E", m))
-R(RB, "gmv", "WhatsApp checkout GMV", "R", "zar",
+STORE_T = ["Mi", "G", "Sc", "Co", "E"]
+R(RB, "stores", "Commerce-eligible workspaces (Micro, Growth, Scale, Corporate, Custom)", "workspaces", "n0",
+  lambda m: plus([f"tier_close_{t}" for t in STORE_T], m), lambda m: sum(v(f"tier_close_{t}", m) for t in STORE_T))
+R(RB, "gmv", "Checkout GMV (memo: merchants' money, Paystack fees pass through to the merchant)", "R", "zar",
   lambda m: f"{X('stores', m)}*{AD('commerce_active')}*{AD('gmv_per_store')}*(1+{AD('gmv_growth')})^({FYC(m)}-1)",
   lambda m: v("stores", m) * P["commerce_active"] * P["gmv_per_store"] * (1 + P["gmv_growth"]) ** (fy_of(m) - 1))
-R(RB, "commerce_rev", "Commerce platform fee (NOT IN CURRENT PRICING: 0% Base/Conservative, 0.75% Upside)", "R", "zar",
+R(RB, "commerce_rev", "FluxMuse fee on checkout GMV (0%: no service fee on top of pass-through Paystack fees)", "R", "zar",
   lambda m: f"{X('gmv', m)}*{AD('commerce_fee')}", lambda m: v("gmv", m) * P["commerce_fee"])
-R(RB, "ent_setup_rev", "Enterprise onboarding / setup fees", "R", "zar", lambda m: f"{X('ent_new', m)}*{AD('ent_setup_fee')}",
+R(RB, "ent_setup_rev", "Custom (Enterprise) onboarding / setup fees", "R", "zar", lambda m: f"{X('ent_new', m)}*{AD('ent_setup_fee')}",
   lambda m: v("ent_new", m) * P["ent_setup_fee"])
 AG_NEW = ["new_AG_ZA"] + [f"new_AG_{r}" for r in WAVE1]
-R(RB, "agency_setup_rev", "Agency white-label setup fees", "R", "zar", lambda m: f"({plus(AG_NEW, m)})*{AD('agency_setup_fee')}",
+R(RB, "agency_setup_rev", "Agency white-label setup fees (0: not in the live price list)", "R", "zar", lambda m: f"({plus(AG_NEW, m)})*{AD('agency_setup_fee')}",
   lambda m: sum(v(k, m) for k in AG_NEW) * P["agency_setup_fee"])
 REV_KEYS = ["subrev_net", "topup_rev", "wa_rev", "commerce_rev", "ent_setup_rev", "agency_setup_rev"]
 R(RB, "total_rev", "TOTAL REVENUE (net of launch discounts)", "R", "zar", lambda m: plus(REV_KEYS, m),
@@ -563,14 +558,22 @@ R(RB, "total_rev", "TOTAL REVENUE (net of launch discounts)", "R", "zar", lambda
 # COSTS (2): COGS & opex
 # =============================================================================
 SEC(C, "Cost of revenue (COGS)")
-R(C, "credits_k", "AI credits consumed ('000)", "'000 credits", "n0",
+R(C, "credits_k", "AI credits consumed by paying workspaces ('000; plan allowance x utilisation + packs)", "'000 credits", "n0",
   lambda m: "(" + "+".join(f"{X(f'tier_close_{t}', m)}*{AD('credits_' + t)}" for t in TIERS)
-  + f")*{AD('credits_util')}/1000+{X('tot_close', m)}*{AD('topup_attach')}*{AD('topup_credits')}/1000",
+  + f")*{AD('credits_util')}/1000+{X('metered_ws', m)}*{AD('topup_attach')}*{AD('topup_credits')}/1000",
   lambda m: sum(v(f"tier_close_{t}", m) * P["credits_" + t] for t in TIERS) * P["credits_util"] / 1000
-  + v("tot_close", m) * P["topup_attach"] * P["topup_credits"] / 1000)
-R(C, "ai_rate", "Inference cost per 1,000 credits", "R", "num2", lambda m: f"{AD('ai_cost_1k')}*(1-{AD('ai_cost_decline')})^({FYC(m)}-1)",
+  + v("metered_ws", m) * P["topup_attach"] * P["topup_credits"] / 1000)
+R(C, "credits_free_k", "AI credits consumed by active Free users ('000)", "'000 credits", "n0",
+  lambda m: f"{X('free_active', m)}*{AD('free_credits')}*{AD('credits_util')}/1000",
+  lambda m: v("free_active", m) * P["free_credits"] * P["credits_util"] / 1000)
+R(C, "ai_rate", "AI provider cost per 1,000 credits (R0.15 a credit in FY1)", "R", "num2", lambda m: f"{AD('ai_cost_1k')}*(1-{AD('ai_cost_decline')})^({FYC(m)}-1)",
   lambda m: P["ai_cost_1k"] * (1 - P["ai_cost_decline"]) ** (fy_of(m) - 1))
-R(C, "cogs_ai", "AI inference", "R", "zar", lambda m: f"{X('credits_k', m)}*{X('ai_rate', m)}", lambda m: v("credits_k", m) * v("ai_rate", m))
+R(C, "cogs_ai_paid", "AI provider cost: paying workspaces", "R", "zar", lambda m: f"{X('credits_k', m)}*{X('ai_rate', m)}", lambda m: v("credits_k", m) * v("ai_rate", m))
+R(C, "cogs_free", "Free plan cost (AI credits + hosting per active Free user)", "R", "zar",
+  lambda m: f"{X('credits_free_k', m)}*{X('ai_rate', m)}+{X('free_active', m)}*{AD('free_hosting')}",
+  lambda m: v("credits_free_k", m) * v("ai_rate", m) + v("free_active", m) * P["free_hosting"])
+R(C, "cogs_ai", "AI provider cost incl. Free plan", "R", "zar", lambda m: f"{X('cogs_ai_paid', m)}+{X('cogs_free', m)}",
+  lambda m: v("cogs_ai_paid", m) + v("cogs_free", m))
 R(C, "cogs_hosting", "Hosting (lean base before seed, full base after)", "R", "zar",
   lambda m: f"IF({X('post_seed', m)}=1,{AD('hosting_fixed')},{AD('hosting_lean')})+{AD('hosting_per_ws')}*{X('tot_close', m)}",
   lambda m: (P["hosting_fixed"] if v("post_seed", m) == 1 else P["hosting_lean"]) + P["hosting_per_ws"] * v("tot_close", m))
@@ -591,7 +594,7 @@ R(C, "cogs_cs_team", "Customer success team (payroll)", "R", "zar", lambda m: X(
 COGS_KEYS = ["cogs_ai", "cogs_hosting", "cogs_wa", "cogs_proc", "cogs_support", "cogs_cs_team"]
 R(C, "cogs_total", "Total COGS", "R", "zar", lambda m: plus(COGS_KEYS, m), lambda m: sum(v(k, m) for k in COGS_KEYS), bold=True)
 
-SEC(C, "Operating expenses: marketing & sales programmes (capped / scaled with MRR; zero before seed except the pilot)")
+SEC(C, "Operating expenses: marketing & sales programmes (capped / scaled with MRR; zero before seed except the first-group set-up)")
 R(C, "opex_paid", "Paid acquisition (after cap)", "R", "zar", lambda m: X("paid_spend", m), lambda m: v("paid_spend", m))
 R(C, "opex_brand", "Brand, content & community = MIN(ceiling, floor + % of MRR)", "R", "zar",
   lambda m: f"{X('post_seed', m)}*MIN({choose_fy('brand_fy', m)},{AD('brand_floor')}+{AD('brand_pct')}*{X('mrr_prev', m)})",
@@ -602,14 +605,16 @@ R(C, "opex_launch_mkt", "Wave-1 launch marketing (NG/KE/GH, spread over 3 months
 R(C, "opex_rest_mkt", "Rest of Africa & BW/NA self-serve marketing", "R", "zar",
   lambda m: f"{X('launched_RoA', m)}*{AD('roa_budget')}+{X('launched_BWNA', m)}*{AD('bwna_budget')}",
   lambda m: v("launched_RoA", m) * P["roa_budget"] + v("launched_BWNA", m) * P["bwna_budget"])
-R(C, "opex_pilot", "Pilot programme", "R", "zar", lambda m: f"{X('pilot_on', m)}*{AD('pilot_cost')}", lambda m: v("pilot_on", m) * P["pilot_cost"])
+R(C, "opex_first", "First group set up by hand", "R", "zar", lambda m: f"{X('first_on', m)}*{AD('first_group_cost')}", lambda m: v("first_on", m) * P["first_group_cost"])
 R(C, "opex_partner", "Partner programme", "R", "zar",
   lambda m: f"{X('post_seed', m)}*(({plus(AG_NEW, m)})*{AD('partner_cost_per_agency')}+IF({MN(m)}>={AD('partner_events_start')},{AD('partner_events')},0))",
   lambda m: v("post_seed", m) * (sum(v(k, m) for k in AG_NEW) * P["partner_cost_per_agency"]
                                  + (P["partner_events"] if m >= P["partner_events_start"] else 0.0)))
-R(C, "opex_ent_sales", "Inbound enterprise handling", "R", "zar", lambda m: f"{X('ent_new', m)}*{AD('ent_sales_per_deal')}",
+R(C, "opex_ent_sales", "Inbound Custom (Enterprise) handling", "R", "zar", lambda m: f"{X('ent_new', m)}*{AD('ent_sales_per_deal')}",
   lambda m: v("ent_new", m) * P["ent_sales_per_deal"])
-MKT_KEYS = ["opex_paid", "opex_brand", "opex_launch_mkt", "opex_rest_mkt", "opex_pilot", "opex_partner", "opex_ent_sales"]
+R(C, "opex_corp_sales", "Inbound Corporate handling", "R", "zar", lambda m: f"{X('corp_new', m)}*{AD('corp_sales_per_deal')}",
+  lambda m: v("corp_new", m) * P["corp_sales_per_deal"])
+MKT_KEYS = ["opex_paid", "opex_brand", "opex_launch_mkt", "opex_rest_mkt", "opex_first", "opex_partner", "opex_ent_sales", "opex_corp_sales"]
 R(C, "opex_mkt_prog", "Total marketing & sales programmes", "R", "zar", lambda m: plus(MKT_KEYS, m),
   lambda m: sum(v(k, m) for k in MKT_KEYS), bold=True)
 
@@ -638,18 +643,17 @@ R(C, "opex_travel", "Travel", "R", "zar",
 SEC(PL, "Revenue: gross subscriptions -> launch discounts -> net")
 R(PL, "pl_rev_subs_gross", "Subscriptions (gross, at list / parity prices)", "R", "zar", lambda m: X("subrev_gross", m), lambda m: v("subrev_gross", m))
 R(PL, "pl_disc_fm", "less: Founding Member launch discount", "R", "zar", lambda m: f"-{X('fm_disc_total', m)}", lambda m: -v("fm_disc_total", m))
-R(PL, "pl_disc_pilot", "less: Pilot Founding terms discount", "R", "zar", lambda m: f"-{X('pilot_disc_rev', m)}", lambda m: -v("pilot_disc_rev", m))
-R(PL, "pl_rev_subs", "Subscriptions (net)", "R", "zar", lambda m: plus(["pl_rev_subs_gross", "pl_disc_fm", "pl_disc_pilot"], m),
-  lambda m: v("pl_rev_subs_gross", m) + v("pl_disc_fm", m) + v("pl_disc_pilot", m), bold=True)
-OTHER_REV = [("pl_rev_topup", "AI-credit top-ups", "topup_rev"), ("pl_rev_wa", "WhatsApp messaging (pass-through + margin)", "wa_rev"),
-             ("pl_rev_commerce", "Commerce platform fees (Upside only; not in current pricing)", "commerce_rev"),
-             ("pl_rev_ent_setup", "Enterprise setup fees", "ent_setup_rev"), ("pl_rev_agency_setup", "Agency white-label setup fees", "agency_setup_rev")]
+R(PL, "pl_rev_subs", "Subscriptions (net)", "R", "zar", lambda m: plus(["pl_rev_subs_gross", "pl_disc_fm"], m),
+  lambda m: v("pl_rev_subs_gross", m) + v("pl_disc_fm", m), bold=True)
+OTHER_REV = [("pl_rev_topup", "AI-credit packs", "topup_rev"), ("pl_rev_wa", "WhatsApp messaging (pass-through + margin)", "wa_rev"),
+             ("pl_rev_commerce", "FluxMuse checkout fee (0%: pass-through only)", "commerce_rev"),
+             ("pl_rev_ent_setup", "Custom (Enterprise) setup fees", "ent_setup_rev"), ("pl_rev_agency_setup", "Agency white-label setup fees", "agency_setup_rev")]
 for k, lab, src in OTHER_REV:
     R(PL, k, lab, "R", "zar", lambda m, src=src: X(src, m), lambda m, src=src: v(src, m))
 R(PL, "pl_rev", "Total revenue", "R", "zar", lambda m: plus(["pl_rev_subs"] + [k for k, _, _ in OTHER_REV], m),
   lambda m: v("pl_rev_subs", m) + sum(v(k, m) for k, _, _ in OTHER_REV), bold=True)
 SEC(PL, "Cost of revenue")
-COGS_LINES = [("pl_cogs_ai", "AI inference", "cogs_ai"), ("pl_cogs_hosting", "Hosting", "cogs_hosting"),
+COGS_LINES = [("pl_cogs_ai", "AI provider cost (incl. Free plan)", "cogs_ai"), ("pl_cogs_hosting", "Hosting", "cogs_hosting"),
               ("pl_cogs_wa", "WhatsApp Meta fees", "cogs_wa"), ("pl_cogs_proc", "Payment processing", "cogs_proc"),
               ("pl_cogs_support", "Variable support", "cogs_support"), ("pl_cogs_cs", "Customer success team", "cogs_cs_team")]
 for k, lab, src in COGS_LINES:
@@ -706,9 +710,9 @@ R(CF, "dr_bal", "Deferred revenue balance (annual self-serve plans: Solo + SME)"
   lambda m: (v("subgross_seg_SO", m) + v("subgross_seg_SM", m)) * P["annual_share"] * P["dr_months"])
 R(CF, "d_dr", "Increase in deferred revenue", "R", "zar", lambda m: X("dr_bal", m) if m == 1 else f"{X('dr_bal', m)}-{X('dr_bal', m - 1)}",
   lambda m: v("dr_bal", m) - v("dr_bal", m - 1))
-R(CF, "ar_bal", "Receivables balance (agency & enterprise invoices)", "R", "zar",
-  lambda m: f"({plus(['subgross_seg_AG', 'subgross_seg_EN', 'ent_setup_rev', 'agency_setup_rev'], m)})*{AD('ar_months')}",
-  lambda m: (v("subgross_seg_AG", m) + v("subgross_seg_EN", m) + v("ent_setup_rev", m) + v("agency_setup_rev", m)) * P["ar_months"])
+R(CF, "ar_bal", "Receivables balance (agency, Corporate & Custom invoices)", "R", "zar",
+  lambda m: f"({plus(['subgross_seg_AG', 'subgross_seg_CO', 'subgross_seg_EN', 'ent_setup_rev', 'agency_setup_rev'], m)})*{AD('ar_months')}",
+  lambda m: (v("subgross_seg_AG", m) + v("subgross_seg_CO", m) + v("subgross_seg_EN", m) + v("ent_setup_rev", m) + v("agency_setup_rev", m)) * P["ar_months"])
 R(CF, "d_ar", "Increase in receivables", "R", "zar", lambda m: X("ar_bal", m) if m == 1 else f"{X('ar_bal', m)}-{X('ar_bal', m - 1)}",
   lambda m: v("ar_bal", m) - v("ar_bal", m - 1))
 R(CF, "op_cf", "Operating cash flow (before funding)", "R", "zar",

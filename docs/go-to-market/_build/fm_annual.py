@@ -1,4 +1,4 @@
-"""FluxMuse financial model v2: annual (FY1-FY5), unit-economics and key-output rows.
+"""FluxMuse financial model v3: annual (FY1-FY5), unit-economics and key-output rows.
 
 Same dual-implementation pattern as fm_rows: xl(y) formula text + py(y) mirror.
 Fiscal year y runs Oct..Sep; FY y = model months 12(y-1)+1 .. 12y.
@@ -85,15 +85,14 @@ def gdiv(a, b):
 # =============================================================================
 AS = "Annual_Summary"
 ASEC(AS, "Revenue by stream (gross subscriptions -> launch discounts -> net)")
-SUBS = [("a_rev_subs_gross", "Subscriptions (gross)", "pl_rev_subs_gross"), ("a_disc_fm", "less: Founding Member discount", "pl_disc_fm"),
-        ("a_disc_pilot", "less: Pilot Founding terms discount", "pl_disc_pilot")]
+SUBS = [("a_rev_subs_gross", "Subscriptions (gross)", "pl_rev_subs_gross"), ("a_disc_fm", "less: Founding Member discount", "pl_disc_fm")]
 for k, lab, src in SUBS:
     AR(AS, k, lab, "R", "zar", lambda y, src=src: FS(src, y), lambda y, src=src: fs(src, y))
 AR(AS, "a_rev_subs", "Subscriptions (net)", "R", "zar", lambda y: "+".join(AY(k, y) for k, _, _ in SUBS),
    lambda y: sum(ay(k, y) for k, _, _ in SUBS), bold=True)
-AREV = [("a_rev_topup", "AI-credit top-ups", "pl_rev_topup"), ("a_rev_wa", "WhatsApp messaging (pass-through + margin)", "pl_rev_wa"),
-        ("a_rev_commerce", "Commerce platform fees (Upside only)", "pl_rev_commerce"),
-        ("a_rev_ent_setup", "Enterprise setup fees", "pl_rev_ent_setup"), ("a_rev_agency_setup", "Agency white-label setup fees", "pl_rev_agency_setup")]
+AREV = [("a_rev_topup", "AI-credit packs", "pl_rev_topup"), ("a_rev_wa", "WhatsApp messaging (pass-through + margin)", "pl_rev_wa"),
+        ("a_rev_commerce", "FluxMuse checkout fee (0%: pass-through only)", "pl_rev_commerce"),
+        ("a_rev_ent_setup", "Custom (Enterprise) setup fees", "pl_rev_ent_setup"), ("a_rev_agency_setup", "Agency white-label setup fees", "pl_rev_agency_setup")]
 for k, lab, src in AREV:
     AR(AS, k, lab, "R", "zar", lambda y, src=src: FS(src, y), lambda y, src=src: fs(src, y))
 AR(AS, "a_rev", "Total revenue", "R", "zar", lambda y: AY("a_rev_subs", y) + "+" + "+".join(AY(k, y) for k, _, _ in AREV),
@@ -106,10 +105,9 @@ ASEC(AS, "Launch discounts (cost of the offer, positive = revenue given up)")
 AR(AS, "a_fm_cost", "Founding Member discount cost", "R", "zar", lambda y: FS("fm_disc_total", y), lambda y: fs("fm_disc_total", y))
 for r in WINDOW_MKTS:
     AR(AS, f"a_fm_cost_{r}", f"of which {MARKET_SHORT[r]}", "R", "zar", lambda y, r=r: FS("fm_disc_" + r, y), lambda y, r=r: fs("fm_disc_" + r, y))
-AR(AS, "a_pilot_cost", "Pilot Founding terms discount cost", "R", "zar", lambda y: FS("pilot_disc_rev", y), lambda y: fs("pilot_disc_rev", y))
 AR(AS, "a_disc_pct", "Launch discounts as % of gross subscriptions", "%", "pct",
-   lambda y: guard_div(f"({AY('a_fm_cost', y)}+{AY('a_pilot_cost', y)})", AY("a_rev_subs_gross", y)),
-   lambda y: gdiv(ay("a_fm_cost", y) + ay("a_pilot_cost", y), ay("a_rev_subs_gross", y)))
+   lambda y: guard_div(AY("a_fm_cost", y), AY("a_rev_subs_gross", y)),
+   lambda y: gdiv(ay("a_fm_cost", y), ay("a_rev_subs_gross", y)))
 ASEC(AS, "Net subscription revenue by market")
 for r in MARKETS:
     AR(AS, f"a_subnet_{r}", MARKET_SHORT[r], "R", "zar", lambda y, r=r: FS("subnet_" + r, y), lambda y, r=r: fs("subnet_" + r, y))
@@ -158,6 +156,11 @@ for sg in SEGMENTS:
     AR(AS, f"a_segnew_{sg}", SEG_SHORT[sg], "workspaces", "n0", lambda y, sg=sg: FS("seg_new_" + sg, y), lambda y, sg=sg: fs("seg_new_" + sg, y))
 AR(AS, "a_new", "New paying workspaces in FY", "workspaces", "n0", lambda y: FS("tot_newc", y), lambda y: fs("tot_newc", y))
 AR(AS, "a_churned", "Churned workspaces in FY", "workspaces", "n0", lambda y: FS("tot_churn", y), lambda y: fs("tot_churn", y))
+ASEC(AS, "Free plan funnel")
+AR(AS, "a_free_new", "New Free users in FY", "users", "n0", lambda y: FS("free_new_total", y), lambda y: fs("free_new_total", y))
+AR(AS, "a_free_conv", "Free users upgrading to paid in FY", "workspaces", "n0", lambda y: FS("free_conv_total", y), lambda y: fs("free_conv_total", y))
+AR(AS, "a_free_active", "Active Free users at end of FY", "users", "n0", lambda y: FE("free_active", y), lambda y: fe("free_active", y))
+AR(AS, "a_free_cost", "Free plan cost (AI credits + hosting)", "R", "zar", lambda y: FS("cogs_free", y), lambda y: fs("cogs_free", y))
 ASEC(AS, "Recurring revenue & ARPA")
 AR(AS, "a_mrr", "Net subscription MRR (September)", "R", "zar", lambda y: FE("subrev_net", y), lambda y: fe("subrev_net", y))
 AR(AS, "a_arr", "Subscription ARR (Sept net MRR x 12)", "R", "zar", lambda y: f"{AY('a_mrr', y)}*12", lambda y: ay("a_mrr", y) * 12, bold=True)
@@ -206,6 +209,8 @@ def _spend_xl(sg, y):
         return f"{FS('paid_spend_' + sg, y)}+(" + "+".join(FS(k, y) for k in SS_OTHER) + f")*{_share_xl(sg, y)}"
     if sg == "AG":
         return f"{FS('opex_partner', y)}+{FS('pm_team_cost', y)}"
+    if sg == "CO":
+        return FS("opex_corp_sales", y)
     return FS("opex_ent_sales", y)
 
 
@@ -214,6 +219,8 @@ def _spend_py(sg, y):
         return fs("paid_spend_" + sg, y) + sum(fs(k, y) for k in SS_OTHER) * _share_py(sg, y)
     if sg == "AG":
         return fs("opex_partner", y) + fs("pm_team_cost", y)
+    if sg == "CO":
+        return fs("opex_corp_sales", y)
     return fs("opex_ent_sales", y)
 
 

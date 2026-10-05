@@ -1,12 +1,12 @@
 {
-  "built": "2026-09-11T22:09:56.204Z",
+  "built": "2026-10-05T16:40:16.524Z",
   "output": "FluxMuse_Brand_Kit.html",
-  "referenced": 64,
-  "present": 64,
-  "totalBytes": 25981077,
-  "total": "24.8 MB",
-  "darkVariantBytes": 7007466,
-  "darkVariants": "6.7 MB",
+  "referenced": 61,
+  "present": 61,
+  "totalBytes": 24548617,
+  "total": "23.4 MB",
+  "darkVariantBytes": 6555801,
+  "darkVariants": "6.3 MB",
   "missing": [],
-  "assetRows": 185
+  "assetRows": 180
 }

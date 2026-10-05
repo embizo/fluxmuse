@@ -190,9 +190,9 @@ const head = (eyebrow, title, sub = '') => `<div style="position:absolute;left:8
     ['Display', 'Poppins 700', 72, 'Receipts and revenue', 'Poppins', 700],
     ['H1', 'Poppins 700', 56, 'Sell where your buyers chat', 'Poppins', 700],
     ['H2', 'Poppins 600', 40, 'Your AI marketing team', 'Poppins', 600],
-    ['H3', 'Poppins 600', 30, 'Checkout inside WhatsApp', 'Poppins', 600],
+    ['H3', 'Poppins 600', 30, 'Your shop link, on WhatsApp', 'Poppins', 600],
     ['Body', 'Inter 400', 24, 'Plan, create, publish, sell and learn from one workspace.', 'Inter', 400],
-    ['Caption', 'Inter 500', 20, 'Priced in ZAR · 14-day free trial, no card required', 'Inter', 500],
+    ['Caption', 'Inter 500', 20, 'Priced in rands · paid plans from R149 a month', 'Inter', 500],
   ];
   const body = `${head('Brand kit · Typography', 'Poppins for headlines, Inter for everything else')}
   <div style="position:absolute;left:88px;top:200px;width:840px;height:330px" class="card">
@@ -242,7 +242,7 @@ const cover = (w, h, guides, kind) => {
       <div style="color:#F5F6F8">
         <div style="font:700 ${Math.round(h * 0.078)}px/1.15 Poppins">AI Marketing &amp; WhatsApp<br>Commerce for Africa</div>
         <div style="font:500 ${Math.round(h * 0.046)}px Inter;color:#A7B0BA;margin-top:${Math.round(h * 0.025)}px">Plan · Create · Publish · Sell · Learn</div>
-        <div class="chip" style="margin-top:${Math.round(h * 0.035)}px;font-size:${Math.round(h * 0.04)}px">14-day free trial · fluxmuse.ai</div>
+        <div class="chip" style="margin-top:${Math.round(h * 0.035)}px;font-size:${Math.round(h * 0.04)}px">Paid plans from R149 a month · fluxmuse.ai</div>
       </div></div>${guideSvg}` });
 };
 add('social-cover-1500x500', 1500, 500, cover(1500, 500, false, 'x'), { dpr: 1 });
@@ -261,7 +261,7 @@ const emailBanner = page({ title: 'email banner', w: 600, h: 150, bg: C.paper, b
     <img src="${LIGHT}" style="height:66px">
     <div style="width:2px;height:80px;background:${C.orange}"></div>
     <div><div style="font:600 17px/1.25 Poppins;color:${C.ink}">AI marketing team &amp;<br>WhatsApp commerce for African SMBs</div>
-    <div style="font:500 13px Inter;color:${C.slate};margin-top:6px">fluxmuse.ai · 14-day free trial, no card required</div></div></div>
+    <div style="font:500 13px Inter;color:${C.slate};margin-top:6px">fluxmuse.ai · paid plans from R149 a month</div></div></div>
   <div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:${C.orange}"></div>` });
 add('email-signature-banner-600x150', 600, 150, emailBanner, { dpr: 1 });
 add('email-signature-banner-600x150@2x', 600, 150, emailBanner, { dpr: 2 });

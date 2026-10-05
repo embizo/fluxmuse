@@ -1,167 +1,172 @@
 """Sections 9-11: pricing, operations, management and organisation."""
-from bp_doc import ANN, D, M, TINT, pct, rand, rk, rm
+from bp_doc import ANN, D, M, MV, TINT, pct, rand, rk, rm
 
 PT = M["price_tables"]
 PW = PT["partner_wholesale_monthly"]
+ZAR = PT["zar_list_monthly"]
+LM = PT["local_monthly"]
+FMB = PT["founding_member_first_2_bills_zar"]
 MK = M["markets"]
 DEPTS = list(D["headcount_by_dept_fy_end"].keys())
+PAID = ["Nano", "Micro", "Starter", "Growth", "Scale", "Corporate", "Agency"]
+SPEC = {"Free": ("1", "1", "Permanent plan, not a trial; no card"),
+        "Nano": ("1", "3", "Entry paid plan for side hustles"),
+        "Micro": ("1", "4", "1 WhatsApp number"),
+        "Starter": ("1", "3", ""),
+        "Growth": ("3", "15", "+ inbound AI Voice (beta)"),
+        "Scale": ("10", "40", "+ inbound and outbound AI Voice (beta)"),
+        "Corporate": ("25", "60", "Bring your own cloud"),
+        "Agency": ("Unlimited", "80", "Bring your own cloud, white-label, multi-client"),
+        "Custom": ("—", "—", "Sold by consultation")}
 
 
 def s9_pricing(d):
     d.h1("9. Pricing strategy", new_page=True)
-    d.para("Base currency is the South African rand. Annual plans cost 10× the monthly price, so two months "
-           "are free. A 14-day free trial with no card comes before any plan.")
+    d.para("Base currency is the South African rand. Annual plans cost 10× the monthly price. **There are no "
+           "free trials**: every paid plan starts with payment. Free is a permanent plan with no card, and we "
+           "don't lead with it. Prices are the amounts charged: FluxMuse is not VAT-registered, so no VAT is "
+           "added.")
 
-    d.h2("Plans")
-    d.table(["Plan", "Monthly (ZAR)", "Annual (ZAR)", "Brands", "Channels", "AI credits/mo", "For"], [
-        ("Starter", "R499", "R4,990", "1", "3", "5,000", "Solo founders; community support"),
-        ("Growth", "R1,999", "R19,990", "3", "15", "25,000",
-         "E-commerce and WhatsApp commerce, USSD, integrations; email support"),
-        ("Scale", "R4,999", "R49,990", "10", "40", "100,000",
-         "API access, white-label reports, priority support"),
-        ("Agency", "R7,999", "R79,990", "Unlimited", "80", "500,000",
-         "Full white-label, 50 sub-accounts, reseller billing"),
-        ("Enterprise", "from R19,999", "Custom", "Unlimited", "Unlimited", "Unlimited",
-         "SSO, SLA, dedicated AI, 24×7; inbound only"),
-    ], [2.1, 2.3, 2.2, 1.7, 1.7, 2.2, 4.8], "Plans and list prices (ZAR)", size=8.5,
-        aligns=[None, "right", "right", "right", "right", "right", None])
+    d.h2("Nine plans in three bands")
+    rows = []
+    for band, tiers in PT["bands"].items():
+        for t in tiers:
+            b, c, note = SPEC[t]
+            mo = "On request" if t == "Custom" else rand(ZAR[t])
+            an = "—" if t == "Custom" else rand(ZAR[t] * 10)
+            rows.append((band if t == tiers[0] else "", t, mo, an, b, c, note))
+    d.table(["Band", "Plan", "Monthly", "Annual", "Brands", "Channels", "Notes"], rows,
+            [2.1, 2.0, 2.0, 2.1, 1.8, 1.7, 5.3], "Plans and list prices (ZAR)", size=8.5,
+            aligns=[None, None, "right", "right", "right", "right", None])
+    d.note("AI credit allowances changed on 24 September and are set on the pricing page; this plan never "
+           f"quotes per-plan credit numbers. Custom is modelled from {rand(ZAR['Custom'])} a month "
+           "**[[CONFIRM]]**.")
+    d.figure("infographics/pricing-tiers.png",
+             "Nine plans in three bands, priced in rands.",
+             "Pricing page: a Founding Member banner, 30% off the first two monthly bills for South African "
+             "sign-ups; Small (Free R0, Nano R149, Micro R289), Medium (Starter R499, Growth R1,999, Scale "
+             "R4,999) and Enterprise (Corporate R6,999, Agency R9,999, Custom on request), with brands, channels "
+             "and annual prices.")
 
-    d.h2("Local pricing")
-    d.para("Nigeria, Kenya and Ghana are billed in **fixed local price points**, set at parity with the ZAR "
-           "price at early-September 2026 rates (1 ZAR = ₦82.83 = KSh 8.07 = GH₵ 0.68), not at the day's "
-           "exchange rate. The other 19 rail-covered countries are billed in **US dollars** at R18.50 = US$1.")
+    d.h2("Local pricing: priced, not yet on sale")
+    d.para("Nigeria, Kenya and Ghana have **fixed local price points** in the product, set at parity with the "
+           "rand (1 ZAR = ₦82.83 = KSh 8.07 = GH₵ 0.68), and other markets have US dollar prices at R18.50 = "
+           "US$1. **None of these is on sale**: checkout outside South Africa waits for the Fincra and pawaPay "
+           "accounts and a real-money test.")
     d.figure("infographics/pricing-regional.png",
-             "One set of plans, priced for each market.",
-             "Monthly prices per plan: Starter R499, ₦41,000, KSh 3,999, GH₵ 339, $27; Growth R1,999, "
-             "₦165,000, KSh 15,999, GH₵ 1,359, $109; Scale R4,999, ₦413,000, KSh 39,999, GH₵ 3,399, $269; "
-             "Agency R7,999, ₦662,000, KSh 64,499, GH₵ 5,439, $429. Annual is ten times monthly, USD applies "
-             "in 19 other rail-covered countries, other countries join the waitlist, prices reviewed quarterly.")
+             "One set of plans, priced for each market. Only South Africa is on sale.",
+             "Table of monthly prices for Nano to Agency in ZAR (on sale), and NGN, KES, GHS and USD (not yet on "
+             "sale): for example Nano R149, ₦12,000, KSh 1,199, GH₵ 99, $8; Agency R9,999, ₦829,000, KSh 80,999, "
+             "GH₵ 6,799, $539.")
 
     d.h2("Repricing policy")
     d.bullets([
         "Local prices are **reviewed quarterly**. If the rand value of a local price has drifted more than "
-        "**10%**, the price is reset to parity, using the rate observed a quarter earlier.",
-        "A **6% list-price escalator** applies each October in all markets.",
+        "**10%**, the price is reset to parity.",
+        "A **6% list-price escalator** applies each October in the model **[[CONFIRM]]**.",
         "The model assumes annual depreciation against the rand of NGN −10%, GHS −8%, KES −3% and USD 0% "
         "(**[[CONFIRM FX ASSUMPTIONS]]**).",
-        "Section 12 shows why this discipline matters: in a 15% rand-strengthening shock, repricing is the "
-        "difference between a one-quarter dip and a R9.9m hit to FY5 EBITDA.",
+        "Section 12 shows why this matters: in a 15% rand-strengthening shock without repricing, the Base case "
+        "fails the cash test.",
     ])
 
     d.h2("Partner wholesale")
     d.table(["", "ZAR", "NGN", "KES", "GHS", "USD"], [
-        ("Agency list, monthly", "R7,999", "₦662,000", "KSh 64,499", "GH₵ 5,439", "$429"),
+        ("Agency list, monthly", rand(ZAR["Agency"]), f"₦{LM['NGN']['Agency']:,}", f"KSh {LM['KES']['Agency']:,}",
+         f"GH₵ {LM['GHS']['Agency']:,}", f"${LM['USD']['Agency']:,}"),
         (f"Partner wholesale, monthly (−{PW['discount_vs_agency_list_pct']}%)", rand(PW["ZAR"]),
          f"₦{PW['NGN']:,}", f"KSh {PW['KES']:,}", f"GH₵ {PW['GHS']:,}", f"${PW['USD']}"),
-        ("Partner wholesale, annual", "R55,990", "₦4,630,000", "KSh 449,990", "GH₵ 37,990", "$2,990"),
+        ("Partner wholesale, annual (10×)", rand(PW["ZAR"] * 10), f"₦{PW['NGN'] * 10:,}", f"KSh {PW['KES'] * 10:,}",
+         f"GH₵ {PW['GHS'] * 10:,}", f"${PW['USD'] * 10:,}"),
     ], [5.0, 2.4, 2.7, 2.5, 2.4, 2.0], "Partner wholesale pricing", size=9,
         aligns=[None, "right", "right", "right", "right", "right"])
-    d.note("The partner price is a permanent wholesale price for the Agency tier, not a launch discount. The "
-           "model assumes 100% of agency-segment customers buy at it (**[[CONFIRM]]**). Whether partners earn "
-           "a commission on clients they refer onto their own Starter, Growth or Scale plans is "
+    d.note("The partner price is a permanent wholesale price, not a launch discount. The product has no regional "
+           "wholesale rows, so local wholesale uses the Corporate local prices **[[CONFIRM]]**. The model "
+           "assumes 100% of agency-segment customers buy at wholesale. A referral commission is "
            "**[[FOUNDER DECISION: REFERRAL COMMISSION %]]** and is not modelled.")
 
     d.h2("Discounts")
     d.bullets([
-        "**One launch offer only**: Founding Member, 60 days per market, on Starter, Growth and Scale.",
-        "**Pilot brands** get deepened terms (50% off the first two monthly bills from 1 December 2026) in "
-        "exchange for a case study and logo permission. This is not a public offer.",
-        "**No stacking.** Founding Member does not combine with partner wholesale pricing, and is never "
-        "offered on the Agency tier.",
-        "**Perks duration** (badge and priority support) is **[[FOUNDER DECISION: PERKS DURATION]]**. Until it "
-        "is decided, materials state the perks with no duration.",
+        "**One launch offer only**: Founding Member, 30% off the first two monthly bills for South African "
+        f"sign-ups (Nano {rand(FMB['Nano'])} to Scale {rand(FMB['Scale'])}). Live now; no end date set.",
+        "**No stacking.** Founding Member does not combine with partner wholesale.",
+        "**Every paid plan starts with payment.** The offer is backed by the lead guarantee "
+        "(section 4), paid in support, not cash.",
     ])
 
-    d.h2("Market gating")
-    d.para("Prices and checkout are shown **only** in the 23 countries where a secured rail can collect. "
-           "Botswana and Namibia appear as coming soon; South Sudan and Zimbabwe are payouts-only through "
-           "Fincra and stay gated until subscription collection is confirmed "
-           "(**[[CONFIRM FINCRA COLLECTION FOR SOUTH SUDAN AND ZIMBABWE]]**). Everywhere else, including all "
-           "countries outside Africa, visitors may join a waitlist but cannot buy.")
-
-    d.h2("A fee that is not in pricing today")
-    d.para("A **0.75% commerce fee** on WhatsApp-checkout GMV is modelled in the Upside scenario only. It is "
-           "**not part of current pricing**, is not assumed in the Base or Conservative cases, and would need "
-           "both a product change and evidence that merchants accept it.")
+    d.h2("Checkout fees")
+    d.para("When checkout through FluxMuse is switched on, card payments carry Paystack's standard fee (2.9% + "
+           "R1), deducted before payout, and EFT is 2%. FluxMuse adds **no fee on checkout** in any scenario of "
+           "the model.")
 
 
 def s10_operations(d):
     d.h1("10. Operations", new_page=True)
     d.h2("Technology and architecture")
     d.bullets([
-        "**Front end**: React with Vite, deployed on Vercel; installable as a progressive web app.",
-        "**Back end**: Supabase, providing Postgres, authentication and more than 140 edge functions.",
-        "**Security**: row-level security on every table, encrypted third-party access tokens, audit export.",
-        "**Integrations**: WhatsApp Cloud API, Meta Graph API, five payment providers, Shopify, WooCommerce, "
-        "Takealot, HubSpot, accounting sync, Slack, Zapier and a public API.",
-        "**Why it scales cheaply**: managed infrastructure with per-workspace costs, so hosting grows with "
-        "customers instead of ahead of them. Hosting is modelled at R30,000 a month plus R35 per workspace "
-        "after the seed.",
+        "**Front end**: React with Vite, deployed on Vercel.",
+        "**Back end**: Supabase, providing Postgres, authentication and edge functions.",
+        "**Security**: row-level security on every table, encrypted third-party access tokens.",
+        "**Integrations**: WhatsApp Cloud API, Meta Graph API, TikTok, Paystack; Shopify, WooCommerce and "
+        "Takealot sync in part.",
+        "**Why it scales cheaply**: managed infrastructure with per-workspace costs. Hosting is modelled at "
+        "R30,000 a month plus R35 per workspace after the seed.",
+        "**AI cost**: one AI credit is R0.15 of real provider cost (the product's own figure). Corporate, Agency "
+        "and Custom run AI on the customer's own keys.",
     ])
 
-    d.h2("Meta platform dependency and the App Review plan")
-    d.para("FluxMuse depends on Meta for WhatsApp and for Facebook and Instagram publishing. Business and "
-           "Access Verification (Tech Provider) are already held, and WhatsApp messaging and management "
-           "permissions are approved. The permissions still in App Review are the first item on the product "
-           "roadmap. Until each is approved it stays switched off, and no customer is sold it.")
+    d.h2("Meta platform dependency")
+    d.para("FluxMuse depends on Meta for WhatsApp and for Facebook and Instagram publishing. Fluxmuse (Pty) Ltd "
+           "is a verified Meta Tech Provider and WhatsApp Business is live. Facebook and Instagram "
+           "auto-publishing wait on Meta permissions; until approved they stay switched off and the real value "
+           "is forwarding to WhatsApp Status. Instagram DMs and comments are not available.")
     d.table(["Stage", "Scope"], [
-        ("1. Meta permissions (Q4 2026)",
-         "Instagram publishing, comments and DMs; Pages posting and engagement insights; business management; "
-         "ads"),
-        ("2. Social adapters", "Instagram Login, Threads, LinkedIn, X, TikTok, YouTube, Pinterest"),
-        ("3. Business app integrations", "Commerce, CRM, accounting, email and SMS providers"),
-        ("4. Flux_Partner programme", "Referral tracking, white-label, partner-managed workspaces"),
-    ], [5.4, 11.6], "Product roadmap, in the founder's agreed order", size=9.5)
-    d.note("Timing beyond Q4 2026 is indicative and depends on Meta approvals and team capacity.")
+        ("1. Switch on what is built", "Checkout through FluxMuse (real-money test), Meta publishing permissions, "
+                                       "daily digest template, AI Voice beta"),
+        ("2. Expansion rails", "Fincra and pawaPay accounts live; Nigeria, Kenya and Ghana checkout tested"),
+        ("3. Integrations", "Tenant catalogue sync from Shopify, WooCommerce and Takealot"),
+        ("4. Partner programme", "Referral tracking and partner-managed workspaces"),
+    ], [5.4, 11.6], "Product roadmap, in order", size=9.5)
+    d.note("No dates are set for these stages. **[[FOUNDER: TARGET DATES]]**")
 
     d.h2("Payment rails and settlement")
-    d.table(["Rail", "Type", "Countries"], [
-        ("Yoco", "Card acquiring, tap-to-pay", "South Africa"),
-        ("Ozow", "Instant EFT / pay-by-bank", "South Africa"),
-        ("Paystack", "Cards, bank transfer, USSD, mobile money",
-         "Nigeria, Ghana, South Africa, Kenya, Côte d'Ivoire, Rwanda"),
-        ("pawaPay", "Mobile money collections and payouts, 40+ mobile network operators", "20 countries"),
-        ("Fincra", "Collections (virtual accounts, cards, bank, mobile money) and payouts",
-         "Collections hubs: Nigeria, Ghana, Kenya, Uganda, South Africa. African payouts across West, Central "
-         "and East Africa, plus South Sudan and Zimbabwe"),
-    ], [2.4, 6.0, 8.6], "The five secured payment rails", size=9)
+    d.table(["Provider", "Role", "Status"], [
+        ("Paystack", "Cards and EFT in South Africa; FluxMuse checkout for merchants",
+         "Live in South Africa; merchant checkout being switched on"),
+        ("Yoco, Ozow", "FluxMuse's own subscription billing", "Integrated"),
+        ("pawaPay", "Mobile money for expansion markets", "Contracted, account pending"),
+        ("Fincra", "Collections and payouts for expansion markets", "Contracted, account pending"),
+    ], [2.6, 7.4, 7.0], "Payment providers", size=9)
     d.figure("infographics/payment-coverage-map.png",
-             "Coverage: 23 countries, with Botswana and Namibia coming soon.",
-             "Tile map of 23 African countries coloured by how many of the five rails cover them, with South "
-             "Africa the only four-rail country, Botswana and Namibia shown as dashed coming-soon tiles, and "
-             "stat cards for five live payment rails, 23 countries covered, plus two coming soon and 40-plus "
-             "mobile money operators.")
+             "Live in South Africa. The rest is pending.",
+             "Tile map: paid checkout live in South Africa only (Paystack); Nigeria, Kenya and Ghana priced, not "
+             "yet on sale; 19 countries where pawaPay or Fincra are contracted, accounts pending; Botswana and "
+             "Namibia coming soon.")
     d.bullets([
-        "**All five rails are live in September 2026** (pawaPay and Fincra from the week of 14 September), so "
-        "market expansion depends on sales capacity, not payments.",
-        "**Settlement** runs through each provider to the company's bank accounts; FluxMuse does not hold "
-        "customer funds. Settlement timing and reconciliation by rail: "
-        "**[[SETTLEMENT TERMS AND RECONCILIATION PROCESS PER RAIL]]**.",
-        "**Processing cost** is modelled at 2.9%, plus 1.5% for mobile money and FX on non-South African "
-        "revenue.",
-        "Appendix B lists all 23 countries, their currencies and their rails.",
+        "**Settlement** runs through each provider to the merchant's own South African bank account; FluxMuse "
+        "does not hold the money. **[[SETTLEMENT TERMS AND RECONCILIATION PROCESS]]**.",
+        "**Processing cost** on FluxMuse's own subscriptions is modelled at 3.0% (Paystack 2.9% + R1), plus "
+        "1.5% for mobile money and FX on non-South African revenue.",
+        "Appendix B shows status by country.",
     ])
 
     d.h2("Customer onboarding and support")
     d.bullets([
-        "**Solo**: self-serve 14-day trial, in-product onboarding, community support.",
-        "**SME**: trial plus a guided onboarding call; email support, priority on Scale.",
-        "**Agency**: demo, a pilot client, then white-label setup with dedicated support.",
-        "A customer success team is hired from the seed month and sits in cost of revenue, not operating "
-        f"expenses: {D['headcount_by_dept_fy_end']['Customer success'][0]} people at the end of FY1 rising to "
+        "**First group**: set up by hand by the founders, one business at a time.",
+        "**Solo**: self-serve or a short demo on their own products.",
+        "**SME**: a discovery call, a demo and set-up by hand.",
+        "**Agency**: a live demo on a client's public catalogue, then white-label set-up.",
+        "A customer success team is hired from the seed month and sits in cost of revenue: "
+        f"{D['headcount_by_dept_fy_end']['Customer success'][0]} people at the end of FY1 rising to "
         f"{D['headcount_by_dept_fy_end']['Customer success'][4]} by FY5.",
-        "Support cost is modelled at R50 per workspace per month on top of that team.",
     ])
 
     d.h2("Data protection and security")
     d.bullets([
-        "Built to be POPIA, NDPR and GDPR ready; row-level security on every table; encrypted tokens; audit "
-        "export; data export and account deletion on request.",
-        "Marketing messages go only to contacts who opted in, using Meta-approved templates, with an opt-out "
-        "in every broadcast and suppression lists kept in the platform.",
+        "Built to be POPIA ready; row-level security on every table; encrypted tokens; data export and account "
+        "deletion on request.",
+        "Broadcasts go only to consented contacts, using Meta-approved templates, with an opt-out.",
         "Screenshots and case studies blur customer names and phone numbers.",
-        "A security and compliance engineer is hired in the plan once net MRR passes R2.5m, and legal and "
-        "data-protection counsel once it passes R2.0m.",
         "**[[SECURITY POLICY, BREACH-RESPONSE PLAN, PENETRATION TEST AND HOSTING REGIONS: TO CONFIRM]]**",
     ])
 
@@ -170,10 +175,8 @@ def s10_operations(d):
         ("Meta", "WhatsApp Cloud API, Facebook and Instagram", "High: see section 14"),
         ("Supabase and Vercel", "Database, authentication, edge functions, hosting", "Medium: replaceable, "
                                                                                      "with effort"),
-        ("AI model providers", "Inference behind the agents", "Medium: cost and availability; multi-provider "
-                                                              "by design"),
-        ("Yoco, Ozow, Paystack, pawaPay, Fincra", "Collections and payouts",
-         "Medium: overlapping coverage in the larger markets"),
+        ("AI model providers", "Inference behind the assistant", "Medium: cost and availability"),
+        ("Paystack; pawaPay and Fincra (pending)", "Collections and payouts", "High until expansion rails are live"),
         ("Agency partners", "White-label distribution", "Builds over time"),
     ], [4.4, 7.0, 5.6], "Key suppliers and partners", size=9)
 
@@ -182,12 +185,12 @@ def s11_management(d):
     d.h1("11. Management and organisation", new_page=True)
     d.h2("Founders and team")
     d.table(["Role", "Name", "Background and responsibility"], [
-        ("Founder & CEO", "[[FOUNDER NAME]]", "[[BACKGROUND, YEARS OF EXPERIENCE, RESPONSIBILITY]]"),
+        ("Founder", "Thabo Malebadi", "[[TITLE, BACKGROUND, YEARS OF EXPERIENCE, RESPONSIBILITY]]"),
         ("CTO / founding engineer", "[[CTO NAME]]", "[[BACKGROUND, RESPONSIBILITY]]"),
         ("[[ROLE]]", "[[NAME]]", "[[BACKGROUND, RESPONSIBILITY]]"),
     ], [4.0, 4.0, 9.0], "Founders and senior team", size=9.5)
     d.para("Both founders are on reduced salaries until the seed lands (R45,000 and R55,000 cost to company a "
-           "month), which is what keeps the pre-seed burn small.")
+           "month) **[[CONFIRM]]**, which keeps the pre-seed burn small.")
     d.para("**Advisors.** [[ADVISORS: NAMES, AREAS AND WHAT THEY CONTRIBUTE]]")
 
     d.h2("Governance")
@@ -196,36 +199,32 @@ def s11_management(d):
         "Reporting: monthly management accounts and the KPI dashboard in section 15; quarterly board meetings "
         "(**[[CONFIRM REPORTING CADENCE WITH INVESTORS]]**).",
         "Financial controls: **[[SIGNING AUTHORITY, APPROVAL LIMITS, PAYROLL AND PAYMENT CONTROLS]]**.",
-        "A finance and compliance manager is hired early (from R150,000 net MRR), a finance analyst and people "
-        "partner later, and a CFO at R8m net MRR.",
     ])
 
     d.h2("The hiring plan")
-    d.para("**Nobody is hired on a calendar date alone.** Every non-founder role waits for three things: its "
-           "earliest month, the seed, and last month's net MRR clearing that role's gate. In the Conservative "
-           "scenario every gate rises by 40%, which is how the plan survives a slower market without extra "
-           "funding.")
+    d.para("**Nobody is hired on a calendar date alone.** Every non-founder role waits for its earliest month, "
+           "the seed, and last month's net MRR clearing that role's gate. The hiring plan is unchanged from the "
+           "previous model; the seed was sized to it rather than the other way round.")
     d.fy_table("Headcount by department at each year end (Base case)",
                [[dep] + [str(v) for v in D["headcount_by_dept_fy_end"][dep]] for dep in DEPTS] +
                [["Total headcount"] + [str(v) for v in D["headcount_total_fy_end"]]],
                first_header="Department", total_rows=(len(DEPTS),))
-    d.source("FluxMuse Financial Model v2 (Base case), derived from the model's headcount rows.")
+    d.source(f"FluxMuse Financial Model {MV} (Base case), derived from the model's headcount rows.")
     d.para(f"**Jobs created.** The plan grows from 2 founders to **{D['headcount_total_fy_end'][0]} people by "
            f"the end of FY1** and **{D['headcount_total_fy_end'][4]} by FY5**, of which "
            f"{D['headcount_by_dept_fy_end']['Country teams'][4]} are country-team roles in Nigeria, Kenya and "
-           f"Ghana and {D['headcount_by_dept_fy_end']['Customer success'][4]} are customer-success roles, "
-           "which are the most accessible entry-level positions in the plan. Section 16 sets out the "
-           "development-impact view.")
+           f"Ghana and {D['headcount_by_dept_fy_end']['Customer success'][4]} are customer-success roles.")
 
     d.h2("When each role is hired")
-    d.para("The table shows the first month each role group is hired in the Base case, and the net MRR gate it "
-           "waits for. Country-team roles are tied to their market's launch decision rather than to an MRR "
-           "gate of their own.")
+    d.para("The first month each role group is hired in the Base case, and the net MRR gate it waits for. "
+           "Country-team roles are tied to their market's launch. Roles whose gate is not reached within FY5 are "
+           "left out.")
     rows = []
     for r in sorted(D["roles"], key=lambda r: (r["fy"], r["role"])):
-        if r["dept"] == "Leadership":
+        if r["dept"] == "Leadership" or r["fy"] == "-":
             continue
-        gate = rand(r["mrr_gate_zar"]) if r["mrr_gate_zar"] else "Tied to market launch"
+        gate = rand(r["mrr_gate_zar"]) if r["mrr_gate_zar"] else (
+            "Tied to market launch" if r["dept"] == "Country teams" else "At the seed")
         rows.append((r["fy"], r["first_month"], str(r["count"]), r["role"], gate))
     d.table(["FY", "First hired", "FTE", "Role", "Net MRR gate"], rows,
             [1.2, 2.3, 1.0, 9.5, 3.0], "Hiring plan: first hire month and MRR gate (Base case)", size=8,

@@ -24,7 +24,7 @@ SUMMARY = BUILD.parent / "06_Financial_Model" / "model_summary.json"
 def main():
     p, V, AV, SV = FM.run(2)
     fy_end = [12, 24, 36, 48, 60]
-    out = {"source": "FluxMuse Financial Model v2 Python mirror, Base case (financial_model.run(2))"}
+    out = {"source": "FluxMuse Financial Model " + json.loads(SUMMARY.read_text())["version"] + " Python mirror, Base case (financial_model.run(2))"}
 
     # headcount by department at FY end
     out["headcount_by_dept_fy_end"] = {

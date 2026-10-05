@@ -1,103 +1,48 @@
-# FluxMuse: executive summary
+# FluxMuse business plan: executive summary
 
-**Fluxmuse Pty Ltd · Business plan · September 2026 · Confidential · v1.0**
-Projections from the FluxMuse Financial Model v2 (Base case), model date 11 September 2026.
-Forward-looking statements, not results.
+**Fluxmuse (Pty) Ltd · October 2026 · Confidential · v2.0** Projections from the FluxMuse Financial Model v3, model date 2026-10-05 (Base case). Forward-looking projections, not results. FluxMuse has **no paying customers yet**; every volume is an assumption, and items marked `[[CONFIRM]]` need founder sign-off. Sources: `00_FACTS_AND_ASSUMPTIONS.md`, `08_Prospects/CURRENT_OFFER.md`, `06_Financial_Model/Financial_Model_Notes.md`.
 
----
+## What FluxMuse is
 
-## The business
-
-**FluxMuse is an AI marketing team and a WhatsApp commerce platform for African small and medium
-businesses.** It plans, writes, publishes and optimises marketing across WhatsApp, Facebook, email,
-SMS and USSD, and closes the sale inside the chat: catalog, cart, checkout and order updates, paid
-through local payment rails.
-
-- **Four core AI agents** (Strategist, Creator, Publisher, Analyst) plus 23 specialists, producing
-  content in isiZulu, Pidgin, Swahili, Afrikaans, English and more.
-- **Five secured payment rails** (Yoco, Ozow, Paystack, pawaPay, Fincra), all live September 2026,
-  covering **23 African countries**; Botswana and Namibia coming soon.
-- **Local pricing** from **R499/mo**, with fixed local price points in Nigeria, Kenya and Ghana and
-  US dollar pricing in the other 19 rail-covered countries. 14-day free trial, no card.
-
-## The opportunity
-
-An estimated **44 million MSMEs** in Sub-Saharan Africa (IFC/World Bank est.), including ~2.5–3
-million SMMEs in South Africa (SEDA/Stats SA est.), ~39 million in Nigeria (SMEDAN est.) and ~7.4
-million in Kenya (KNBS est.). Over **90% of internet users in South Africa and Nigeria use
-WhatsApp** (DataReportal 2025 est.), and Sub-Saharan Africa accounts for about **70% of global
-mobile money value** (GSMA 2025 est.). All estimates; verify before external use.
-
-Global tools publish but do not sell, are priced in hard currency and ignore local payment methods.
-Agency retainers are priced beyond this market. Nobody covers plan → create → publish → sell → get
-paid → learn in one product, in local currency.
+An AI marketing team and a shop that runs on WhatsApp, for African small businesses. The owner sends product photos on WhatsApp; FluxMuse drafts the catalogue, builds a hosted shop link, writes captions and images for WhatsApp Status, and sends each order to the owner's WhatsApp. Fluxmuse (Pty) Ltd is a verified Meta Tech Provider.
 
 ## Where we are
 
-- **Product is live**, not a concept: agents, WhatsApp commerce, publishing, campaigns, CRM,
-  automation and integrations all ship today.
-- **Meta Business Verification and Access Verification (Tech Provider): verified**; WhatsApp
-  messaging and management permissions approved. Instagram publishing, comments and DMs, Pages
-  posting and business management are **in Meta App Review and not live**.
-- **A 12-brand Gauteng pilot runs to 30 November 2026.** Pilot brands pay nothing; first paid
-  conversions and first consented case studies come in **December 2026**. No customer results exist
-  before then, and none are claimed.
+- **Live, newly launched in South Africa:** WhatsApp Concierge, hosted shop link, order alerts and SOLD, AI captions, images and short video, voice-note transcription, WhatsApp Business setup and consented broadcasts, answers in the customer's language, TikTok video posting.
+- **Being switched on:** Facebook and Instagram auto-publishing (Meta permissions pending), checkout through FluxMuse (not yet tested with real money), AI Voice (beta), daily digest.
+- **Payments:** Paystack live in South Africa; Yoco and Ozow for FluxMuse's own billing. pawaPay and Fincra contracted for expansion, accounts pending. No paid checkout outside South Africa yet.
+- **No customers, no pilot, no results.** We are opening with a small first group of businesses and setting each one up by hand (model: 4 a month, Oct 2026 to Jan 2027 `[[CONFIRM]]`).
+- **Lead guarantee:** 3 qualified leads in 30 days of go-live, or extended support at no extra charge until 3 arrive (conditions apply). Support, not cash.
 
-## Business model and go to market
+## Pricing
 
-Recurring subscriptions: Starter R499, Growth R1,999, Scale R4,999, Agency R7,999 a month;
-Enterprise from R19,999. Annual = 10× monthly. Agencies buy the Agency tier at a **partner wholesale
-price of R5,599/mo** (30% off list) and set their own retail price.
-
-South Africa first (national launch 1 December 2026), then Nigeria, Kenya and Ghana, then the other
-19 rail-covered countries self-serve in US dollars. Three segments: solo entrepreneurs, SMEs and
-agencies. Enterprise is inbound only. One launch offer: **Founding Member**, 60 days per market, 30%
-off the first two monthly bills — never on the Agency tier.
+Nine plans in three bands, in rands: Small (Free, Nano R149, Micro R289), Medium (Starter R499, Growth R1,999, Scale R4,999), Enterprise (Corporate R6,999, Agency R9,999, Custom by consultation). Annual is 10× monthly. Every paid plan starts with payment; Free is a permanent plan. Partner wholesale R6,999 a month. Founding Member: 30% off the first two monthly bills for South African sign-ups, live now. Nigeria, Kenya and Ghana are priced but not on sale.
 
 ## Financial highlights (Base case)
 
 | | FY1 | FY2 | FY3 | FY4 | FY5 |
 |---|---|---|---|---|---|
-| Revenue (R m) | 3.4 | 24.9 | 73.1 | 144.9 | 238.0 |
-| EBITDA (R m) | −7.1 | −13.7 | 0.5 | 31.5 | 66.3 |
-| EBITDA margin | n/m | −55% | 1% | 22% | 28% |
-| Paying workspaces (Sept) | 421 | 1,759 | 3,820 | 6,261 | 8,816 |
-| Subscription ARR (R m) | 8.1 | 36.9 | 89.1 | 162.6 | 249.3 |
-| Closing cash (R m) | 19.1 | 8.0 | 13.2 | 48.4 | 104.4 |
-| Headcount at year end | 18 | 41 | 68 | 92 | 135 |
+| Revenue | R1.9m | R9.5m | R25.5m | R54.1m | R93.5m |
+| EBITDA | R-7.0m | R-11.7m | R-16.9m | R-10.6m | R4.5m |
+| Paying workspaces (Sept) | 238 | 728 | 1,734 | 3,147 | 4,627 |
+| Closing cash | R39.7m | R28.5m | R12.8m | R4.2m | R11.3m |
+| Headcount at year end | 13 | 23 | 41 | 67 | 70 |
 
-- **EBITDA break-even March 2029**, positive every month from June 2029; operating cash flow
-  positive from October 2028.
-- **Minimum cash after the seed: R7.96m (September 2028)**, R4.96m above the R3.0m buffer.
-- **FY3 unit economics**: blended LTV:CAC 5.6×, payback 3.8 months.
-- **All three scenarios stay profitable on the R25M alone**: Conservative FY5 revenue R116.0m,
-  Base R238.0m, Upside R450.9m. No Series A in any case.
+- **EBITDA break-even Jan 2031**; operating cash flow positive from Dec 2030.
+- **Minimum cash after the seed R4.00m (Nov 2030)**, only R1.00m above the R3.0m buffer. No Series A in the Base case.
+- **Scenarios on R46m:** Base passes, Upside passes. **The Conservative case fails**: cash below the buffer from May 2031, no EBITDA break-even by Sep 2031.
+- **The headroom is thin:** Free upgrades at 0.25% a month instead of 0.5% take minimum cash to R-0.72m.
+- FY3 unit economics: blended LTV:CAC 3.2×, payback 6.1 months. Solo does not pay back on fully loaded CAC (0.7×).
 
-## The ask: R25 million seed
+## The ask: R46 million seed
 
-Instrument and valuation `[[TBC]]`. Modelled to close February 2027.
+About US$2,486,486, modelled to close Feb 2027 `[[CONFIRM]]`. R45.1m is the smallest seed at which the Base case passes; R46m rounds it up. Instrument and valuation `[[TBC]]`. Pre-seed bridge R66,279 `[[CONFIRM]]`.
 
-| Use of funds | Share | R m |
+| Use of funds | Share | Amount |
 |---|---|---|
-| Product & engineering | 40% | 10.0 |
-| Sales & marketing / partner programme | 30% | 7.5 |
-| Market expansion (NG, KE, GH) & payments compliance | 15% | 3.75 |
-| Operations & working capital | 15% | 3.75 |
+| Product & engineering | 40% | R18.4m |
+| Sales & marketing / partner programme | 30% | R13.8m |
+| Market expansion (NG, KE, GH) & payments compliance | 15% | R6.9m |
+| Operations & working capital | 15% | R6.9m |
 
-**Stated honestly:** against modelled spend over 24 months, expansion runs at 9.7% (the MRR gates
-delay launches) and operations at 21.6% (revenue-linked costs scale with revenue). About **R8.1m of
-the seed is still unspent after 24 months** — the deliberate downside reserve that absorbs a −30%
-trial-volume case, where minimum cash would fall to R0.98m. A **R57.5k pre-seed bridge** is needed in
-January 2027 `[[how covered]]`.
-
-## Why it works
-
-Cost discipline is built into the model, not promised: every hire and every market launch waits for a
-net MRR gate, and paid acquisition is capped at R40,000 plus 35% of last month's MRR. In the
-Conservative case the gates rise 40%, which is how a slower market is survived without more capital.
-
-## What to confirm before this goes out
-
-Company registration and founding date, ownership and cap table, B-BBEE level, founder and team
-biographies, advisors, the instrument and valuation, how the pre-seed bridge is covered, and the
-founder confirmations listed in Appendix E of the full plan.
+Full plan: `FluxMuse_Business_Plan.docx`. Contact: Thabo Malebadi, thabo@fluxmuse.com.

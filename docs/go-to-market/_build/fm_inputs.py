@@ -1,25 +1,33 @@
-"""FluxMuse financial model v2: input registry (Assumptions, Pricing, headcount plan).
+"""FluxMuse financial model v3: input registry (Assumptions, Pricing, headcount plan).
 
 Every driver is registered once here with its cell address, unit, value(s) and
 source note. Both the Excel writer and the Python mirror read from this registry,
 so an input can never differ between the workbook and the JSON/charts.
 
 v2 (founder decisions 2026-09-11): R25M seed in Feb 2027 must reach profitability alone;
-lean pre-seed mode; Gauteng pilot converts Dec 2026; Founding Member launch discount;
-markets ZA -> NG/KE/GH -> Rest of rail-covered Africa (USD) -> Botswana & Namibia (off);
-local/USD price points at parity with FX drift and quarterly repricing; segment-based
-acquisition; MRR-gated hiring and launches; marketing capped as a share of MRR.
+lean pre-seed mode; markets ZA -> NG/KE/GH -> Rest of rail-covered Africa (USD) -> Botswana &
+Namibia (off); local/USD price points at parity with FX drift and quarterly repricing;
+segment-based acquisition; MRR-gated hiring and launches; marketing capped as a share of MRR.
+
+v3 (current offer, 1-5 Oct 2026): nine live tiers (Free, Nano, Micro, Starter, Growth, Scale,
+Corporate, Agency, Custom); no trials and no pilot (a small first group set up by hand from
+Oct 2026); Free plan modelled as a funnel stage; Founding Member 30% off the first 2 monthly
+bills, South Africa only, from Oct 2026; partner wholesale R6,999; no FluxMuse commerce fee;
+AI cost at R0.15 per credit (platform_billing_config ai.zar_per_credit); NG/KE/GH later.
 """
 
 SCENARIOS = ["Conservative", "Base", "Upside"]
 
-TIERS = ["S", "G", "Sc", "A", "E"]
-TIER_NAME = {"S": "Starter", "G": "Growth", "Sc": "Scale", "A": "Agency", "E": "Enterprise"}
+TIERS = ["N", "Mi", "S", "G", "Sc", "Co", "A", "E"]
+TIER_NAME = {"N": "Nano", "Mi": "Micro", "S": "Starter", "G": "Growth", "Sc": "Scale", "Co": "Corporate",
+             "A": "Agency", "E": "Custom"}
+TIER_BAND = {"N": "Small", "Mi": "Small", "S": "Medium", "G": "Medium", "Sc": "Medium", "Co": "Enterprise",
+             "A": "Enterprise", "E": "Enterprise"}
 
 MARKETS = ["ZA", "NG", "KE", "GH", "RoA", "BWNA"]
 NONZA = ["NG", "KE", "GH", "RoA", "BWNA"]
 WAVE1 = ["NG", "KE", "GH"]
-WINDOW_MKTS = ["ZA", "NG", "KE", "GH"]          # markets with a Founding Member launch window
+WINDOW_MKTS = ["ZA"]                            # Founding Member is South Africa only (v3)
 FX_MKTS = ["NG", "KE", "GH", "RoA"]              # markets billed in a non-ZAR currency
 MARKET_NAME = {"ZA": "South Africa", "NG": "Nigeria", "KE": "Kenya", "GH": "Ghana",
                "RoA": "Rest of rail-covered Africa (19 countries, USD, self-serve)",
@@ -28,23 +36,33 @@ MARKET_SHORT = {"ZA": "South Africa", "NG": "Nigeria", "KE": "Kenya", "GH": "Gha
                 "RoA": "Rest of Africa (USD)", "BWNA": "Botswana & Namibia"}
 CURRENCY = {"ZA": "ZAR", "NG": "NGN", "KE": "KES", "GH": "GHS", "RoA": "USD", "BWNA": "ZAR"}
 
-SEGMENTS = ["SO", "SM", "AG", "EN"]
-SEG_NAME = {"SO": "Solo entrepreneurs", "SM": "SMEs", "AG": "Agencies / partners (Agency tier at partner wholesale)",
-            "EN": "Enterprise (inbound only)"}
-SEG_SHORT = {"SO": "Solo", "SM": "SMEs", "AG": "Agencies", "EN": "Enterprise"}
+SEGMENTS = ["SO", "SM", "AG", "CO", "EN"]
+SEG_NAME = {"SO": "Solo entrepreneurs (Nano / Micro / Starter)", "SM": "SMEs (Starter / Growth / Scale)",
+            "AG": "Agencies / partners (Agency tier at partner wholesale)", "CO": "Corporate (inbound, South Africa)",
+            "EN": "Enterprise / Custom (inbound only)"}
+SEG_SHORT = {"SO": "Solo", "SM": "SMEs", "AG": "Agencies", "CO": "Corporate", "EN": "Enterprise"}
+# self-serve segment tier mixes: (tier, mix input key). The last key is derived as 1 - the others.
+SEG_MIX = {"SO": [("N", "so_mix_N"), ("Mi", "so_mix_Mi"), ("S", "so_mix_S")],
+           "SM": [("S", "sm_mix_S"), ("G", "sm_mix_G"), ("Sc", "sm_mix_Sc")]}
 # stock type: (key, segment, tier, partner-wholesale price?, label)
 # v2: agency client sub-accounts are no longer separate paying stocks. Partners buy the Agency tier
 # (50 client sub-accounts included) at partner wholesale; clients on their own plans would earn a
 # referral commission, which is undecided and not modelled.
-STOCK_TYPES = [("SO_S", "SO", "S", False, "Solo: Starter"), ("SO_G", "SO", "G", False, "Solo: Growth (upgraded or direct)"),
-               ("SM_G", "SM", "G", False, "SME: Growth"), ("SM_Sc", "SM", "Sc", False, "SME: Scale (upgraded or direct)"),
+STOCK_TYPES = [("SO_N", "SO", "N", False, "Solo: Nano"), ("SO_Mi", "SO", "Mi", False, "Solo: Micro (direct or upgraded)"),
+               ("SO_S", "SO", "S", False, "Solo: Starter (direct or upgraded)"),
+               ("SM_S", "SM", "S", False, "SME: Starter"), ("SM_G", "SM", "G", False, "SME: Growth (direct or upgraded)"),
+               ("SM_Sc", "SM", "Sc", False, "SME: Scale (direct or upgraded)"),
                ("AG_A", "AG", "A", True, "Agency / partner: Agency tier"),
-               ("EN_E", "EN", "E", False, "Enterprise (inbound)")]
+               ("CO_Co", "CO", "Co", False, "Corporate (inbound)"),
+               ("EN_E", "EN", "E", False, "Enterprise: Custom (inbound)")]
 ST = {k: (seg, t, w, lab) for k, seg, t, w, lab in STOCK_TYPES}
+# upgrade chains: stock -> (monthly rate input, target stock)
+UPG = {"SO_N": ("upg_SO_N", "SO_Mi"), "SO_Mi": ("upg_SO_Mi", "SO_S"), "SM_S": ("upg_SM_S", "SM_G"), "SM_G": ("upg_SM_G", "SM_Sc")}
+UPG_IN = {tgt: src for src, (_, tgt) in UPG.items()}
 MARKET_STOCKS = {"ZA": [s[0] for s in STOCK_TYPES],
-                 "NG": [s[0] for s in STOCK_TYPES[:5]], "KE": [s[0] for s in STOCK_TYPES[:5]],
-                 "GH": [s[0] for s in STOCK_TYPES[:5]],
-                 "RoA": [s[0] for s in STOCK_TYPES[:4]], "BWNA": [s[0] for s in STOCK_TYPES[:4]]}
+                 "NG": [s[0] for s in STOCK_TYPES[:7]], "KE": [s[0] for s in STOCK_TYPES[:7]],
+                 "GH": [s[0] for s in STOCK_TYPES[:7]],
+                 "RoA": [s[0] for s in STOCK_TYPES[:6]], "BWNA": [s[0] for s in STOCK_TYPES[:6]]}
 # (stock key, market, stock type)
 STOCKS = [(f"{r}_{st}", r, st) for r in MARKETS for st in MARKET_STOCKS[r]]
 
@@ -95,156 +113,165 @@ def der(key, label, unit, xl, py, src, fmt="num"):
 ADDR["scenario"] = "Assumptions!$B$6"
 ADDR["scen_idx"] = "Assumptions!$B$7"
 
+C = "[[CONFIRM]] "
 section("General, funding & tax")
-inp("fx", "FX rate", "ZAR per US$", 18.50, "Facts file §2: R18.50 = US$1 (ASSUMPTION)", "num2")
+inp("fx", "FX rate", "ZAR per US$", 18.50, "Facts file §2: R18.50 = US$1 (planning rate; live cost rate was R16.43 on 25 Sep 2026)", "num2")
 inp("tax_rate", "SA corporate income tax rate", "%", 0.27, "SARS 27%. Applied only once cumulative EBITDA is positive (assessed-loss simplification).", "pct")
-inp("opening_cash", "Opening cash (1 Oct 2026)", "R", 500000, "[[CONFIRM]] founder to confirm cash in bank at 1 Oct 2026; default R500k", "zar")
-inp("seed_amount", "Seed raise", "R", 25000000, "Facts file §7: Seed R25M (≈US$1.35M). Must reach profitability alone (founder, 2026-09-11)", "zar")
-inp("seed_month", "Seed lands in model month #", "month #", 5, "Month 5 = Feb 2027: pilot ends 30 Nov 2026, results Dec 2026, close Feb 2027", "int")
+inp("opening_cash", "Opening cash (1 Oct 2026)", "R", 500000, C + "founder to confirm cash in bank at 1 Oct 2026; default R500k", "zar")
+inp("seed_amount", "Seed raise", "R", 46000000, C + "Sized to the v3 Base case (founder decision 2026-10-05); was R25M. Smallest passing seed R45.1M (R0.1M steps), rounded up to R46M", "zar")
+inp("seed_month", "Seed lands in model month #", "month #", 5, C + "Month 5 = Feb 2027 (unchanged from v2; no pilot results now gate the close)", "int")
 inp("min_cash_buffer", "Minimum-cash buffer (closing cash must stay above this from the seed month on)", "R", 3000000, "Founder constraint: never below R3.0M after the seed lands", "zar")
 inp("seriesA_on", "Include Series A? (1 = yes, 0 = no)", "switch", 0, "OFF in every scenario. Optional acceleration only, not needed for survival", "int")
 inp("seriesA_amount", "Series A amount (optional acceleration, if switched on)", "R", 0, "Default 0 (founder: no Series A in Base or Conservative)", "zar")
 inp("seriesA_month", "Series A lands in model month #", "month #", 30, "Month 30 = Mar 2029 (illustrative)", "int")
+note("VAT: Fluxmuse (Pty) Ltd is not VAT-registered. List prices are the amounts charged; revenue is booked as charged with no VAT gross-up or deduction.")
 
-section("Pilot, launch & lean pre-seed mode")
-inp("pilot_brands", "Pilot brands (Gauteng), free during the pilot", "brands", 12, "Facts file §6: 12 brands, Sept-30 Nov 2026, not paying", "int")
-inp("pilot_end_month", "Last pilot month #", "month #", 2, "Month 2 = Nov 2026", "int")
-inp("pilot_conv", "Pilot brands converting to paid", "%", 0.75, "ASSUMPTION: 75% -> 9 brands; replace with pilot outcome", "pct")
-inp("pilot_convert_month", "Pilot conversion month #", "month #", 3, "Month 3 = Dec 2026 (SA commercial launch 1 Dec 2026)", "int")
-inp("pilot_disc", "Pilot Founding terms: discount", "% off", 0.50, "Facts file §2: pilot brands get 50% off", "pct")
-inp("pilot_disc_months", "Pilot Founding terms: discounted monthly bills", "bills", 2, "First 2 monthly bills", "int")
-for _s, _v in [("SO", 0.40), ("SM", 0.45), ("AG", 0.15)]:
-    inp(f"pilot_mix_{_s}", f"Pilot conversions by segment: {SEG_SHORT[_s]}", "%", _v,
-        "Solo -> Starter, SME -> Growth, Agency -> Agency tier. Case-study slots span solo/SME/agency" if _s == "SO" else "", "pct")
-inp("pilot_cost", "Pilot programme cost while the pilot runs", "R / month", 15000, "Onboarding visits, content support, WhatsApp/AI usage for free brands (ASSUMPTION)", "zar")
-inp("hosting_lean", "Hosting base before the seed (lean mode)", "R / month", 15000, "Supabase/Vercel at pilot scale (ASSUMPTION)", "zar")
+section("Launch, first group set up by hand & lean pre-seed mode (no trials, no pilot)")
+inp("first_group_n", "First group: paying businesses set up by hand each month", "workspaces / month", 4, C + "Founders onboard a small first group by hand (CURRENT_OFFER §4); no pilot cohort exists", "num1")
+inp("first_group_end", "First group: last month # of hand set-up", "month #", 4, C + "Month 4 = Jan 2027 (Oct 2026 - Jan 2027, until the seed lands)", "int")
+inp("first_mix_SO", "First group: share that are Solo entrepreneurs (rest SMEs)", "%", 0.50, C + "Each takes its segment's tier mix; agencies come through the partner channel", "pct")
+inp("first_group_cost", "First group: hand set-up cost while it runs", "R / month", 10000, C + "Onboarding visits, set-up time, WhatsApp/AI usage (replaces the R15k pilot cost)", "zar")
+inp("hosting_lean", "Hosting base before the seed (lean mode)", "R / month", 15000, "Supabase/Vercel at early scale (ASSUMPTION)", "zar")
 inp("lean_overhead", "Overheads before the seed (accounting, banking, Meta/legal minimum)", "R / month", 15000, "Lean mode replaces fixed G&A and the legal retainer until the seed lands", "zar")
 note("Lean mode (months before the seed): founders only, no paid marketing, no office/travel; hiring, brand, partner and legal budgets start in the seed month.")
 
 section("Sensitivity & option levers (leave at defaults for the scenarios)")
-inp("vol_mult", "New-customer volume multiplier", "x", 1.0, "Scales self-serve trials in every market; Sensitivity sheet", "x2")
+inp("vol_mult", "New sign-up volume multiplier", "x", 1.0, "Scales self-serve sign-ups in every market; Sensitivity sheet", "x2")
 inp("churn_sens", "Churn sensitivity multiplier", "x", 1.0, "Multiplies all churn; Sensitivity sheet", "x2")
-inp("disc_option", "Launch discount option (1 = A Launch Sprint, 2 = B Founding Member, 3 = None)", "option", 2, "Facts file §2: B decided; A and None are sensitivities only", "int")
-inp("fmA_disc", "Option A (Launch Sprint): discount on the first monthly bill", "% off", 0.50, "Facts file §2 (record only; sensitivity)", "pct")
-inp("fmB_disc", "Option B (Founding Member): discount on the first 2 monthly bills", "% off", 0.30, "Facts file §2: R349 / R1,399 / R3,499; not offered on Agency", "pct")
-inp("fm_uplift", "New sign-up uplift inside a launch window", "%", 0.20, "ASSUMPTION: +20% sign-ups while the offer runs; validate with ZA Dec-Jan data", "pct")
+inp("disc_option", "Launch discount option (1 = Founding Member, 2 = None)", "option", 1, "Founding Member live since 1 Oct 2026 (CURRENT_OFFER §1); None is a sensitivity only", "int")
+inp("fm_disc", "Founding Member: discount on the first 2 monthly bills", "% off", 0.30, "CURRENT_OFFER §1: 30% off the first two monthly billing cycles, South African sign-ups. Not modelled on Agency, Corporate or Custom", "pct")
+inp("fm_start", "Founding Member: first month # (South Africa)", "month #", 1, "Live from Oct 2026 (confirmed 1 Oct 2026)", "int")
+inp("fm_end", "Founding Member: last month # (South Africa)", "month #", 6, C + "No end date is set. Proposed: 31 Mar 2027 (6 months, ends a month after the seed lands)", "int")
+inp("fm_uplift", "New sign-up uplift while Founding Member runs", "%", 0.20, C + "+20% paying sign-ups while the offer runs (unchanged from v2; unproven)", "pct")
 inp("fm_new_churn", "Churn of new sign-ups between discounted bill 1 and 2", "%", 0.08, "Used only to size the second discounted bill (ASSUMPTION)", "pct")
 inp("fx_shock", "FX shock: ZAR stronger vs NGN/KES/GHS/USD", "%", 0.0, "Sensitivity sets 15%", "pct")
-inp("fx_shock_month", "FX shock starts in month #", "month #", 25, "Month 25 = Oct 2028, once NG/KE/GH are live", "int")
+inp("fx_shock_month", "FX shock starts in month #", "month #", 31, C + "Month 31 = Apr 2029, after the later NG/KE/GH plan months", "int")
 
 section("Scenario drivers (switched by the selector above: CHOOSE on columns D:F)")
 for _y, _t in zip(range(1, 6), [(0.10, 0.12, 0.14), (0.035, 0.045, 0.06), (0.025, 0.035, 0.045), (0.015, 0.028, 0.032), (0.01, 0.015, 0.02)]):
-    scen(f"g_fy{_y}", f"Monthly growth in self-serve trials: FY{_y}", "% m/m", _t, "Per market from its launch month; decays as channels mature" if _y == 1 else "", "pct")
-scen("conv_mult", "Trial-to-paid conversion multiplier (on segment conversion)", "x", (0.85, 1.00, 1.20), "Conservative Solo 9.4%; Upside Solo 13.2%", "x2")
+    scen(f"g_fy{_y}", f"Monthly growth in self-serve sign-ups (Free + paid): FY{_y}", "% m/m", _t, "Per market from its launch month; decays as channels mature (unchanged from v2)" if _y == 1 else "", "pct")
+scen("conv_mult", "Conversion multiplier (on direct-paid and Free-to-paid conversion)", "x", (0.85, 1.00, 1.20), "", "x2")
 scen("churn_mult", "Churn multiplier", "x", (1.20, 1.00, 0.85), "", "x2")
 scen("cac_mult", "Paid CAC multiplier", "x", (1.20, 1.00, 0.85), "Ad-auction inflation vs creative & referral efficiency", "x2")
 scen("launch_delay", "Expansion timing shift (months, + = later)", "months", (3, 0, -2), "Shifts planned NG/KE/GH/Rest/BW-NA launches (MRR gates still apply)", "int")
-scen("ent_mult", "Inbound enterprise deal multiplier", "x", (0.5, 1.0, 1.5), "", "x2")
+scen("ent_mult", "Inbound Corporate & Custom deal multiplier", "x", (0.5, 1.0, 1.5), "", "x2")
 scen("cap_pct", "COST DISCIPLINE: paid acquisition cap, % of last month's net MRR", "% of MRR", (0.30, 0.35, 0.50), "Paid spend = MIN(desired, floor + cap x MRR); unfunded paid sign-ups are not acquired", "pct")
-scen("gate_mult", "COST DISCIPLINE: hiring & launch MRR-gate multiplier", "x", (1.40, 1.00, 0.80), "Each hire/launch waits for its MRR milestone x this. Conservative waits for 40% more MRR (1.35x is the smallest that holds the R3.0M buffer); Upside hires 20% earlier", "x2")
-scen("commerce_fee", "Commerce platform fee on WhatsApp checkout GMV", "% of GMV", (0.0, 0.0, 0.0075), "NOT IN CURRENT PRICING: founder decision. 0% in Base & Conservative; 0.75% Upside only", "pct2")
+scen("gate_mult", "COST DISCIPLINE: hiring & launch MRR-gate multiplier", "x", (1.40, 1.00, 0.80), "Each hire/launch waits for its MRR milestone x this (unchanged from v2)", "x2")
+scen("commerce_fee", "FluxMuse fee on checkout GMV (on top of pass-through Paystack fees)", "% of GMV", (0.0, 0.0, 0.0), C + "CURRENT_OFFER §2: checkout fees are pass-through (Paystack 2.9% + R1 card, 2% EFT); no FluxMuse service fee. 0% in every scenario", "pct2")
 
-section("Launch discount option parameters (formulas on the option switch)")
-der("fm_mo_disc", "Monthly plans: discount on launch-window sign-ups", "% off",
-    lambda AD: f"CHOOSE({AD('disc_option')},{AD('fmA_disc')},{AD('fmB_disc')},0)", lambda p: [p["fmA_disc"], p["fmB_disc"], 0.0][p["disc_option"] - 1],
-    "A: 50% off month 1; B: 30% off months 1-2; None: 0. Never applied to Agency / partner sign-ups", "pct")
-der("fm_mo_months", "Monthly plans: discounted billing months", "months",
-    lambda AD: f"CHOOSE({AD('disc_option')},1,2,0)", lambda p: [1, 2, 0][p["disc_option"] - 1], "", "int")
-der("fm_bonus", "Annual plans: bonus free months", "months",
-    lambda AD: f"CHOOSE({AD('disc_option')},1,2,0)", lambda p: [1, 2, 0][p["disc_option"] - 1],
-    "B: 14 months for the price of 12. Modelled by recognising the annual fee over 12 + bonus months", "int")
-der("fm_window", "Launch window length", "months",
-    lambda AD: f"CHOOSE({AD('disc_option')},1,2,0)", lambda p: [1, 2, 0][p["disc_option"] - 1],
-    "A: 30 days; B: 60 days (ZA: 1 Dec 2026-31 Jan 2027); USD markets: no window", "int")
-der("fm_uplift_eff", "Sign-up uplift applied inside windows", "%",
-    lambda AD: f"IF({AD('disc_option')}=3,0,{AD('fm_uplift')})", lambda p: 0.0 if p["disc_option"] == 3 else p["fm_uplift"], "", "pct")
+section("Launch discount parameters (formulas on the option switch)")
+der("fm_mo_disc", "Founding Member: discount applied to monthly plans", "% off",
+    lambda AD: f"IF({AD('disc_option')}=1,{AD('fm_disc')},0)", lambda p: p["fm_disc"] if p["disc_option"] == 1 else 0.0,
+    "Solo & SME sign-ups in South Africa inside the offer months. Annual plans: no Founding Member discount modelled " + C.strip(), "pct")
+der("fm_uplift_eff", "Sign-up uplift applied while the offer runs", "%",
+    lambda AD: f"IF({AD('disc_option')}=1,{AD('fm_uplift')},0)", lambda p: p["fm_uplift"] if p["disc_option"] == 1 else 0.0, "", "pct")
 
-section("Markets & sequence (ZA first; NG/KE/GH wave 1; Rest of Africa self-serve; BW/NA coming soon; gated countries = 0)")
-inp("launch_ZA", "South Africa commercial launch month #", "month #", 3, "1 Dec 2026 (pilot ends 30 Nov)", "int")
-inp("trials_launch_ZA", "Self-serve trials in launch month: South Africa", "trials / month", 250, "2.5-3M SA SMMEs; pilot word of mouth", "int")
-_MK = {  # plan, gate, on, trials, launch mkt, entry, ongoing, cac idx, churn idx, agency inbound, source
-    "NG": (14, 900000, 1, 220, 350000, 300000, 12000, 0.75, 1.15, 0.25, "Nov 2027: largest MSME base; Paystack/pawaPay/Fincra"),
-    "KE": (17, 1200000, 1, 150, 300000, 250000, 12000, 0.80, 1.05, 0.20, "Feb 2028: M-Pesa via pawaPay"),
-    "GH": (20, 1500000, 1, 110, 250000, 200000, 10000, 0.80, 1.10, 0.15, "May 2028: MoMo via pawaPay"),
-    "RoA": (26, 2500000, 1, 120, 0, 150000, 20000, 0.60, 1.25, 0.0, "Nov 2028: 19 countries, USD, self-serve only, no local team"),
-    "BWNA": (30, 3000000, 0, 40, 0, 100000, 6000, 0.90, 1.00, 0.0, "Coming soon: switch on once a rail covers BW/NA"),
+section("Markets & sequence (ZA only until NG/KE/GH checkout is live; Rest of Africa self-serve later; BW/NA coming soon; gated countries = 0)")
+inp("launch_ZA", "South Africa commercial launch month #", "month #", 1, "Oct 2026: paid plans and Founding Member live (CURRENT_OFFER §1)", "int")
+inp("trials_launch_ZA", "Self-serve sign-ups (Free + paid) in launch month: South Africa", "sign-ups / month", 150, C + "Organic only until the seed (no paid marketing); founder-led outreach", "int")
+_MK = {  # plan, gate, on, sign-ups, launch mkt, entry, ongoing, cac idx, churn idx, agency inbound, source
+    "NG": (19, 900000, 1, 220, 350000, 300000, 12000, 0.75, 1.15, 0.25, C + "Apr 2028 (was Nov 2027): needs Fincra/pawaPay checkout live; largest MSME base"),
+    "KE": (22, 1200000, 1, 150, 300000, 250000, 12000, 0.80, 1.05, 0.20, C + "Jul 2028 (was Feb 2028): M-Pesa via pawaPay once the account is live"),
+    "GH": (25, 1500000, 1, 110, 250000, 200000, 10000, 0.80, 1.10, 0.15, C + "Oct 2028 (was May 2028): MoMo via pawaPay once the account is live"),
+    "RoA": (32, 2500000, 1, 120, 0, 150000, 20000, 0.60, 1.25, 0.0, C + "May 2029 (was Nov 2028): 19 countries, USD, self-serve only, no local team"),
+    "BWNA": (34, 3000000, 0, 40, 0, 100000, 6000, 0.90, 1.00, 0.0, "Coming soon: switch on once a rail covers BW/NA"),
 }
 for _r, (_pl, _gt, _on, _tr, _lm, _en, _og, _ci, _chi, _ai, _src) in _MK.items():
     inp(f"on_{_r}", f"{MARKET_SHORT[_r]}: switch (1 = on)", "switch", _on, "Default OFF: no secured rail yet" if _r == "BWNA" else "", "int")
     inp(f"launch_plan_{_r}", f"{MARKET_SHORT[_r]}: planned launch month # (earliest)", "month #", _pl, _src, "int")
     inp(f"launch_gate_{_r}", f"{MARKET_SHORT[_r]}: MRR gate for the launch decision", "R net MRR", _gt,
         "Decision (and country-lead hire) needs last month's net MRR >= gate x gate multiplier; launch follows 2 months later", "zar")
-    inp(f"trials_launch_{_r}", f"{MARKET_SHORT[_r]}: self-serve trials in launch month", "trials / month", _tr, "", "int")
+    inp(f"trials_launch_{_r}", f"{MARKET_SHORT[_r]}: self-serve sign-ups (Free + paid) in launch month", "sign-ups / month", _tr, "", "int")
     inp(f"cac_idx_{_r}", f"{MARKET_SHORT[_r]}: paid CAC index vs SA", "x", _ci, "Cheaper media; lower price point", "x2")
     inp(f"churn_idx_{_r}", f"{MARKET_SHORT[_r]}: churn index vs SA", "x", _chi, "FX affordability pressure (ASSUMPTION)", "x2")
     inp(f"entry_{_r}", f"{MARKET_SHORT[_r]}: local compliance & registration (one-off at launch)", "R", _en,
         {"NG": "NDPR registration, entity, local counsel", "KE": "KDPA (ODPC) registration, local counsel",
-         "GH": "Ghana DPC registration, local counsel", "RoA": "Digital-services VAT registrations (hub approach)",
+         "GH": "Ghana DPC registration, local counsel", "RoA": "Digital-services tax registrations where required (hub approach)",
          "BWNA": "BW/NA data-protection & tax registration"}[_r], "zar")
-    inp(f"ongoing_{_r}", f"{MARKET_SHORT[_r]}: ongoing local compliance", "R / month", _og, "Local accounting, DPO filings, VAT returns", "zar")
+    inp(f"ongoing_{_r}", f"{MARKET_SHORT[_r]}: ongoing local compliance", "R / month", _og, "Local accounting, DPO filings, tax returns", "zar")
     if _r in WAVE1:
         inp(f"launch_mkt_{_r}", f"{MARKET_SHORT[_r]}: launch marketing budget (spread over first 3 months)", "R", _lm, "Launch campaign, local creators, events", "zar")
         inp(f"agency_inbound_{_r}", f"{MARKET_SHORT[_r]}: inbound agency sign-ups after launch", "agencies / month", _ai, "", "num2")
+note("NG/KE/GH have no Founding Member window: the live promotion is South Africa only. A launch offer for them is undecided and not modelled.")
 inp("roa_budget", "Rest of Africa: always-on self-serve marketing budget", "R / month", 20000, "Low spend: SEO, WhatsApp short links, French/Portuguese content", "zar")
 inp("bwna_budget", "Botswana & Namibia: marketing budget (if on)", "R / month", 10000, "", "zar")
 inp("agencies_per_lead", "Agencies signed per country lead (NG/KE/GH)", "agencies / month", 0.4, "Country lead runs the local partner programme", "num2")
 inp("travel_per_region", "Travel per live wave-1 country", "R / month", 10000, "Lagos/Nairobi/Accra", "zar")
 
-section("Self-serve funnel by segment (Solo & SME share each market's trials)")
+section("Self-serve funnel: sign-ups -> pay at sign-up, or join the Free plan and upgrade later (no trials)")
 for _y, _v in zip(range(1, 6), [0.65, 0.60, 0.55, 0.50, 0.45]):
-    inp(f"paid_share_fy{_y}", f"Share of sign-ups needing paid acquisition: FY{_y}", "%", _v, "Organic/referral grows over time" if _y == 1 else "", "pct")
-inp("solo_share", "Solo entrepreneurs' share of self-serve trials", "%", 0.65, "Facts file §4b: solo = Meta/TikTok/WhatsApp self-serve; SMEs = content, networks, referrals", "pct")
-inp("conv_SO", "Trial-to-paid conversion: Solo", "%", 0.11, "No-card trials convert 8-15%; validate with pilot", "pct")
-inp("conv_SM", "Trial-to-paid conversion: SME", "%", 0.14, "Guided onboarding call lifts conversion", "pct")
-inp("so_mix_G", "Solo new customers starting on Growth", "%", 0.10, "Mainly Starter", "pct")
-inp("sm_mix_Sc", "SME new customers starting on Scale", "%", 0.15, "Mainly Growth", "pct")
-inp("upg_SO", "Monthly upgrade rate: Solo Starter -> Growth", "% / month", 0.010, "ASSUMPTION", "pct")
-inp("upg_SM", "Monthly upgrade rate: SME Growth -> Scale", "% / month", 0.008, "ASSUMPTION", "pct")
-inp("pb_max", "COST DISCIPLINE: maximum CAC payback for paid acquisition", "months", 12, "Paid acquisition in a segment & market is switched off if CAC / (ARPA x GM) exceeds this [[CONFIRM]]", "int")
+    inp(f"paid_share_fy{_y}", f"Share of direct paid sign-ups needing paid acquisition: FY{_y}", "%", _v, "Organic/referral grows over time" if _y == 1 else "", "pct")
+inp("solo_share", "Solo entrepreneurs' share of self-serve sign-ups", "%", 0.65, "Facts file §4b: solo = Meta/TikTok/WhatsApp self-serve; SMEs = content, networks, referrals", "pct")
+inp("conv_SO", "Pay at sign-up (direct paid): Solo", "% of sign-ups", 0.05, C + "No trial: paid plans start with payment. Was 11% trial-to-paid in v2", "pct")
+inp("conv_SM", "Pay at sign-up (direct paid): SME", "% of sign-ups", 0.08, C + "Guided onboarding call; was 14% trial-to-paid in v2", "pct")
+der("direct_blend", "Blended direct paid share of sign-ups (base, before multipliers)", "%",
+    lambda AD: f"{AD('solo_share')}*{AD('conv_SO')}+(1-{AD('solo_share')})*{AD('conv_SM')}",
+    lambda p: p["solo_share"] * p["conv_SO"] + (1 - p["solo_share"]) * p["conv_SM"], "The rest of the sign-ups join the Free plan", "pct")
+inp("free_conv", "Free plan: monthly conversion of active Free users to a paid plan", "% / month", 0.005, C + "0.5% a month of active Free users; with 10% dormancy that is ~5% lifetime (freemium norm 2-5%)", "pct2")
+inp("free_dormancy", "Free plan: monthly drop-off of active Free users (go dormant, no cost)", "% / month", 0.10, C, "pct")
+inp("free_credits", "Free plan: AI credits per month (live allowance)", "credits", 60, "subscription_tiers.free = 60 since 26 Sep 2026 (was 100 on 18 Sep). Internal cost input, do not quote", "int")
+inp("free_hosting", "Free plan: hosting & messaging cost per active Free user", "R / month", 3, C, "zar")
+inp("so_mix_N", "Solo new customers starting on Nano", "%", 0.45, C + "Solo mostly Nano/Micro, some Starter (was 90% Starter / 10% Growth)", "pct")
+inp("so_mix_Mi", "Solo new customers starting on Micro", "%", 0.40, C, "pct")
+der("so_mix_S", "Solo new customers starting on Starter (remainder)", "%", lambda AD: f"1-{AD('so_mix_N')}-{AD('so_mix_Mi')}",
+    lambda p: 1 - p["so_mix_N"] - p["so_mix_Mi"], "", "pct")
+inp("sm_mix_S", "SME new customers starting on Starter", "%", 0.40, C + "SMEs on Starter / Growth / Scale (was 85% Growth / 15% Scale)", "pct")
+inp("sm_mix_G", "SME new customers starting on Growth", "%", 0.50, C, "pct")
+der("sm_mix_Sc", "SME new customers starting on Scale (remainder)", "%", lambda AD: f"1-{AD('sm_mix_S')}-{AD('sm_mix_G')}",
+    lambda p: 1 - p["sm_mix_S"] - p["sm_mix_G"], "", "pct")
+for _k, _lab, _v in [("upg_SO_N", "Solo Nano -> Micro", 0.015), ("upg_SO_Mi", "Solo Micro -> Starter", 0.008),
+                     ("upg_SM_S", "SME Starter -> Growth", 0.010), ("upg_SM_G", "SME Growth -> Scale", 0.006)]:
+    inp(_k, f"Monthly upgrade rate: {_lab}", "% / month", _v, C, "pct")
+inp("pb_max", "COST DISCIPLINE: maximum CAC payback for paid acquisition", "months", 12, "Paid acquisition in a segment & market is switched off if CAC / (ARPA x GM) exceeds this " + C.strip(), "int")
 inp("pb_gm", "Gross margin assumed in the payback test", "%", 0.70, "Conservative vs modelled software GM", "pct")
 
 section("Monthly logo churn by segment & tier (before scenario, market and sensitivity multipliers)")
-for _k, _v, _s in [("SO_S", 0.065, "Brief: SMB Starter 5-7%"), ("SO_G", 0.040, ""), ("SM_G", 0.030, "SME Growth 3-4%"),
-                   ("SM_Sc", 0.022, "Scale 2-3%"), ("AG_A", 0.020, "Agency 2%"), ("EN_E", 0.010, "Enterprise 1%")]:
+for _k, _v, _s in [("SO_N", 0.080, C + "Side-hustle plan: highest churn"), ("SO_Mi", 0.070, C), ("SO_S", 0.060, C + "Was 6.5% in v2"),
+                   ("SM_S", 0.045, C), ("SM_G", 0.030, "SME Growth 3-4%"), ("SM_Sc", 0.022, "Scale 2-3%"), ("AG_A", 0.020, "Agency 2%"),
+                   ("CO_Co", 0.015, C + "New Corporate tier"), ("EN_E", 0.010, "Custom (Enterprise) 1%")]:
     inp(f"churn_{_k}", f"Monthly churn: {ST[_k][3]}", "% / month", _v, _s, "pct")
 
-section("Agency channel & inbound enterprise")
+section("Agency channel & inbound Corporate / Custom")
 inp("agency_inbound_ZA", "South Africa: inbound agency sign-ups", "agencies / month", 0.5, "/for-agencies page, from SA launch", "num2")
 inp("agencies_per_pm", "Agencies signed per partnerships manager (SA)", "agencies / month", 1.5, "Flux_Partner programme", "num2")
-note("Partner wholesale price (Agency tier -30%) and the share of agency customers on it live on the Pricing sheet. Partner referral commission: undecided, NOT modelled.")
-for _y, _v in zip(range(1, 6), [1, 2, 4, 6, 8]):
-    inp(f"ent_fy{_y}", f"Inbound enterprise deals (SA): FY{_y}", "deals / year", _v,
-        "Facts file §4b: inbound only, no enterprise sales motion; near-zero in FY1" if _y == 1 else "", "num1")
+note("Partner wholesale price (Agency tier -30% = R6,999) and the share of agency customers on it live on the Pricing sheet. Partner referral commission: undecided, NOT modelled.")
+for _y, _v in zip(range(1, 6), [1, 3, 6, 9, 12]):
+    inp(f"corp_fy{_y}", f"Inbound Corporate deals (SA): FY{_y}", "deals / year", _v,
+        C + "New Corporate tier (R6,999): multi-brand groups; inbound only, no enterprise sales team" if _y == 1 else "", "num1")
+for _y, _v in zip(range(1, 6), [0, 1, 2, 3, 4]):
+    inp(f"ent_fy{_y}", f"Inbound Custom (Enterprise) deals (SA): FY{_y}", "deals / year", _v,
+        C + "Was 1/2/4/6/8 in v2; Corporate now takes the smaller enterprise deals" if _y == 1 else "", "num1")
 
 section("Other revenue streams")
-inp("topup_attach", "AI-credit top-up attach rate", "% of workspaces / month", 0.10, "ASSUMPTION", "pct")
-inp("topup_pack", "Average top-up pack value (FY1 price)", "R", 350, "Escalates with price escalator", "zar")
-inp("topup_credits", "AI credits per average top-up pack", "credits", 14000, "", "int")
-for _t, _v in [("S", 0), ("G", 250), ("Sc", 800), ("A", 1500), ("E", 5000)]:
-    inp(f"wa_msgs_{_t}", f"Billable WhatsApp template messages per workspace: {TIER_NAME[_t]}", "messages / month", _v, "Meta per-message pricing" if _t == "S" else "", "int")
+inp("topup_attach", "AI-credit pack attach rate (metered plans, Nano to Scale)", "% of workspaces / month", 0.05, C + "Prepaid packs; no overage on paid plans (decision 25 Sep 2026). Was 10% in v2", "pct")
+inp("topup_pack", "AI-credit pack price (FY1)", "R", 300, "platform_billing_config ai.pack.price_zar = R300 for 1,000 credits", "zar")
+inp("topup_credits", "AI credits per pack", "credits", 1000, "ai.pack.credits", "int")
+for _t, _v in [("N", 0), ("Mi", 50), ("S", 0), ("G", 250), ("Sc", 800), ("Co", 1500), ("A", 1500), ("E", 5000)]:
+    inp(f"wa_msgs_{_t}", f"Billable WhatsApp template messages per workspace: {TIER_NAME[_t]}", "messages / month", _v,
+        "Meta per-message pricing" if _t == "N" else (C if _t in ("Mi", "Co") else ""), "int")
 inp("wa_meta_cost", "Average Meta fee per billable message", "R", 0.60, "Blend of marketing and utility template rates (ASSUMPTION)", "num2")
 inp("wa_markup", "Markup on Meta messaging fees (pass-through resale)", "%", 0.25, "Revenue shown gross", "pct")
-inp("commerce_active", "Share of Growth/Scale/Enterprise workspaces with live WhatsApp checkout", "%", 0.30, "", "pct")
-inp("gmv_per_store", "WhatsApp checkout GMV per active store (FY1)", "R / month", 20000, "Validate with pilot orders/GMV", "zar")
+inp("commerce_active", "Share of commerce-eligible workspaces with live checkout", "%", 0.30, "Memo only while the FluxMuse fee is 0%", "pct")
+inp("gmv_per_store", "Checkout GMV per active store (FY1)", "R / month", 20000, "Memo only; merchant's money, paid out by Paystack", "zar")
 inp("gmv_growth", "Annual growth in GMV per active store", "% / year", 0.15, "", "pct")
-inp("ent_setup_fee", "Enterprise onboarding / setup fee", "R per deal", 25000, "", "zar")
-inp("agency_setup_fee", "Agency white-label setup fee", "R per new agency", 4999, "", "zar")
+inp("ent_setup_fee", "Custom (Enterprise) onboarding / setup fee", "R per deal", 25000, C + "Custom is sold by consultation; setup fee not in the public price list", "zar")
+inp("agency_setup_fee", "Agency white-label setup fee", "R per new agency", 0, C + "Not in the live price list, so 0 (was R4,999 in v2)", "zar")
 note("Campaign Financing (credit facilities / instalment plans) is an UPSIDE NOT included in any scenario.")
 
 section("Cost of revenue (COGS)")
-inp("credits_util", "Utilisation of included AI credits", "%", 0.40, "", "pct")
-inp("ai_cost_1k", "AI inference cost per 1,000 credits (FY1)", "R", 12.00, "ASSUMPTION", "num2")
-inp("ai_cost_decline", "Annual decline in inference cost per credit", "% / year", 0.10, "", "pct")
+inp("credits_util", "Utilisation of included AI credits", "%", 0.40, "Unchanged from v2", "pct")
+inp("ai_cost_1k", "AI provider cost per 1,000 credits (FY1)", "R", 150.00, "1 credit = R0.15 of provider cost (ai-credit-math.ts DEFAULT_ZAR_PER_CREDIT; platform_billing_config ai.zar_per_credit). Was R12 in v2", "num2")
+inp("ai_cost_decline", "Annual decline in provider cost per credit", "% / year", 0.10, "", "pct")
 inp("hosting_fixed", "Hosting base from the seed month", "R / month", 30000, "Supabase + Edge Functions on Vercel", "zar")
 inp("hosting_per_ws", "Hosting cost per paying workspace", "R / month", 35, "", "zar")
-inp("card_fee", "Blended payment processing fee", "% of billed revenue", 0.029, "Yoco/Ozow/Paystack", "pct")
+inp("card_fee", "Blended payment processing fee on subscriptions", "% of billed revenue", 0.030, C + "Paystack 2.9% + R1 (≈3.0% at FluxMuse ARPA); Yoco/Ozow similar", "pct")
 inp("mm_extra", "Extra mobile-money / FX fee on non-SA revenue", "% of non-SA revenue", 0.015, "pawaPay/Fincra collections + FX spread", "pct")
 inp("support_per_ws", "Variable support cost per workspace", "R / month", 50, "", "zar")
 
 section("Operating expenses (budgets scale with MRR: cost discipline)")
 inp("sal_esc", "Annual salary escalation", "% / year", 0.06, "", "pct")
 inp("oncost", "Employment on-costs", "% of salary", 0.10, "UIF, SDL, benefits", "pct")
-inp("cac_SO", "Paid CAC per paid-acquired customer: Solo", "R", 2200, "Meta/TikTok performance (ASSUMPTION)", "zar")
+inp("cac_SO", "Paid CAC per paid-acquired customer: Solo", "R", 1500, C + "Lower than v2's R2,200: Nano/Micro buyers, cheaper Meta/TikTok/WhatsApp clicks", "zar")
 inp("cac_SM", "Paid CAC per paid-acquired customer: SME", "R", 6500, "Content, webinars, networks, paid search (ASSUMPTION)", "zar")
 inp("cac_infl", "Annual CAC inflation", "% / year", 0.05, "", "pct")
 inp("paid_floor", "Paid acquisition floor budget from the seed month", "R / month", 40000, "Lets paid acquisition start before MRR is large", "zar")
@@ -255,7 +282,8 @@ inp("brand_pct", "Brand budget as % of last month's net MRR", "% of MRR", 0.04, 
 inp("partner_cost_per_agency", "Partner programme cost per new agency", "R", 6000, "", "zar")
 inp("partner_events", "Partner programme events & directory", "R / month", 15000, "", "zar")
 inp("partner_events_start", "Partner programme events start month #", "month #", 8, "May 2027", "int")
-inp("ent_sales_per_deal", "Inbound enterprise handling cost per deal", "R", 25000, "Solutioning, security reviews, travel", "zar")
+inp("ent_sales_per_deal", "Inbound Custom (Enterprise) handling cost per deal", "R", 25000, "Solutioning, security reviews, travel", "zar")
+inp("corp_sales_per_deal", "Inbound Corporate handling cost per deal", "R", 10000, C + "Demo, onboarding call, BYOC set-up help", "zar")
 inp("office_per_fte", "Office / co-working per FTE (from seed)", "R / month", 4000, "", "zar")
 for _y, _v in zip(range(1, 6), [30000, 55000, 80000, 105000, 130000]):
     inp(f"ga_fy{_y}", f"Fixed G&A (accounting, audit, insurance, banking): FY{_y}", "R / month", _v, "", "zar")
@@ -266,7 +294,7 @@ inp("travel_per_fte", "Travel per FTE (from seed)", "R / month", 2000, "", "zar"
 
 section("Working capital (simplified)")
 inp("dr_months", "Deferred revenue held on annual self-serve plans", "months of annual-plan revenue", 5.5, "", "num1")
-inp("ar_months", "Receivables on agency & enterprise invoices", "months of revenue", 1.0, "", "num1")
+inp("ar_months", "Receivables on agency, Corporate & Custom invoices", "months of revenue", 1.0, "", "num1")
 
 HC_HEADER_ROW = _row[0] + 1
 HC_FIRST_ROW = HC_HEADER_ROW + 1
@@ -274,20 +302,25 @@ HC_FIRST_ROW = HC_HEADER_ROW + 1
 # ---------------------------------------------------------------------------
 # Pricing sheet registry (fixed layout)
 # ---------------------------------------------------------------------------
-PRICING = {  # tier: (ZAR list monthly, included credits, note)
-    "S": (499, 5000, "1 brand, 3 channels; solo founders"),
-    "G": (1999, 25000, "Most popular: e-commerce, WhatsApp commerce, USSD, integrations"),
-    "Sc": (4999, 100000, "10 brands, 40 channels; API, white-label reports"),
-    "A": (7999, 500000, "Full white-label, 50 sub-accounts, reseller billing"),
-    "E": (19999, 750000, "From R19,999; 'unlimited' credits modelled as 750k/mo"),
+PRICING = {  # tier: (ZAR list monthly, modelled AI allowance in credits (internal cost input, never quoted), note)
+    "N": (149, 450, "Small band. 1 brand, 3 channels; side-hustles"),
+    "Mi": (289, 900, "Small band. 1 brand, 4 channels, 1 WhatsApp number, WhatsApp commerce"),
+    "S": (499, 1500, "Medium band. 1 brand, 3 channels"),
+    "G": (1999, 6500, "Medium band. 3 brands, 15 channels, inbound AI Voice (beta). Credits incl. 500 bonus where voice is not offered"),
+    "Sc": (4999, 15500, "Medium band. 10 brands, 40 channels, in+out AI Voice (beta). Credits incl. 2,000 bonus (cost-equivalent of outbound voice minutes)"),
+    "Co": (6999, 0, "Enterprise band. 25 brands, 60 channels, BYOC: AI on the customer's own keys, so no AI credit cost to FluxMuse"),
+    "A": (9999, 0, "Enterprise band. Unlimited brands, 80 channels, BYOC, white-label, multi-client; own keys"),
+    "E": (19999, 0, "Custom, by consultation. Modelled at 'from R19,999' [[CONFIRM]]; own keys"),
 }
-LOCAL = {  # tier: NGN, KES, GHS, USD monthly price points (facts file §2)
+LOCAL = {  # tier: NGN, KES, GHS, USD monthly price points (tier_regional_prices, migrations 20260911190000 & 20260918010100)
+    "N": (12000, 1199, 99, 8), "Mi": (24000, 2299, 199, 16),
     "S": (41000, 3999, 339, 27), "G": (165000, 15999, 1359, 109), "Sc": (413000, 39999, 3399, 269),
-    "A": (662000, 64499, 5439, 429), "E": (1650000, 161000, 13600, 1099),
+    "Co": (579000, 56999, 4799, 379), "A": (829000, 80999, 6799, 539), "E": (1650000, 161000, 13600, 1099),
 }
-WHOLESALE = (5599, (463000, 44999, 3799, 299))   # partner wholesale Agency tier: ZAR, (NGN, KES, GHS, USD)
-PILOT_PRICE = {"S": 249, "G": 999, "Sc": 2499, "A": 3999}
-FM_PRICE = {"S": 349, "G": 1399, "Sc": 3499}
+# partner wholesale Agency tier: ZAR R6,999 (CURRENT_OFFER §1). No regional wholesale rows exist in the product;
+# the model uses the Corporate local price points, which are the same 70% of Agency list [[CONFIRM]].
+WHOLESALE = (6999, (579000, 56999, 4799, 379))
+FM_PRICE = {"N": 104, "Mi": 202, "S": 349, "G": 1399, "Sc": 3499}   # 30% off, rounded down (display only; formula on Pricing)
 PRICE_KEYS = TIERS + ["W"]
 LOCAL_COLS = {"NGN": "H", "KES": "I", "GHS": "J", "USD": "K"}
 PRICING_TIER_ROW0 = 5
@@ -298,12 +331,12 @@ for _i, _t in enumerate(PRICE_KEYS):
         ADDR[f"local_{_c}_{_t}"] = f"Pricing!${_cl}${PRICING_TIER_ROW0 + _i}"
 PRICING_SCALARS = [
     ("price_esc", "Annual price escalator (applied each 1 Oct, all markets)", "% / year", 0.06, "CPI-linked list-price increase (ASSUMPTION)", "pct"),
-    ("annual_share", "Share of subscriptions on annual billing", "%", 0.25, "Annual = 10x monthly", "pct"),
-    ("annual_months", "Months charged on an annual plan", "months", 10, "Facts file §2", "int"),
+    ("annual_share", "Share of subscriptions on annual billing", "%", 0.25, "Annual = 10x monthly (unchanged from v2)", "pct"),
+    ("annual_months", "Months charged on an annual plan", "months", 10, "CURRENT_OFFER §1: annual = 10x monthly", "int"),
     ("annual_factor", "Effective price factor from annual-billing mix", "x", None, "Formula: 1 - annual share x (12 - months charged) / 12", "x3"),
-    ("partner_share", "Share of agency-segment customers on partner wholesale pricing", "%", 1.0, "Founder decision 2026-09-11: partners buy Agency at 30% off list; default 100% of agency customers", "pct"),
+    ("partner_share", "Share of agency-segment customers on partner wholesale pricing", "%", 1.0, "CURRENT_OFFER §1 (1 Oct 2026): partners buy Agency at 30% off list (R6,999); default 100% of agency customers", "pct"),
 ]
-PRICING_SCALAR_ROW0 = 12
+PRICING_SCALAR_ROW0 = PRICING_TIER_ROW0 + len(PRICE_KEYS) + 2
 for _i, _s in enumerate(PRICING_SCALARS):
     ADDR[_s[0]] = f"Pricing!$B${PRICING_SCALAR_ROW0 + _i}"
 FX_ROWS = [  # key, label, unit, value, note, fmt

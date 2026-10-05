@@ -1,4 +1,4 @@
-"""FluxMuse financial model v2: workbook writer (openpyxl)."""
+"""FluxMuse financial model v3: workbook writer (openpyxl)."""
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
@@ -7,8 +7,8 @@ import fm_annual as A
 import fm_inputs as I
 import fm_rows as F
 
-VERSION = "v2"
-MODEL_DATE = "2026-09-11"
+VERSION = "v3"
+MODEL_DATE = "2026-10-05"
 ORANGE, SLATE, NIGHT, TINT, MIST = "FF6A00", "37474F", "0F1419", "FFF4EB", "F3F4F6"
 FONT = "Arial"
 FMT = {
@@ -180,9 +180,9 @@ def write_assumptions(wb):
 
 def write_pricing(wb):
     ws = wb.create_sheet("Pricing")
-    _title(ws, "Pricing", "Live checkout prices (facts file §2). ZAR list for South Africa; fixed local price points for NG/KE/GH and USD for the rest of rail-covered Africa, at FX parity. Annual = 10x monthly.")
-    heads = ["Tier", "ZAR list / month", "ZAR annual", "≈ US$ / month (R18.50)", "Included AI credits / month",
-             "Founding Member price, first 2 monthly bills (R)", "Pilot price, first 2 monthly bills (R)",
+    _title(ws, "Pricing", "Live prices (subscription_tiers & tier_regional_prices, CURRENT_OFFER §1). ZAR list for South Africa; fixed local price points for NG/KE/GH and USD for the rest of rail-covered Africa, at FX parity. Annual = 10x monthly. No VAT (not VAT-registered). Free (R0) is modelled on Assumptions as a funnel stage.")
+    heads = ["Tier", "ZAR list / month", "ZAR annual", "≈ US$ / month (R18.50)", "Modelled AI allowance (credits; internal cost input, never quoted)",
+             "Founding Member price, first 2 monthly bills (R, South Africa)", "Band",
              "NGN / month", "KES / month", "GHS / month", "USD / month (19 USD markets)", "Note"]
     for k, h in enumerate(heads):
         ws.cell(row=4, column=k + 1, value=h)
@@ -197,9 +197,10 @@ def write_pricing(wb):
             _cell(ws, f"A{r}", "Partner wholesale: Agency tier -30%", F_BOLD)
             _input(ws, f"B{r}", I.WHOLESALE[0], "zar")
             locals_ = I.WHOLESALE[1]
-            _cell(ws, f"E{r}", f"=E{I.PRICING_TIER_ROW0 + 3}", F_BODY, "n0")
+            _cell(ws, f"E{r}", f"=E{I.PRICING_TIER_ROW0 + I.TIERS.index('A')}", F_BODY, "n0")
             _cell(ws, f"F{r}", "Does not stack", F_SUB)
-            note = "Founder decision 2026-09-11: partners/agencies buy Agency at 30% off list and set their own retail price. Referral commission: undecided, not modelled."
+            _cell(ws, f"G{r}", "Enterprise", F_SUB)
+            note = "CURRENT_OFFER §1 (confirmed 1 Oct 2026): partners buy Agency at 30% off R9,999 = R6,999. Local wholesale = Corporate local price points [[CONFIRM]]. Referral commission: undecided, not modelled."
         else:
             price, credits, note = I.PRICING[t]
             _cell(ws, f"A{r}", I.TIER_NAME[t], F_BOLD)
@@ -207,18 +208,15 @@ def write_pricing(wb):
             _input(ws, f"E{r}", credits, "n0")
             locals_ = I.LOCAL[t]
             if t in I.FM_PRICE:
-                _cell(ws, f"F{r}", f"=ROUNDDOWN(B{r}*(1-{I.AD('fmB_disc')}),0)", F_BODY, "zar")
+                _cell(ws, f"F{r}", f"=ROUNDDOWN(B{r}*(1-{I.AD('fm_disc')}),0)", F_BODY, "zar")
             else:
-                _cell(ws, f"F{r}", "Not offered" if t == "A" else "n/a", F_SUB)
-            if t in I.PILOT_PRICE:
-                _cell(ws, f"G{r}", f"=ROUNDDOWN(B{r}*(1-{I.AD('pilot_disc')}),0)", F_BODY, "zar")
-            else:
-                _cell(ws, f"G{r}", "n/a", F_SUB)
+                _cell(ws, f"F{r}", "Not modelled", F_SUB)
+            _cell(ws, f"G{r}", I.TIER_BAND[t], F_SUB)
         _cell(ws, f"C{r}", f"=B{r}*{I.AD('annual_months')}", F_BODY, "zar")
         _cell(ws, f"D{r}", f"=B{r}/{I.AD('fx')}", F_BODY, "usd")
         for colL, val in zip("HIJK", locals_):
             _input(ws, f"{colL}{r}", val, lfmt[colL])
-        _cell(ws, f"L{r}", note, F_SUB)
+        _cell(ws, f"L{r}", note, _src_font(note))
     r0 = I.PRICING_SCALAR_ROW0
     ws.cell(row=r0 - 1, column=1, value="Pricing drivers")
     _hdr_row(ws, r0 - 1, 1, 12, FILL_SUB)
@@ -262,10 +260,10 @@ def write_pricing(wb):
 # monthly sheets
 # ---------------------------------------------------------------------------
 SUBTITLES = {
-    "Revenue_Build": "Monthly, Oct 2026 - Sep 2031. Launch gates, FX & repricing, acquisition by market & segment with the marketing cap, cohorts, gross -> discounts -> net revenue.",
-    "Costs": "Monthly MRR-gated headcount plan, COGS and operating expenses (lean pre-seed mode until the seed lands).",
+    "Revenue_Build": "Monthly, Oct 2026 - Sep 2031. Launch gates, FX & repricing, sign-ups, Free plan funnel, acquisition by market & segment with the marketing cap, cohorts, gross -> discounts -> net revenue.",
+    "Costs": "Monthly MRR-gated headcount plan, COGS (incl. Free plan AI cost) and operating expenses (lean pre-seed mode until the seed lands).",
     "P&L": "Monthly profit and loss (ZAR). EBITDA excludes D&A (immaterial: equipment is expensed).",
-    "Cash_Flow": "Monthly cash flow & funding (R25M seed only), R3.0M buffer test, runway and key outputs.",
+    "Cash_Flow": "Monthly cash flow & funding (R46M seed only), R3.0M buffer test, runway and key outputs. No VAT flows (not VAT-registered).",
 }
 
 
@@ -375,7 +373,7 @@ USE_OF_FUNDS = [
      "(capped at a % of MRR and a CAC-payback test), brand & community, Flux_Partner programme."),
     ("Market expansion (NG, KE, GH) & payments compliance", 0.15,
      "Country leads and local sales/CS in Nigeria, Kenya and Ghana; NDPR/KDPA/Ghana DPC registrations, local counsel, "
-     "launch campaigns, POPIA/Meta compliance base, Rest-of-Africa VAT registrations."),
+     "launch campaigns, POPIA/Meta compliance base, Rest-of-Africa digital-services tax registrations where required."),
     ("Operations & working capital", 0.15,
      "Customer success team, finance & compliance, operations, G&A, tooling, travel, payment processing, support, WhatsApp "
      "pass-through costs, and the working-capital float that protects the R3.0M cash buffer."),
@@ -411,7 +409,7 @@ UOF_CELLS = {}   # (window n, category index or 'total'/'rev'/'net') -> address,
 
 def write_use_of_funds(wb, p):
     ws = wb.create_sheet("Use_of_Funds")
-    _title(ws, "Use of Funds", "Seed R25M split (facts file §7). Percentages are inputs; amounts are formulas on the seed amount.")
+    _title(ws, "Use of Funds", "Seed R46M split (facts file §7). Percentages are inputs; amounts are formulas on the seed amount.")
     for k, h in enumerate(["Category", "Share", "Amount (R)", "≈ US$", "What it buys (hires & milestones)"]):
         ws.cell(row=4, column=k + 1, value=h)
     _hdr_row(ws, 4, 1, 5)
@@ -481,7 +479,7 @@ def write_market_sizing(wb):
     _hdr_row(ws, 4, 1, 4)
     rows = [
         ("TAM: MSMEs in Sub-Saharan Africa", 44000000, "businesses", "IFC / World Bank est. (~44M MSMEs)", True, "n0"),
-        ("SAM: digitally active SMBs in the 23 rail-covered countries selling via social/WhatsApp, able to pay >= US$25/mo", 3500000, "businesses", "Planning estimate (facts file §5)", True, "n0"),
+        ("SAM: digitally active SMBs in the countries our payment partners cover (most not yet on sale) selling via social/WhatsApp, able to pay >= US$25/mo", 3500000, "businesses", "Planning estimate (facts file §5)", True, "n0"),
         ("SOM share of SAM (5-year)", 0.005, "%", "Planning estimate: ~0.5% of SAM", True, "pct"),
         ("SOM: paying workspaces by FY5", "=B6*B7", "workspaces", "Formula: SAM x SOM share", False, "n0"),
         ("Minimum price point used for SAM value", 25, "US$ / month", "SAM definition: can pay >= US$25/mo", True, "usd"),
@@ -571,18 +569,17 @@ def write_sensitivity(wb, sens):
 # ---------------------------------------------------------------------------
 # Cover
 # ---------------------------------------------------------------------------
-CHANGES_FROM_V1 = [
-    ("Seed & timing", "Seed R18.5M (Dec 2026) -> R25M landing Feb 2027 (input). Lean pre-seed mode Oct 2026-Jan 2027: founders, infrastructure and pilot costs only. New output: pre-seed bridge required."),
-    ("Profitability constraint", "R25M must reach profitability alone: no Series A in Base or Conservative (input kept at 0). Closing cash >= R3.0M buffer every month from the seed month; sustained EBITDA and operating-cash-flow break-even."),
-    ("Cost discipline", "Hires and NG/KE/GH/Rest launches gated on last month's net MRR x a scenario gate multiplier (Conservative 1.40, Base 1.00, Upside 0.80). Paid acquisition = MIN(desired, floor + % of MRR) and switched off where CAC payback > 12 months. Brand budget scales with MRR. Hiring now differs by scenario."),
-    ("Pilot", "12 Gauteng brands free in Oct-Nov 2026; 75% convert on 1 Dec 2026 at 50% off the first 2 bills (R249/R999/R2,499/R3,999). No other paying customers before the 1 Dec SA launch."),
-    ("Founding Member", "30% off the first 2 monthly bills for sign-ups in each launch window (ZA Dec 2026-Jan 2027; NG/KE/GH first 60 days); annual plans get 2 bonus months (fee recognised over 14 months). Not on Agency. +20% sign-up uplift in windows. Option A / None as sensitivities."),
-    ("Markets", "v1 regions removed. ZA -> Nigeria, Kenya, Ghana (own rows, launch month, country lead, launch marketing, compliance) -> Rest of rail-covered Africa (19 countries, USD, self-serve, no team) -> Botswana & Namibia (off). Gated countries = 0."),
-    ("Pricing", "v1's 75-85% regional price index removed. Local NGN/KES/GHS and USD price points at FX parity, with depreciation vs ZAR and quarterly repricing when drift > 10%. FX-shock sensitivity (ZAR 15% stronger)."),
-    ("Segments", "v1 channels (self-serve / agency / direct AE) replaced by segments: Solo (Starter -> Growth), SMEs (Growth -> Scale), Agencies, Enterprise inbound only. Own CAC, churn, mix and upgrade rates. Account executives removed."),
-    ("Partner wholesale", "Agency-segment customers pay partner wholesale R5,599/mo (₦463,000 / KSh 44,999 / GH₵ 3,799 / $299). v1's 40% sub-account wholesale discount and separate client sub-account revenue removed. Referral commission not modelled (undecided)."),
-    ("Commerce fee", "0.75% commerce fee now Upside only (0% Base & Conservative); flagged not in current pricing. Campaign Financing still excluded."),
-    ("Use of funds", "R25M: 40/30/15/15, reconciled against modelled spend in the 18 and 24 months after close."),
+CHANGES_FROM_V2 = [
+    ("Tiers", "5 tiers -> the live 9: Free R0, Nano R149, Micro R289, Starter R499, Growth R1,999, Scale R4,999, Corporate R6,999, Agency R9,999, Custom (from R19,999). Local NGN/KES/GHS/USD prices from tier_regional_prices. Annual = 10x monthly."),
+    ("No trials, no pilot", "14-day trial and the 12-brand pilot removed. Paid plans start with payment. A small first group is set up by hand from Oct 2026 (4 a month to Jan 2027) [[CONFIRM]]. South Africa sells from Oct 2026."),
+    ("Free plan", "Sign-ups either pay at once (Solo 5%, SME 8%) or join Free. Active Free users upgrade at 0.5% a month or go dormant at 10% a month. Free AI cost at the live 60 credits a month [[CONFIRM]]."),
+    ("Segments", "Solo: Nano 45% / Micro 40% / Starter 15%. SMEs: Starter 40% / Growth 50% / Scale 10%. Corporate is a new inbound line. Agencies on partner wholesale R6,999. Upgrade chains Nano -> Micro -> Starter and Starter -> Growth -> Scale [[CONFIRM]]."),
+    ("Founding Member", "30% off the first 2 monthly bills, South Africa only, Oct 2026 to Mar 2027 (proposed end) [[CONFIRM]]. Old 1 Dec 2026 - 31 Jan 2027 window, NG/KE/GH windows, annual bonus months and pilot 50% pricing removed."),
+    ("Markets", "South Africa only until NG/KE/GH checkout is live. Plan months moved later: Nigeria Apr 2028, Kenya Jul 2028, Ghana Oct 2028, Rest of Africa (USD) May 2029 [[CONFIRM]]. BW/NA still off."),
+    ("AI cost", "1 credit = R0.15 of provider cost (ai-credit-math.ts, platform_billing_config). Allowances at live levels; Corporate, Agency and Custom run on their own keys (no AI cost). Packs R300 for 1,000 credits, no overage."),
+    ("Commerce & VAT", "No FluxMuse fee on checkout: Paystack fees pass through to the merchant (0% in every scenario). Not VAT-registered: no VAT in revenue. Agency setup fee removed (not in the live price list)."),
+    ("Seed", "R25M -> R46M (founder decision 5 Oct 2026): the smallest seed at which Base holds the R3.0M buffer and breaks even with no Series A is about R45.0M, rounded up [[CONFIRM]]."),
+    ("Unchanged", "Feb 2027 seed month, 40/30/15/15 use of funds, R3.0M buffer, MRR-gated hiring and launches, paid cap, scenario switch, FX drift and repricing."),
 ]
 
 
@@ -590,7 +587,7 @@ def write_cover(wb):
     ws = wb["Cover"]
     _cell(ws, "A1", "FluxMuse Financial Model", Font(name=FONT, size=22, bold=True, color=ORANGE))
     _cell(ws, "A2", "AI marketing team & WhatsApp commerce for African SMBs | Fluxmuse Pty Ltd", Font(name=FONT, size=11, color=SLATE))
-    info = [("Version", f"{VERSION} (R25M seed, profitable on the seed alone)"), ("Model date", MODEL_DATE),
+    info = [("Version", f"{VERSION} (current offer: 9 tiers, no trials, R46M seed test)"), ("Model date", MODEL_DATE),
             ("Horizon", "60 months: Oct 2026 - Sep 2031 (FY1-FY5, fiscal year Oct-Sep). Month 1 = Oct 2026"),
             ("Currency", "ZAR (R); US$ at R18.50 = US$1 (input on Assumptions)")]
     for k, (a, b) in enumerate(info):
@@ -599,7 +596,7 @@ def write_cover(wb):
     _cell(ws, "A8", "Active scenario", F_BOLD)
     _cell(ws, "B8", "=Assumptions!$B$6", F_BOLD)
     _cell(ws, "A9", "Disclaimer", F_BOLD)
-    _cell(ws, "B9", "Forward-looking projections; assumptions to be validated with pilot data. Red-flagged inputs need founder confirmation.", F_FLAG)
+    _cell(ws, "B9", "Forward-looking projections. FluxMuse has no paying customers yet; every volume and rate is an assumption to replace with live data. Red-flagged inputs need founder confirmation.", F_FLAG)
     ws.cell(row=11, column=1, value="Headline (live formulas, selected scenario)")
     _hdr_row(ws, 11, 1, 7)
     for y in A.YEARS:
@@ -607,7 +604,7 @@ def write_cover(wb):
     heads = [("Total revenue (net of launch discounts)", "a_rev", "zar"), ("EBITDA", "a_ebitda", "zar"), ("EBITDA margin", "a_ebitda_pct", "pct"),
              ("Paying workspaces (end of FY)", "a_cust", "n0"), ("Subscription ARR", "a_arr", "zar"),
              ("Closing cash", "a_close_cash", "zar"), ("Headcount (end of FY)", "a_fte", "n0"),
-             ("Founding Member discount cost", "a_fm_cost", "zar")]
+             ("Founding Member discount cost", "a_fm_cost", "zar"), ("Active Free users (end of FY)", "a_free_active", "n0")]
     r = 12
     for lab, key, fmt in heads:
         _cell(ws, f"A{r}", lab)
@@ -617,7 +614,7 @@ def write_cover(wb):
     r += 1
     ws.cell(row=r, column=1, value="Constraint check & key outputs (live formulas, selected scenario)")
     _hdr_row(ws, r, 1, 7)
-    for lab, key, fmt in [("Profitable on the R25M seed alone?", "k_profitable", None),
+    for lab, key, fmt in [("Profitable on the R46M seed alone?", "k_profitable", None),
                           ("EBITDA break-even (first month)", "k_be", None), ("EBITDA break-even (sustained)", "k_be_sus", None),
                           ("Operating cash flow positive (first month)", "k_cfpos", None), ("Operating cash flow positive (sustained)", "k_cfpos_sus", None),
                           ("Minimum closing cash from the seed month on", "k_min_post", "zar"), ("Month of minimum post-seed cash", "k_min_post_month", None),
@@ -629,9 +626,9 @@ def write_cover(wb):
         _cell(ws, f"A{r}", lab)
         _cell(ws, f"C{r}", f"=Cash_Flow!$B${A.SCALPOS[key]}", F_BOLD, fmt)
     r += 2
-    ws.cell(row=r, column=1, value="Changes from v1 (R18.5M model) and why")
+    ws.cell(row=r, column=1, value="Changes from v2 (11 Sep 2026 model) and why")
     _hdr_row(ws, r, 1, 7)
-    for a, b in CHANGES_FROM_V1:
+    for a, b in CHANGES_FROM_V2:
         r += 1
         _cell(ws, f"A{r}", a, F_BOLD, None, None, WRAP)
         ws.merge_cells(start_row=r, start_column=2, end_row=r, end_column=7)
@@ -641,16 +638,16 @@ def write_cover(wb):
     ws.cell(row=r, column=1, value="Sheet guide")
     _hdr_row(ws, r, 1, 7)
     guide = [
-        ("Assumptions", "All drivers with units and sources; scenario selector (B6); lean mode, pilot, Founding Member, markets, segments; MRR-gated headcount plan."),
-        ("Pricing", "ZAR list, NGN/KES/GHS/USD price points, partner wholesale, Founding Member & pilot prices, FX depreciation & repricing, ZAR-parity table."),
-        ("Revenue_Build", "Monthly launch gates, FX value factors, trials, marketing cap & payback test, cohorts by market/segment/tier, discounts, revenue."),
+        ("Assumptions", "All drivers with units and sources; scenario selector (B6); lean mode, first group, Founding Member, markets, Free funnel, segments; MRR-gated headcount plan."),
+        ("Pricing", "Nine tiers: ZAR list, NGN/KES/GHS/USD price points, partner wholesale, Founding Member prices, FX depreciation & repricing, ZAR-parity table."),
+        ("Revenue_Build", "Monthly launch gates, FX value factors, sign-ups, Free plan funnel, marketing cap & payback test, cohorts by market/segment/tier, discounts, revenue."),
         ("Costs", "MRR-gated headcount by role, payroll, COGS (AI, hosting, WhatsApp, processing, support, CS), opex."),
         ("P&L", "Monthly P&L: gross subscriptions -> discounts -> net, other revenue, gross margin, opex, EBITDA, tax, net income."),
         ("Annual_Summary", "FY1-FY5 roll-up: revenue, discounts, margins, EBITDA, cash, customers by segment/market/tier, ARR, ARPA, headcount."),
         ("Cash_Flow", "Working capital, funding (seed only), cash vs R3.0M buffer, runway, break-even, bridge, launch months and the constraint check."),
         ("Unit_Economics", "ARPA, churn, LTV, CAC, LTV:CAC and payback by segment (tier memo); magic number, burn multiple, Rule of 40."),
-        ("Use_of_Funds", "R25M allocation and reconciliation against modelled spend in the 18 and 24 months after close."),
-        ("Sensitivity", "Scenario comparison, FX shock, discount options, pilot conversion, Conservative shortfall & fix, churn x volume grids (build-time values)."),
+        ("Use_of_Funds", "R46M allocation and reconciliation against modelled spend in the 18 and 24 months after close."),
+        ("Sensitivity", "Scenario comparison, FX shock, Founding Member vs none, Free-to-paid conversion, Conservative shortfall & fix, churn x volume grids (build-time values)."),
         ("Market_Sizing", "TAM / SAM / SOM (estimates) linked to modelled FY5 workspaces."),
     ]
     for name, desc in guide:
@@ -674,7 +671,7 @@ def write_cover(wb):
     _cell(ws, f"B{r}", "Red source note: founder confirmation or decision needed.")
     r += 2
     _cell(ws, f"A{r}", "Not in any scenario", F_BOLD)
-    _cell(ws, f"B{r}", "Campaign Financing (upside only). Partner referral commission (undecided). Series A (optional acceleration only; switched off).")
+    _cell(ws, f"B{r}", "Campaign Financing (upside only). Partner referral commission (undecided). Series A (optional acceleration only; switched off). Any FluxMuse checkout fee (none in the current offer). VAT (not registered).")
     ws.column_dimensions["A"].width = 48
     ws.column_dimensions["B"].width = 18
     for colL in "CDEFG":
