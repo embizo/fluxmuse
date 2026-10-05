@@ -2,7 +2,7 @@
 
 **Status: TEMPLATE.** One report per brand per sprint, filled in from measured
 data. Until the Analyst writes it automatically (`Flux_Loop_Refinement.md` §6),
-the onboarding lead fills it in by hand for each pilot brand. Keep filled copies
+the onboarding lead fills it in by hand for each business we set up. Keep filled copies
 in the brand's private workspace folder, not in this repo.
 
 **Length:** one page. If it needs two, cut. Send it on WhatsApp (a short
@@ -143,11 +143,17 @@ suggest them again without new evidence.
 
 ---
 
-## Pilot use
+## Using the reports
 
-Pilot runs to 30 November 2026, roughly five two-week sprints. Keep each
-brand's reports in order. Sprint 1 to sprint 5 become the case study's
-"what we learned each sprint" story (`07_Case_Studies/`), and the first and
-last value tables become its headline numbers, **with the owner's written
-consent**. Aggregate figures across brands need data from at least 8 brands
-(see "Rules for using pilot data" in the case studies file).
+- **Start with FluxMuse.** Run our own marketing in sprints and write our own
+  report each time, so the format is tested on us before any customer sees it.
+- **First group of businesses.** Start each business's sprint 1 on its go-live
+  date. Two sprints cover the lead guarantee window (3 qualified leads in 30
+  days, `08_Prospects/CURRENT_OFFER.md` §2), so the reports double as the
+  record of progress against it.
+- **Case studies, later and only with consent.** Kept in order, a business's
+  reports become its "what we learned each sprint" story, and the first and
+  latest value tables its headline numbers. Use them only with the owner's
+  written consent. Never publish projected or target figures as results, and
+  don't publish combined figures across businesses until there are enough
+  businesses for them to mean something.

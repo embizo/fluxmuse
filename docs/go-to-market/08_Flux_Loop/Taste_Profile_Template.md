@@ -1,6 +1,6 @@
-# Taste Profile: pilot onboarding template
+# Taste Profile: onboarding template
 
-**Status: TEMPLATE.** Make one copy per pilot brand (`Taste_Profile_[[BRAND]].md`)
+**Status: TEMPLATE.** Make one copy per business we onboard (`Taste_Profile_[[BRAND]].md`)
 and keep the copies in the brand's private workspace folder, **not** in this repo.
 They hold the owner's words and customer details.
 
@@ -126,8 +126,8 @@ post**: one without the profile and one with it. Show the owner both.
 - Owner's verdict: `[[which sounds like them, and what to change]]`
 
 If the second version could still belong to any business, go back to Parts C
-and D. This side-by-side is also the **before/after** for the brand's case study
-(`07_Case_Studies/`), with the owner's consent.
+and D. With the owner's written consent, this side-by-side is also a good
+**before/after** for sales demos and, later, a case study.
 
 ---
 
@@ -150,7 +150,7 @@ ALWAYS: [[E2 rules]]. NEVER: [[E3 + E4]].
 
 ## Part H: change log (update at the end of every sprint)
 
-The Analyst (or, during the pilot, the onboarding lead) suggests changes
+The Analyst (or, until that's automated, the onboarding lead) suggests changes
 based on the sprint results, and the **owner approves or rejects each one**.
 Only approved changes go into Parts B–G.
 

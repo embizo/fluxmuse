@@ -10,13 +10,19 @@ conversations or orders than simpler video formats? A "wow" reaction to a demo
 isn't the answer we need.
 
 **Run time:** 2 weeks, one sprint (see `Sprint_Report_Template.md`).
-**Who:** 6–10 Gauteng pilot brands. **Owner of the test:** `[[NAME]]`.
+**Who:** 6–10 small businesses in Gauteng: the first group we're setting up by
+hand, plus prospects who agree to a demo built from their public product
+photos (`08_Prospects/CURRENT_OFFER.md` §2, option D). FluxMuse has no
+customers or pilot cohort yet, so expect to recruit for this test.
+**Owner of the test:** `[[NAME]]`.
 
 ---
 
 ## 1. Pick the brands
 
-Choose 6–10 brands from the 12 pilot brands, aiming for a mix:
+Recruit 6–10 businesses, aiming for a mix. Approach them one to one through
+channels they publish themselves, never in bulk (POPIA s69,
+`CURRENT_OFFER.md` §6):
 
 | Need | Why |
 |---|---|
@@ -220,7 +226,8 @@ At the end of the sprint, fill this in and decide.
 
 ## 8. Message to owners (WhatsApp, under 600 characters)
 
-> Hi `[[FIRST NAME]]`, we're testing a few new video styles for `[[BRAND]]` this sprint, all made by FluxMuse from your product photos, and one uses an AI presenter. It's free and you choose what (if anything) to post. Can we use your `[[PRODUCT]]` photos and send you 3 short videos by `[[DATE]]`? Reply YES and I'll send them over, with a quick 3-question check after.
+> Hi `[[FIRST NAME]]`, we're testing a few new video styles for `[[BRAND]]` this sprint, all made by FluxMuse from your product photos, and one uses an AI presenter. There's no cost to you, and you choose what (if anything) to post. Can we use your `[[PRODUCT]]` photos and send you 3 short videos by `[[DATE]]`? Reply YES and I'll send them over, with a quick 3-question check after.
 
-Never present this to a pilot brand as a feature they'll get, and don't mention
-upgrading to Growth during the test.
+Never present this as a feature they'll get, and don't mention upgrading to
+Growth during the test. If a business isn't a FluxMuse user, this is a demo on
+their own products, not a trial: no account, nothing to cancel.
