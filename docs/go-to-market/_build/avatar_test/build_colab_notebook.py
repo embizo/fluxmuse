@@ -26,7 +26,7 @@ Makes the raw media for the **FluxMuse dry run** (`FluxMuse_Dry_Run.md`) with op
 |---|---|---|---|
 | 1. Avatar images | Stable Diffusion XL base 1.0 (default, fits a free T4) or FLUX.1 [schnell] (needs an L4/A100) | CreativeML Open RAIL++-M / Apache 2.0 | Yes, within the licence's use restrictions |
 | 2a. English voice | Kokoro-82M | Apache 2.0 | Yes |
-| 2b. isiZulu / Sesotho voice **check** | Meta MMS-TTS | CC-BY-NC 4.0 (**non-commercial**) | **No.** For the internal voice check only |
+| 2b. Afrikaans voice **check** | Meta MMS-TTS (`afr`) | CC-BY-NC 4.0 (**non-commercial**) | **No.** For the internal voice check only. A publishable Afrikaans voice needs Google Cloud TTS (`af-ZA`) or ElevenLabs |
 | 3. Talking clips (format A) | SadTalker | Apache 2.0 (its downloaded face models carry their own licences: check them) | Only if every model it downloads allows commercial use |
 
 **Not run before shipping.** This notebook was written without a GPU, so treat the first run as a test. Each step says what to do if it fails.
@@ -166,15 +166,15 @@ from IPython.display import Audio
 Audio(f"{OUT}/audio/en_{VOICE}_hook.wav")"""))
 cells.append(md("""Prices are written out in words ("one hundred and forty-nine rand") because text-to-speech often reads "R149" as "R one four nine". Check the brand name sounds like *FLUX-muse* every time.
 
-### 2b. isiZulu and Sesotho voice **check** (internal only)
-Meta MMS-TTS is **non-commercial** (CC-BY-NC 4.0). Use it only to give a fluent speaker something to rate on the sheet's **Voice check** tab, and **never in a published video**.
+### 2b. Afrikaans voice **check** (internal only)
+Meta MMS-TTS is **non-commercial** (CC-BY-NC 4.0). Use it only to give a fluent Afrikaans speaker something to rate on the sheet's **Voice check** tab, and **never in a published video**. Kokoro and Piper have no Afrikaans voice (checked 2026-10-05); for a publishable Afrikaans voiceover use Google Cloud Text-to-Speech (`af-ZA`) or ElevenLabs.
 
-Paste translations by a fluent speaker; don't machine-translate. Leave a line empty to skip that language. If a model id fails to load, the language isn't available in MMS: record "not available"."""))
+The Afrikaans text below was written by Claude; have an Afrikaans speaker read it once. isiZulu, Sesotho and other languages are deferred to later sprints: add a code (e.g. `"zul"`, `"sot"`) and a translation by a fluent speaker when the time comes."""))
 cells.append(code("""from transformers import VitsModel, AutoTokenizer
 
 CHECK_TEXT = {
-    "zul": "",   # isiZulu translation of the voice-check script (Production_Prompts.md §2), by a fluent speaker
-    "sot": "",   # Sesotho translation, by a fluent speaker
+    "afr": "Hallo! Antwoord jy nog om elfuur in die aand op DM's? Stuur vir ons jou produkfoto's op WhatsApp en ons stuur vir jou 'n winkelskakel terug, plus 'n assistent wat jou kliënte in hul eie taal antwoord. Dit kos vanaf eenhonderd nege-en-veertig rand per maand. Stuur vandag nog vir ons 'n boodskap.",
+    # Deferred: "zul": "<isiZulu translation by a fluent speaker>", "sot": "<Sesotho translation by a fluent speaker>"
 }
 
 for lang, text in CHECK_TEXT.items():

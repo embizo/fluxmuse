@@ -18,18 +18,18 @@ in 14 days. Plan for it now rather than cut the measuring short.
 
 ### Day 1: voice check (no businesses needed yet)
 1. Generate the voice-check script (`Production_Prompts.md` §2) in South
-   African English, isiZulu and Sesotho with each voice tool you're trying.
-2. Ask a fluent isiZulu speaker and a fluent Sesotho speaker to listen and
-   rate each one: **natural / OK / poor / not available**. Record it on the
-   sheet's **Voice check** tab.
-3. If no tool sounds natural in either language, note it on the sheet. That
-   result already settles the Local voice gate, so carry on in English only.
+   African English and Afrikaans with each voice tool you're trying.
+2. Ask a fluent Afrikaans speaker to listen and rate each clip: **natural /
+   OK / poor / not available**. Record it on the sheet's **Voice check** tab.
+3. If no tool sounds natural in Afrikaans, note it on the sheet. That result
+   already settles the Local voice gate, so carry on in English only.
+   (isiZulu, Sesotho and other languages are deferred to later sprints.)
 
 ### Days 1–4: recruit 6–10 businesses
 - **Mix:**
   - at least 3 solo businesses (beauty, fashion, food);
   - at least 2 small businesses with staff;
-  - at least 2 whose customers mostly speak isiZulu or Sesotho;
+  - at least 2 whose customers mostly speak Afrikaans;
   - at least 1 owner who already films themselves.
 - **Every business must already post** on WhatsApp Status or Facebook at least
   weekly.
