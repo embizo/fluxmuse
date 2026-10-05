@@ -148,7 +148,7 @@ LINES = {
     "proof": ("Send FluxMuse your product photos on WhatsApp and get a shop link back. Our assistant answers your "
               "customers in their language, day and night, and you get a WhatsApp alert for every order."),
     "offer": "It's one hundred and forty-nine rand a month. Sign up in South Africa now and your first two months are thirty percent off.",
-    "cta":   "Tap the link and say hi. Thabo will set you up himself.",
+    "cta":   "Tap the link and say hi. Our team is ready to set your business up.",
 }
 
 kp = KPipeline(lang_code="b" if VOICE.startswith("b") else "a")

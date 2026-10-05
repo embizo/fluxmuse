@@ -40,7 +40,7 @@ BEATS = [
     ("proof", "whatsapp-commerce-flow_square_dark.png", 12.0,
      "Send your product photos on WhatsApp\\Nget a shop link back\\N\\NReplies in your customers' language\\NAn alert for every order"),
     ("offer", "founding-member-offer_square.png", 5.0, "From R149 a month\\N30% off your first two months\\N(South African sign-ups)"),
-    ("cta", "how-fluxmuse-works_square_dark.png", 4.0, "Tap the link and say hi\\NThabo sets you up himself"),
+    ("cta", "how-fluxmuse-works_square_dark.png", 4.0, "Tap the link and say hi\\NOur team is ready to set your business up"),
 ]
 TALKING = {"hook", "cta"}  # beats where formats A and C show a face
 
