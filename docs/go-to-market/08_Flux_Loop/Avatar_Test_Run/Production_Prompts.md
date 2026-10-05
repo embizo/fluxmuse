@@ -16,6 +16,15 @@ CapCut) is fine as a comparison. Log what each one costs.
 The account needs credits first: it was on the free plan with 1.52 credits on
 5 Oct 2026.
 
+**Open-source route (no paid tool):** `FluxMuse_Avatar_Test_Colab.ipynb` runs on a
+free Colab T4. It uses SDXL or FLUX.1 [schnell] for avatars, Kokoro for the
+English voice and SadTalker for talking clips, all with licences that allow
+commercial use (check each one, and every model SadTalker downloads, before
+publishing). Meta MMS covers the isiZulu and Sesotho voice check, but it is
+non-commercial, so it's for the internal check only and never in a published
+video. Expect SadTalker's lip-sync to be weaker than the paid tools: that's
+exactly what the quality bar measures.
+
 ---
 
 ## 1. Avatar roster (make 6, keep the best 4–6)
