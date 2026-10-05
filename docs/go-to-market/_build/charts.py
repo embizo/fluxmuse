@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render FluxMuse financial-model charts (v2) from 06_Financial_Model/model_summary.json.
+"""Render FluxMuse financial-model charts (v3) from 06_Financial_Model/model_summary.json.
 
 Each chart is exported four ways into docs/go-to-market/assets/charts/:
   <name>.png            2x resolution (2000 x 1250), white background
@@ -39,12 +39,12 @@ THEMES = {
                  on_orange="#0F1419", neg="#90A4AE"),
 }
 SIZES = {"": (10.0, 6.25, 200), "_16x9": (9.6, 5.4, 200)}
-FOOT = "Source: FluxMuse Financial Model v2 (Base case, R25M seed), 11 Sep 2026. Forward-looking projections; assumptions to be validated with pilot data."
+FOOT = "Source: FluxMuse Financial Model v3 (Base case, R25M seed), 5 Oct 2026. Forward-looking projections; no paying customers yet, every input is an assumption."
 FY = ["FY1", "FY2", "FY3", "FY4", "FY5"]
 FY_SUB = ["Oct 26-Sep 27", "Oct 27-Sep 28", "Oct 28-Sep 29", "Oct 29-Sep 30", "Oct 30-Sep 31"]
 MARKET_COLOURS = [("South Africa", "orange"), ("Nigeria", "green"), ("Kenya", "blue"), ("Ghana", "violet"),
                   ("Rest of Africa (USD)", "teal"), ("Botswana & Namibia", "slate")]
-SEGMENT_COLOURS = [("Solo", "orange"), ("SMEs", "blue"), ("Agencies", "green"), ("Enterprise", "violet")]
+SEGMENT_COLOURS = [("Solo", "orange"), ("SMEs", "blue"), ("Agencies", "green"), ("Corporate", "teal"), ("Enterprise", "violet")]
 
 
 def rm(x):
@@ -125,13 +125,13 @@ def month_ticks(ax, labels, n, T, every=6):
 # ---------------------------------------------------------------------------
 def chart_revenue(D, T, suffix):
     ann = D["annual"]
-    streams = [("Subscriptions (net)", ["subscriptions"], T["orange"]), ("AI-credit top-ups", ["ai_credit_topups"], T["blue"]),
+    streams = [("Subscriptions (net)", ["subscriptions"], T["orange"]), ("AI-credit packs", ["ai_credit_topups"], T["blue"]),
                ("WhatsApp messaging", ["whatsapp_messaging"], T["green"]), ("Commerce fees", ["commerce_platform_fees"], T["violet"]),
                ("Setup fees", ["enterprise_setup_fees", "agency_setup_fees"], T["teal"])]
     streams = [s for s in streams if any(a["revenue_by_stream_zar"][k] for a in ann for k in s[1])]
     fig = new_fig(T, suffix)
     header(fig, T, "Revenue by stream, FY1-FY5",
-           f"Base case, R million, net of launch discounts. FY5 total {fmt_rm(ann[4]['total_revenue_zar'])} (≈US${ann[4]['total_revenue_usd'] / 1e6:,.1f}m); no commerce fee in Base")
+           f"Base case, R million, net of launch discounts. FY5 total {fmt_rm(ann[4]['total_revenue_zar'])} (≈US${ann[4]['total_revenue_usd'] / 1e6:,.1f}m); no checkout fee, no VAT")
     legend_row(fig, T, [(s[0], s[2]) for s in streams], 0.80)
     ax = fig.add_axes([0.08, 0.13, 0.88, 0.60])
     style_axes(ax, T)
@@ -203,11 +203,14 @@ def chart_ebitda_cash(D, T, suffix):
     ax2.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"R{v:,.0f}m"))
     ax2.set_ylim(min(0, min(cash)) - max(cash) * 0.05, max(cash) * 1.15)
     ax2.scatter([tr_idx], [cash[tr_idx]], s=46, color=T["orange"], edgecolor=T["bg"], linewidth=2, zorder=5)
+    late = tr_idx > 40
     ax2.annotate(f"Post-seed low {fmt_rm(c['min_post_seed_cash_zar'], 2)}\n{c['min_post_seed_cash_month']}",
-                 xy=(tr_idx, cash[tr_idx]), xytext=(tr_idx + 3, max(cash) * 0.45), fontsize=9.5, color=T["ink"],
+                 xy=(tr_idx, cash[tr_idx]), xytext=((tr_idx - 14) if late else (tr_idx + 3), max(cash) * 0.45),
+                 ha="right" if late else "left", fontsize=9.5, color=T["ink"],
                  arrowprops=dict(arrowstyle="-", color=T["muted"], linewidth=0.8))
-    ax2.annotate(f"FY5 close {fmt_rm(cash[-1] * 1e6, 0)}", xy=(59, cash[-1]), xytext=(55, cash[-1] * 0.92),
-                 fontsize=9.5, color=T["ink"], ha="right", va="top")
+    if not late:
+        ax2.annotate(f"FY5 close {fmt_rm(cash[-1] * 1e6, 0)}", xy=(59, cash[-1]), xytext=(55, cash[-1] * 0.92),
+                     fontsize=9.5, color=T["ink"], ha="right", va="top")
     if be_idx is not None:
         for ax in (ax1, ax2):
             ax.axvline(be_idx, color=T["muted"], linewidth=1)
@@ -260,7 +263,7 @@ def chart_segments(D, T, suffix):
     fig = new_fig(T, suffix)
     f1, f5 = ann[0]["ending_customers_by_segment"], ann[4]["ending_customers_by_segment"]
     header(fig, T, "Paying workspaces by segment, FY1-FY5",
-           "Base case, end of each fiscal year. Agencies buy the Agency tier at partner wholesale (R5,599/mo); Enterprise is inbound only")
+           "Base case, end of each fiscal year. Agencies on partner wholesale (R6,999/mo); Corporate and Enterprise (Custom) inbound only")
     legend_row(fig, T, [(n, T[c]) for n, c in SEGMENT_COLOURS], 0.80)
     ax = fig.add_axes([0.08, 0.13, 0.64, 0.60])
     style_axes(ax, T)
@@ -299,7 +302,7 @@ def chart_unit_econ(D, T, suffix):
     names = list(segs.keys())
     for k, n in enumerate(names):
         t = segs[n]
-        ax = fig.add_axes([0.06 + k * 0.235, 0.22, 0.18, 0.46])
+        ax = fig.add_axes([0.05 + k * 0.19, 0.22, 0.15, 0.46])
         style_axes(ax, T, grid_axis=None)
         vals = [t["ltv_zar"] / 1e3, t["cac_zar"] / 1e3]
         ax.bar([0, 1], vals, 0.62, color=[T["orange"], T["slate"]])
@@ -311,12 +314,12 @@ def chart_unit_econ(D, T, suffix):
         ax.set_ylim(0, max(vals) * 1.18 if max(vals) > 0 else 1)
         ax.set_title(n, fontsize=12, fontweight="bold", color=T["ink"], pad=26)
         ax.text(0.5, 1.03, f"{t['ltv_to_cac']:.1f}x LTV:CAC", transform=ax.transAxes, ha="center", fontsize=10, color=T["ink"])
-        ax.text(0.5, -0.17, f"Payback {t['cac_payback_months']:.1f} mo · churn {t['monthly_churn_pct']:.1f}%/mo", transform=ax.transAxes,
-                ha="center", va="top", fontsize=9, color=T["muted"])
+        ax.text(0.5, -0.12, f"Payback {t['cac_payback_months']:.1f} mo\nchurn {t['monthly_churn_pct']:.1f}%/mo", transform=ax.transAxes,
+                ha="center", va="top", fontsize=8.5, color=T["muted"])
     b = D["unit_economics_fy3"]["blended"]
     fig.text(0.04, 0.075, f"Blended FY3: LTV R{b['ltv_zar'] / 1e3:,.0f}k · CAC R{b['cac_zar'] / 1e3:,.1f}k · LTV:CAC {b['ltv_to_cac']:.1f}x · payback {b['cac_payback_months']:.1f} months",
              fontsize=10, fontweight="bold", color=T["ink"])
-    footer(fig, T, "CAC: Solo/SME = paid + shared brand & marketing; Agencies = partner programme + team; Enterprise = inbound handling. Source: FluxMuse model v2.")
+    footer(fig, T, "CAC: Solo/SME = paid + shared brand & marketing; Agencies = partner programme + team; Corporate/Enterprise = inbound handling. Source: FluxMuse model v3.")
     return fig
 
 
@@ -341,7 +344,7 @@ def chart_use_of_funds(D, T, suffix):
     ax.set_xticks([])
     ax.spines["bottom"].set_visible(False)
     ax.set_xlim(0, max(vals) * 1.45)
-    footer(fig, T, "Source: FluxMuse Financial Model v2, Use_of_Funds sheet. Percentages per founder assumption (facts file §7).")
+    footer(fig, T, "Source: FluxMuse Financial Model v3, Use_of_Funds sheet. Percentages per founder assumption (facts file §7).")
     return fig
 
 
@@ -349,7 +352,7 @@ def chart_scenarios(D, T, suffix):
     S = D["scenarios"]
     names = ["Conservative", "Base", "Upside"]
     fig = new_fig(T, suffix)
-    header(fig, T, "Scenarios: FY5 revenue and EBITDA on the R25m seed alone",
+    header(fig, T, "Scenarios: FY5 revenue and EBITDA, R25m seed and no Series A",
            "R million, FY5 (Oct 2030-Sep 2031). No Series A in any scenario; hiring and launches gated on MRR")
     legend_row(fig, T, [("FY5 revenue", T["orange"]), ("FY5 EBITDA", T["slate"])], 0.80)
     ax = fig.add_axes([0.08, 0.22, 0.88, 0.51])
@@ -369,12 +372,13 @@ def chart_scenarios(D, T, suffix):
     for n in names:
         s = S[n]
         status = "profitable on seed alone" if s["profitable_on_seed_alone"] else f"short {fmt_rm(s['shortfall_vs_buffer_zar'])} vs buffer"
-        sub.append(f"{n}\n{s['fy5_paying_workspaces']:,} workspaces · break-even {s['breakeven_month_sustained']}\n"
+        be = s['breakeven_month_sustained'].replace("Not within horizon (to Sep 2031)", "none by Sep 2031")
+        sub.append(f"{n}\n{s['fy5_paying_workspaces']:,} workspaces · break-even {be}\n"
                    f"low cash {fmt_rm(s['min_post_seed_cash_zar'])} · {status}")
     ax.set_xticklabels(sub, color=T["ink"], fontsize=9.5)
     ax.set_ylim(min(0, min(eb)) * 1.2, top * 1.12)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"R{v:,.0f}m"))
-    footer(fig, T, "Source: FluxMuse Financial Model v2, 11 Sep 2026. Break-even = EBITDA >= 0 every month thereafter; low cash = minimum closing cash after the seed lands.")
+    footer(fig, T, "Source: FluxMuse Financial Model v3, 5 Oct 2026. Break-even = EBITDA >= 0 every month thereafter; low cash = minimum closing cash after the seed lands.")
     return fig
 
 
@@ -436,7 +440,8 @@ def chart_cash_runway(D, T, suffix):
     tr = mk["min_post_seed_cash_month_index"]
     fig = new_fig(T, suffix)
     header(fig, T, "Cash runway on the R25m seed",
-           f"Base case, monthly closing cash vs the R3.0m minimum-cash buffer, {labels[0]} - {labels[n - 1]}. No Series A")
+           f"Base case, monthly closing cash vs the R3.0m buffer, {labels[0]} - {labels[n - 1]}. No Series A"
+           + ("" if D["profitable_on_seed_alone"]["Base"] else ". Base runs out of seed cash"))
     ax = fig.add_axes([0.08, 0.12, 0.88, 0.70])
     style_axes(ax, T)
     top = max(cash) * 1.42
@@ -450,8 +455,8 @@ def chart_cash_runway(D, T, suffix):
     ax.text(n - 1, buf - top * 0.012, "R3.0m minimum-cash buffer (from the seed month)", ha="right", va="top", fontsize=9, color=T["ink"])
     ax.axhline(0, color=T["muted"], linewidth=0.8)
     xt = ax.get_xaxis_transform()
-    marks = [(mk["pilot_last_month_index"], f"Pilot ends\n{labels[mk['pilot_last_month_index']]}", 0),
-             (min(mk["founding_member_window_indices"].get("South Africa", [2])), "Founding Member\nwindows (shaded)", 1),
+    marks = [(mk["first_group_last_month_index"], f"First group by hand\nto {labels[mk['first_group_last_month_index']]}", 0),
+             (min(mk["founding_member_window_indices"].get("South Africa", [2])), "Founding Member\noffer (shaded)", 1),
              (seed, f"Seed R25m lands\n{labels[seed]}", 2)]
     for k, name in enumerate(["Nigeria", "Kenya", "Ghana"]):
         if launches.get(name) is not None and launches[name] < n:
@@ -463,14 +468,17 @@ def chart_cash_runway(D, T, suffix):
         ax.axvline(x, color=T["muted"], linewidth=0.9, ymax=rows[row] - 0.02, zorder=1)
         ax.text(x + 0.35, rows[row], text, transform=xt, fontsize=8.8, color=T["ink"], va="top", ha="left", linespacing=1.15)
     ax.scatter([tr], [cash[tr]], s=52, color=T["orange"], edgecolor=T["bg"], linewidth=2, zorder=5)
+    hd = c['headroom_over_buffer_zar']
     ax.annotate(f"Post-seed low {fmt_rm(c['min_post_seed_cash_zar'], 2)} ({c['min_post_seed_cash_month']})\n"
-                f"{fmt_rm(c['headroom_over_buffer_zar'], 2)} above the buffer",
-                xy=(tr, cash[tr]), xytext=(tr + 2.5, cash[tr] + top * 0.22), fontsize=9.5, color=T["ink"],
+                + (f"{fmt_rm(hd, 2)} above the buffer" if hd >= 0 else f"{fmt_rm(-hd, 2)} short of the buffer"),
+                xy=(tr, cash[tr]), xytext=((tr - 3) if tr > n * 0.6 else (tr + 2.5), cash[tr] + top * 0.22), fontsize=9.5, color=T["ink"],
+                ha="right" if tr > n * 0.6 else "left",
                 arrowprops=dict(arrowstyle="-", color=T["muted"], linewidth=0.8))
     if c["pre_seed_bridge_required_zar"] > 0:
         ax.annotate(f"Pre-seed bridge\n{fmt_rk(c['pre_seed_bridge_required_zar'])}", xy=(seed - 1, 0), xytext=(seed + 1.2, top * 0.12),
                     fontsize=9, color=T["ink"], arrowprops=dict(arrowstyle="-", color=T["muted"], linewidth=0.8))
-    ax.set_ylim(min(0, min(cash)) - top * 0.03, top)
+    top = max(top, (max(cash) - min(0, min(cash))) * 1.25 + min(0, min(cash)))
+    ax.set_ylim(min(0, min(cash)) - abs(top) * 0.05, top)
     ax.set_xlim(-0.5, n - 0.5)
     month_ticks(ax, labels, n, T, 6)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"R{v:,.0f}m"))
@@ -480,33 +488,30 @@ def chart_cash_runway(D, T, suffix):
 
 def chart_fm_cost(D, T, suffix):
     ann = D["annual"]
-    years = [y for y in range(5) if ann[y]["founding_member_discount_zar"] + ann[y]["pilot_discount_zar"] > 0] or [0]
-    years = list(range(0, max(years) + 1))
-    series = [("South Africa", "orange"), ("Nigeria", "green"), ("Kenya", "blue"), ("Ghana", "violet")]
+    mb = D["monthly_base"]
+    fm = D["founding_member"]
+    disc = mb["founding_member_discount_zar"]
+    last = max([i for i, x in enumerate(disc) if x > 0] or [0])
+    n = min(60, last + 3)
+    tot = sum(disc)
+    gross = sum(a["subscriptions_gross_zar"] for a in ann if a["founding_member_discount_zar"] > 0) or 1
     fig = new_fig(T, suffix)
-    tot = sum(ann[y]["founding_member_discount_zar"] + ann[y]["pilot_discount_zar"] for y in years)
-    gross = sum(ann[y]["subscriptions_gross_zar"] for y in years)
-    header(fig, T, "Launch discount cost: Founding Member and pilot",
-           f"Base case, R thousand of revenue given up, Founding Member by market plus pilot. {fmt_rk(tot)} over {FY[years[0]]}-{FY[years[-1]]} = {tot / gross * 100:.1f}% of gross subscriptions")
-    legend_row(fig, T, [(n, T[c]) for n, c in series] + [("Pilot brands (50% off)", T["slate"])], 0.80)
-    ax = fig.add_axes([0.08, 0.13, 0.88, 0.60])
+    header(fig, T, "Founding Member discount cost (South Africa)",
+           f"Base case, revenue given up a month. 30% off 2 bills, {fm['windows']['South Africa'].split(' (')[0]}: "
+           f"{fmt_rk(tot)} total, {tot / gross * 100:.1f}% of FY1 gross subs")
+    ax = fig.add_axes([0.08, 0.13, 0.88, 0.62])
     style_axes(ax, T)
-    bottom = [0.0] * len(years)
-    for name, c in series:
-        vals = [ann[y]["founding_member_discount_by_market_zar"][name] / 1e3 for y in years]
-        ax.bar(range(len(years)), vals, 0.5, bottom=bottom, color=T[c], edgecolor=T["bg"], linewidth=1.2)
-        bottom = [b + v for b, v in zip(bottom, vals)]
-    vals = [ann[y]["pilot_discount_zar"] / 1e3 for y in years]
-    ax.bar(range(len(years)), vals, 0.5, bottom=bottom, color=T["slate"], edgecolor=T["bg"], linewidth=1.2)
-    bottom = [b + v for b, v in zip(bottom, vals)]
-    for i, y in enumerate(years):
-        pct = (ann[y]["founding_member_discount_zar"] + ann[y]["pilot_discount_zar"]) / ann[y]["subscriptions_gross_zar"] * 100 if ann[y]["subscriptions_gross_zar"] else 0
-        ax.text(i, bottom[i] + max(bottom) * 0.015, f"R{bottom[i]:,.0f}k\n{pct:.1f}% of gross subs", ha="center", va="bottom", fontsize=10, fontweight="bold", color=T["ink"])
-    ax.set_xticks(range(len(years)))
-    ax.set_xticklabels([f"{FY[y]}\n{FY_SUB[y]}" for y in years], color=T["ink"])
-    ax.set_ylim(0, max(bottom) * 1.25)
+    vals = [x / 1e3 for x in disc[:n]]
+    ax.bar(range(n), vals, 0.6, color=T["orange"])
+    top = max(vals) if max(vals) > 0 else 1
+    for i, v in enumerate(vals):
+        if v > 0:
+            ax.text(i, v + top * 0.02, f"R{v:,.1f}k", ha="center", va="bottom", fontsize=10, fontweight="bold", color=T["ink"])
+    ax.set_xticks(range(n))
+    ax.set_xticklabels(mb["labels"][:n], color=T["ink"])
+    ax.set_ylim(0, top * 1.2)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"R{v:,.0f}k"))
-    footer(fig, T, "Founding Member: 30% off the first 2 monthly bills (Solo & SME, not Agency); annual plans +2 months. Source: FluxMuse model v2.")
+    footer(fig, T, "South African Solo & SME sign-ups (Nano to Scale), not Agency, Corporate or Custom. End date proposed, not set. Source: FluxMuse model v3.")
     return fig
 
 
@@ -520,7 +525,7 @@ def chart_fx_shock(D, T, suffix):
     fig = new_fig(T, suffix)
     worst = R[names[2]]["change_vs_base_zar"]
     header(fig, T, "FX shock: ZAR 15% stronger vs NGN, KES, GHS and USD",
-           f"Base case, R million; shock from Oct 2028. Without repricing FY5 revenue moves {fmt_rm(worst['fy5_revenue_zar'])}, FY5 EBITDA {fmt_rm(worst['fy5_ebitda_zar'])}")
+           f"Base case, R million; shock from {D['fx_shock']['definition'].split(' from ')[1].split(' (')[0]}. Without repricing FY5 revenue moves {fmt_rm(worst['fy5_revenue_zar'])}, FY5 EBITDA {fmt_rm(worst['fy5_ebitda_zar'])}")
     legend_row(fig, T, list(zip(short, colours)), 0.80)
     for k, (title, key) in enumerate(metrics):
         ax = fig.add_axes([0.05 + k * 0.19, 0.16, 0.16, 0.52])
@@ -540,9 +545,9 @@ def chart_fx_shock(D, T, suffix):
         d = R[names[2]][key] - base
         ax.text(0.5, -0.06, f"no repricing: {'+' if d >= 0 else '-'}R{abs(d) / 1e6:,.1f}m", transform=ax.transAxes, ha="center", va="top", fontsize=9, color=T["muted"])
     prof = all(R[n]["profitable_on_seed_alone"] for n in names)
-    fig.text(0.04, 0.085, "Profitable on the R25m seed alone in all three cases" if prof else "The shock breaks the R25m profitability constraint in at least one case",
+    fig.text(0.04, 0.085, "Profitable on the R25m seed alone in all three cases" if prof else ("Base already misses the R25m profitability test; the shock changes the size of the gap" if not R[names[0]]["profitable_on_seed_alone"] else "The shock breaks the R25m profitability constraint in at least one case"),
              fontsize=10, fontweight="bold", color=T["ink"])
-    footer(fig, T, "Repricing on = quarterly review restores ZAR value one quarter after drift exceeds 10%. Source: FluxMuse Financial Model v2, Sensitivity sheet.")
+    footer(fig, T, "Repricing on = quarterly review restores ZAR value one quarter after drift exceeds 10%. Source: FluxMuse Financial Model v3, Sensitivity sheet.")
     return fig
 
 

@@ -769,18 +769,27 @@
     "monthly_plans": "30% off the first 2 monthly bills; churn of 8% between bill 1 and 2 applied to the second discounted bill",
     "annual_plans": "No Founding Member discount modelled on annual plans [[CONFIRM]]",
     "eligible": "South African Solo and SME sign-ups (Nano to Scale), including the first group and Free users who upgrade while it runs; not Agency, Corporate or Custom; does not stack with partner wholesale",
-    "window": {
+    "windows": {
       "South Africa": "Oct 2026 - Mar 2027 (end date proposed, not set) [[CONFIRM]]",
       "Nigeria / Kenya / Ghana": "none",
       "USD markets": "none"
     },
-    "signup_uplift_pct": 20,
+    "window_signup_uplift_pct": 20,
     "discount_cost_by_fy_zar": {
       "FY1": 32143,
       "FY2": 0,
       "FY3": 0,
       "FY4": 0,
       "FY5": 0
+    },
+    "discount_cost_by_market_fy_zar": {
+      "South Africa": [
+        32143,
+        0,
+        0,
+        0,
+        0
+      ]
     },
     "launch_discounts_pct_of_gross_subscriptions_fy1_fy5": [
       1.91,
@@ -1605,6 +1614,17 @@
       "result": "Conservative as modelled (1.4x gates): min post-seed cash R-20.47M, profitable on seed alone: No. Smallest gate multiplier that passes: 2.75; smallest salary cut: 35%."
     }
   ],
+  "base_levers_to_pass_r25m_test": {
+    "profitable_as_modelled": false,
+    "funding_gap_to_hold_buffer_zar": 20002808,
+    "funding_gap_to_stay_above_zero_zar": 17002808,
+    "gate_multiplier": 2.05,
+    "non_founder_salary_cut_pct": 32,
+    "signup_volume_multiplier": 3.25,
+    "conversion_multiplier": 3.05,
+    "free_upgrade_pct_per_month": 0.035,
+    "seed_amount_zar": 46000000
+  },
   "sensitivity_base": {
     "rows_churn_multiplier": [
       0.7,

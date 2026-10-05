@@ -71,7 +71,7 @@ def payroll_cut_ov(cut):
 def smallest_fix(scen_idx, base_ov):
     """Smallest gate-multiplier increase and smallest uniform non-founder payroll cut that pass the constraint."""
     base_gm = I.build_params(scen_idx, base_ov)["gate_mult"]
-    grid = [round(base_gm + 0.05 * k, 2) for k in range(0, 31)]
+    grid = [round(base_gm + 0.05 * k, 2) for k in range(0, 61)]
     gm_fix = None
     lo, hi = 0, len(grid) - 1
     if ok(pack(scen_idx, {**base_ov, "gate_mult": grid[hi]})):
@@ -93,6 +93,39 @@ def smallest_fix(scen_idx, base_ov):
                 lo = mid + 1
         cut_fix = lo
     return gm_fix, cut_fix
+
+
+def lever_fix(scen_idx, key, start, step, n, base_ov=None):
+    """Smallest value of one lever (start + k * step, k = 0..n) that passes the R25M constraint; None if none does."""
+    base_ov = base_ov or {}
+    grid = [round(start + step * k, 4) for k in range(n + 1)]
+    if not ok(pack(scen_idx, {**base_ov, key: grid[-1]})):
+        return None
+    lo, hi = 0, n
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if ok(pack(scen_idx, {**base_ov, key: grid[mid]})):
+            hi = mid
+        else:
+            lo = mid + 1
+    return grid[lo]
+
+
+def base_levers(res):
+    """Base case: which single lever, moved alone, restores profitability on the R25M seed (honest diagnostics, not adopted)."""
+    b = res["Base"]
+    out = {"profitable_as_modelled": ok(b), "funding_gap_to_hold_buffer_zar": b["SV"]["k_buf_short"],
+           "funding_gap_to_stay_above_zero_zar": b["SV"]["k_funding_gap"]}
+    if ok(b):
+        return out
+    gm, cut = smallest_fix(2, {})
+    out["gate_multiplier"] = gm
+    out["non_founder_salary_cut_pct"] = cut
+    out["signup_volume_multiplier"] = lever_fix(2, "vol_mult", 1.0, 0.05, 80)
+    out["conversion_multiplier"] = lever_fix(2, "conv_mult", 1.0, 0.05, 80)
+    out["free_upgrade_pct_per_month"] = lever_fix(2, "free_conv", 0.005, 0.0025, 40)
+    out["seed_amount_zar"] = lever_fix(2, "seed_amount", 25000000, 1000000, 40)
+    return out
 
 
 def sensitivity(res):
@@ -185,7 +218,19 @@ def sensitivity(res):
             f", or cut all non-founder salaries by {diag['cut_fix']}%." if (diag["gm_fix"] or diag["cut_fix"] is not None) else
             "No cut needed.")
     blocks.append(blk("Conservative: constraint check and the smallest cost cut that fixes it", list(cruns), cruns, c_rows, note))
-    return {"grid": grid, "blocks": blocks, "fx": fx, "disc": disc, "pilot": pilot, "diag": diag}
+    levers = base_levers(res)
+    lv = [("Raise the hiring & launch MRR-gate multiplier to", levers.get("gate_multiplier"), "x"),
+          ("Cut every non-founder salary by", levers.get("non_founder_salary_cut_pct"), "%"),
+          ("Sign-up volume multiplier (all markets)", levers.get("signup_volume_multiplier"), "x"),
+          ("Conversion multiplier (direct paid and Free upgrades)", levers.get("conversion_multiplier"), "x"),
+          ("Free-to-paid upgrades per month", levers.get("free_upgrade_pct_per_month"), "rate"),
+          ("Seed size instead of R25M", levers.get("seed_amount_zar"), "zar")]
+    blocks.append({"title": "Base: does it reach break-even on the R25M seed? Single levers that would restore the test (each moved alone; NOT adopted)",
+                   "cols": ["Value needed"], "note": "Blank = no value in the searched range passes on its own. Funding gap to hold the R3.0M buffer: "
+                   f"R{levers['funding_gap_to_hold_buffer_zar'] / 1e6:,.1f}M.",
+                   "rows": [(lab, "text", [("not within range" if v is None else (f"{v:.2f}x" if u == "x" else f"{v}%" if u == "%" else f"{v:.2%}" if u == "rate" else f"R{v / 1e6:,.0f}M"))])
+                            for lab, v, u in lv] if not levers["profitable_as_modelled"] else []})
+    return {"grid": grid, "blocks": blocks, "fx": fx, "disc": disc, "pilot": pilot, "diag": diag, "levers": levers}
 
 
 # ---------------------------------------------------------------------------
@@ -548,9 +593,10 @@ def summary_json(res, sens, uof):
             "monthly_plans": f"{p['fm_disc']:.0%} off the first 2 monthly bills; churn of {p['fm_new_churn']:.0%} between bill 1 and 2 applied to the second discounted bill",
             "annual_plans": "No Founding Member discount modelled on annual plans [[CONFIRM]]",
             "eligible": "South African Solo and SME sign-ups (Nano to Scale), including the first group and Free users who upgrade while it runs; not Agency, Corporate or Custom; does not stack with partner wholesale",
-            "window": {"South Africa": f"{F.mlabel(p['fm_start'])} - {F.mlabel(p['fm_end'])} (end date proposed, not set) [[CONFIRM]]", "Nigeria / Kenya / Ghana": "none", "USD markets": "none"},
-            "signup_uplift_pct": round(p["fm_uplift"] * 100),
+            "windows": {"South Africa": f"{F.mlabel(p['fm_start'])} - {F.mlabel(p['fm_end'])} (end date proposed, not set) [[CONFIRM]]", "Nigeria / Kenya / Ghana": "none", "USD markets": "none"},
+            "window_signup_uplift_pct": round(p["fm_uplift"] * 100),
             "discount_cost_by_fy_zar": fm_cost,
+            "discount_cost_by_market_fy_zar": {I.MARKET_SHORT[m]: [r0(AV[f"a_fm_cost_{m}"][y]) for y in A.YEARS] for m in I.WINDOW_MKTS},
             "launch_discounts_pct_of_gross_subscriptions_fy1_fy5": [round(AV["a_disc_pct"][y] * 100, 2) for y in A.YEARS],
             "option_comparison": {name: {"fy1_revenue_zar": r0(r["AV"]["a_rev"][1]), "fy2_revenue_zar": r0(r["AV"]["a_rev"][2]),
                                          "discount_cost_fy1_fy3_zar": r0(sum(r["AV"]["a_fm_cost"][1:4])),
@@ -590,6 +636,7 @@ def summary_json(res, sens, uof):
             "smallest_uniform_non_founder_salary_cut_pct_that_passes": diag["cut_fix"],
         },
         "calibration_iterations": iterations,
+        "base_levers_to_pass_r25m_test": {k: (r0(v) if k.endswith("_zar") and v is not None else v) for k, v in sens["levers"].items()},
         "sensitivity_base": {
             "rows_churn_multiplier": sens["grid"]["churn"], "cols_new_customer_volume_multiplier": sens["grid"]["vol"],
             "fy3_revenue_zar_m": [[rm(x) for x in row] for row in sens["grid"]["tables"][0]["values"]],
