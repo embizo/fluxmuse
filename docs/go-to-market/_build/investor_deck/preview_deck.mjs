@@ -51,7 +51,7 @@ function slideHTML(s) {
     }
   });
   return `<!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;700&display=block" rel="stylesheet">
+<!-- Poppins and Inter are installed locally; no web-font fetch (offline builds) -->
 <style>html,body{margin:0;width:${L.w * PX}px;height:${L.h * PX}px;overflow:hidden;background:#${s.bg}}
 .e{position:absolute}.tb{display:flex;flex-direction:column}.tb .in{width:100%;overflow-wrap:break-word}
 .tb.m{justify-content:center}.tb.b{justify-content:flex-end}</style></head><body>${h}</body></html>`;
@@ -63,7 +63,7 @@ function textBox(e, i) {
 }
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const b = await launch({ port: 9371 });
+const b = await launch({ port: 9400 + Math.floor(Math.random() * 500) });
 const report = [];
 try {
   await b.setViewport(Math.round(L.w * PX), Math.round(L.h * PX), 1.25);

@@ -35,7 +35,12 @@ DECKS = GTM / "04_Investor_Pitch_Deck"
 EMU_IN = 914400
 
 FORBIDDEN = [r"200\+", r"\b4\.9\b", r"snapscan", r"stitch", r"lifetime", r"for life", r"life of your account",
-             r"40\s*[–-]\s*60\s*%", r"guarantee", r"flutterwave", r"payfast", r"m-pesa", r"R18\.5(?![0-9])", r"18,500,000",
+             r"40\s*[–-]\s*60\s*%", r"money.back", r"refund", r"guaranteed (results|sales|roi)",
+             # CURRENT_OFFER.md §5 never-write list and stale 11 Sept facts
+             r"(?<!no )free trials?", r"free month", r"14.days? free", r"14-day", r"try it free", r"risk.free", r"no card required",
+             r"our customers", r"trusted by", r"\bproven\b", r"\b10x\b(?! monthly)", r"gauteng", r"pilot (brand|cohort|result|ends|starts)",
+             r"\b12 brands\b", r"1 dec(ember)? 2026", r"31 jan(uary)? 2027", r"R7,999", r"R5,599", r"23 (african |rail.covered )?countries",
+             r"five (payment )?rails", r"5 payment rails", r"R25M", r"US\$1\.35M", r"R238", r"Mar(ch)? 2029", r"flutterwave", r"payfast", r"m-pesa", r"R18\.5(?![0-9])", r"18,500,000",
              r"\b335\b", r"founding member[^.\n]{0,60}(R5,599|R3,999)", r"(R5,599|R3,999)[^.\n]{0,40}founding member"]
 LEFTOVER = r"lorem|ipsum|\bTODO\b|\bx{3,}\b|\[insert|click to (add|edit)"
 MIN_PT = {"body": 14, "card": 14, "chip": 14, "placeholder": 14, "table": 14, "title": 24, "eyebrow": 11,
@@ -45,7 +50,7 @@ NOTES_MIN, NOTES_MAX = 80, 150
 WORD_ROLES = {"body", "card", "chip"}
 WORD_LIMIT = 150  # investor slides carry more evidence than the brand deck
 
-NUM_R = re.compile(r"[−-]?R\s?\d[\d,]*(?:\.\d+)?\s?(?:k|K|M|bn)?")
+NUM_R = re.compile(r"[−-]?R ?\d[\d,]*(?:\.\d+)?(?:k|K|M|bn)?")
 NUM_P = re.compile(r"[−-]?[<>~≈+]?\s?\d+(?:\.\d+)?\s?%")
 
 
@@ -130,7 +135,7 @@ def build_corpus():
                 if val is not None:
                     add(pcts, val, f"model{path}: '{tok}'")
     for name in ("00_FACTS_AND_ASSUMPTIONS.md", "06_Financial_Model/Financial_Model_Notes.md",
-                 "07_Case_Studies/Gauteng_Pilot_Case_Studies.md"):
+                 "08_Prospects/CURRENT_OFFER.md"):
         txt = (GTM / name).read_text()
         for tok in NUM_R.findall(txt):
             val, _ = parse_r(tok)
@@ -397,6 +402,10 @@ def main():
             for item in rep:
                 issues.append((f"s{item['slide']}", "overflow", item["msg"]))
             contact_sheets(pv / "png", path.stem)
+        ask = f"R{json.loads((GTM / '06_Financial_Model' / 'model_summary.json').read_text())['seed_zar'] / 1e6:.0f}M"
+        alltext = "\n".join(sh.text_frame.text for sl_ in prs.slides for sh in sl_.shapes if sh.has_text_frame)
+        if ask != "R46M" or alltext.count(ask) < 3:
+            issues.append((path.name, "ASK", f"seed ask {ask} expected R46M and on title, ask and close slides"))
         notes_ok = all(s.has_notes_slide and s.notes_slide.notes_text_frame.text.strip() for s in prs.slides)
         print(f"\n== {path.name}: {len(prs.slides)} slides, notes on every slide: {notes_ok}")
         print(f"   numbers on slides: {len(traced)} traced, {len(untraced)} untraced")

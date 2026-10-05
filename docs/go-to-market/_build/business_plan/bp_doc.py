@@ -23,8 +23,12 @@ BASE = M["scenarios"]["Base"]
 ANN = M["annual"]
 FY = ["FY1", "FY2", "FY3", "FY4", "FY5"]
 PERIODS = [a["period"] for a in ANN]
-DOC_DATE = "September 2026"
-VERSION = "v1.0"
+DOC_DATE = "October 2026"
+VERSION = "v2.0"
+MV = M["version"]
+SEED_M = f"R{M['seed_zar'] / 1e6:.0f}m"
+SEED_WORDS = f"R{M['seed_zar'] / 1e6:.0f} million"
+MODEL_LINE = f"FluxMuse Financial Model {MV}, model date {M['model_date']}"
 
 
 # ---------------------------------------------------------------- number formatting
@@ -75,7 +79,7 @@ class BPDoc(FMDoc):
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         from fmdoc import PPR_ORDER, border_el, put
         put(p._p.get_or_add_pPr(), border_el("w:pBdr", ["top"], sz=4, color="D9DDE2", space=6), PPR_ORDER)
-        self.rich(p, "Fluxmuse Pty Ltd · fluxmuse.ai · Business plan · Confidential · Page ", size=8, color=GREY)
+        self.rich(p, "Fluxmuse (Pty) Ltd · fluxmuse.ai · Business plan · Confidential · Page ", size=8, color=GREY)
         self._field(p, "PAGE")
         self.rich(p, " of ", size=8, color=GREY)
         self._field(p, "NUMPAGES")
@@ -106,28 +110,27 @@ class BPDoc(FMDoc):
         p.paragraph_format.space_after = Pt(0)
         self._run(p, "FLUX", font=HEAD_FONT, size=30, color=DEEP, bold=True)
         self._run(p, "MUSE", font=HEAD_FONT, size=30, color=SLATE, bold=True)
-        self.para("AI Marketing & WhatsApp Commerce for Africa", size=11, color=GREY, after=18)
+        self.para("An AI marketing team and a WhatsApp shop for African small businesses", size=11, color=GREY, after=18)
         self.eyebrow("Business plan")
         p = self.doc.add_paragraph(style="Title")
         p.paragraph_format.space_after = Pt(4)
-        self.rich(p, "An AI marketing team and a checkout, inside the chat app Africa already uses")
-        self.para(f"Seed raise of R25 million · {DOC_DATE}", size=13, color=SLATE, after=12)
+        self.rich(p, "An AI marketing team and a shop, inside the chat app Africa already uses")
+        self.para(f"Seed raise of {SEED_WORDS} · {DOC_DATE}", size=13, color=SLATE, after=12)
         self.rule(ORANGE, 24, after=10)
-        self.figure("screenshots/composites/hero-laptop-phone_white.png",
-                    "FluxMuse on the web app and in WhatsApp: an AI marketing team that plans, creates and "
-                    "publishes, and a catalog, cart and checkout inside the chat.",
-                    "Laptop showing the FluxMuse web app beside a phone showing a WhatsApp order confirmation "
-                    "with a Yoco card payment", width_cm=16.0)
+        self.figure("infographics/how-fluxmuse-works.png",
+                    "One loop, run by your AI marketing team. Newly launched in South Africa.",
+                    "Loop diagram: Plan, Create, Publish, Sell on a WhatsApp shop, Learn, around the AI "
+                    "marketing team", width_cm=16.0)
         self.kv_table([
-            ("Company", "Fluxmuse Pty Ltd (South Africa) · registration number [[COMPANY REGISTRATION NUMBER]]"),
+            ("Company", "Fluxmuse (Pty) Ltd (South Africa) · registration number [[COMPANY REGISTRATION NUMBER]]"),
             ("Document", f"Business Plan · {DOC_DATE} · Confidential · version {VERSION}"),
-            ("Prepared by", "[[FOUNDER NAME, TITLE]], Fluxmuse Pty Ltd\n[[EMAIL]] · [[PHONE / WHATSAPP]]"),
+            ("Prepared by", "Thabo Malebadi, [[TITLE]], Fluxmuse (Pty) Ltd\nthabo@fluxmuse.com · [[PHONE / WHATSAPP]]"),
             ("Prepared for", "[[INVESTOR / FUNDER NAME]]"),
-            ("Financial model", "FluxMuse Financial Model v2, model date 11 September 2026 (Base case)"),
+            ("Financial model", f"{MODEL_LINE} (Base case)"),
         ], caption="Layout: document details")
         self.para("Confidential. This document contains commercially sensitive information and is provided for "
                   "evaluation only. Figures in South African rand (ZAR) unless stated. US dollar equivalents at "
-                  "R18.50 = US$1.", size=8.5, color=GREY, before=8)
+                  "R18.50 = US$1. No VAT: Fluxmuse (Pty) Ltd is not VAT-registered.", size=8.5, color=GREY, before=8)
         self.page_break()
 
     def figure(self, rel_path, caption, alt, width_cm=13.6):
@@ -138,7 +141,7 @@ class BPDoc(FMDoc):
     def note(self, text):
         self.para(text, size=9, color=GREY, italic=True, after=8)
 
-    def source(self, text="FluxMuse Financial Model v2 (Base case), 11 September 2026."):
+    def source(self, text=f"{MODEL_LINE} (Base case); Financial_Model_Notes.md."):
         self.para("Source: " + text, size=8.5, color=GREY, after=10)
 
     def fy_table(self, caption, rows, first_header="R million unless stated", size=9.5,
