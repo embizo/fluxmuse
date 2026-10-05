@@ -24,7 +24,9 @@ number is activated.
 | Enterprise | **Agency** | R9,999 | R99,990 | unlimited | 80 | BYOC, white-label, multi-client |
 | Enterprise | Custom | on request | | | | sold by consultation |
 
-- **AI credits:** 1 credit is about R1 of real provider cost (chat 1, image 2, 8-second 720p video 7). Monthly
+- **AI credits:** 1 credit is R0.15 of real provider cost (corrected 2026-10-05 from `ai-credit-math.ts`; this line
+  said "about R1"). A chat reply or a voice-note transcription is usually well under 1 credit, an image about 8, a
+  short 720p video about 44 (`docs/fluxy-platform-guide.md` in the app repo). Monthly
   allowances changed on 24 Sept, so **never quote per-tier credit numbers**; point to the pricing page.
 - **Launch pricing: CONFIRMED 2026-10-01, still live.** The `founding-member-za` promotion stays on: **30% off the first
   two monthly billing cycles** for South African sign-ups. It is a discount, not a free period. The generator shows it
