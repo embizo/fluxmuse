@@ -9,6 +9,8 @@ an AI-presenter video under their brand, and does it bring more WhatsApp
 conversations or orders than simpler video formats? A "wow" reaction to a demo
 isn't the answer we need.
 
+**Run pack:** `Avatar_Test_Run/`: day-by-day runbook, scoring sheet with the gates built in, tracking codes, a FluxMuse dry run, and production prompts. Start there.
+
 **Run time:** 2 weeks, one sprint (see `Sprint_Report_Template.md`).
 **Who:** 6–10 small businesses in Gauteng: the first group we're setting up by
 hand, plus prospects who agree to a demo built from their public product
