@@ -63,7 +63,8 @@ function textBox(e, i) {
 }
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const b = await launch({ port: 9371 });
+// Random port so parallel builds (other decks use 9371-style fixed ports) don't share a browser.
+const b = await launch({ port: Number(process.env.PREVIEW_PORT) || 9400 + Math.floor(Math.random() * 500) });
 const report = [];
 try {
   await b.setViewport(Math.round(L.w * PX), Math.round(L.h * PX), 1.25);
