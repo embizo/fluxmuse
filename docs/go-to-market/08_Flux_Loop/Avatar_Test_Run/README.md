@@ -11,6 +11,7 @@ what, on which day*, and holds the materials.
 | `Tracking_Codes.md` | How each video gets its own WhatsApp link and code, so every conversation traces back to one video |
 | `FluxMuse_Dry_Run.md` | The whole test run on FluxMuse itself first ("brand 0"), with all three formats scripted |
 | `Production_Prompts.md` | Avatar image prompts, the voice-check script, and the production log rules |
+| `Language_Voice_Options.md` | Voice (text-to-speech) options per language, publishable vs check-only, with a suggested first try for each. Research from 5 Oct 2026; verify before buying |
 | `FluxMuse_Avatar_Test_Colab.ipynb` | Open-source route on a free Colab GPU: avatar images (SDXL / FLUX.1 schnell), English voice (Kokoro), Afrikaans voice check (MMS, internal only) and talking clips (SadTalker). Not yet run; treat the first run as a test |
 
 **Order:** do the dry run on FluxMuse first. It tests the process, the tools

@@ -79,6 +79,7 @@ Afrikaans voice. Meta MMS-TTS (`facebook/mms-tts-afr`) does, but it is
 non-commercial, so it serves the internal voice check only. For a publishable
 Afrikaans voiceover use a commercial tool: Google Cloud Text-to-Speech
 (`af-ZA` voices) or ElevenLabs (via Higgsfield, which supports Afrikaans).
+Options for every other language are in `Language_Voice_Options.md`.
 
 **Also listen for:**
 - The brand name "FluxMuse" pronounced the same way every time.
