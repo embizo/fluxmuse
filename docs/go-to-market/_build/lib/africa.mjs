@@ -1,5 +1,8 @@
 // Africa tile-grid cartogram data shared by the coverage map, rails matrix and market-entry graphics.
-// [iso, name, col, row, rails]. Rails ending in '*' = payouts only. soon = coming soon (no rail yet).
+// [iso, name, col, row, rails]. `rails` = what each provider CONTRACTS to cover, not what is live.
+// Status 2026-10-05 (facts §3, CURRENT_OFFER.md): only South Africa has live paid checkout (Paystack;
+// Yoco and Ozow for FluxMuse's own billing). pawaPay and Fincra are contracted, accounts pending.
+// Rails ending in '*' = payouts only. SOON = coming soon (no provider covers them yet).
 export const COUNTRIES = [
   ['SN', 'Senegal', 0, 0, ['pawaPay', 'Fincra']], ['BF', 'Burkina Faso', 2, 0, ['pawaPay', 'Fincra']], ['SS', 'South Sudan*', 7, 0, ['Fincra*']], ['ET', 'Ethiopia', 8, 0, ['pawaPay']],
   ['SL', 'Sierra Leone', 0, 1, ['pawaPay']], ['CI', "Côte d'Ivoire", 1, 1, ['Paystack', 'pawaPay', 'Fincra']], ['GH', 'Ghana', 2, 1, ['Paystack', 'pawaPay', 'Fincra']], ['BJ', 'Benin', 3, 1, ['pawaPay', 'Fincra']], ['NG', 'Nigeria', 4, 1, ['Paystack', 'pawaPay', 'Fincra']], ['CM', 'Cameroon', 5, 1, ['pawaPay', 'Fincra']], ['UG', 'Uganda', 7, 1, ['pawaPay', 'Fincra']], ['KE', 'Kenya', 8, 1, ['Paystack', 'pawaPay', 'Fincra']],
@@ -8,11 +11,13 @@ export const COUNTRIES = [
   ['ZW', 'Zimbabwe*', 7, 4, ['Fincra*']],
   ['ZA', 'South Africa', 6, 5, ['Yoco', 'Ozow', 'Paystack', 'Fincra']], ['LS', 'Lesotho', 7, 5, ['pawaPay']],
 ];
-// Coming soon: no secured rail covers them yet (facts §3). NA north-west of ZA, BW directly north of ZA.
+// Coming soon: no contracted provider covers them yet (facts §3). NA north-west of ZA, BW directly north of ZA.
 export const SOON = [['NA', 'Namibia', 5, 4], ['BW', 'Botswana', 6, 4]];
 
-// Billing currency per rail-covered country (facts §2): ZAR, local NGN/KES/GHS, USD for the other 19.
+// Billing currency once a market opens (facts §2): ZAR live; NGN/KES/GHS and USD priced, not yet on sale.
 export const billingOf = (iso) => ({ ZA: 'ZAR', NG: 'NGN', KE: 'KES', GH: 'GHS' }[iso] || 'USD');
+// Sales status: 'live' (paid checkout open), 'priced' (local prices set, not on sale), 'pending' (provider contracted, account pending).
+export const statusOf = (iso) => (iso === 'ZA' ? 'live' : ['NG', 'KE', 'GH'].includes(iso) ? 'priced' : 'pending');
 
 // Small tile-grid motif. hi(iso) -> 'on' | 'soft' | 'soon' | 'off'
 export function miniMap({ ts = 26, tg = 4, dark = false, hi, orange = '#FF6A00' }) {
