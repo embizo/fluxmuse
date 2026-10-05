@@ -262,10 +262,15 @@ Serviceable market (ASSUMPTION, from the 11 Sept model; the rebuilt model may ch
 
 ## 7. Fundraise
 
-- Round: **Seed, R25M (≈ US$1.35M)** (FACT, founder). Instrument (SAFE vs priced equity) `[[TBC]]`.
-- **The R25M must carry FluxMuse to profitability** (founder): the base case reaches EBITDA break-even and positive cash
-  flow on this round alone, with no Series A.
-- Use of funds (ASSUMPTION, 11 Sept split): Product & engineering 40% (R10.0M), Sales & marketing / partner programme 30%
-  (R7.5M), Market expansion (NG, KE, GH) & payments compliance 15% (R3.75M), Operations & working capital 15% (R3.75M).
-- **The financial model is being rebuilt** against the nine tiers and the no-pilot, no-trial facts. Decks and the business
-  plan must quote the rebuilt `06_Financial_Model/` outputs once they land, not figures from this file or the old model.
+- Round: **Seed, R46M (≈ US$2.49M)** (founder decision 2026-10-05: size the round to the model). Was R25M (≈ US$1.35M)
+  in the 11 Sept pack. Instrument (SAFE vs priced equity) `[[TBC]]`.
+- **Why R46M:** the rebuilt model (v3, 5 Oct) shows R25M no longer reaches profitability on the current offer (nine tiers,
+  no trials, Nano/Micro-led solo mix, R0.15 per AI credit) with the existing hiring plan. R45.1M is the smallest seed at
+  which the Base case passes; R46M is that, rounded up. `[[CONFIRM]]`
+- **The seed must carry FluxMuse to profitability:** in the Base case on R46M, cash never falls below the R3.0M buffer
+  (low R4.0M, Nov 2030) and EBITDA breaks even from Jan 2031, with no Series A. The headroom is thin, and the
+  Conservative case still falls short on R46M. Always say so alongside the claim.
+- Use of funds (ASSUMPTION, same 40/30/15/15 split): Product & engineering R18.4M, Sales & marketing / partner programme
+  R13.8M, Market expansion (NG, KE, GH) & payments compliance R6.9M, Operations & working capital R6.9M.
+- Every forecast figure comes from `06_Financial_Model/` (model_summary.json, Financial_Model_Notes.md). Don't quote
+  figures from the old v2 model.

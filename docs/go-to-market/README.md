@@ -25,7 +25,7 @@ business plan and financial model for **Fluxmuse (Pty) Ltd**, prepared September
 ## Before anything goes out
 
 1. Check every price, offer and capability claim against `08_Prospects/CURRENT_OFFER.md`. No free trials, no pilot, no customers or results, no money-back. Founding Member is 30% off the first two monthly bills for South African sign-ups, with no end date.
-2. Fill every `[[PLACEHOLDER]]` (team, advisors, anything marked `[[FOUNDER TO CONFIRM]]`) and confirm the **ASSUMPTION** items in `00_FACTS_AND_ASSUMPTIONS.md`, especially use of funds and market-size sources. (Settled: R25M seed that must reach profitability without a Series A.)
+2. Fill every `[[PLACEHOLDER]]` (team, advisors, anything marked `[[FOUNDER TO CONFIRM]]`) and confirm the **ASSUMPTION** items in `00_FACTS_AND_ASSUMPTIONS.md`, especially use of funds and market-size sources. (Settled 2026-10-05: R46M seed, sized so the Base case reaches profitability without a Series A; see `06_Financial_Model/Financial_Model_Notes.md`.)
 3. If you change a number in the financial model, regenerate `model_summary.json` and update the investor deck and business plan so all three agree.
 4. Only claim Meta permissions that are approved. Facebook/Instagram auto-publishing is being switched on; Instagram DMs and comments are not available.
 5. Payments: Paystack is live in South Africa only. Nigeria, Kenya and Ghana checkout is not available yet (Fincra/pawaPay pending).
