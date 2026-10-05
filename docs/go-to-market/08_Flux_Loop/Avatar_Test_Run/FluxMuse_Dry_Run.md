@@ -89,3 +89,29 @@ voiceover over it.
 Record everything on the sheet as business `00`. Leave business 00 out of the
 gate calculations: it's FluxMuse, not a test business. The **Gates** tab
 already excludes it.
+
+---
+
+## Status (5 Oct 2026)
+
+| Format | Status | What's needed |
+|---|---|---|
+| **B** (`AV00B`) | **Timing draft rendered:** `dry_run_output/AV00B_DRAFT_no_voice.mp4`, 25 s, 1080×1920, the four beats with burned-in captions over the dark infographics. No voice yet. | The Kokoro voiceover from the Colab notebook, then re-run the assembler with `--audio` (each beat stretches to fit its voice). |
+| **A** (`AV00A`) | Not made. | The notebook's avatar, voiceover and SadTalker hook/CTA clips, then `assemble_video.py A --audio … --clips …`. |
+| **C** (`AV00C`) | **Not filmed.** | Two 4-second vertical clips by Thabo himself. Not made with someone else's photo or a generated "Thabo": format C tests the real owner's face, and a fake founder is what the trust gate forbids. Record on the sheet as "owner didn't film" until then; the kit counts that as a result. |
+
+**Assembler:** `docs/go-to-market/_build/avatar_test/assemble_video.py` (ffmpeg via the
+`imageio-ffmpeg` pip package, Poppins/Inter for captions). Examples:
+
+```
+python3 docs/go-to-market/_build/avatar_test/assemble_video.py B --audio <unzipped>/audio
+python3 docs/go-to-market/_build/avatar_test/assemble_video.py A --audio <unzipped>/audio --clips <unzipped>/clips
+python3 docs/go-to-market/_build/avatar_test/assemble_video.py C --audio <unzipped>/audio --clips <dir with selfie_hook.mp4, selfie_cta.mp4>
+```
+
+Format A carries the "AI presenter" label for the whole video. Nothing is
+posted until the voiced versions exist and Thabo has watched them.
+
+**Noted from the draft:** the infographics' small print is hard to read at
+phone size, so the captions carry the message. If the voiced version still
+feels busy, make simpler single-message stills for the proof and offer beats.
