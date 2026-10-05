@@ -30,15 +30,16 @@ The FluxMuse version of this:
   WhatsApp chat → pay**. The narrow middle of the hourglass is a conversation,
   and that's where FluxMuse lives.
 - HubSpot's loop stops at marketing. **The Flux Loop has a Sell stage**:
-  catalog, cart and payment on 5 rails inside the chat. We don't have to
-  estimate "closed-won" value, because we record it. That's the strongest line
-  we can take from this talk.
+  catalog, cart and payment inside the chat. Once checkout is live, we won't
+  have to estimate "closed-won" value, because we'll record it. That's the
+  strongest line we can take from this talk. (Today checkout is built but not
+  yet tested end to end with real money, and only on Paystack in South Africa;
+  see `08_Prospects/CURRENT_OFFER.md` §3.)
 
 **Proposal: change the north-star metrics from volume to value.** The Analyst
-and all pilot reporting should lead with *conversations started, orders, GMV,
-revenue per conversation*, and treat reach and followers as secondary. That
-already matches the pilot KPI list in `00_FACTS` §6, so this is only a change
-of emphasis.
+and every report to a business should lead with *conversations started,
+orders, GMV, revenue per conversation*, and treat reach and followers as
+secondary.
 
 Don't reuse HubSpot's own numbers (traffic drop, lead growth, ROAS uplift) in
 our materials. They're HubSpot's claims about HubSpot, we haven't checked them,
@@ -85,7 +86,7 @@ It has two parts:
 - "How they talk" is the multilingual Creator's home ground: isiZulu, Pidgin,
   Swahili, Afrikaans, code-switching and township slang, not textbook
   translation.
-- Our customers' best voice-of-customer data is already in FluxMuse: their
+- For businesses using FluxMuse, their best voice-of-customer data will already be in it: their
   **WhatsApp conversations and orders**. Frequent questions, objections,
   compliments and the words buyers use can all feed the customer-taste half,
   with consent and within POPIA/NDPR.
@@ -109,9 +110,10 @@ It has two parts:
   profile and marks anything that "could belong to any business" for rewriting.
 
 **Proposal (GTM):** make the Taste Profile the first deliverable of every
-pilot brand's onboarding call, and use it in case studies as a before/after
-("generic AI post" vs "post written with this studio's taste profile"). That's
-a clear, honest demo that doesn't need any results numbers.
+onboarding call with the first group of businesses we set up by hand. Use its
+before/after ("generic AI post" vs "post written with this studio's taste
+profile") in sales demos too. It's a clear, honest demo that doesn't need any
+results numbers, which matters because FluxMuse has no customer results yet.
 
 ---
 
@@ -197,7 +199,7 @@ order paid inside WhatsApp is the closed-won event.
 
 **Blocked on:** Meta ads permissions and `business_management`, which are
 roadmap item 1 and **not approved**. Until then, this section is roadmap
-material only. Don't promise it to pilot brands.
+material only. Don't promise it to any business.
 
 ---
 
@@ -233,15 +235,20 @@ see.
   sprints build on earlier ones. That's the "every loop gets smarter" promise,
   and it makes switching away costly.
 
-**Proposal (pilot, now):** the Gauteng pilot runs until 30 November 2026,
-roughly five two-week sprints. Run each pilot brand in sprints now (a manual
-sprint report is fine) so that:
+**Proposal (now, by hand):** run every business in the first group in
+two-week sprints from its go-live date, with a manual sprint report. That:
 
-- the case studies in `07_Case_Studies/` can be written as "sprint 1 → sprint 5"
-  stories showing learning, not only end results;
-- the pilot tests the sprint report format before it becomes a product feature.
+- tests the sprint report format before it becomes a product feature;
+- fits the lead guarantee (3 qualified leads in 30 days), since two sprints
+  cover the guarantee window and the reports show progress against it;
+- builds, with each owner's written consent, the first real "sprint 1 → sprint N"
+  stories. These are the only case studies we can honestly publish, and only
+  once the data exists.
 
-`[[FOUNDER DECISION: adopt two-week sprints for the remaining pilot weeks]]`
+Start with FluxMuse itself: run our own marketing in sprints, using our own
+Taste Profile (`FluxMuse_Taste_Profile.md`), so the format is tested on us first.
+
+`[[FOUNDER DECISION: adopt two-week sprints for the first group and for FluxMuse's own marketing]]`
 
 ---
 
@@ -266,7 +273,7 @@ sprint report is fine) so that:
 
 | # | Item | Stage | Depends on | Size |
 |---|---|---|---|---|
-| 1 | Run the pilot in two-week sprints with a manual sprint report (`Sprint_Report_Template.md`) | Learn | Founder decision | Small, ops only |
+| 1 | Run FluxMuse's own marketing and each first-group business in two-week sprints with a manual sprint report (`Sprint_Report_Template.md`) | Learn | Founder decision | Small, ops only |
 | 2 | Taste Profile v1 as the first onboarding deliverable (`Taste_Profile_Template.md`) | Plan | Nothing | Small, ops only |
 | 3 | Value-first metrics in Analyst dashboards and reports | Learn | Nothing | Small |
 | 4 | Taste Profile stored per brand and read by Creator, Ads and chatbot | Plan/Create | Nothing | Medium |
