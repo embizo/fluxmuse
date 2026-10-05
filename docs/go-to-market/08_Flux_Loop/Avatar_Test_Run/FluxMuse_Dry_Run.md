@@ -96,8 +96,8 @@ already excludes it.
 
 | Format | Status | What's needed |
 |---|---|---|
-| **B** (`AV00B`) | **Timing draft rendered:** `dry_run_output/AV00B_DRAFT_no_voice.mp4`, 25 s, 1080×1920, the four beats with burned-in captions over the dark infographics. No voice yet. | The Kokoro voiceover from the Colab notebook, then re-run the assembler with `--audio` (each beat stretches to fit its voice). |
-| **A** (`AV00A`) | Not made. | The notebook's avatar, voiceover and SadTalker hook/CTA clips, then `assemble_video.py A --audio … --clips …`. |
+| **B** (`AV00B`) | **Voiced version rendered:** `dry_run_output/AV00B.mp4`, 24 s, 1080×1920, Kokoro-82M (Apache 2.0) voice `bf_emma` (British English; Kokoro has no South African voice), captions burned in over the dark infographics. Voice generated here on CPU with kokoro-onnx. Variants with `bf_isabella` and `bm_george` were made for the voice choice. The earlier no-voice timing draft is kept alongside. | Thabo picks the voice and watches it before anything is posted. |
+| **A** (`AV00A`) | **In progress.** Avatar 1 generated on Higgsfield (Soul 2.0, job `63fb3eae-96ad-4c0b-a31c-9072b1fdd90d`, seed 366169, 1 credit; it's in the FluxMuse Higgsfield gallery). The image couldn't be downloaded into the build environment (its CDN is blocked there), so the talking clips aren't made yet. SadTalker weights are downloaded for a CPU run. | Save the avatar from Higgsfield and upload it to the session; then SadTalker hook/CTA clips and `assemble_video.py A`. |
 | **C** (`AV00C`) | **Not filmed.** | Two 4-second vertical clips by Thabo himself. Not made with someone else's photo or a generated "Thabo": format C tests the real owner's face, and a fake founder is what the trust gate forbids. Record on the sheet as "owner didn't film" until then; the kit counts that as a result. |
 
 **Assembler:** `docs/go-to-market/_build/avatar_test/assemble_video.py` (ffmpeg via the
