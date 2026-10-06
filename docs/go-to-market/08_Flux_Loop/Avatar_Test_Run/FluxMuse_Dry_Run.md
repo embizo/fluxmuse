@@ -67,8 +67,9 @@ voiceover over it.
 ---
 
 ## Posting (FluxMuse's own channels)
-- **Order:** C on day 1, A on day 4, B on day 7. This is the reverse of most
-  businesses, so the rotation is tested.
+- **Planned order:** C on day 1, A on day 4, B on day 7. **Actual:** B went first
+  (6 Oct 2026); A and C not posted (founder prefers no avatar; C not filmed).
+  Recorded on the sheet's Brands tab so the rotation isn't misread.
 - **Where:** FluxMuse's WhatsApp Status and TikTok. TikTok video posting is
   approved; switch on its AI-generated label for A. Don't post to Facebook or
   Instagram through the app, because auto-posting isn't live; post there by
@@ -92,11 +93,11 @@ already excludes it.
 
 ---
 
-## Status (5 Oct 2026)
+## Status (6 Oct 2026)
 
 | Format | Status | What's needed |
 |---|---|---|
-| **B** (`AV00B`) | **Voiced version rendered:** `dry_run_output/AV00B.mp4`, 24 s, 1080×1920, Kokoro-82M (Apache 2.0) voice `bf_emma` (British English; Kokoro has no South African voice), captions burned in over the dark infographics. Voice generated here on CPU with kokoro-onnx. CTA re-voiced and re-rendered 5 Oct after the founder asked for the team line instead of a named person. Variants with `bf_isabella` and `bm_george` were made for the voice choice. The earlier no-voice timing draft is kept alongside. | Thabo picks the voice and watches it before anything is posted. |
+| **B** (`AV00B`) | **Voiced version rendered:** `dry_run_output/AV00B.mp4`, 24 s, 1080×1920, Kokoro-82M (Apache 2.0) voice `bf_emma` (British English; Kokoro has no South African voice), captions burned in over the dark infographics. Voice generated here on CPU with kokoro-onnx. CTA re-voiced and re-rendered 5 Oct after the founder asked for the team line instead of a named person. Variants with `bf_isabella` and `bm_george` were made for the voice choice. The earlier no-voice timing draft is kept alongside. | **Posted 6 Oct 2026:** TikTok 08:15, WhatsApp Status 08:20 (SAST), with the `AV00B` link. Voice: emma. Measure 72 h later (9 Oct, ~08:20): views from screenshots, conversations by searching Live Chat for `AV00B`, orders, any AI/fake/scam comments. |
 | **A** (`AV00A`) | **Rendered:** `dry_run_output/AV00A.mp4`, 24 s, emma voice, "AI presenter" label. Visuals: a 30 s animated avatar clip the founder made elsewhere (1280×720, cropped to 9:16) on the hook and CTA beats, infographics in the middle. The clip's own speech was a different script and opened in a customer's voice, so only the footage is used; the lips therefore don't match the words. A Wav2Lip re-sync was tried on CPU and its face detector failed on the cropped frames; not pursued. Note: the avatar's jacket has three shoulder stripes (adidas-style trade dress), so regenerate without it before any public use. **Founder's verdict on watching A next to B: the video is better with no avatar.** Recorded as the first trust-gate signal for business 00. | Nothing further unless the test businesses disagree. |
 | **C** (`AV00C`) | **Not filmed.** | Two 4-second vertical clips by Thabo himself. Not made with someone else's photo or a generated "Thabo": format C tests the real owner's face, and a fake founder is what the trust gate forbids. Record on the sheet as "owner didn't film" until then; the kit counts that as a result. |
 
