@@ -253,6 +253,39 @@ def fill_sample(wb):
     wb["Gates"]["B4"] = 80
 
 
+def fill_dry_run(wb):
+    """Business 00 (FluxMuse) as actually run. Real record, kept out of the gates."""
+    b = wb["Brands"]
+    b.cell(row=FIRST_BRAND_ROW, column=11, value="B first (6 Oct 2026); A, C not posted")
+    v = wb["Videos"]
+    ra, rb, rc = FIRST_VID_ROW, FIRST_VID_ROW + 1, FIRST_VID_ROW + 2
+    # A: avatar
+    v.cell(row=ra, column=4, value="N")
+    v.cell(row=ra, column=5, value="N")
+    v.cell(row=ra, column=11, value="N")
+    v.cell(row=ra, column=12, value=2)
+    v.cell(row=ra, column=13, value=0)
+    v.cell(row=ra, column=14, value=150)
+    v.cell(row=ra, column=15, value="Founder's animated avatar clip (Higgsfield) + Kokoro bf_emma + assemble_video.py; SadTalker/Wav2Lip re-sync failed on CPU")
+    v.cell(row=ra, column=16, value="Founder: 'better with no avatar'. Lips don't match the words. 1 Higgsfield credit for the Soul image (rand value not known); clip made on the founder's own account.")
+    # B: product + voiceover
+    v.cell(row=rb, column=4, value="Y")
+    v.cell(row=rb, column=5, value="Y")
+    v.cell(row=rb, column=6, value="6 Oct 2026: TikTok 08:15, WhatsApp Status 08:20 (SAST)")
+    v.cell(row=rb, column=12, value=1)
+    v.cell(row=rb, column=13, value=0)
+    v.cell(row=rb, column=14, value=90)
+    v.cell(row=rb, column=15, value="Kokoro-82M bf_emma (Apache 2.0) + assemble_video.py (ffmpeg)")
+    v.cell(row=rb, column=16, value="Posted first, against the planned C, A, B order. Views/conversations/orders due 72 h after post (9 Oct, ~08:20). TikTok posted via Higgsfield connector with 'Your brand' and AI-content labels.")
+    # C: founder selfie
+    v.cell(row=rc, column=4, value="N")
+    v.cell(row=rc, column=5, value="N")
+    v.cell(row=rc, column=12, value=0)
+    v.cell(row=rc, column=13, value=0)
+    v.cell(row=rc, column=14, value=0)
+    v.cell(row=rc, column=16, value="Owner didn't film.")
+
+
 def main():
     wb = Workbook()
     brands_sheet(wb)
@@ -260,6 +293,7 @@ def main():
     voice_sheet(wb)
     tracking_sheet(wb)
     gates_sheet(wb)
+    fill_dry_run(wb)
     out = OUT
     if "--sample" in sys.argv:
         fill_sample(wb)
