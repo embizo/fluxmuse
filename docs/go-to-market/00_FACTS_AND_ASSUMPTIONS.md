@@ -180,6 +180,17 @@ top. Don't quote this until FluxMuse checkout has been tested end to end with re
   expansion opportunity once those accounts go live. Present them as "contracted, pending", clearly labelled.
 - Also present in code but **not** part of the payments story: Flutterwave, M-Pesa direct, PayFast, SnapScan, Stitch.
   Never name them.
+- **Founder rule (8 Oct 2026): never name a payment provider or gateway in any public post, ad, caption, video or
+  website copy.** That includes Paystack, Yoco, Ozow, pawaPay and Fincra as well as the five above. When payments come
+  up, use the approved line: **"via our payment partners, banks and mobile money wallets across 23 African
+  countries."** The provider table above is internal reference only. A post that named M-Pesa, Paystack, Yoco and
+  PayFast went out on 7 Oct 2026 from the Flux_Agent cron; the cause is fixed in code
+  (`foundation-zero-point#176`, deploy of `flux-agent-run` pending).
+- `[[CONFIRM]]` **The approved line and the live facts disagree.** Paid checkout works in South Africa only, and
+  pawaPay and Fincra are contracted with accounts pending (rule above: don't present a country count as live
+  coverage). Until the founder confirms that 23 countries is true and live, use the line only where it is true, or
+  label it "expanding across 23 African countries". Investor and legal documents may still name providers where
+  accuracy requires it: founder to confirm.
 
 ### Market entry sequence (FACT, founder; timing not fixed)
 1. **South Africa:** home market. Opening with a small first group of businesses, set up by hand, then national.
