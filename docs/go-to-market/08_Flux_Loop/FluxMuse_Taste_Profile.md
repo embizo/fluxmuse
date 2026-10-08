@@ -1,4 +1,4 @@
-# FluxMuse Taste Profile (v2)
+# FluxMuse Taste Profile (v2.1)
 
 **Status:** v2, drafted 2026-10-05 for the founder to approve. Fills in
 `Taste_Profile_Template.md` for FluxMuse itself.
@@ -190,6 +190,10 @@ this from ads that bring WhatsApp leads cheaply.
   "refund", or offer any free period other than the Free plan itself.
 - Claim customers, ratings, testimonials, results, "trusted by", "pilot
   brands" or any uplift number.
+- Name a payment provider or gateway (M-Pesa, Paystack, Yoco, PayFast, Ozow,
+  Flutterwave, SnapScan, Stitch, pawaPay, Fincra or any other). Say "via our
+  payment partners, banks and mobile money wallets across 23 African
+  countries" `[[CONFIRM]]` (true only where live; see the facts sheet §3).
 - Promise guaranteed sales, ROI or "10x". The lead guarantee may be mentioned
   only with its conditions.
 - Present Instagram or Facebook auto-posting, Instagram DMs, or checkout
@@ -238,13 +242,13 @@ customer's day, no price, and a free-trial offer.
 ```
 BRAND: FluxMuse, an AI marketing team and WhatsApp selling tools for African small businesses. Fluxmuse (Pty) Ltd, South Africa, verified Meta Tech Provider.
 CUSTOMER: WhatsApp side-hustles and micro-businesses (braiders, home bakers, resellers, salons) who sell from one phone with no marketing budget; also small businesses with staff, and agencies. They write short, WhatsApp-style, often mixing English with isiZulu or Sesotho.
-TRUST: a clear rand price; a demo on their own products; a real founder (Thabo) who sets them up by hand; Free plan, no card. FluxMuse has no customers or results yet: never imply social proof.
+TRUST: a clear rand price; a demo on their own products; our team sets them up by hand; Free plan, no card. FluxMuse has no customers or results yet: never imply social proof.
 STORIES: why us: built for African small businesses, WhatsApp-first, priced in rands, multilingual, from R149/month. Why now: Founding Member, 30% off the first two monthly bills for SA sign-ups.
 WHAT WORKS: lead with a real moment (DMs at 11pm, a Saturday lost to admin, a quiet month-end), then one concrete thing FluxMuse does, the price, and "message us on WhatsApp".
 LANGUAGE: plain South African English; reply in the customer's language; light greetings in isiZulu/Sesotho are fine.
 TONE: warm, direct, short sentences, like a sharp friend who runs a business.
 ALWAYS: real rand prices; "newly launched" for new features; a WhatsApp next step.
-NEVER: free trial, free month, risk-free, money-back, refund, guaranteed sales or ROI, 10x, customer counts, ratings, testimonials, "trusted by", "proven", pilot results; Instagram/Facebook auto-posting or checkout outside South Africa as live; jargon or AI hype. The lead guarantee (3 qualified leads in 30 days) only with its conditions.
+NEVER: free trial, free month, risk-free, money-back, refund, guaranteed sales or ROI, 10x, customer counts, ratings, testimonials, "trusted by", "proven", pilot results; Instagram/Facebook auto-posting or checkout outside South Africa as live; jargon or AI hype; naming any payment provider or gateway (say "via our payment partners, banks and mobile money wallets across 23 African countries"). The lead guarantee (3 qualified leads in 30 days) only with its conditions.
 ```
 
 ---
@@ -255,5 +259,6 @@ NEVER: free trial, free month, risk-free, money-back, refund, guaranteed sales o
 |---|---|---|---|---|
 | v1 | 2026-09-25 | First seed from the brand kit and the 11 Sept facts file (FluxLoop migration) | 11 Sept pack | Seeded |
 | v2 | 2026-10-05 | Rewrote the profile on `CURRENT_OFFER.md`: nine-tier prices from R149; "free forever" un-banned (Free plan); trial, money-back and refund language banned; lead guarantee with conditions; claims limited to what's live; Agency R9,999 / partner R6,999; no social proof; added the interview brief | `CURRENT_OFFER.md` (1 Oct), live pricing tables, no-free-trials decision (3 Oct) | **Awaiting founder approval** |
+| v2.1 | 2026-10-08 | Never name payment providers (founder rule, after a live post named four); approved wording added to E3 and the AI brief; AI brief trust line now says "our team sets them up by hand" instead of naming the founder | Founder instruction 8 Oct; `00_FACTS_AND_ASSUMPTIONS.md` §3 | **Awaiting founder approval** |
 
-**Sign-off:** owner `[[Thabo Malebadi]]` · drafted by Claude · version v2 · 2026-10-05
+**Sign-off:** owner `[[Thabo Malebadi]]` · drafted by Claude · version v2.1 · 2026-10-08
