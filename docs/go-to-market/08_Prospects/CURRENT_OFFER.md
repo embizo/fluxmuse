@@ -33,6 +33,23 @@ number is activated.
   as one optional line (`SHOW_FOUNDING_MEMBER = True` in `_build/prospects/build_prospects.py`).
 - **Partner wholesale: CONFIRMED 2026-10-01 — R6,999** (30% off the current R9,999 Agency list price). Replaces the
   R5,599 figure in the 11 Sept pack. Agency proposals now quote this as the partner price.
+- **Founding Member widened, CONFIRMED 2026-10-09:** the 30% off the first two monthly bills now covers **every self-serve
+  plan: Nano, Micro, Starter, Growth, Scale, Corporate and Agency** (Custom excluded), in every market, through 31 Dec 2026.
+  The code-only 50% `pilot-founding` offer is switched off. `FMTT00` is a tracking code on the same offer (TikTok ad).
+- **Channel partner programme, CONFIRMED 2026-10-09** (live in the app: `/partner`, Admin → Partners). Partners are
+  affiliates our team promotes; they resell on their own or with a team through their `?ref=` link.
+
+  | Level | Reached by | Commission | Off their own plan |
+  |---|---|---|---|
+  | Registered Partner | our team enables it | 15% | 10% |
+  | Silver Partner | 5 paying customers or R5,000/month billed to them | 20% | 20% |
+  | Gold Partner | 15 paying customers or R15,000/month | 25% | 30% |
+
+  Commission is on subscription fees the customer actually pays (after any discount) in their **first 12 months**; not
+  on SMS, WhatsApp or AI credit top-ups, nor Custom. Held 30 days, then paid monthly by EFT from R500. Partners can't
+  add discounts for customers; their own plan gets the better of a running offer and their level discount, not both.
+  Gold on Agency comes to R6,999, the same as partner wholesale. `FluxMuse_Partner_Programme_Deck.pptx` predates
+  these terms: check it against this table before sending.
 
 ## 2. Policy (founder, 25 Sept "pay first"; terms confirmed 2026-10-01)
 
