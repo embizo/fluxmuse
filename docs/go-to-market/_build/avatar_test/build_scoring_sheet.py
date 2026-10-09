@@ -276,7 +276,9 @@ def fill_dry_run(wb):
     v.cell(row=rb, column=13, value=0)
     v.cell(row=rb, column=14, value=90)
     v.cell(row=rb, column=15, value="Kokoro-82M bf_emma (Apache 2.0) + assemble_video.py (ffmpeg)")
-    v.cell(row=rb, column=16, value="Posted first, against the planned C, A, B order. Views/conversations/orders due 72 h after post (9 Oct, ~08:20). TikTok posted via Higgsfield connector with 'Your brand' and AI-content labels.")
+    v.cell(row=rb, column=8, value=0)   # conversations carrying AV00B, 72 h window to 9 Oct 08:20 SAST
+    v.cell(row=rb, column=9, value=0)   # orders
+    v.cell(row=rb, column=16, value="Posted first, against the planned C, A, B order. 72 h result (to 9 Oct 08:20 SAST): 0 chats with the AV00B code, 0 orders; 15 new FluxMuse chats in the window, none mentioning the video (they came from Meta ads). Views and comments: founder to add from TikTok/Status screenshots. TikTok posted via Higgsfield connector with 'Your brand' and AI-content labels.")
     # C: founder selfie
     v.cell(row=rc, column=4, value="N")
     v.cell(row=rc, column=5, value="N")
