@@ -1,7 +1,7 @@
 # FluxMuse proposal templates
 
 Word templates for the South African launch segments, plus a campaign proposal and a worked example.
-All prices and claims come from `../08_Prospects/CURRENT_OFFER.md` (1 Oct 2026). If that file changes, rebuild
+All prices and claims come from `../08_Prospects/CURRENT_OFFER.md` (9 Oct 2026). If that file changes, rebuild
 (see the end of this file) rather than editing prices by hand in every template.
 
 Each template opens with a yellow **"How to use this template"** box. Work through it, then delete it.
@@ -26,14 +26,21 @@ Page counts are estimates. Check the real count in Word after filling in.
   Growth R1,999, Scale R4,999, Corporate R6,999, Agency R9,999, Custom by consultation.
 - **Payment first.** Every paid plan starts with payment. The Free plan is a permanent plan (1 brand, 1 channel, no
   card), not a trial; mention it as an option, don't lead with it.
-- **Founding Member** (live now, no end date set): South African sign-ups pay 30% less for their first two monthly
-  bills on Starter, Growth and Scale (R349, R1,399, R3,499). A discount, not a free period. Not on Agency or partner
-  wholesale. `[[FOUNDER TO CONFIRM]]` whether it also covers Nano and Micro.
+- **Founding Member** (live now, until 31 December 2026): 30% off the first two monthly bills on every self-serve
+  plan, Nano to Agency (not Custom): Nano R104, Micro R202, Starter R349, Growth R1,399, Scale R3,499, Corporate R4,899,
+  Agency R6,999. A discount, not a free period. Doesn't stack with partner wholesale or partner-level discounts.
 - **Lead guarantee:** 3 qualified leads in 30 days of go-live (unique WhatsApp numbers that start a conversation
   through a FluxMuse-tracked link or QR). If fewer arrive and the merchant shared the link and posted at least weekly,
   we keep supporting them at no extra charge until 3 arrive. Always quote it with these conditions.
 - **Agency partners:** wholesale R6,999/mo (30% off R9,999). Partner economics are always labelled illustrative:
   20 clients × R1,500 = R30,000, minus R6,999 = R23,001/mo gross spread before the partner's own costs.
+- **Partner programme** (live since 9 Oct 2026; `/partner` in the app): Registered Partner (our team enables it) 15%
+  commission and 10% off their own plan; Silver (5 paying customers or R5,000/month billed to them) 20% and 20%; Gold
+  (15 or R15,000/month) 25% and 30%. Commission is on subscription fees customers actually pay (after discounts) in their
+  first 12 months; not on SMS, WhatsApp or AI credit top-ups, nor Custom. Held 30 days, paid monthly by EFT from R500.
+  Partners can't add customer discounts; their own plan gets the better of a running offer and their level discount.
+  Gold on Agency = R6,999 = partner wholesale. Partners share their `?ref=` link and QR from the partner portal.
+- **Payments:** never name a payment provider or gateway in anything a prospect sees. Say "via our payment partners".
 - **Sender:** Thabo Malebadi, thabo@fluxmuse.com. Product at fluxmuse.ai.
 
 ## Fill-in checklist
@@ -53,22 +60,21 @@ Page counts are estimates. Check the real count in Word after filling in.
 
 1. **No social proof.** FluxMuse has no paying customers, no cohort and no results yet. Don't write customer counts, ratings, testimonials or case-study numbers. The honest line: "we're opening with a small first group of businesses, and we set you up by hand." Case studies come later, only with written consent.
 2. **Label every capability.** Live features are "newly launched": WhatsApp Concierge, hosted shop link, order alerts and SOLD, AI captions and images (POST), short AI video clips, voice-note transcription, WhatsApp Business set-up and broadcasts to consented contacts, answers in the customer's language, TikTok video posting.
-3. **Being switched on, don't present as live:** Facebook and Instagram auto-posting (Meta approval), checkout through FluxMuse (not yet tested end to end with real money), AI Voice (beta, evaluated together), daily digest, FluxLoop ads, Shopify/WooCommerce/Takealot sync.
+3. **Being switched on, don't present as live:** Facebook and Instagram auto-posting (Meta approval), checkout through FluxMuse (not yet tested end to end with real money), AI Voice (beta, evaluated together), daily digest, FluxLoop ads, Shopify/WooCommerce sync.
 4. **Not available:** Instagram DMs and comments, X posting, paid checkout outside South Africa. Prospects outside South Africa join the waitlist; don't send them prices.
-5. **Checkout fee wording** ("Card payments carry Paystack's standard fee (2.9% + R1), deducted before payout; EFT is 2%") is used only once checkout through FluxMuse has been tested end to end. Until then say it is being switched on.
+5. **Checkout fees** are quoted only once checkout through FluxMuse has been tested end to end, and then without naming the payment provider (founder rule, 8 Oct 2026; the internal fee wording in `00_FACTS_AND_ASSUMPTIONS.md` names one and needs rewording first). Until then say checkout is being switched on.
 6. **No trials and no cash-back offers.** Only the lead guarantee, with its conditions. Don't promise sales, revenue or ROI.
 7. **No VAT line.** Fluxmuse (Pty) Ltd is not VAT-registered; the price shown is the amount charged.
 8. **Never quote per-tier AI credit numbers.** Point to fluxmuse.ai/pricing.
 9. **Screenshots:** check `../assets/ASSETS_INDEX.md` before adding an image. Don't use internal-only screenshots or anything from `assets/charts/`.
-10. **Referral commission is undecided** (`[[FOUNDER DECISION: referral commission %]]`). Don't offer one.
+10. **Partner programme terms are fixed.** Quote the levels and rules above exactly; don't invent incentives or customer discounts.
 11. **POPIA:** message only people who opted in or a business's own published enquiry channel, one to one, human-sent, with an opt-out. Blur customer names and numbers in any screenshot you share.
 
-## Founder decisions and placeholders still open
+## Placeholders still open
 
-- `[[FOUNDER TO CONFIRM]]` whether Founding Member covers Nano and Micro, and whether Nano includes its own WhatsApp number.
+- `[[FOUNDER TO CONFIRM]]` whether Nano includes its own WhatsApp number.
 - `[[FOUNDER TO CONFIRM]]` reseller billing, partner directory and sub-account limits on the Agency tier.
-- `[[FOUNDER DECISION: referral commission %]]`, basis, duration and payout for partner referrals.
-- `[[TBC]]` Optional FluxMuse service fees and partner obligations.
+- `[[TBC]]` Optional FluxMuse service fees (SME and campaign templates).
 - `[[FEE WORDING ONLY ONCE CHECKOUT IS TESTED]]` in every "How you'll get paid" section.
 - `[[FLUXMUSE INFORMATION OFFICER NAME AND EMAIL]]` and hosting regions for the POPIA clause.
 - `[[LEGAL REVIEW REQUIRED]]` All terms, operator agreement, cancellation, the lead guarantee wording, liability, governing law.

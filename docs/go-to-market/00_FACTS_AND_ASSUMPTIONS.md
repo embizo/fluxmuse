@@ -9,6 +9,14 @@ Anything labelled **FACT** was checked against the live product code (`embizo/fo
 confirmed decisions, or the provider's public docs. Anything labelled **ASSUMPTION** is a planning input the founder must
 confirm before a document goes to an external party. Placeholders look like `[[LIKE THIS]]`.
 
+> **INTERNAL: payment provider names.** Wherever this file names a payment provider or gateway (mainly §3, also §2
+> "Market gating" and "Checkout fees"), that is internal reference only. Founder rule (8 Oct 2026): never name a
+> provider in anything a prospect, customer or partner sees, including decks, infographics, proposals and speaker
+> notes. Say "via our payment partners, banks and mobile money wallets across 23 African countries" (see §3).
+>
+> **Updated 2026-10-11** from `CURRENT_OFFER.md` (9 Oct): Founding Member now covers every self-serve plan, Nano to
+> Agency, until 31 Dec 2026; the partner programme is live (§2 "Partner programme"); Takealot sync is shelved.
+
 What changed since the 11 Sept version: nine tiers in three bands (Agency now R9,999, partner wholesale R6,999); no free
 trials; no pilot and no customers; Founding Member live now with no end date; a lead guarantee instead of any refund;
 payment rails described as they really are (South Africa live, the rest pending); every capability labelled live, in
@@ -55,12 +63,12 @@ are "newly launched", never "proven", and no results are quoted.
 - Auto-publishing to Facebook Pages and Instagram (Meta permissions not approved). Until then the value is forwarding to
   WhatsApp Status.
 - Daily digest message (needs a Meta-approved template).
-- Checkout through FluxMuse (Paystack, South African bank accounts; FluxMuse doesn't hold the money): built, **not yet
+- Checkout through FluxMuse (South African bank accounts, via our payment partners; FluxMuse doesn't hold the money): built, **not yet
   tested end to end with real money**.
 - AI Voice (inbound on Growth; inbound and outbound on Scale and above): beta, evaluated together, not a receptionist
   replacement.
 - Click-to-WhatsApp ads (FluxLoop): run on FluxMuse's own account first, not offered to businesses yet.
-- Sync from Shopify, WooCommerce and Takealot: partly built; don't promise it.
+- Sync from Shopify and WooCommerce: partly built; don't promise it.
 
 **Not available**
 - Instagram DMs and comments, X posting, Nigeria/Kenya/Ghana checkout, and any paid checkout outside South Africa.
@@ -74,7 +82,8 @@ used by a real business. In external materials, describe only the live list abov
 1. Meta permissions (Instagram, Pages posting, business_management, ads).
 2. Social adapters: Instagram Login, Threads, LinkedIn, X, TikTok (video posting already approved), YouTube, Pinterest.
 3. Business app integrations: commerce, CRM, accounting, email/SMS providers.
-4. Flux_Partner programme: referral tracking, white-label, partner-managed workspaces.
+4. ~~Flux_Partner programme~~: **live since 2026-10-09** (partner portal, `?ref=` links, levels and commission; §2).
+   White-label and multi-client run on the Agency tier.
 
 ---
 
@@ -131,15 +140,31 @@ with wholesale. Local-currency partner prices: `[[FOUNDER TO CONFIRM]]` (not nee
 price they set of R1,500/mo bills R30,000/mo, pays FluxMuse R6,999/mo, and keeps a **R23,001/mo gross spread** before their
 own costs. Don't quote a fixed margin: it depends on the partner's retail price and costs.
 
-Referral commission for clients a partner sends onto their own plans: `[[FOUNDER DECISION: referral commission %]]`.
+### Partner programme (FACT, confirmed 2026-10-09; CURRENT_OFFER.md §1)
 
-### Launch offer: Founding Member (FACT, confirmed 2026-10-01, live now)
+Live in the app (`/partner`, Admin → Partners). Partners resell on their own or with a team through their `?ref=` link
+and follow customers, revenue, commission and payouts in the partner portal.
 
-- **30% off the first two monthly bills, for South African sign-ups.** A discount, not a free period.
-- **No end date is set.** Say "while it lasts" if anything. Never print the old 1 Dec 2026 to 31 Jan 2027 window.
-- Example prices for the first two bills (30% off, rounded down to whole rands): Nano R104 · Micro R202 · Starter R349 ·
-  Growth R1,399 · Scale R3,499. `[[FOUNDER TO CONFIRM: rounding matches what checkout charges]]`
-- Agencies are pointed to the partner wholesale price instead; don't show R6,999 as a launch discount.
+| Level | Reached by | Commission | Off their own plan |
+|---|---|---|---|
+| Registered Partner | our team enables it | 15% | 10% |
+| Silver Partner | 5 paying customers or R5,000/month billed to them | 20% | 20% |
+| Gold Partner | 15 paying customers or R15,000/month | 25% | 30% |
+
+Commission is on subscription fees the customer actually pays (after any discount) in their first 12 months; not on
+SMS, WhatsApp or AI credit top-ups, nor Custom. Held 30 days, then paid monthly by EFT from R500. Partners can't add
+discounts for customers; their own plan gets the better of a running offer and their level discount, not both. Gold on
+Agency comes to R6,999, the same as partner wholesale. Still undecided (don't quote): minimum active clients,
+co-marketing support, local-currency partner prices.
+
+### Launch offer: Founding Member (FACT, confirmed 2026-10-01, widened 2026-10-09, live now)
+
+- **30% off the first two monthly bills on every self-serve plan, Nano to Agency** (Custom excluded). A discount, not
+  a free period.
+- **Open to sign-ups until 31 December 2026** (CURRENT_OFFER.md §1). Never print the old 1 Dec 2026 to 31 Jan 2027 window.
+- Prices for the first two bills (30% off, rounded down to whole rands): Nano R104 · Micro R202 · Starter R349 ·
+  Growth R1,399 · Scale R3,499 · Corporate R4,899 · Agency R6,999. `[[FOUNDER TO CONFIRM: rounding matches what checkout charges]]`
+- Doesn't stack with partner wholesale (R6,999 every month) or partner-level discounts.
 - Annual-plan bonus months: not part of the live promotion. Don't offer them.
 - Founding Member perks beyond the discount (badge, priority support): `[[FOUNDER TO CONFIRM]]`. Until confirmed, mention
   only the discount.
@@ -151,10 +176,11 @@ through a FluxMuse-tracked entry point (`08_Prospects/Outreach_Playbook.md`). If
 business held up its side (shared the link, posted at least weekly), FluxMuse extends support at no extra charge until 3
 are reached. **Not a refund. There is no money-back guarantee.** Always state the guarantee with its conditions.
 
-### Checkout fees (FACT, confirmed 2026-10-01; use only once checkout is tested)
+### Checkout fees (FACT, confirmed 2026-10-01; use only once checkout is tested; INTERNAL wording)
 
 "Card payments carry Paystack's standard fee (2.9% + R1), deducted before payout; EFT is 2%." No FluxMuse service fee on
-top. Don't quote this until FluxMuse checkout has been tested end to end with real money.
+top. Don't quote this until FluxMuse checkout has been tested end to end with real money, and reword it without the
+provider name first ("our payment partner's standard fee").
 
 ### Market gating (FACT)
 
@@ -165,7 +191,7 @@ top. Don't quote this until FluxMuse checkout has been tested end to end with re
 
 ---
 
-## 3. Payment rails (FACT, status 2026-10-05)
+## 3. Payment rails (FACT, status 2026-10-05) · INTERNAL ONLY: never copy provider names into external material
 
 | Rail | Use | Status |
 |---|---|---|

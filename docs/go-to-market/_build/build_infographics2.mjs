@@ -67,14 +67,14 @@ const ICON = '../../assets/brand/fluxmuse-icon-512.png';
   ];
   const ribbon = `<div style="position:absolute;left:88px;top:238px;width:1744px;height:74px;border-radius:18px;background:${C.orange};display:flex;align-items:center;gap:18px;padding:0 28px;color:${C.night}">
     <span style="flex:none;width:44px;height:44px;border-radius:50%;background:${C.night};display:flex;align-items:center;justify-content:center">${icon('sparkles', 26, C.orange, 2.4)}</span>
-    <span style="font:700 28px Poppins">Founding Member:</span><span style="font:600 26px Inter">30% off your first two monthly bills · South African sign-ups · while it lasts</span></div>`;
+    <span style="font:700 28px Poppins">Founding Member:</span><span style="font:600 26px Inter">30% off your first two monthly bills · every plan, Nano to Agency · until 31 Dec 2026</span></div>`;
   const cw = (1744 - 2 * 28) / 3, rowH = 168;
   const body = ribbon + bands.map(([b, aud, tiers], i) => `<div class="card" style="position:absolute;left:${88 + i * (cw + 28)}px;top:340px;width:${cw}px;height:612px;overflow:hidden">
     <div style="background:${C.mist};padding:14px 26px"><span style="font:700 30px Poppins;color:${t.fg}">${b}</span> <span style="font:500 20px Inter;color:${t.muted}">· ${aud}</span></div>
     ${tiers.map(([n, m, cap, note], k) => `<div style="height:${rowH}px;padding:16px 26px;${k ? `border-top:1.5px solid ${t.line};` : ''}display:flex;justify-content:space-between;align-items:center;gap:16px">
       <div><div style="font:700 30px Poppins;color:${t.fg}">${n}</div><div style="font:500 20px/1.3 Inter;color:${t.muted};margin-top:4px">${cap}</div>${note ? `<div style="font:500 19px/1.3 Inter;color:${t.accentText};margin-top:2px">${note}</div>` : ''}</div>
       <div style="text-align:right;flex:none">${m === null ? `<div style="font:700 34px Poppins;color:${t.fg}">On request</div>` : `<div style="font:700 44px/1 Poppins;color:${t.fg};white-space:nowrap">${R(m)}<span style="font:500 20px Inter;color:${t.muted}"> /mo</span></div>${m ? `<div style="font:400 18px Inter;color:${t.muted};margin-top:6px">or ${R(m * 10)}/yr</div>` : ''}`}</div></div>`).join('')}
-  </div>`).join('') + `<div style="position:absolute;left:88px;top:976px;width:1744px;font:400 21px/1.45 Inter;color:${t.muted}">Prices in rands, the amount you pay. Annual = 10× monthly. Every paid plan starts with payment; Free is a permanent plan, not a trial. <b style="color:${t.fg}">Agency partners: R6,999/mo wholesale.</b> AI credit allowances: see the pricing page.</div>`;
+  </div>`).join('') + `<div style="position:absolute;left:88px;top:976px;width:1744px;font:400 21px/1.45 Inter;color:${t.muted}">Prices in rands, the amount you pay. Annual = 10× monthly. Every paid plan starts with payment; Free is a permanent plan, not a trial. <b style="color:${t.fg}">Agency partners: R6,999/mo wholesale (doesn’t stack with Founding Member).</b> AI credit allowances: see the pricing page.</div>`;
   add('pricing-tiers', 1920, 1080, frame({ w: 1920, h: 1080, eyebrow: 'Pricing', title: 'Nine plans in three bands, priced in rands', sub: 'Paid plans from R149 a month.', body, mark: 'tr' }));
 }
 
@@ -97,17 +97,16 @@ const ICON = '../../assets/brand/fluxmuse-icon-512.png';
     </svg>
     <div style="position:absolute;left:88px;top:${laneY[0] + 6}px;width:250px">${icon('globe', 34, C.orange, 2.2)}<div style="font:700 26px/1.15 Poppins;color:${t.fg};margin-top:10px">Markets &amp; payments</div></div>
     <div style="position:absolute;left:88px;top:${laneY[1] + 6}px;width:250px">${icon('layers', 34, C.orange, 2.2)}<div style="font:700 26px/1.15 Poppins;color:${t.fg};margin-top:10px">Product</div><div style="font:400 19px/1.3 Inter;color:${t.muted};margin-top:6px">In the founder’s agreed order</div></div>
-    ${box(0, laneY[0], 290, `${h3('South Africa open')}${p('Paystack live. A small first group of businesses, set up by hand. Founding Member: 30% off the first two bills.')}`, { hl: true, tint: true })}
-    ${box(1, laneY[0], 290, `${h3('Checkout through FluxMuse')}${p('Paystack, South Africa. Switched on once tested end to end with real money.')}`)}
-    ${box(2, laneY[0], 290, `${h3('Nigeria, Kenya, Ghana')}${p('Priced in NGN, KES and GHS. Opens once Fincra and pawaPay accounts are live and checkout is tested.')}`)}
+    ${box(0, laneY[0], 290, `${h3('South Africa open')}${p('Paid sign-up by card and EFT. A small first group of businesses, set up by hand. Founding Member: 30% off the first two bills.')}`, { hl: true, tint: true })}
+    ${box(1, laneY[0], 290, `${h3('Checkout through FluxMuse')}${p('South Africa, via our payment partners. Switched on once tested end to end with real money.')}`)}
+    ${box(2, laneY[0], 290, `${h3('Nigeria, Kenya, Ghana')}${p('Priced in NGN, KES and GHS. Opens once payment-partner accounts are live and checkout is tested.')}`)}
     ${box(3, laneY[0], 290, `${h3('Other covered markets')}${p('Billed in USD, self-serve. No local team until there is demand.')}`)}
-    ${box(4, laneY[0], 290, `${h3('Botswana &amp; Namibia')}${p('Once a provider covers them.')}`, { dashed: true })}
-    ${box(0, laneY[1], 300, `${h3('Live, newly launched', 22)}${p('WhatsApp Concierge, shop link, order alerts, POST captions and images, short videos, voice notes, TikTok video posting', 18)}`, { hl: true, tint: true })}
+    ${box(4, laneY[0], 290, `${h3('Botswana &amp; Namibia')}${p('Once a payment partner covers them.')}`, { dashed: true })}
+    ${box(0, laneY[1], 300, `${h3('Live, newly launched', 22)}${p('WhatsApp Concierge, shop link, order alerts, POST captions and images, short videos, voice notes, TikTok video, partner programme', 18)}`, { hl: true, tint: true })}
     ${box(1, laneY[1], 300, `${h3('1 · Meta permissions', 22)}${p('Facebook Pages and Instagram auto-publishing, daily digest, ads. AI Voice beta.', 18)}`)}
     ${box(2, laneY[1], 300, `${h3('2 · Social adapters', 22)}${p('Instagram Login, Threads, LinkedIn, X, YouTube, Pinterest', 18)}`)}
-    ${box(3, laneY[1], 300, `${h3('3 · Business apps', 22)}${p('Shopify, WooCommerce, Takealot sync; CRM, accounting', 18)}`)}
-    ${box(4, laneY[1], 300, `${h3('4 · Partner programme', 22)}${p('Referral tracking, white-label, partner workspaces', 18)}`)}
-    <div style="position:absolute;left:88px;bottom:30px;width:1744px;font:400 20px/1.4 Inter;color:${t.muted}">Indicative order, not commitments, and no dates: timing depends on Meta approvals, payment-provider accounts and real-money checkout tests. No paid checkout outside South Africa until then.</div>`;
+    ${box(3, laneY[1], 300, `${h3('3 · Business apps', 22)}${p('Shopify and WooCommerce sync; CRM, accounting', 18)}`)}
+    <div style="position:absolute;left:88px;bottom:30px;width:1744px;font:400 20px/1.4 Inter;color:${t.muted}">Indicative order, not commitments, and no dates: timing depends on Meta approvals, payment-partner accounts and real-money checkout tests. No paid checkout outside South Africa until then.</div>`;
     return frame({ w: 1920, h: 1080, dark, eyebrow: 'Roadmap · indicative', title: 'What comes next, in order', body, mark: 'tr' });
   };
   add('roadmap-2026-2027', 1920, 1080, build(false));

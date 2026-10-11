@@ -76,7 +76,7 @@ def build_campaign(out_path):
         ("WhatsApp Status", "Daily reach", "AI captions and images (POST)", "Live (newly launched)"),
         ("TikTok", "Video reach", "Short AI video clips", "Live (newly launched)"),
         ("Facebook Page and Instagram", "Reach", "Posts made by FluxMuse, posted by hand", "Auto-posting being switched on"),
-        ("Checkout through FluxMuse", "Pay in the flow", "Paystack", "Being switched on"),
+        ("Checkout through FluxMuse", "Pay in the flow", "Card and EFT, via our payment partners", "Being switched on"),
     ], [3.6, 4.8, 4.8, 3.8], "Channel plan", size=9)
     d.figure("infographics/omnichannel-hub.png",
              "Channels around one WhatsApp-first hub. Facebook and Instagram auto-posting are being switched on.",

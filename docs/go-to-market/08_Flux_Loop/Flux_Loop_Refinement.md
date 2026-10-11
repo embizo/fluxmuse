@@ -33,7 +33,7 @@ The FluxMuse version of this:
   catalog, cart and payment inside the chat. Once checkout is live, we won't
   have to estimate "closed-won" value, because we'll record it. That's the
   strongest line we can take from this talk. (Today checkout is built but not
-  yet tested end to end with real money, and only on Paystack in South Africa;
+  yet tested end to end with real money, and only in South Africa;
   see `08_Prospects/CURRENT_OFFER.md` §3.)
 
 **Proposal: change the north-star metrics from volume to value.** The Analyst

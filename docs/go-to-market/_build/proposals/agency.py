@@ -10,11 +10,12 @@ def build_agency(out_path):
     d.cover("Flux_Partner programme proposal", "Serve more clients under your own brand",
             f"Partner proposal for {AG}", client_label="Prepared for")
     C.how_to_use(d, "Agency partner (Flux_Partner) proposal template", extra=[
-        "[ ] Agencies get the partner wholesale price of R6,999/mo (30% off the R9,999 Agency list price). Never "
-        "present it as a launch discount, and never add Founding Member on top.",
+        "[ ] Agencies get the partner wholesale price of R6,999/mo (30% off the R9,999 Agency list price), every "
+        "month. Founding Member on Agency is also R6,999, but only for the first two bills; the two never stack.",
         "[ ] Partner economics are illustrative. Don't quote a fixed margin percentage: margin depends on the partner's "
         "retail price and costs.",
-        "[ ] Referral commission and partner obligations stay as founder placeholders until decided.",
+        "[ ] Partner programme terms (section 7) are live as of 9 October 2026 and come from 08_Prospects/"
+        "CURRENT_OFFER.md §1. Quote them exactly; don't add customer discounts or other incentives.",
     ])
     d.toc()
     d.page_break()
@@ -35,11 +36,12 @@ def build_agency(out_path):
              "Segment card for agencies: margin squeeze, manual reporting and client demand for WhatsApp commerce, "
              "matched to wholesale pricing and white-label, multi-client tools.")
     d.callout("Programme status", [
-        "FluxMuse is newly launched and has no agency partners yet. You would be among the first, and we set you up "
-        "by hand.",
+        "FluxMuse is newly launched, and the partner programme opened on 9 October 2026. You would be among the "
+        "first partners, and we set you up by hand.",
         "On the Agency tier: white-label, multi-client, unlimited brands, 80 channels, bring your own cloud. "
         "[[FOUNDER TO CONFIRM: reseller billing and partner directory status]]",
-        "On the roadmap (indicative, not dated): referral tracking and the wider Flux_Partner programme.",
+        "Live now: the partner programme, with a partner portal, your own ?ref= share link and QR code, and "
+        "commission of 15% to 25% on customers you refer (section 7).",
     ])
 
     # 2 ----------------------------------------------------------------------------------------
@@ -67,7 +69,7 @@ def build_agency(out_path):
     ], [5.0, 6.0, 6.0], "Partner wholesale pricing", aligns=[None, "right", "right"], highlight_rows=(0,))
     d.bullets([
         "Payment first: the first month is paid when you subscribe. No trial period.",
-        "Wholesale pricing doesn't stack with the Founding Member offer, which isn't offered on the Agency tier.",
+        "Wholesale pricing doesn't stack with the Founding Member offer or with partner-level discounts.",
         "Paid plans are for South African businesses. Clients outside South Africa can join the waitlist.",
         "Pass-through costs (Meta WhatsApp message fees, ad spend) are separate and can be re-billed to your clients.",
     ])
@@ -121,42 +123,45 @@ def build_agency(out_path):
               "working with you", "working with you and the client").replace("until you have 3", "until they have 3")])
 
     # 6 ----------------------------------------------------------------------------------------
-    d.h1("6. Co-marketing")
-    d.table(["Activity", "FluxMuse provides", f"{AG} provides", "Status"], [
-        ("Partner directory listing", "Listing and profile", "Services, areas, contact", "[[FOUNDER TO CONFIRM]]"),
-        ("Sales materials", "Brand kit, pitch deck and proposal templates (white-label versions [[TBC]])",
-         "Your branding and offer", "[[TBC]]"),
+    d.h1("6. What FluxMuse provides")
+    d.table(["Support", "FluxMuse provides", f"{AG} provides", "Status"], [
+        ("Partner portal", "Customers, revenue, commission and payouts in one place", "Your login", "Live"),
+        ("Share link and QR code", "Your own ?ref= link and QR code", "Sharing it with prospects", "Live"),
+        ("Hands-on setup", "Setup of your first customers, by hand, with you", "Time with your team", "Live"),
+        ("Sales materials", "Pitch deck and proposal templates", "Your branding and offer", "Live"),
         ("Joint case study", "Case-study format and design", "First client's written consent", "Later, consent only"),
-        ("Webinar or workshop", "Speaker and demo", "Audience and venue", "[[TBC]]"),
-        ("Referral leads", "Leads that need an agency", "Follow-up within [[N]] days", "[[FOUNDER DECISION]]"),
-        ("Launch announcement", "Social post and newsletter mention", "Joint post", "[[TBC]]"),
-    ], [3.6, 5.0, 4.8, 3.6], "Co-marketing activities", size=9)
+    ], [3.6, 5.0, 4.8, 3.6], "Partner support", size=9)
 
     # 7 ----------------------------------------------------------------------------------------
-    d.h1("7. Referral commission")
-    d.para("Some businesses a partner introduces may prefer their own Starter, Growth or Scale subscription instead of a "
-           "sub-account. For those referrals:")
-    d.table(["Item", "Position"], [
-        ("Commission rate", "[[FOUNDER DECISION: referral commission %]]"),
-        ("Basis and duration", "[[FOUNDER DECISION: e.g. first-year subscription fees]]"),
-        ("Payout timing and method", "[[FOUNDER DECISION]]"),
-        ("Tracking", "Referral tracking is on the roadmap; interim tracking: [[TBC]]"),
-    ], [5.0, 12.0], "Referral commission terms")
-    d.para("Referral commission is separate from wholesale pricing and isn't a discount on the partner's own plan.",
-           size=9.5)
+    d.h1("7. Partner programme and commission")
+    d.para("Some businesses a partner introduces may prefer their own FluxMuse subscription instead of a sub-account. "
+           "They sign up through the partner's ?ref= link, and the partner earns commission at their level:")
+    d.table(["Level", "Reached by", "Commission", "Off your own plan"], [
+        ("Registered Partner", "Our team enables you", "15%", "10%"),
+        ("Silver Partner", "5 paying customers or R5,000/month billed to them", "20%", "20%"),
+        ("Gold Partner", "15 paying customers or R15,000/month billed to them", "25%", "30%"),
+    ], [3.6, 7.4, 2.8, 3.2], "Partner levels", aligns=[None, None, "center", "center"])
+    d.bullets([
+        "Commission is on the subscription fees your customers actually pay (after any discount) in their first 12 "
+        "months. It isn't paid on SMS, WhatsApp or AI credit top-ups, or on Custom plans.",
+        "Commission is held for 30 days, then paid monthly by EFT once it reaches R500.",
+        "Partners can't add discounts for customers. Your own plan gets the better of a running offer or your level "
+        "discount, not both. Gold on Agency comes to R6,999, the same as partner wholesale.",
+        "Your partner portal shows your share link and QR code, customers, revenue, commission and payouts.",
+    ])
 
     # 8 ----------------------------------------------------------------------------------------
-    d.h1("8. Partner obligations [[TBC]]")
-    d.table(["Obligation", "Detail"], [
-        ("Minimum commitment", "[[TBC: e.g. minimum active client sub-accounts after 90 days]]"),
-        ("First-line client support", "[[TBC]]"),
-        ("Training", "Complete onboarding training within 30 days [[TBC]]"),
+    d.h1("8. What partners commit to")
+    d.table(["Commitment", "Detail"], [
+        ("Honest selling", "Sell within FluxMuse's claims rules: no trials, no invented customer numbers, ratings, "
+                           "testimonials or results, and no payment provider names"),
+        ("Consent-first prospecting", "POPIA-compliant prospecting: contact people with consent, honour opt-outs, "
+                                      "no bulk unsolicited messages"),
         ("Messaging compliance", "Follow POPIA and Meta WhatsApp Business policies: approved templates, opted-in contacts, opt-outs honoured"),
         ("Data protection", "POPIA; data processing agreement [[LEGAL REVIEW REQUIRED]]"),
-        ("Claims", "Only use approved FluxMuse facts: no invented customer numbers, ratings, testimonials or results"),
-        ("Payment", "Wholesale fees paid in advance [[TBC]]"),
-        ("Reporting to FluxMuse", "[[TBC: e.g. quarterly partner review]]"),
-    ], [4.6, 12.4], "Partner obligations")
+        ("Bank details", "Keep your bank details current in the partner portal so commission payouts reach you"),
+        ("Payment", "Wholesale fees are paid in advance, like every FluxMuse plan"),
+    ], [4.6, 12.4], "Partner commitments")
 
     # 9 ----------------------------------------------------------------------------------------
     d.h1("9. Brand usage rules")
@@ -180,14 +185,13 @@ def build_agency(out_path):
         ("Wholesale pricing", "30% off Agency list for as long as the partner agreement is active [[LEGAL REVIEW REQUIRED]]"),
         ("White-label and multi-client", "Client data ownership and portability on "
                                          "termination: [[LEGAL REVIEW REQUIRED]]"),
-        ("Referral commission", "[[FOUNDER DECISION]] then [[LEGAL REVIEW REQUIRED]]"),
+        ("Partner programme", "Levels and commission as in section 7 [[LEGAL REVIEW REQUIRED]]"),
     ])
     C.acceptance(d, 12, [
         "Partner wholesale, monthly: R6,999/mo",
         "Partner wholesale, annual: R69,990/yr",
         "30-day onboarding plan starting [[DATE]] with first client [[FIRST CLIENT]]",
-        "Co-marketing activities: [[LIST]]",
-        "Referral programme (once commission terms are published)",
+        "Partner programme: start as a Registered Partner (15% commission, 10% off your own plan)",
     ], client=AG, terms_num=11)
     d.save(out_path, "FluxMuse proposal: Agency partner", "Flux_Partner programme proposal template")
     return d

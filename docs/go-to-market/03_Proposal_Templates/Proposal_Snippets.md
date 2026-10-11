@@ -7,8 +7,10 @@ Copy-ready text to send with the proposal templates in this folder. Every price 
 Quick reminders:
 - Prices (ZAR/month, annual = 10× monthly): Nano **R149**, Micro **R289**, Starter **R499**, Growth **R1,999**, Scale **R4,999**, Corporate **R6,999**, Agency **R9,999**. Every paid plan starts with payment.
 - The **Free plan** (R0, 1 brand, 1 channel) is a permanent plan, not a trial. Mention it as an option; don't lead with it.
-- **Founding Member** (live now, South African sign-ups): 30% off the first two monthly bills on Starter (R349), Growth (R1,399) and Scale (R3,499). A discount, not a free period. No end date is set, so don't give one.
-- **Agencies:** partner wholesale **R6,999/mo** (30% off Agency R9,999). Doesn't stack with Founding Member.
+- **Founding Member** (live now): 30% off the first two monthly bills on every self-serve plan, Nano to Agency (not Custom), for sign-ups until 31 December 2026: Nano **R104**, Micro **R202**, Starter **R349**, Growth **R1,399**, Scale **R3,499**, Corporate **R4,899**, Agency **R6,999** for the first two monthly bills. A discount, not a free period.
+- **Agencies:** partner wholesale **R6,999/mo** (30% off Agency R9,999), every month. Doesn't stack with Founding Member.
+- **Partner programme** (live since 9 Oct 2026): Registered Partner 15% commission and 10% off their own plan; Silver (5 paying customers or R5,000/month billed) 20% and 20%; Gold (15 or R15,000/month) 25% and 30%. Terms in `README.md`.
+- **Payments:** never name a payment provider or gateway. Say “via our payment partners”.
 - **Lead guarantee:** 3 qualified leads in 30 days of go-live; if fewer arrive and the merchant shared the link and posted at least weekly, we keep supporting them at no extra charge until 3 arrive. Always give the conditions.
 - FluxMuse is newly launched: no customer counts, ratings, testimonials or results. Facebook/Instagram auto-posting and checkout through FluxMuse are **being switched on**.
 - Paid plans are for South African businesses only. Others can join the waitlist.
@@ -30,7 +32,7 @@ You told us [[THEIR MAIN GOAL OR PROBLEM IN THEIR WORDS]]. The proposal sets out
 - **Broadcasts** to customers who opted in.
 - **A lead guarantee**: 3 qualified leads in your first 30 days after go-live. If you share the link and post at least weekly and fewer arrive, we keep working with you at no extra charge until you have 3.
 
-We recommend **[[PLAN]]** at **[[PRICE]]/mo**. [[If Starter, Growth or Scale: as a South African Founding Member you pay 30% less for your first two monthly bills.]] FluxMuse is newly launched, and we're opening with a small first group of businesses that we set up by hand.
+We recommend **[[PLAN]]** at **[[PRICE]]/mo**. [[If you sign up by 31 December 2026: as a Founding Member you pay 30% less for your first two monthly bills.]] FluxMuse is newly launched, and we're opening with a small first group of businesses that we set up by hand.
 
 To go ahead, sign the acceptance page and send it back, or reply "YES" on WhatsApp to [[PHONE / WHATSAPP]]. The proposal is valid until [[DATE + 30 days]].
 
@@ -77,7 +79,7 @@ Keep answers short, don't argue, and never invent numbers. If you don't know, sa
 
 - Ask what they spend today on the tools, freelancers or agency this would replace: [[THEIR ANSWER]]. Compare with that, not with nothing.
 - Start small: **Nano is R149 a month**, **Micro R289** with their own WhatsApp number. Move to Starter (R499) when the business grows.
-- On Starter, Growth or Scale, South African **Founding Members** pay 30% less for their first two monthly bills.
+- **Founding Members** pay 30% less for their first two monthly bills on any plan from Nano to Agency, if they sign up by 31 December 2026 (Nano R104, Micro R202).
 - If paying isn't possible right now, the **Free plan** is a permanent option (1 brand, 1 channel). It isn't a trial; they can stay on it.
 - The **lead guarantee** backs the paid plans: 3 qualified leads in 30 days of go-live, or we keep supporting them at no extra charge until 3 arrive (if they shared the link and posted at least weekly).
 - Meta message fees and any ad spend are charged by those providers, separately. Say so up front.
@@ -115,14 +117,14 @@ Keep answers short, don't argue, and never invent numbers. If you don't know, sa
 
 ### "Can my customers pay inside the chat?"
 
-- Checkout through FluxMuse (Paystack, South African bank accounts) is built and being switched on; it hasn't been tested end to end with real money yet. Until it is, orders arrive on their WhatsApp and they take payment the way they do today.
+- Checkout through FluxMuse in South Africa, via our payment partners, is built and being switched on; it hasn't been tested end to end with real money yet. Until it is, orders arrive on their WhatsApp and they take payment the way they do today.
 
 ### "I already have an agency."
 
 - FluxMuse can work alongside the agency: the client keeps ownership of their workspace [[CONFIRM: team member access by plan]].
 - If the agency manages several clients, point them to the **Flux_Partner programme**: the Agency tier at the partner wholesale price of **R6,999/mo** (30% off R9,999), white-label and multi-client. They set their own retail price.
 - Don't promise the agency a margin percentage. Any example must be labelled illustrative (20 clients × R1,500 = R30,000/mo, minus R6,999 = R23,001/mo gross spread before their own costs).
-- Referral commission is `[[FOUNDER DECISION: referral commission %]]`. Don't offer one yet.
+- If they would rather refer clients than resell, the partner programme pays 15% commission from day one (Registered Partner), rising to 20% (Silver) and 25% (Gold), on subscription fees their customers pay in the first 12 months.
 
 > "Great, keep them. If they manage other clients too, I'd be happy to introduce them to our partner programme."
 

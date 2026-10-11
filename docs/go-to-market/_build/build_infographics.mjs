@@ -3,7 +3,7 @@
 import { join } from 'node:path';
 import { renderJobs, ASSETS } from './lib/page.mjs';
 import { frame, markers, ringEdges, T, C, icon } from './lib/ig.mjs';
-import { COUNTRIES, SOON, billingOf, statusOf } from './lib/africa.mjs';
+import { COUNTRIES, SOON, statusOf } from './lib/africa.mjs';
 
 const OUT = join(ASSETS, 'infographics');
 const jobs = [];
@@ -52,7 +52,7 @@ variants('how-fluxmuse-works', ({ dark, w, h }) => {
 }, { square: true });
 
 // ============ 2. whatsapp-commerce-flow ============
-const rails = ['Paystack · South Africa', 'Being switched on'];
+const rails = ['Card and EFT', 'Being switched on']; // never name a payment provider (founder rule, 8 Oct 2026)
 const flowNodes = [
   ['Discover', 'megaphone', 'Status post, QR code or your shop link'],
   ['Chat', 'chat', 'The assistant replies in the buyer’s language'],
@@ -65,7 +65,7 @@ const flowNodes = [
 variants('whatsapp-commerce-flow', ({ dark, w, h }) => {
   const t = T(dark); const sq = w === 1080;
   const railChips = (fs) => rails.map((r) => `<span class="chip" style="font-size:${fs}px;padding:4px 11px">${r}</span>`).join('');
-  const foot = `<div style="position:absolute;left:${sq ? 56 : 88}px;bottom:${sq ? 36 : 40}px;font:400 ${sq ? 19 : 21}px Inter;color:${t.muted};width:${sq ? 740 : 1300}px">Checkout through FluxMuse (Paystack, South Africa) is built and being switched on; it has not yet been tested with real money. Until then, orders arrive as a WhatsApp message to your own number.</div>`;
+  const foot = `<div style="position:absolute;left:${sq ? 56 : 88}px;bottom:${sq ? 36 : 40}px;font:400 ${sq ? 19 : 21}px Inter;color:${t.muted};width:${sq ? 740 : 1300}px">Checkout through FluxMuse in South Africa is built and being switched on, via our payment partners; it has not yet been tested with real money. Until then, orders arrive as a WhatsApp message to your own number.</div>`;
   if (!sq) {
     const y0 = 300, nh = 380, gap = 34, pw = 300, nw = (1744 - pw - 6 * gap) / 6;
     let x = 88; const xs = flowNodes.map(([n]) => { const cur = x; x += (n === 'Pay' ? pw : nw) + gap; return cur; });
@@ -111,9 +111,10 @@ variants('whatsapp-commerce-flow', ({ dark, w, h }) => {
   return frame({ w, h, dark, eyebrow: 'WhatsApp commerce', title: 'From tap to repeat order', mark: 'tr', headW: 760, body });
 }, { square: true });
 
-// ============ 3. payment-coverage-map (tile-grid cartogram; live vs pending, status 2026-10-05) ============
-// live = paid checkout open (South Africa, Paystack). priced = local prices set, not on sale (NG, KE, GH).
-// pending = a contracted provider (pawaPay / Fincra) covers it, account pending. soon = no provider yet.
+// ============ 3. payment-coverage-map (tile-grid cartogram by country status, 2026-10-11) ============
+// live = paid sign-up open (South Africa: card, EFT). priced = local prices set, not on sale (NG, KE, GH).
+// pending = within our payment partners' reach, not open yet. soon = no payment partner yet.
+// Founder rule (8 Oct 2026): never name a payment provider or gateway, here or in any caption.
 const STAT_STYLE = (dark) => ({
   live: { bg: C.orange, fg: C.night, border: 'none' },
   priced: { bg: dark ? '#3A2718' : '#FFE9D6', fg: dark ? '#FFFFFF' : C.ink, border: `${3}px solid ${C.orange}` },
@@ -130,85 +131,70 @@ variants('payment-coverage-map', ({ dark, w, h }) => {
     <div style="font:700 ${sq ? 26 : 32}px/1 Poppins">${iso}</div><div style="font:600 ${sq ? 14 : 17}px/1.12 Inter;margin-top:${sq ? 2 : 4}px">${name}</div><div style="font:700 ${sq ? 12 : 15}px/1.1 Inter;color:${t.muted};margin-top:${sq ? 2 : 4}px;text-transform:uppercase;letter-spacing:.03em;max-width:${sq ? 70 : 100}px">Coming soon</div></div>`).join('');
   const swatch = (fs, k) => k === 'soon' ? `<span style="flex:none;width:${fs + 8}px;height:${fs + 8}px;border-radius:7px;border:2.5px dashed ${soonBorder};box-sizing:border-box"></span>`
     : `<span style="flex:none;width:${fs + 8}px;height:${fs + 8}px;border-radius:7px;background:${S[k].bg};border:${S[k].border};box-sizing:border-box"></span>`;
-  const rows = [['live', 'Live: paid checkout open', 'South Africa (Paystack)'], ['priced', 'Priced, not yet on sale', 'Nigeria, Kenya, Ghana'], ['pending', 'Provider contracted, account pending', `${counts.pending} countries (pawaPay / Fincra)`], ['soon', 'Coming soon', 'Botswana, Namibia']];
+  const rows = [['live', 'Live: South Africa', 'paid sign-up by card and EFT'], ['priced', 'Priced, not on sale', 'Nigeria, Kenya, Ghana'], ['pending', 'Not open yet', `${counts.pending} more countries in our payment partners’ reach`], ['soon', 'Coming soon', 'Botswana, Namibia']];
   const legend = (fs) => `<div style="display:flex;flex-direction:column;gap:${sq ? 8 : 12}px">${rows.map(([k, a, b]) => `<div style="display:flex;align-items:flex-start;gap:10px;font:500 ${fs}px/1.3 Inter;color:${t.fg}">${swatch(fs, k)}<span><b>${a}</b> <span style="color:${t.muted}">· ${b}</span></span></div>`).join('')}</div>`;
-  const stats = [['1', 'country with live paid checkout'], ['3', 'next markets priced, not on sale'], ['2', 'providers contracted, pending']];
-  const note = `Paystack is live in South Africa; FluxMuse checkout through it is being switched on. pawaPay and Fincra are contracted for expansion; accounts pending. No paid checkout outside South Africa yet.`;
+  const stats = [['1', 'country open for paid sign-up'], ['3', 'next markets priced, not on sale'], [String(COUNTRIES.length), 'African countries we’re expanding into, via our payment partners']];
+  const note = `Checkout through FluxMuse for your buyers is being switched on in South Africa. We’re expanding via our payment partners, banks and mobile money wallets across 23 African countries. No paid checkout outside South Africa yet.`;
   if (!sq) {
     const body = `${tiles}
     <div style="position:absolute;left:1308px;top:238px;width:524px">
       <div style="display:flex;flex-direction:column;gap:12px">
-        ${stats.map(([n, l]) => `<div class="card" style="padding:12px 18px;display:flex;align-items:center;gap:16px"><div style="font:700 46px/1 Poppins;color:${t.accentText};width:40px">${n}</div><div style="font:500 21px/1.25 Inter;color:${t.fg}">${l}</div></div>`).join('')}
+        ${stats.map(([n, l]) => `<div class="card" style="padding:12px 18px;display:flex;align-items:center;gap:16px"><div style="font:700 46px/1 Poppins;color:${t.accentText};width:64px;flex:none">${n}</div><div style="font:500 21px/1.25 Inter;color:${t.fg}">${l}</div></div>`).join('')}
       </div>
       <div style="font:700 24px Poppins;color:${t.fg};margin:26px 0 12px">Status by country</div>${legend(20)}
       <div style="font:400 19px/1.4 Inter;color:${t.muted};margin-top:20px">${note}</div>
     </div>`;
-    return frame({ w, h, dark, eyebrow: 'Payments coverage · October 2026', title: 'Live in South Africa. The rest is pending.', sub: 'Tiles show where contracted providers can reach, placed roughly by geography.', body });
+    return frame({ w, h, dark, eyebrow: 'Payments coverage · October 2026', title: 'Live in South Africa. The rest is pending.', sub: 'Status by country. Tiles placed roughly by geography.', body });
   }
   const body = `${tiles}
-  <div style="position:absolute;left:56px;top:${my + 3 * (ts + tg) + 8}px;width:520px">${stats.map(([n, l]) => `<div style="margin-bottom:10px;display:flex;align-items:center;gap:12px"><span style="font:700 38px/1 Poppins;color:${t.accentText}">${n}</span> <span style="font:500 19px/1.2 Inter;color:${t.fg};width:300px">${l}</span></div>`).join('')}</div>
+  <div style="position:absolute;left:56px;top:${my + 3 * (ts + tg) + 8}px;width:520px">${stats.map(([n, l]) => `<div style="margin-bottom:10px;display:flex;align-items:center;gap:12px"><span style="font:700 38px/1 Poppins;color:${t.accentText}">${n}</span> <span style="font:500 19px/1.2 Inter;color:${t.fg};width:420px">${l}</span></div>`).join('')}</div>
   <div style="position:absolute;left:56px;top:${my + 6 * (ts + tg) + 30}px;right:56px">${legend(18)}
   <div style="font:400 16px/1.35 Inter;color:${t.muted};margin-top:10px">${note}</div></div>`;
   return frame({ w, h, dark, eyebrow: 'Payments · October 2026', title: 'Live in South Africa, the rest pending', mark: 'tr', headW: 760, titleSize: 40, body });
 }, { square: true });
 
-// ============ 4. payment-rails-matrix (live vs pending, status 2026-10-05) ============
+// ============ 4. payment-rails-matrix (file name kept): status by country, no provider columns, 2026-10-11 ============
 const REGIONS = [
   ['Southern Africa', [['South Africa', 'ZA', 'ZAR'], ['Zambia', 'ZM', 'ZMW'], ['Malawi', 'MW', 'MWK'], ['Mozambique', 'MZ', 'MZN'], ['Lesotho', 'LS', 'LSL'], ['Zimbabwe', 'ZW', 'USD'], ['Botswana', 'BW', 'BWP', true], ['Namibia', 'NA', 'NAD', true]]],
   ['East Africa', [['Kenya', 'KE', 'KES'], ['Uganda', 'UG', 'UGX'], ['Tanzania', 'TZ', 'TZS'], ['Rwanda', 'RW', 'RWF'], ['Ethiopia', 'ET', 'ETB'], ['South Sudan', 'SS', 'SSP']]],
   ['West Africa', [['Nigeria', 'NG', 'NGN'], ['Ghana', 'GH', 'GHS'], ["Côte d'Ivoire", 'CI', 'XOF'], ['Senegal', 'SN', 'XOF'], ['Benin', 'BJ', 'XOF'], ['Burkina Faso', 'BF', 'XOF'], ['Sierra Leone', 'SL', 'SLE']]],
   ['Central Africa', [['Cameroon', 'CM', 'XAF'], ['Rep. of the Congo', 'CG', 'XAF'], ['Gabon', 'GA', 'XAF'], ['DR Congo', 'CD', 'CDF/USD']]],
 ];
-const RAILS = ['Yoco', 'Ozow', 'Paystack', 'pawaPay', 'Fincra'];
-// Header status per rail. Yoco/Ozow: FluxMuse's own subscription billing (SA). Paystack: live in SA only.
-const RAIL_STATUS = { Yoco: ['billing', 'live'], Ozow: ['billing', 'live'], Paystack: ['live SA', 'live'], pawaPay: ['pending', 'pending'], Fincra: ['pending', 'pending'] };
-const railsOf = Object.fromEntries(COUNTRIES.map((c) => [c[0], c[4]]));
+// Status label per country status (statusOf in lib/africa.mjs; SOON rows are 'soon').
+const STATUS_TXT = { live: 'Live · card, EFT', priced: 'Priced, not on sale', pending: 'Not open yet', soon: 'Coming soon' };
 {
   const build = ({ dark, w, h, portrait }) => {
     const t = T(dark);
-    const colW = portrait ? { name: 226, iso: 56, cur: 100, bill: 106, rail: 96 } : { name: 206, iso: 48, cur: 112, bill: 96, rail: 78 };
-    const tw = colW.name + colW.iso + colW.cur + colW.bill + 5 * colW.rail;
-    const rowH = portrait ? 33 : 44, regH = portrait ? 36 : 44, hdH = portrait ? 58 : 70, fs = portrait ? 20 : 22;
+    const colW = portrait ? { name: 250, iso: 64, cur: 130, st: 524 } : { name: 220, iso: 56, cur: 124, st: 452 };
+    const tw = colW.name + colW.iso + colW.cur + colW.st;
+    const rowH = portrait ? 33 : 44, regH = portrait ? 36 : 44, hdH = portrait ? 46 : 54, fs = portrait ? 20 : 22;
     const soonC = dark ? '#8A96A3' : '#8A949E';
-    const green = dark ? '#7FD18A' : '#1E6B2A';
-    // c = live; p = contracted, account pending (hollow ring); s = coming soon
-    const mark = (st) => st === 'c' ? `<svg width="${fs + 8}" height="${fs + 8}" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="${C.orange}"/><path d="M9 16.5l4.5 4.5L23 11.5" fill="none" stroke="${C.night}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-      : st === 'p' ? `<svg width="${fs + 8}" height="${fs + 8}" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="${soonC}" stroke-width="2.6" stroke-dasharray="4 3"/></svg>`
-      : st === 's' ? `<span style="display:inline-block;width:${fs + 14}px;height:${fs + 4}px;border-radius:7px;border:2.5px dashed ${soonC};box-sizing:border-box"></span>` : `<span style="color:${t.line};font:700 ${fs}px Inter">·</span>`;
-    const header = `<div style="display:flex;align-items:flex-end;height:${hdH}px;border-bottom:2px solid ${t.fg};font:700 ${fs - 1}px Inter;color:${t.fg}">
-      <div style="width:${colW.name}px">Country</div><div style="width:${colW.iso}px">ISO</div><div style="width:${colW.cur}px">Currency</div>
-      <div style="width:${colW.bill}px;line-height:1.1;padding-bottom:3px">Billing<br>status</div>
-      ${RAILS.map((r) => { const [lbl, st] = RAIL_STATUS[r]; return `<div style="width:${colW.rail}px;text-align:center;line-height:1.15;font-size:${fs - (portrait ? 5 : 7)}px">${r}<div style="font:600 ${portrait ? 14 : 15}px/1.1 Inter;color:${st === 'live' ? green : t.muted};margin:3px 0 6px">${lbl}</div></div>`; }).join('')}</div>`;
-    const billCell = (iso, soon) => {
-      if (soon) return `<div style="width:${colW.bill}px;color:${t.muted};font-style:italic">waitlist</div>`;
-      const st = statusOf(iso);
-      if (st === 'live') return `<div style="width:${colW.bill}px;font-weight:700;color:${t.accentText}">ZAR live</div>`;
-      return `<div style="width:${colW.bill}px;color:${t.muted};font-size:${fs - 3}px">${st === 'priced' ? 'priced' : 'closed'}</div>`;
-    };
-    const cell = (iso, r, rs) => {
-      if (iso === 'ZA' && ['Yoco', 'Ozow', 'Paystack'].includes(r)) return mark('c');
-      return rs.includes(r) || rs.includes(r + '*') ? mark('p') : mark('');
-    };
+    // live = filled check; priced = orange ring; pending = dashed grey ring; soon = dashed box
+    const mark = (st) => st === 'live' ? `<svg width="${fs + 8}" height="${fs + 8}" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="${C.orange}"/><path d="M9 16.5l4.5 4.5L23 11.5" fill="none" stroke="${C.night}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+      : st === 'priced' ? `<svg width="${fs + 8}" height="${fs + 8}" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="${C.orange}" stroke-width="3.2"/></svg>`
+      : st === 'pending' ? `<svg width="${fs + 8}" height="${fs + 8}" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="${soonC}" stroke-width="2.6" stroke-dasharray="4 3"/></svg>`
+      : `<span style="display:inline-block;width:${fs + 14}px;height:${fs + 4}px;border-radius:7px;border:2.5px dashed ${soonC};box-sizing:border-box"></span>`;
+    const header = `<div style="display:flex;align-items:flex-end;height:${hdH}px;padding-bottom:6px;box-sizing:border-box;border-bottom:2px solid ${t.fg};font:700 ${fs - 1}px Inter;color:${t.fg}">
+      <div style="width:${colW.name}px">Country</div><div style="width:${colW.iso}px">ISO</div><div style="width:${colW.cur}px">Currency</div><div style="width:${colW.st}px">Status</div></div>`;
+    const stCell = (st) => `<div style="width:${colW.st}px;display:flex;align-items:center;gap:10px;font:${st === 'live' ? 700 : 500} ${fs - 1}px Inter;color:${st === 'live' ? t.accentText : st === 'priced' ? t.fg : t.muted}">${mark(st)}<span>${STATUS_TXT[st]}</span></div>`;
     const table = (regs) => `<div style="width:${tw}px">${header}${regs.map(([rn, list]) => `
-      <div style="height:${regH}px;display:flex;align-items:flex-end;padding-bottom:5px;font:700 ${fs}px Poppins;color:${t.accentText};border-bottom:1.5px solid ${t.line}">${rn}</div>
-      ${list.map(([name, iso, cur, soon]) => { const rs = railsOf[iso] || []; return `<div style="height:${rowH}px;display:flex;align-items:center;border-bottom:1px solid ${t.line};font:400 ${fs}px Inter;color:${soon ? t.muted : t.fg};${iso === 'ZA' ? `background:${dark ? 'rgba(255,106,0,.10)' : C.tint};` : ''}">
-        <div style="width:${colW.name}px;font-weight:${iso === 'ZA' ? 700 : 500}">${name}</div><div style="width:${colW.iso}px;color:${t.muted}">${iso}</div><div style="width:${colW.cur}px;color:${t.muted}">${cur}</div>${billCell(iso, soon)}
-        ${soon ? `<div style="width:${5 * colW.rail}px;display:flex;justify-content:center"><span style="display:inline-flex;align-items:center;height:${rowH - 10}px;padding:0 16px;border-radius:999px;border:2.5px dashed ${soonC};font:700 ${fs - 4}px Inter;color:${t.fg};letter-spacing:.02em">Coming soon · no provider yet</span></div>`
-          : RAILS.map((r) => `<div style="width:${colW.rail}px;display:flex;justify-content:center">${cell(iso, r, rs)}</div>`).join('')}</div>`; }).join('')}`).join('')}</div>`;
+      <div style="height:${regH}px;display:flex;align-items:flex-end;padding-bottom:5px;box-sizing:border-box;font:700 ${fs}px Poppins;color:${t.accentText};border-bottom:1.5px solid ${t.line}">${rn}</div>
+      ${list.map(([name, iso, cur, soon]) => { const st = soon ? 'soon' : statusOf(iso); return `<div style="height:${rowH}px;display:flex;align-items:center;border-bottom:1px solid ${t.line};font:400 ${fs}px Inter;color:${soon ? t.muted : t.fg};${iso === 'ZA' ? `background:${dark ? 'rgba(255,106,0,.10)' : C.tint};` : ''}">
+        <div style="width:${colW.name}px;font-weight:${iso === 'ZA' ? 700 : 500};padding-left:${iso === 'ZA' ? 8 : 0}px;box-sizing:border-box">${name}</div><div style="width:${colW.iso}px;color:${t.muted}">${iso}</div><div style="width:${colW.cur}px;color:${t.muted}">${cur}</div>${stCell(st)}</div>`; }).join('')}`).join('')}</div>`;
     const lfs = portrait ? 17 : 20;
     const legend = `<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;font:500 ${lfs}px Inter;color:${t.fg}">
-      <span style="display:flex;align-items:center;gap:8px">${mark('c')} live</span><span style="display:flex;align-items:center;gap:8px">${mark('p')} contracted, account pending</span><span style="display:flex;align-items:center;gap:8px">${mark('s')} coming soon</span></div>
-      <div style="font:400 ${lfs}px/1.4 Inter;color:${t.muted};margin-top:8px">Only South Africa is open for paid sign-up. Paystack is live there; Yoco and Ozow run FluxMuse’s own subscription billing. pawaPay and Fincra are contracted for expansion, accounts pending. Nigeria, Kenya and Ghana are priced in local currency but <b style="color:${t.fg}">not yet on sale</b>.</div>`;
+      ${['live', 'priced', 'pending', 'soon'].map((k) => `<span style="display:flex;align-items:center;gap:8px">${mark(k)} ${STATUS_TXT[k].toLowerCase().replace('live · card, eft', 'live')}</span>`).join('')}</div>
+      <div style="font:400 ${lfs}px/1.4 Inter;color:${t.muted};margin-top:8px">Only South Africa is open for paid sign-up, by card and EFT; checkout through FluxMuse for your buyers is being switched on. Nigeria, Kenya and Ghana are priced in local currency but <b style="color:${t.fg}">not yet on sale</b>. We’re expanding via our payment partners, banks and mobile money wallets across 23 African countries.</div>`;
     if (portrait) {
       const top = 180;
       const body = `<div style="position:absolute;left:56px;top:${top}px">${table(REGIONS)}</div><div style="position:absolute;left:56px;top:${top + hdH + 4 * regH + 25 * rowH + 14}px;width:968px">${legend}</div>`;
-      return frame({ w, h, dark, eyebrow: 'Payment rails · October 2026', title: 'Live in South Africa; the rest pending', mark: 'tr', headW: 760, titleSize: 40, body });
+      return frame({ w, h, dark, eyebrow: 'Payment status · October 2026', title: 'Live in South Africa; the rest pending', mark: 'tr', headW: 760, titleSize: 40, body });
     }
     const top = 214, gap = 1744 - 2 * tw;
     const body = `<div style="position:absolute;left:88px;top:${top}px">${table(REGIONS.slice(0, 2))}</div>
       <div style="position:absolute;left:${88 + tw + gap}px;top:${top}px">${table(REGIONS.slice(2))}</div>
       <div style="position:absolute;left:${88 + tw + gap}px;top:${top + hdH + 2 * regH + 11 * rowH + 22}px;width:${tw}px">${legend}</div>`;
-    return frame({ w, h, dark, eyebrow: 'Payment rails · October 2026', title: 'What is live, and what is still pending', mark: 'tr', body });
+    return frame({ w, h, dark, eyebrow: 'Payment status · October 2026', title: 'What is live, and what is still pending', mark: 'tr', body });
   };
   add('payment-rails-matrix', 1920, 1080, build({ dark: false, w: 1920, h: 1080 }));
   add('payment-rails-matrix_dark', 1920, 1080, build({ dark: true, w: 1920, h: 1080 }));
@@ -223,9 +209,9 @@ variants('platform-stack', ({ dark, w, h }) => {
   const layers = [
     ['Channels', 'globe', C.blue, ['WhatsApp Business', 'WhatsApp Status', 'TikTok video', 'Consented broadcasts', 'Facebook Pages*', 'Instagram posts*', 'Instagram DMs!', 'X posting!']],
     ['AI team', 'sparkles', C.violet, ['Catalogue from photos', 'Captions & images (POST)', 'Short video clips', 'Voice-note transcription', 'Replies in the customer’s language', 'AI Voice (beta)*']],
-    ['Shop & orders', 'bag', C.orange, ['Hosted shop link', 'Order alerts on WhatsApp', 'Reply SOLD to mark it', 'Checkout via Paystack, South Africa*']],
+    ['Shop & orders', 'bag', C.orange, ['Hosted shop link', 'Order alerts on WhatsApp', 'Reply SOLD to mark it', 'Checkout through FluxMuse, South Africa*']],
     ['Growth', 'trend', C.green, ['Templates & quick replies', 'Broadcasts to consented contacts', 'Daily digest*', 'Click-to-WhatsApp ads*']],
-    ['Integrations', 'plug', C.teal, ['Shopify sync*', 'WooCommerce sync*', 'Takealot sync*']],
+    ['Integrations', 'plug', C.teal, ['Shopify sync*', 'WooCommerce sync*']],
     ['Trust', 'shield', dark ? '#8FA3AD' : C.slate, ['Verified Meta Tech Provider', 'POPIA-aligned, consent-only broadcasts', 'Row-level security', 'Encrypted tokens', 'Data export & account deletion']],
   ];
   const chip = (c) => c.endsWith('*')

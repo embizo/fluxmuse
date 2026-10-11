@@ -24,10 +24,10 @@ business plan and financial model for **Fluxmuse (Pty) Ltd**, prepared September
 
 ## Before anything goes out
 
-1. Check every price, offer and capability claim against `08_Prospects/CURRENT_OFFER.md`. No free trials, no pilot, no customers or results, no money-back. Founding Member is 30% off the first two monthly bills for South African sign-ups, with no end date.
+1. Check every price, offer and capability claim against `08_Prospects/CURRENT_OFFER.md`. No free trials, no pilot, no customers or results, no money-back. Founding Member is 30% off the first two monthly bills on every self-serve plan, Nano to Agency, for sign-ups until 31 December 2026. The partner programme is live (15%/20%/25% commission; terms in `08_Prospects/CURRENT_OFFER.md` §1).
 2. Fill every `[[PLACEHOLDER]]` (team, advisors, anything marked `[[FOUNDER TO CONFIRM]]`) and confirm the **ASSUMPTION** items in `00_FACTS_AND_ASSUMPTIONS.md`, especially use of funds and market-size sources. (Settled 2026-10-05: R46M seed, sized so the Base case reaches profitability without a Series A; see `06_Financial_Model/Financial_Model_Notes.md`.)
 3. If you change a number in the financial model, regenerate `model_summary.json` and update the investor deck and business plan so all three agree.
 4. Only claim Meta permissions that are approved. Facebook/Instagram auto-publishing is being switched on; Instagram DMs and comments are not available.
-5. Payments: Paystack is live in South Africa only. Nigeria, Kenya and Ghana checkout is not available yet (Fincra/pawaPay pending).
+5. Payments: paid sign-up is live in South Africa only (card and EFT). Nigeria, Kenya and Ghana checkout is not available yet. Never name a payment provider or gateway in anything a prospect, customer or partner sees; say "via our payment partners" (provider names are internal, `00_FACTS_AND_ASSUMPTIONS.md` §3).
 
 - [08_Prospects](08_Prospects/README.md): first 20 SA prospects, tailored proposals and outreach playbook (2026-09-26)

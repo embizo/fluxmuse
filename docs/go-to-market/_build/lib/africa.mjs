@@ -1,22 +1,22 @@
-// Africa tile-grid cartogram data shared by the coverage map, rails matrix and market-entry graphics.
-// [iso, name, col, row, rails]. `rails` = what each provider CONTRACTS to cover, not what is live.
-// Status 2026-10-05 (facts §3, CURRENT_OFFER.md): only South Africa has live paid checkout (Paystack;
-// Yoco and Ozow for FluxMuse's own billing). pawaPay and Fincra are contracted, accounts pending.
-// Rails ending in '*' = payouts only. SOON = coming soon (no provider covers them yet).
+// Africa tile-grid cartogram data shared by the coverage map, status matrix and market-entry graphics.
+// [iso, name, col, row]. The 23 tiles are the countries our payment partners, banks and mobile money wallets
+// can reach once each market opens, NOT live coverage. Status 2026-10-11 (CURRENT_OFFER.md §3): only South Africa
+// is open for paid sign-up (card and EFT). Which partner covers which country is internal (00_FACTS §3); never print it.
+// A '*' after a name = payouts only. SOON = coming soon (no payment partner covers them yet).
 export const COUNTRIES = [
-  ['SN', 'Senegal', 0, 0, ['pawaPay', 'Fincra']], ['BF', 'Burkina Faso', 2, 0, ['pawaPay', 'Fincra']], ['SS', 'South Sudan*', 7, 0, ['Fincra*']], ['ET', 'Ethiopia', 8, 0, ['pawaPay']],
-  ['SL', 'Sierra Leone', 0, 1, ['pawaPay']], ['CI', "Côte d'Ivoire", 1, 1, ['Paystack', 'pawaPay', 'Fincra']], ['GH', 'Ghana', 2, 1, ['Paystack', 'pawaPay', 'Fincra']], ['BJ', 'Benin', 3, 1, ['pawaPay', 'Fincra']], ['NG', 'Nigeria', 4, 1, ['Paystack', 'pawaPay', 'Fincra']], ['CM', 'Cameroon', 5, 1, ['pawaPay', 'Fincra']], ['UG', 'Uganda', 7, 1, ['pawaPay', 'Fincra']], ['KE', 'Kenya', 8, 1, ['Paystack', 'pawaPay', 'Fincra']],
-  ['GA', 'Gabon', 4, 2, ['pawaPay', 'Fincra']], ['CG', 'Rep. of the Congo', 5, 2, ['pawaPay', 'Fincra']], ['CD', 'DR Congo', 6, 2, ['pawaPay', 'Fincra']], ['RW', 'Rwanda', 7, 2, ['Paystack', 'pawaPay', 'Fincra']], ['TZ', 'Tanzania', 8, 2, ['pawaPay', 'Fincra']],
-  ['ZM', 'Zambia', 6, 3, ['pawaPay', 'Fincra']], ['MW', 'Malawi', 7, 3, ['pawaPay']], ['MZ', 'Mozambique', 8, 3, ['pawaPay']],
-  ['ZW', 'Zimbabwe*', 7, 4, ['Fincra*']],
-  ['ZA', 'South Africa', 6, 5, ['Yoco', 'Ozow', 'Paystack', 'Fincra']], ['LS', 'Lesotho', 7, 5, ['pawaPay']],
+  ['SN', 'Senegal', 0, 0], ['BF', 'Burkina Faso', 2, 0], ['SS', 'South Sudan*', 7, 0], ['ET', 'Ethiopia', 8, 0],
+  ['SL', 'Sierra Leone', 0, 1], ['CI', "Côte d'Ivoire", 1, 1], ['GH', 'Ghana', 2, 1], ['BJ', 'Benin', 3, 1], ['NG', 'Nigeria', 4, 1], ['CM', 'Cameroon', 5, 1], ['UG', 'Uganda', 7, 1], ['KE', 'Kenya', 8, 1],
+  ['GA', 'Gabon', 4, 2], ['CG', 'Rep. of the Congo', 5, 2], ['CD', 'DR Congo', 6, 2], ['RW', 'Rwanda', 7, 2], ['TZ', 'Tanzania', 8, 2],
+  ['ZM', 'Zambia', 6, 3], ['MW', 'Malawi', 7, 3], ['MZ', 'Mozambique', 8, 3],
+  ['ZW', 'Zimbabwe*', 7, 4],
+  ['ZA', 'South Africa', 6, 5], ['LS', 'Lesotho', 7, 5],
 ];
-// Coming soon: no contracted provider covers them yet (facts §3). NA north-west of ZA, BW directly north of ZA.
+// Coming soon: no payment partner covers them yet (facts §3). NA north-west of ZA, BW directly north of ZA.
 export const SOON = [['NA', 'Namibia', 5, 4], ['BW', 'Botswana', 6, 4]];
 
 // Billing currency once a market opens (facts §2): ZAR live; NGN/KES/GHS and USD priced, not yet on sale.
 export const billingOf = (iso) => ({ ZA: 'ZAR', NG: 'NGN', KE: 'KES', GH: 'GHS' }[iso] || 'USD');
-// Sales status: 'live' (paid checkout open), 'priced' (local prices set, not on sale), 'pending' (provider contracted, account pending).
+// Sales status: 'live' (paid sign-up open), 'priced' (local prices set, not on sale), 'pending' (partner coverage, not open yet).
 export const statusOf = (iso) => (iso === 'ZA' ? 'live' : ['NG', 'KE', 'GH'].includes(iso) ? 'priced' : 'pending');
 
 // Small tile-grid motif. hi(iso) -> 'on' | 'soft' | 'soon' | 'off'

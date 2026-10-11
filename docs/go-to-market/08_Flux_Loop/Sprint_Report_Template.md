@@ -102,7 +102,7 @@ behind a comparison. A small sample is a hint, not a result.
 
 | # | Suggested change | Evidence | Owner decision |
 |---|---|---|---|
-| 1 | `[[e.g. add "pay a deposit by Yoco" to trust signals]]` | `[[metric or example]]` | `[[approve / reject]]` |
+| 1 | `[[e.g. add "pay a deposit by card or EFT" to trust signals]]` | `[[metric or example]]` | `[[approve / reject]]` |
 | 2 | `[[ ]]` | `[[ ]]` | `[[ ]]` |
 
 Approved changes go into the Taste Profile and its change log

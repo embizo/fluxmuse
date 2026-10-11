@@ -37,11 +37,15 @@ FORBIDDEN = [r"200\+", r"\b4\.9\b", r"snapscan", r"stitch", r"lifetime", r"for l
              r"free trial", r"free month", r"14[- ]day", r"days free", r"try (it )?free", r"risk[- ]free",
              r"no card required", r"\bpilot", r"\bour customers", r"trusted by", r"\bproven\b", r"\b10x\b",
              r"money[- ]?back", r"refund", r"\bVAT\b", r"7,999", r"5,599", r"24,401", r"79,990", r"55,990",
-             r"19,999", r"23 countries", r"(five|5) (payment )?rails", r"1 Dec", r"31 Jan", r"from R499",
+             r"19,999", r"23 countries", r"(five|5) (payment )?rails", r"\b1 Dec", r"31 Jan", r"from R499",
              r"\d[\d,]* AI credits", r"testimonial", r"gauteng",
              r"(instagram|facebook)[^.\n]{0,30}\b(is|are) live",
-             # a Founding Member price must never be shown for the Agency tier
-             r"founding member[^.\n]{0,20}R6,999", r"R6,999[^.\n]{0,40}founding member"]
+             # founder rule (8 Oct 2026): never name a payment provider or gateway
+             r"paystack", r"\byoco\b", r"\bozow\b", r"pawapay", r"fincra", r"mpesa", r"peach payments",
+             # Takealot sync is shelved; partner programme terms are live (CURRENT_OFFER.md §1, 9 Oct 2026)
+             r"takealot", r"\[\[TBC", r"FOUNDER DECISION", r"commission is (still )?(to be|being) (decided|finalised)",
+             r"while it lasts", r"no (set )?end date"]
+# (A Founding Member price of R6,999 on Agency is valid since 9 Oct 2026, so that old check is gone.)
 LEFTOVER = r"lorem|ipsum|\bTODO\b|\bx{3,}\b|\[insert|click to (add|edit)"
 MIN_PT = {"body": 14, "card": 14, "chip": 14, "placeholder": 14, "table": 14, "title": 24, "eyebrow": 11,
           "caption": 10, "footer": 10, "slidenum": 10}

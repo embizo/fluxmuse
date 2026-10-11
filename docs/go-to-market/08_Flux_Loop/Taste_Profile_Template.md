@@ -56,7 +56,7 @@ Ask in order. Follow-ups in *italics*. Most questions map to one profile field.
 - How they write on WhatsApp: `[[voice notes vs text, emojis, length]]`
 
 **B3. What earns trust, and what makes them hesitate**
-- Trust signals: `[[e.g. real before/after photos, owner's face, clear prices, deposit through Yoco]]`
+- Trust signals: `[[e.g. real before/after photos, owner's face, clear prices, deposit by card or EFT]]`
 - Common worries: `[[e.g. "will it hurt", "how long", "is the deposit refundable"]]`
 - Our honest answer to each worry: `[[ ]]`
 

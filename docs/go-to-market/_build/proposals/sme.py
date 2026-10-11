@@ -10,7 +10,7 @@ def build_sme(out_path):
     d.cover("Proposal · SME growth", "Sell and grow on WhatsApp, with an AI team behind you",
             f"A 60-day set-up and growth plan for {CL}")
     C.how_to_use(d, "SME growth proposal template", extra=[
-        "[ ] Shopify, WooCommerce and Takealot sync is partly built and not offered yet. Don't promise it.",
+        "[ ] Shopify and WooCommerce sync is partly built and not offered yet. Don't promise it.",
         "[ ] AI Voice is beta on Growth (inbound) and Scale (inbound and outbound): offer it as “beta, evaluated "
         "together”, never as a receptionist replacement.",
         "[ ] Optional service fees are [[TBC]] until the founder publishes a services price list.",
@@ -78,7 +78,7 @@ def build_sme(out_path):
     d.para("Every capability below carries its real status today.")
     C.status_table(d, extra=[
         ("AI Voice: inbound calls on Growth, inbound and outbound on Scale", "Beta, evaluated together"),
-        ("Sync from Shopify, WooCommerce or Takealot", "Not offered yet"),
+        ("Sync from Shopify or WooCommerce", "Not offered yet"),
     ])
     d.figure("infographics/platform-stack.png",
              "How FluxMuse fits together. Items being switched on are labelled in the table above.",
@@ -130,7 +130,8 @@ def build_sme(out_path):
          "10 brands, 40 channels, inbound and outbound AI Voice (beta)"),
     ], [2.4, 2.0, 2.3, 4.1, 6.2], "Plan investment options", size=9, highlight_rows=(1,))
     d.para("*" + C.FOUNDING_LINE + " AI credits come with every plan; see fluxmuse.ai/pricing for the current "
-           "allowance. More than 10 brands: Corporate (R6,999/mo) or Custom, by consultation.", size=9)
+           "allowance. More than 10 brands: Corporate (R6,999/mo; Founding Member R4,899 for the first two monthly "
+           "bills) or Custom, by consultation.", size=9)
     d.figure("infographics/pricing-tiers.png",
              "FluxMuse plans in ZAR. Annual = 10× monthly.",
              "FluxMuse pricing tiers in South African rand.")
@@ -160,7 +161,7 @@ def build_sme(out_path):
     d.bullets([
         "Orders from the shop link arrive on your WhatsApp; you take payment the way you do today.",
         C.CHECKOUT_NOTE,
-        "Your FluxMuse subscription is paid through Paystack, Yoco or Ozow.",
+        "Your FluxMuse subscription is paid by card or EFT, via our payment partners.",
         "Paid plans are for South African businesses. Businesses elsewhere can join the waitlist.",
     ])
     d.callout("Our lead guarantee", [C.GUARANTEE])
@@ -208,7 +209,7 @@ def build_sme(out_path):
         "Starter, monthly (R499/mo) or annual (R4,990/yr)",
         "Growth, monthly (R1,999/mo) or annual (R19,990/yr)",
         "Scale, monthly (R4,999/mo) or annual (R49,990/yr)",
-        "Founding Member discount (South African sign-up, first two monthly bills)",
+        "Founding Member discount (first two monthly bills, sign-ups until 31 December 2026)",
         "Optional services: [[LIST]]",
         "60-day plan as described, starting [[DATE]]",
     ], terms_num=13)

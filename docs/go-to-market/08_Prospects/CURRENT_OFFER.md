@@ -48,8 +48,8 @@ number is activated.
   Commission is on subscription fees the customer actually pays (after any discount) in their **first 12 months**; not
   on SMS, WhatsApp or AI credit top-ups, nor Custom. Held 30 days, then paid monthly by EFT from R500. Partners can't
   add discounts for customers; their own plan gets the better of a running offer and their level discount, not both.
-  Gold on Agency comes to R6,999, the same as partner wholesale. `FluxMuse_Partner_Programme_Deck.pptx` predates
-  these terms: check it against this table before sending.
+  Gold on Agency comes to R6,999, the same as partner wholesale. The pitch decks, partner deck, infographics
+  and proposal templates were rebuilt to these terms on 2026-10-11 (partner deck slides 11–13).
 
 ## 2. Policy (founder, 25 Sept "pay first"; terms confirmed 2026-10-01)
 
@@ -66,7 +66,9 @@ number is activated.
   usage, nothing to cancel — and may be used for any wave.
 - **Checkout fee wording, CONFIRMED 2026-10-01 — pass-through, named:** "Card payments carry Paystack's standard fee
   (2.9% + R1), deducted before payout; EFT is 2%." No separate FluxMuse service fee on top. Use only once FluxMuse
-  checkout has been tested end to end with real money (still IN SETUP, §3).
+  checkout has been tested end to end with real money (still IN SETUP, §3). **INTERNAL:** since the founder's 8 Oct
+  rule (never name a payment provider or gateway), reword it without the provider name before any prospect sees it,
+  e.g. "Card payments carry our payment partner's standard fee (2.9% + R1), deducted before payout; EFT is 2%." 
 - **Sender identity, CONFIRMED 2026-10-01:** Thabo Malebadi, thabo@fluxmuse.com (the only domain that receives mail).
   Pre-flight item 4 in `Outreach_Playbook.md` is resolved.
 
@@ -90,20 +92,23 @@ number is activated.
 - **Auto-publishing to Facebook Pages and Instagram:** the Meta permissions are **not approved yet**. Until then the real
   value is forwarding to WhatsApp Status.
 - **Daily digest** message: dry run only; needs a Meta-approved message template.
-- **Checkout through FluxMuse** (Paystack, South African bank accounts; FluxMuse doesn't hold the money): built but **not
+- **Checkout through FluxMuse** (South African bank accounts, via our payment partners; FluxMuse doesn't hold the money): built but **not
   yet tested end to end with real money**. Fees and terms `[[FOUNDER TO CONFIRM FEE WORDING]]` before it is offered.
 - **AI Voice** (inbound on Growth; inbound and outbound on Scale): beta, with known latency and language-switching
   issues. Offer as "beta, evaluated together", never as a receptionist replacement.
 - **Click-to-WhatsApp ads (FluxLoop):** FluxMuse runs it on its own account first; **not offered to tenants yet**.
-- **Sync from Shopify, WooCommerce, Takealot:** exists in part; tenant catalogue sync is a known gap. Don't promise it.
+- **Sync from Shopify and WooCommerce:** exists in part; tenant catalogue sync is a known gap. Don't promise it.
 
 **NOT AVAILABLE.** Instagram DMs and comments (not approved), X posting (off), Nigeria/Kenya/Ghana checkout
-(Fincra/pawaPay accounts pending), anything outside South Africa for paid checkout.
+(expansion payment-partner accounts pending), anything outside South Africa for paid checkout.
 
 ## 4. Company facts you may state
 
 - Fluxmuse (Pty) Ltd, South Africa; a **verified Meta Tech Provider** (business and access verification, as of Sept 2026).
-- Payments in South Africa run on Paystack (live). Yoco and Ozow are integrated on FluxMuse's own subscription billing.
+- Paid sign-up in South Africa is by card and EFT, via our payment partners. Approved wording when payments come up:
+  "via our payment partners, banks and mobile money wallets across 23 African countries" (`[[CONFIRM]]`, 00_FACTS §3;
+  frame it as expansion, not live coverage). **Never name a payment provider or gateway** (founder rule, 8 Oct 2026).
+  *(INTERNAL ONLY, never in prospect, customer or partner copy: which providers run which rail is in 00_FACTS §3.)*
 - Built for African small businesses: WhatsApp-first, priced in rands, multilingual.
 - **No customer counts, no ratings, no testimonials, no results, no "pilot brands".** FluxMuse has **no paying
   customers yet** and **no pilot cohort**. The honest, credible angle is *"we are opening with a small first group of

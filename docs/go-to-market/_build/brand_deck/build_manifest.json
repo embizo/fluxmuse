@@ -1,10 +1,10 @@
 {
-  "built": "2026-10-05",
+  "built": "2026-10-11",
   "assets_revision_v3_marker": true,
   "decks": {
     "FluxMuse_Brand_Pitch_Deck.pptx": {
       "variant": "master",
-      "slides": 26,
+      "slides": 27,
       "images": [
         "brand/fluxmuse-icon-512.png",
         "brand/fluxmuse-logo-dark.png",
@@ -59,7 +59,7 @@
     },
     "FluxMuse_Partner_Programme_Deck.pptx": {
       "variant": "partner",
-      "slides": 21,
+      "slides": 22,
       "images": [
         "brand/fluxmuse-icon-512.png",
         "brand/fluxmuse-logo-dark.png",

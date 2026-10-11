@@ -146,12 +146,11 @@ def build_solo(out_path, sample=False):
         ("WhatsApp Concierge, shop link, order alerts", "✓", "✓", "✓"),
         ("AI captions, images and short video clips", "✓", "✓", "✓"),
         ("Own WhatsApp Business number", "[[CONFIRM]]", "1 number", "✓"),
-        ("Founding Member (first two monthly bills)", "–", "–", "R349, then R499"),
+        ("Founding Member (first two monthly bills)", "R104, then R149", "R202, then R289", "R349, then R499"),
     ]
     d.table(["", "Nano", "Micro", "Starter"], rows, [6.8, 3.4, 3.4, 3.4], "Nano, Micro and Starter plan comparison",
             aligns=[None, "center", "center", "center"], highlight_rows=(0,))
-    d.para("AI credits come with every plan; see fluxmuse.ai/pricing for the current allowance. "
-           "[[FOUNDER TO CONFIRM: whether Founding Member also covers Nano and Micro]]", size=9)
+    d.para("AI credits come with every plan; see fluxmuse.ai/pricing for the current allowance.", size=9)
     d.bullets([
         "**Nano (R149/mo)** is the place to start for a side-hustle: your shop, your link and posts made for you.",
         "**Micro (R289/mo)** adds a channel and your own WhatsApp number on FluxMuse.",
@@ -160,8 +159,9 @@ def build_solo(out_path, sample=False):
         "plans.",
     ])
     d.figure("infographics/founding-member-offer.png",
-             "Founding Member launch offer for South African sign-ups: 30% off the first two monthly bills.",
-             "Founding Member offer: 30% off the first two monthly bills for South African sign-ups.", width_cm=15)
+             "Founding Member launch offer: 30% off the first two monthly bills on every plan, until 31 December 2026.",
+             "Founding Member offer: 30% off the first two monthly bills on every plan, Nano to Agency, until 31 "
+             "December 2026.", width_cm=15)
     if S:
         d.para(f"**Our recommendation for {client}:** start on **Micro** so the studio's own WhatsApp number runs "
                "through FluxMuse. Move to **Starter** when you want more from it.")
@@ -174,7 +174,7 @@ def build_solo(out_path, sample=False):
         "Today: the shop link sends each order to your WhatsApp, and you take payment the way you already do"
         + (", including any deposit." if S else "."),
         C.CHECKOUT_NOTE,
-        "Your FluxMuse subscription is paid through Paystack, Yoco or Ozow.",
+        "Your FluxMuse subscription is paid by card or EFT, via our payment partners.",
     ] + (["Deposit rule for the studio (your own, collected your way for now): [[R AMOUNT]]; no-show policy: "
           "[[OWNER'S POLICY]]."] if S else []))
 
@@ -204,7 +204,7 @@ def build_solo(out_path, sample=False):
     d.h1("8. Next steps")
     d.numbered([
         f"Reply “YES” on WhatsApp to [[PHONE / WHATSAPP]], email {C.SENDER_EMAIL} or sign section 10.",
-        "Subscribe to your plan at fluxmuse.ai (payment first; Founding Member applies to South African sign-ups).",
+        "Subscribe to your plan at fluxmuse.ai (payment first; Founding Member applies to sign-ups until 31 December 2026).",
         "We book a 30-minute set-up call on [[DATE]] and set you up by hand.",
         "Week 1 set-up begins, and we check in every week for the first 30 days.",
     ])
