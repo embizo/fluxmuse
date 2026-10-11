@@ -4,7 +4,7 @@ from fmdoc import DEEP, TINT  # noqa: F401
 SENDER = "Thabo Malebadi"
 SENDER_EMAIL = "thabo@fluxmuse.com"
 
-# Mirrors 08_Prospects/CURRENT_OFFER.md (1 Oct 2026). Edit here when the offer changes.
+# Mirrors 08_Prospects/CURRENT_OFFER.md (9 Oct 2026). Edit here when the offer changes.
 TIERS = {  # name: (monthly ZAR, annual ZAR, brands, channels, note)
     "Free": ("R0", "R0", "1", "1", "Permanent plan, not a trial"),
     "Nano": ("R149", "R1,490", "1", "3", "Entry paid plan"),
@@ -15,13 +15,13 @@ TIERS = {  # name: (monthly ZAR, annual ZAR, brands, channels, note)
     "Corporate": ("R6,999", "R69,990", "25", "60", "Bring your own cloud"),
     "Agency": ("R9,999", "R99,990", "Unlimited", "80", "White-label, multi-client, bring your own cloud"),
 }
-FOUNDING_LINE = ("Founding Member: South African sign-ups pay 30% less for their first two monthly bills. "
-                 "It is a discount, not a free period.")
+FOUNDING_LINE = ("Founding Member: 30% off the first two monthly bills on every plan from Nano to Agency, for sign-ups "
+                 "until 31 December 2026. It is a discount, not a free period.")
 GUARANTEE = ("**Lead guarantee:** 3 qualified leads in your first 30 days after go-live. A qualified lead is a unique "
              "WhatsApp number that starts a conversation through a FluxMuse-tracked link or QR code. If fewer than 3 "
              "arrive and you held up your side (shared the link and posted at least weekly), we keep working with you "
              "at no extra charge until you have 3. It is extra support, not a cash payment.")
-CHECKOUT_NOTE = ("Checkout through FluxMuse (Paystack, South African bank accounts) is built and being switched on: it "
+CHECKOUT_NOTE = ("Checkout through FluxMuse in South Africa, via our payment partners, is built and being switched on: it "
                  "has not yet been tested end to end with real money. Until it is, orders arrive on your WhatsApp and "
                  "you take payment the way you do today. [[FEE WORDING ONLY ONCE CHECKOUT IS TESTED]]")
 
@@ -33,9 +33,11 @@ def how_to_use(d, template_name, extra=()):
         "check them; clear the shading (Home › Shading › No Colour) before sending, then search for “[[” once more.",
         "[ ] Quote prices only from 08_Prospects/CURRENT_OFFER.md. Every paid plan starts with payment: no trials, no "
         "free period. Free is a permanent plan, never a trial and never the lead offer.",
-        "[ ] Founding Member is live for South African sign-ups: 30% off the first two monthly bills on Starter, Growth "
-        "and Scale. No end date "
-        "is set, so don't print one. Never on Agency or partner wholesale.",
+        "[ ] Founding Member is live on every self-serve plan, Nano to Agency (not Custom): 30% off the first two "
+        "monthly bills, for sign-ups until 31 December 2026. It doesn't stack with partner wholesale or partner-level "
+        "discounts.",
+        "[ ] Never name a payment provider or gateway. Say “via our payment partners”. Card and EFT is how "
+        "FluxMuse subscriptions are paid in South Africa today.",
         "[ ] Guarantee: only the lead guarantee, always with its conditions. Never promise cash back, sales or results.",
         "[ ] FluxMuse has no customers or results yet. No customer counts, ratings, testimonials or case-study "
         "numbers. KPI numbers are always “Target (goal)”. Describe live features as “newly launched”.",
@@ -63,7 +65,7 @@ def status_table(d, caption="What is live and what is being switched on", extra=
          "Live (newly launched)"),
         ("Answers in your customer's language", "Live (newly launched)"),
         ("TikTok video posting", "Live (newly launched)"),
-        ("Checkout through FluxMuse (Paystack, South African bank accounts)", "Being switched on"),
+        ("Checkout through FluxMuse in South Africa, via our payment partners", "Being switched on"),
         ("Auto-posting to Facebook Pages and Instagram (waiting for Meta approval)", "Being switched on"),
         ("Daily digest message", "Being switched on"),
     ] + list(extra)
@@ -110,7 +112,7 @@ def terms(d, num, extra_rows=(), short=False):
                                     "Founding Member discount on cancellation: [[LEGAL REVIEW REQUIRED]]"),
         ("Lead guarantee", "3 qualified leads in 30 days of go-live, on the conditions in this proposal; remedy is "
                            "extended support at no extra charge, not a cash payment. [[LEGAL REVIEW REQUIRED]]"),
-        ("Payment terms", "Billed in advance in South African rand by [[PAYMENT METHOD: Paystack / Yoco / Ozow]]. "
+        ("Payment terms", "Billed in advance in South African rand by [[PAYMENT METHOD: card / EFT]]. "
                           "Late payment: [[LEGAL REVIEW REQUIRED]]"),
         ("Price changes", "Notice of price changes: [[LEGAL REVIEW REQUIRED]]"),
         ("Third-party costs", "Meta WhatsApp message fees, ad spend and payment-processing fees are pass-through "
@@ -155,6 +157,6 @@ def trust_bullets(d):
         "**Meta permissions approved:** WhatsApp Business messaging and management, and Facebook Page messaging.",
         "**Waiting for Meta approval (not live):** posting to Facebook Pages and Instagram, and Instagram comments and "
         "DMs. They are switched on only once Meta approves them.",
-        "**Payments:** Paystack is live in South Africa. Yoco and Ozow run FluxMuse's own subscription billing.",
+        "**Payments:** FluxMuse subscriptions are paid by card or EFT in South Africa, via our payment partners.",
         "**WhatsApp policy:** broadcasts use Meta-approved message templates and go only to contacts who opted in.",
     ])

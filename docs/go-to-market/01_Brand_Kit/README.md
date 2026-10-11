@@ -24,9 +24,9 @@ Set `CDP_UDD` to a scratch directory for the Chrome profile. Edit content in `_b
 
 - Mission, vision and brand promise (v1.0 drafts), and the proposed alternate tagline "Your AI marketing team, right inside WhatsApp."
 - Vector logo masters (`[[COMMISSION VECTOR LOGO]]`) and a fixed light logo (the "F" is clipped). Until then the kit prescribes the dark logo on Night for external work.
-- Founding Member perks beyond the 30% discount (`[[FOUNDER TO CONFIRM]]`); local-currency partner prices; referral commission for partners; partner agreement terms.
+- Founding Member perks beyond the 30% discount (`[[FOUNDER TO CONFIRM]]`); local-currency partner prices; partner agreement terms. (Partner levels and commission are live as of 9 Oct 2026: `08_Prospects/CURRENT_OFFER.md` §1. The kit HTML still predates them and the founder's never-name-a-payment-provider rule; refresh sections 12, 13 and 16.)
 - Trademark registration status (`[[TM STATUS]]`); legal review of the trademark line and the WhatsApp POPIA opt-in wording.
 - Native-speaker check of all isiZulu, Sesotho, Afrikaans, Nigerian Pidgin and Swahili sample phrases.
 - Placeholders: `[[PHONE / WHATSAPP]]`, `[[SUPPORT HOURS]]`, `[[HOSTED BANNER URL]]`.
-- When pawaPay/Fincra accounts go live, or checkout through FluxMuse is tested with real money, update section 12, the payment infographics and `00_FACTS_AND_ASSUMPTIONS.md` together.
+- When the expansion payment-partner accounts go live, or checkout through FluxMuse is tested with real money, update section 12, the payment infographics and `00_FACTS_AND_ASSUMPTIONS.md` together.
 - Clear space, minimum sizes and post-spec safe zones are design recommendations; confirm platform specs before production.

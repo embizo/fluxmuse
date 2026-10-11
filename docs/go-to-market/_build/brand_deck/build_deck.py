@@ -354,8 +354,8 @@ def s_title(prs, v):
         "partner": """This deck is for agencies, freelancers and resellers. "FluxMuse lets you offer an AI marketing
         team and WhatsApp selling to your clients under your own brand, on a partner wholesale plan, and keep the
         spread." Ask two questions early: "How many clients do you manage?" and "What do you charge them per month?"
-        Those numbers drive the illustrative economics later. Be clear from the start that partner obligations and
-        referral commission are still being finalised (CURRENT_OFFER.md; 00_FACTS §2 "Partner wholesale").""",
+        Those numbers drive the illustrative economics later. Two routes are live: refer customers for 15% to 25%
+        commission, or resell on the Agency tier at the R6,999 wholesale price (CURRENT_OFFER.md §1).""",
     }, v)
     return s
 
@@ -439,12 +439,12 @@ def s_how(prs, v):
 def s_sell(prs, v):
     s = new_slide(prs)
     header(s, "WhatsApp selling", "From first tap to repeat order, on WhatsApp")
-    img(s, "flow", "Discover, Chat, Catalog, Cart, Pay (Paystack, South Africa, being switched on), Order alert, "
+    img(s, "flow", "Discover, Chat, Catalog, Cart, Pay (card and EFT in South Africa, being switched on), Order alert, "
         "Come back; checkout through FluxMuse not yet tested with real money")
     notes(s, """This is the heart of the pitch. A buyer finds you through a Status post, a QR code or your shop link.
     The assistant replies in their language. They browse a catalogue built from your photos, fill a cart, and the
-    order lands on your WhatsApp; you reply SOLD to keep track. Be honest about payment: checkout through FluxMuse
-    on Paystack is built but being switched on, because it hasn't been tested end to end with real money. Until
+    order lands on your WhatsApp; you reply SOLD to keep track. Be honest about payment: checkout through FluxMuse,
+    via our payment partners, is built but being switched on, because it hasn't been tested with real money. Until
     then, orders arrive as a WhatsApp message and you take payment your usual way (CURRENT_OFFER.md §3). Broadcasts
     go only to consented contacts.""", v)
     return s
@@ -471,8 +471,8 @@ def s_channels(prs, v):
         "sme": """This is the whole platform, with every piece labelled. Solid chips are live and newly launched:
         WhatsApp Business, Status, TikTok video, consented broadcasts, catalogue from photos, captions, images,
         clips, voice-note transcription, the shop link and order alerts. Dashed chips are being switched on:
-        Facebook and Instagram posting, AI Voice in beta, Paystack checkout, the daily digest, click-to-WhatsApp ads
-        and Shopify, WooCommerce and Takealot sync. Instagram DMs and X posting are not available. Labels follow
+        Facebook and Instagram posting, AI Voice in beta, checkout through FluxMuse, the daily digest, click-to-WhatsApp
+        ads and Shopify and WooCommerce sync. Instagram DMs and X posting are not available. Labels follow
         CURRENT_OFFER.md §3. Ask which piece matters most to them.""",
     }, v)
     return s
@@ -481,14 +481,15 @@ def s_channels(prs, v):
 def s_paid(prs, v):
     s = new_slide(prs)
     header(s, "Payments coverage", "Live in South Africa. The rest is pending.")
-    img(s, "map", "Tile map: South Africa live with Paystack; Nigeria, Kenya and Ghana priced, not on sale; other "
-        "countries provider contracted, account pending; Botswana and Namibia coming soon")
-    notes(s, """Be straight about payments. FluxMuse is open for paid sign-up in South Africa only, where Paystack is
-    live. Checkout through FluxMuse for your buyers is built and being switched on; it hasn't been tested end to end
-    with real money yet. Nigeria, Kenya and Ghana are priced but not on sale, because the provider accounts are
-    still pending. pawaPay and Fincra are contracted for expansion, with accounts pending, so the other countries
-    on the map are not open. Botswana and Namibia are coming soon. Source: CURRENT_OFFER.md §3 and §4; 00_FACTS
-    §3.""", v)
+    img(s, "map", "Tile map by country status: South Africa live, paid sign-up by card and EFT; Nigeria, Kenya and "
+        "Ghana priced, not on sale; 19 more countries in our payment partners' reach, not open yet; Botswana and "
+        "Namibia coming soon")
+    notes(s, """Be straight about payments. FluxMuse is open for paid sign-up in South Africa only, by card and EFT.
+    Checkout through FluxMuse for your buyers is built and being switched on; it hasn't been tested end to end with
+    real money yet. Nigeria, Kenya and Ghana are priced but not on sale. The other tiles are countries we're
+    expanding into via our payment partners, banks and mobile money wallets across 23 African countries; none is
+    open yet. Botswana and Namibia are coming soon. Never name a payment provider or gateway (CURRENT_OFFER.md §3;
+    00_FACTS §3).""", v)
     return s
 
 
@@ -555,9 +556,9 @@ def s_seg_agency(prs, v):
     notes(s, """Agencies and freelancers managing five to 50 small-business clients feel a margin squeeze, spend
     hours on reporting and tools per client, and have clients asking for WhatsApp selling and AI. FluxMuse gives
     them one white-label, multi-client platform with unlimited brands and 80 channels. Partners buy the Agency tier
-    at a wholesale price of R6,999 a month, 30% off the R9,999 list price, and set their own retail price. Don't
-    quote a fixed margin: it depends on the agency's pricing and delivery costs (00_FACTS §2 "Partner
-    wholesale").""", v)
+    at a wholesale price of R6,999 a month, 30% off the R9,999 list price, and set their own retail price. Or they
+    refer customers through the partner programme for 15% to 25% commission. Don't quote a fixed margin: it depends
+    on the agency's pricing and costs (CURRENT_OFFER.md §1).""", v)
     return s
 
 
@@ -570,8 +571,7 @@ def s_partner_model(prs, v):
     month, 30% off the R9,999 Agency list price. The agency serves its clients under its own brand and bills them a
     retail price it sets. The example is illustrative only, not a forecast: 20 clients at R1,500 a month bills
     R30,000, and after R6,999 the agency keeps a gross spread of R23,001 a month, before its own costs. Encourage
-    them to run their own numbers. Referral commission is still to be decided (00_FACTS §2 "Partner
-    wholesale").""", v)
+    them to run their own numbers. Referring instead earns 15% to 25% commission (CURRENT_OFFER.md §1).""", v)
     return s
 
 
@@ -678,21 +678,21 @@ def s_plans(prs, v):
     text(s, MX, 6.2, CW, 0.6, [{"runs": "Prices in rands are what you pay. Every paid plan starts with payment; no "
                                         "trials. Annual = 10× monthly. AI credit allowances: see fluxmuse.ai/pricing.",
                                 "space_after": 2},
-                               "Founding Member: 30% off your first two monthly bills, South African sign-ups, while "
-                               "it lasts."],
+                               "Founding Member: 30% off your first two monthly bills on every plan, Nano to Agency, "
+                               "until 31 December 2026."],
          size=12, color=MUTED, role="caption")
     notes(s, {
         "solo": """Most solo businesses start on Nano: R149 a month for one brand and three channels. Micro at R289
         adds a fourth channel and connects their own WhatsApp number. Starter at R499 is the step up as they grow.
         Annual billing is ten times monthly. There's no trial: every paid plan starts with payment. As a Founding
-        Member, a South African sign-up pays 30% less for the first two monthly bills: R104 on Nano, R202 on Micro.
-        It's a discount, not a free period, and it has no set end date. Don't quote AI credit numbers
-        (CURRENT_OFFER.md §1).""",
+        Member, they pay 30% less for the first two monthly bills: R104 on Nano, R202 on Micro. It's a discount, not a
+        free period, open until 31 December 2026. Don't quote AI credit numbers (CURRENT_OFFER.md §1).""",
         "sme": """Most SMEs start on Growth at R1,999 a month: three brands, 15 channels and inbound AI Voice in beta.
         Single-brand businesses can start on Starter at R499. Multi-brand groups should look at Scale at R4,999: ten
         brands, 40 channels, and inbound and outbound AI Voice in beta, which we evaluate together. Annual billing is
-        ten times monthly. No trials: every paid plan starts with payment. Founding Members in South Africa pay 30%
-        less for the first two bills: R1,399 on Growth. Larger groups: Corporate or Custom (CURRENT_OFFER.md §1).""",
+        ten times monthly. No trials: every paid plan starts with payment. Founding Members pay 30% less for the
+        first two bills, R1,399 on Growth, until 31 December 2026. Larger groups: Corporate or Custom
+        (CURRENT_OFFER.md §1).""",
     }, v)
     return s
 
@@ -710,8 +710,8 @@ def s_pricing_table(prs, v):
             ("Medium", "Starter", "R499", "R4,990", "1 · 3", "R349"),
             ("", "Growth", "R1,999", "R19,990", "3 · 15", "R1,399"),
             ("", "Scale", "R4,999", "R49,990", "10 · 40", "R3,499"),
-            ("Enterprise", "Corporate", "R6,999", "R69,990", "25 · 60", "Talk to us"),
-            ("", "Agency", "R9,999", "R99,990", "Unlimited · 80", "Partner price R6,999"),
+            ("Enterprise", "Corporate", "R6,999", "R69,990", "25 · 60", "R4,899"),
+            ("", "Agency", "R9,999", "R99,990", "Unlimited · 80", "R6,999"),
             ("", "Custom", "On request", "", "By consultation", "")]
     for r in data:
         fill = TINT if r[1] == "Growth" else PAPER
@@ -720,38 +720,38 @@ def s_pricing_table(prs, v):
                      {"text": r[2], "bold": True, "fill": fill}] + [{"text": t, "fill": fill} for t in r[3:]])
     table(s, MX, 1.55, [1.6, 1.6, 1.6, 1.7, 2.3, 3.33], [0.46] + [0.43] * 9, rows, size=14, label="pricing-zar")
     text(s, MX, 6.42, CW, 0.5, "Prices are what you pay. No trials: every paid plan starts with payment; Free is a "
-         "permanent plan. AI credit allowances: see fluxmuse.ai/pricing. Paid sign-up is open in South Africa.",
+         "permanent plan. Founding Member: every plan from Nano to Agency, until 31 Dec 2026. Paid sign-up: South Africa.",
          size=12, color=MUTED, role="caption")
     notes(s, """This is the same pricing as an editable table, useful when you tailor the deck. It shows all nine plans
     with monthly and annual prices, where annual is ten times monthly, plus brands and channels. The Founding Member
-    column is 30% off the first two monthly bills for South African sign-ups, rounded down to whole rands. Agencies
-    don't get Founding Member pricing; point them to the R6,999 partner price instead. Corporate launch pricing is
-    by conversation. If you edit a price, check it against CURRENT_OFFER.md §1 first, and never add per-plan AI
-    credit numbers.""", v)
+    column is 30% off the first two monthly bills, rounded down to whole rands, on every self-serve plan from Nano
+    to Agency until 31 December 2026; Custom is excluded. It doesn't stack with partner pricing: the Agency
+    wholesale price is also R6,999, but it runs every month. If you edit a price, check CURRENT_OFFER.md §1 first,
+    and never add per-plan AI credit numbers.""", v)
     return s
 
 
 def s_founding(prs, v):
     s = new_slide(prs)
-    header(s, "Launch offer · South Africa · live now", "Become a Founding Member")
-    img(s, "founding", "Founding Member: 30% off your first two monthly bills, South African sign-ups, while it "
-        "lasts: Nano R104, Micro R202, Starter R349, Growth R1,399, Scale R3,499; a discount, not a free period")
+    header(s, "Launch offer · live until 31 Dec 2026", "Become a Founding Member")
+    img(s, "founding", "Founding Member: 30% off your first two monthly bills on every plan until 31 December 2026: "
+        "Nano R104, Micro R202, Starter R349, Growth R1,399, Scale R3,499, Corporate R4,899, Agency R6,999; a "
+        "discount, not a free period")
     notes(s, {
-        "default": """Our launch offer is Founding Member, and it's live now. South African sign-ups get 30% off
-        their first two monthly bills on a paid plan: R104 on Nano, R202 on Micro, R349 on Starter, R1,399 on Growth
-        or R3,499 on Scale, then the normal monthly price. It's a discount, not a free period. There's no set end
-        date, so say "while it lasts" and never quote a closing date. Agencies get the partner price instead. Don't
-        offer annual bonus months or other perks; they aren't confirmed (00_FACTS §2 "Founding Member").""",
+        "default": """Our launch offer is Founding Member, live now on every self-serve plan until 31 December 2026.
+        Sign-ups get 30% off their first two monthly bills: R104 on Nano, R202 on Micro, R349 on Starter, R1,399 on
+        Growth, R3,499 on Scale, R4,899 on Corporate or R6,999 on Agency, then the normal monthly price. It's a
+        discount, not a free period, and Custom is excluded. It doesn't stack with partner pricing. Don't offer
+        annual bonus months or other perks; they aren't confirmed (CURRENT_OFFER.md §1).""",
         "solo": """Here's the easiest yes. Join as a Founding Member and your first two Nano bills are R104 instead
         of R149, or R202 instead of R289 on Micro. After that it's the normal monthly price. It's a discount on a
-        paid plan, not a free period, and it's for South African sign-ups while it lasts; there's no closing date to
-        quote. Don't promise extra perks like badges or bonus months; only the discount is confirmed. Then offer the
-        demo on their own products (00_FACTS §2 "Founding Member").""",
-        "sme": """Founding Member is live now for South African sign-ups: 30% off the first two monthly bills. On
-        Growth that's R1,399 instead of R1,999 for two months; on Scale R3,499 instead of R4,999; on Starter R349.
-        Then the normal price. It's a discount, not a free period, and there's no set end date, so say "while it
-        lasts". Don't offer bonus months on annual plans or other perks; only the discount is confirmed. Larger
-        groups on Corporate: talk to us (00_FACTS §2 "Founding Member").""",
+        paid plan, not a free period, and it's open until 31 December 2026. Don't promise extra perks like badges or
+        bonus months; only the discount is confirmed. Then offer the demo on their own products (CURRENT_OFFER.md
+        §1).""",
+        "sme": """Founding Member is live now on every self-serve plan until 31 December 2026: 30% off the first two
+        monthly bills. On Growth that's R1,399 instead of R1,999 for two months; on Scale R3,499 instead of R4,999;
+        on Starter R349; on Corporate R4,899. Then the normal price. It's a discount, not a free period. Don't offer
+        bonus months on annual plans or other perks; only the discount is confirmed (CURRENT_OFFER.md §1).""",
     }, v)
     return s
 
@@ -788,21 +788,21 @@ def s_roadmap(prs, v):
     s = new_slide(prs)
     header(s, "Roadmap · indicative, no dates", "What comes next, in order")
     img(s, "roadmap", "Indicative order, no dates. Markets: South Africa open now, then checkout through FluxMuse, "
-        "then Nigeria, Kenya and Ghana, then other markets in USD. Product: Meta permissions, social adapters, "
-        "business apps, partner programme")
+        "then Nigeria, Kenya and Ghana, then other markets in USD. Product: live today including the partner "
+        "programme, then Meta permissions, social adapters, business apps")
     notes(s, {
-        "default": """Here's what comes next, in order, with no dates. On markets: South Africa is open now, with
-        Paystack live. Next, checkout through FluxMuse, switched on once it's tested end to end with real money.
-        Then Nigeria, Kenya and Ghana, once the pawaPay and Fincra accounts are live. Later, other markets in US
-        dollars; Botswana and Namibia are coming soon. On product: Meta permissions for Facebook and Instagram
-        posting, then social adapters, business app integrations, and the partner programme. Timing depends on
-        approvals, so don't give dates (00_FACTS §1 "Roadmap").""",
+        "default": """Here's what comes next, in order, with no dates. On markets: South Africa is open now, by card
+        and EFT. Next, checkout through FluxMuse, switched on once it's tested end to end with real money. Then
+        Nigeria, Kenya and Ghana, once our payment partners' accounts are live. Later, other markets in US dollars;
+        Botswana and Namibia are coming soon. On product: the partner programme is already live; next come Meta
+        permissions for Facebook and Instagram posting, then social adapters and business app integrations. Timing
+        depends on approvals, so don't give dates (00_FACTS §1 "Roadmap").""",
         "partner": """Here's what comes next, in order, with no dates. On markets: South Africa is open now. Next,
-        checkout through FluxMuse once it's tested with real money. Then Nigeria, Kenya and Ghana, once provider
-        accounts are live, and later other markets in US dollars. On product: Meta permissions for Facebook and
-        Instagram posting, then social adapters, business apps, then the partner programme layer with referral
-        tracking and partner-managed workspaces. White-label and multi-client are on the Agency tier today; the
-        programme layer comes later (00_FACTS §1 "Roadmap").""",
+        checkout through FluxMuse once it's tested with real money. Then Nigeria, Kenya and Ghana, once our payment
+        partners' accounts are live, and later other markets in US dollars. On product: the partner programme is
+        live today, with the partner portal and share links, and white-label and multi-client run on the Agency tier.
+        Next come Meta permissions for Facebook and Instagram posting, then social adapters and business apps
+        (CURRENT_OFFER.md §1).""",
     }, v)
     return s
 
@@ -829,7 +829,7 @@ def s_next(prs, v):
                 ("Get a tailored proposal", "Starter, Growth, Scale or Corporate.")],
         "partner": [("Book a 30-minute partner call", "Your clients, services and pricing."),
                     ("See a white-label demo", "FluxMuse under your brand."),
-                    ("Apply to become a partner", "Agency tier at R6,999/mo wholesale.")],
+                    ("Apply to become a partner", "15–25% commission, or R6,999/mo wholesale.")],
     }
     for i, (t, sub) in enumerate(ctas.get(v, ctas["default"])):
         y = 2.25 + i * 1.42
@@ -870,9 +870,9 @@ def s_next(prs, v):
         short written summary (CURRENT_OFFER.md §2).""",
         "partner": """Close with a concrete partner next step. Option one: a 30-minute partner call to go through
         their clients, services and pricing. Option two: a white-label demo so they can see FluxMuse under their
-        brand. Option three: apply to become a partner on the Agency tier at R6,999 a month wholesale, starting
-        with one first client we set up together. Contact is Thabo Malebadi, thabo@fluxmuse.com. Don't commit to
-        commission or obligations that are still to be confirmed.""",
+        brand. Option three: apply, and our team enables them as a Registered Partner at 15% commission, or they
+        resell on the Agency tier at R6,999 a month wholesale. Contact is Thabo Malebadi, thabo@fluxmuse.com. Quote
+        only the terms on the levels slide.""",
     }, v)
     return s
 
@@ -885,8 +885,7 @@ def s_sme_integrations(prs, v):
     box(s, MX, 1.68, 5.95, 5.05, fill=MIST, shape="round", radius=0.2, role="card", group=g)
     icon(s, "plug", "deep", MX + 0.62, 2.22, 0.66, circle=PAPER, group=g)
     text(s, MX + 1.1, 1.97, 4.5, 0.5, "Being switched on", size=20, font=HEAD, bold=True, role="card", group=g)
-    chips = ["Shopify sync", "WooCommerce sync", "Takealot sync", "FB/Instagram posts", "AI Voice (beta)",
-             "Daily digest"]
+    chips = ["Shopify sync", "WooCommerce sync", "FB/Instagram posts", "AI Voice (beta)", "Daily digest"]
     for i, c in enumerate(chips):
         x = MX + 0.35 + (i % 2) * 2.7
         y = 2.9 + (i // 2) * 0.8
@@ -908,7 +907,7 @@ def s_sme_integrations(prs, v):
         gg = icon(s, ic, "deep", 7.4, y + 0.28, 0.5, circle=PAPER)
         text(s, 7.85, y, 4.7, 0.56, t, size=16, anchor="m", role="body", group=gg)
     notes(s, """SMEs rarely start from zero, so be honest about what connects today. On the left is what's being
-    switched on: sync from Shopify, WooCommerce and Takealot, which is only partly built, so don't promise it, plus
+    switched on: sync from Shopify and WooCommerce, which is only partly built, so don't promise it, plus
     Facebook and Instagram posting, AI Voice in beta and the daily digest. Until sync is on, we build the catalogue from product
     photos. On the right is what a team can use now: WhatsApp templates and quick replies, several brands on one
     account, order alerts, consented broadcasts and replies in the customer's language. AI Voice is beta, evaluated
@@ -1008,19 +1007,63 @@ def p_wholesale(prs, v, label=None):
     R69,990 a year, in rands. Paid sign-up is open in South Africa only for now, so there are no local-currency
     partner prices yet. Launch offers don't stack with partner pricing. The example is illustrative only, not a
     forecast: 20 clients at R1,500 bills R30,000; minus R6,999 leaves a R23,001 gross spread before the partner's
-    own costs. Don't quote a fixed margin. Referral commission is still a founder decision (00_FACTS §2 "Partner
-    wholesale").""", v)
+    own costs. Don't quote a fixed margin. A Gold Partner's own Agency plan also comes to R6,999, the same as
+    wholesale (CURRENT_OFFER.md §1).""", v)
+    return s
+
+
+# Partner programme, live since 9 Oct 2026 (CURRENT_OFFER.md §1). Levels: (name, reached by, commission, own-plan discount).
+PARTNER_LEVELS = [("Registered Partner", "Our team enables you", "15%", "10%"),
+                  ("Silver Partner", "5 paying customers or R5,000/month billed", "20%", "20%"),
+                  ("Gold Partner", "15 paying customers or R15,000/month billed", "25%", "30%")]
+
+
+def p_levels(prs, v, label=None):
+    s = new_slide(prs)
+    eyebrow = f"Appendix {label} · partner programme" if label else "Partner programme · live now"
+    header(s, eyebrow, "Three partner levels")
+    hdr = {"fill": NIGHT, "color": PAPER, "bold": True, "font": HEAD, "size": 15, "line": None}
+    rows = [[dict(hdr, text="Level", align="l"), dict(hdr, text="Reached by", align="l"),
+             dict(hdr, text="Commission"), dict(hdr, text="Off your own plan")]]
+    for i, (name, how, com, off) in enumerate(PARTNER_LEVELS):
+        fill = TINT if i == 2 else PAPER
+        rows.append([{"text": name, "bold": True, "fill": fill, "align": "l"}, {"text": how, "fill": fill, "align": "l"},
+                     {"text": com, "bold": True, "fill": fill, "size": 18, "font": HEAD},
+                     {"text": off, "bold": True, "fill": fill, "size": 18, "font": HEAD}])
+    table(s, MX, 1.55, [2.6, 5.13, 2.0, 2.4], [0.5, 0.58, 0.58, 0.58], rows, size=15, label="partner-levels")
+    cols = [("wallet", "How commission works",
+             ["On subscription fees your customers actually pay, after discounts, in their first 12 months.",
+              "Not on SMS, WhatsApp or AI credit top-ups, and not on Custom plans.",
+              "Held for 30 days, then paid monthly by EFT once it reaches R500."]),
+            ("qr", "Your link and your own plan",
+             ["Share your ?ref= link and QR; follow customers, revenue, commission and payouts in your partner portal.",
+              "You can't add discounts for customers. Your own plan gets the better of a running offer or your level discount.",
+              "Gold on Agency comes to R6,999, the same as partner wholesale."])]
+    for c, (ic, head, items) in enumerate(cols):
+        x = MX + c * (5.95 + 0.233)
+        g = gid("lvl")
+        box(s, x, 4.02, 5.95, 2.78, fill=MIST if c == 0 else TINT, shape="round", radius=0.18, role="card", group=g)
+        icon(s, ic, "deep", x + 0.55, 4.45, 0.56, circle=PAPER, group=g)
+        text(s, x + 1.0, 4.24, 4.7, 0.42, head, size=18, font=HEAD, bold=True, anchor="m", role="card", group=g)
+        text(s, x + 0.35, 4.85, 5.3, 1.85, [{"runs": "•  " + t, "space_after": 5} for t in items], size=13,
+             color=INK, role="caption", group=g, lsp=1.05)
+    notes(s, """The partner programme is live. Every partner starts as a Registered Partner, which our team switches
+    on: 15% commission and 10% off their own plan. Five paying customers, or R5,000 a month billed to them, makes
+    them Silver: 20% and 20%. Fifteen customers, or R15,000 a month, makes them Gold: 25% and 30%. Commission is on
+    subscription fees customers actually pay in their first 12 months, not on credit top-ups or Custom. It's held 30
+    days, then paid monthly by EFT from R500. Partners can't discount for customers, and Founding Member doesn't
+    stack with their level discount (CURRENT_OFFER.md §1).""", v)
     return s
 
 
 def p_onboarding(prs, v):
     s = new_slide(prs)
-    header(s, "Becoming a partner", "From first call to first client")
-    steps = [("search", "Intro call", "Clients, services, pricing"),
-             ("sparkles", "White-label demo", "FluxMuse under your brand"),
-             ("target", "First client", "Set up together, by hand"),
-             ("briefcase", "Go wholesale", "Agency tier at R6,999/mo"),
-             ("megaphone", "Roll out", "Onboard more clients")]
+    header(s, "Becoming a partner", "From application to your first customer")
+    steps = [("file", "Apply", "How you sell"),
+             ("checkCircle", "We enable you", "Registered Partner, 15%"),
+             ("qr", "Share your link", "Link, QR and portal"),
+             ("target", "First customer", "Set up together"),
+             ("trend", "Level up", "Silver, then Gold")]
     colw = 2.33
     gapx = (CW - 5 * colw) / 4
     box(s, MX + colw / 2, 2.2, CW - colw, 0.05, fill=ORANGE, role="deco", group="line")
@@ -1035,43 +1078,49 @@ def p_onboarding(prs, v):
         icon(s, ic, "deep", x + 0.6, 3.6, 0.72, circle=PAPER, group=g)
         text(s, x + 0.25, 4.2, colw - 0.45, 0.8, t, size=18, font=HEAD, bold=True, role="card", group=g)
         text(s, x + 0.25, 4.95, colw - 0.45, 1.1, sub, size=14, color=MUTED, role="card", group=g)
-    text(s, MX, 6.4, CW, 0.3, "Timings depend on your team. Partner terms and co-marketing: [[TBC]].", size=12,
-         color=MUTED, role="caption")
-    notes(s, """Becoming a partner follows a simple path. It starts with an intro call about your clients, services
-    and pricing. Then a white-label demo so you can see the platform under your brand. Next, pick one first client
-    and we set them up together, by hand, so you learn the workflow on a real account; the lead guarantee applies to
-    that client's go-live, with its conditions. Once that's working, move onto the Agency tier at R6,999 a month
-    and roll out to more clients. We don't quote fixed timings, and formal partner terms are still being
-    confirmed.""", v)
+    text(s, MX, 6.4, CW, 0.3, "Timings depend on your team. Silver: 5 paying customers or R5,000/month billed. "
+         "Gold: 15 or R15,000/month.", size=12, color=MUTED, role="caption")
+    notes(s, """Becoming a partner follows a simple path. The partner applies and tells us about their clients and
+    how they sell. Our team then enables them as a Registered Partner, at 15% commission. They get a partner portal
+    with their own ?ref= share link and QR code, and start sharing it. For the first customer, we set the business
+    up with them, by hand, so they learn the workflow on a real account; the lead guarantee applies with its
+    conditions. As paying customers grow, they level up to Silver and Gold automatically. We don't quote fixed
+    timings (CURRENT_OFFER.md §1).""", v)
     return s
 
 
 def p_comarketing(prs, v):
     s = new_slide(prs)
-    header(s, "Co-marketing & commitments", "What we bring, and what we ask")
-    cols = [("FluxMuse provides", TINT, "check",
-             ["Hands-on setup of your first client", "This deck and proposal templates",
-              "Consented case studies, once they exist", "Co-marketing support: [[TBC]]"]),
-            ("Partners commit to", MIST, "file",
-             ["Partner obligations: [[TBC]]", "Minimum active clients: [[TBC]]",
-              "Brand and POPIA standards: [[TBC]]",
-              "Referral commission: [[FOUNDER DECISION: referral commission %]]"])]
-    for c, (head, fill, ic, items) in enumerate(cols):
+    header(s, "Support & commitments", "What we bring, and what we ask")
+    cols = [("FluxMuse provides", TINT, [
+                ("layers", "Partner portal", "Customers, revenue, commission and payouts"),
+                ("qr", "Share link and QR", "Your own ?ref= link, ready to send"),
+                ("users", "Hands-on setup", "We set up your first customers with you"),
+                ("file", "Sales material", "This deck and proposal templates")]),
+            ("Partners commit to", MIST, [
+                ("shield", "Honest selling", "Within our claims rules: no trials, no invented results, no payment "
+                                             "provider names"),
+                ("chat", "Consent-first prospecting", "POPIA-compliant: contact people with consent, never bulk "
+                                                      "unsolicited messages"),
+                ("wallet", "Current bank details", "So your monthly commission payouts reach you")])]
+    for c, (head, fill, items) in enumerate(cols):
         x = MX + c * (5.95 + 0.233)
         g = gid("col")
         box(s, x, 1.68, 5.95, 5.05, fill=fill, shape="round", radius=0.2, role="card", group=g)
         text(s, x + 0.4, 1.98, 5.1, 0.5, head, size=22, font=HEAD, bold=True, role="card", group=g)
-        for i, t in enumerate(items):
-            y = 2.75 + i * 0.95
-            gg = icon(s, ic, "deep", x + 0.68, y + 0.36, 0.56, circle=PAPER)
-            role = "placeholder" if "[[" in t else "body"
-            text(s, x + 1.15, y, 4.5, 0.74, t, size=16, anchor="m", role=role, group=gg)
-    notes(s, """Be transparent about what's defined and what isn't. FluxMuse provides hands-on setup of the partner's
-    first client, sales material such as this deck and proposal templates, and case studies only once they exist
-    and the business has consented; there are none yet. Co-marketing specifics are still being finalised. Partner
-    obligations, such as minimum active clients, brand standards and data-protection responsibilities under POPIA,
-    are to be confirmed. Referral commission is a founder decision that hasn't been made. Don't promise terms; take
-    questions and follow up in writing.""", v)
+        step = 0.98 if len(items) == 4 else 1.28
+        for i, (ic, t, sub) in enumerate(items):
+            y = 2.7 + i * step
+            gg = icon(s, ic, "deep", x + 0.68, y + 0.38, 0.56, circle=PAPER)
+            text(s, x + 1.15, y, 4.5, 0.36, t, size=16, bold=True, role="body", group=gg)
+            text(s, x + 1.15, y + 0.38, 4.5, 0.5 if len(items) == 4 else 0.75, sub, size=13, color=MUTED,
+                 role="caption", group=gg)
+    notes(s, """Here's what each side brings. FluxMuse provides the partner portal, where partners follow their
+    customers, revenue, commission and payouts; their own ?ref= share link and QR code; hands-on setup of their
+    first customers; and sales material such as this deck and the proposal templates. Partners commit to selling
+    honestly within our claims rules: no trials, no invented results and no payment provider names. They prospect
+    in line with POPIA, with consent, and keep their bank details current so payouts arrive. Case studies come only
+    once they exist, with consent (CURRENT_OFFER.md §1 and §6).""", v)
     return s
 
 
@@ -1099,15 +1148,14 @@ def a_divider(prs, v, items):
 def a_rails(prs, v, label):
     s = new_slide(prs)
     header(s, f"Appendix {label} · payment status", "What is live, and what is still pending")
-    img(s, "matrix", "Matrix of countries against payment providers: Paystack live in South Africa; Yoco and Ozow "
-        "for FluxMuse subscription billing; pawaPay and Fincra contracted, account pending; Botswana and Namibia "
-        "coming soon")
-    notes(s, """This matrix shows payment status by country. Only South Africa is open for paid sign-up: Paystack is
-    live there, and Yoco and Ozow run FluxMuse's own subscription billing. Checkout through FluxMuse for a
-    business's buyers is still being switched on. pawaPay and Fincra are contracted for expansion, but the accounts
-    are pending, so none of those countries is open. Nigeria, Kenya and Ghana are priced in local currency but not
-    on sale. Botswana and Namibia are coming soon with no provider yet. Source: CURRENT_OFFER.md §3; 00_FACTS
-    §3.""", v)
+    img(s, "matrix", "Table of countries by status: South Africa live, card and EFT; Nigeria, Kenya and Ghana priced, "
+        "not on sale; other covered countries not open yet; Botswana and Namibia coming soon")
+    notes(s, """This table shows payment status by country, with no provider names. Only South Africa is open for
+    paid sign-up, by card and EFT. Checkout through FluxMuse for a business's buyers is still being switched on.
+    Nigeria, Kenya and Ghana are priced in local currency but not on sale. The countries marked not open yet are
+    where we're expanding via our payment partners, banks and mobile money wallets across 23 African countries.
+    Botswana and Namibia are coming soon. If asked which provider runs payments, say "our payment partners"
+    (CURRENT_OFFER.md §3; 00_FACTS §3).""", v)
     return s
 
 
@@ -1118,8 +1166,8 @@ FAQ = [
     ("Can I use my own WhatsApp number?",
      "Yes. We connect your WhatsApp Business number through Meta's official Cloud API setup, with you, by hand."),
     ("How do my customers pay?",
-     "Today, orders arrive as a WhatsApp message and you take payment your usual way. Checkout through FluxMuse "
-     "(Paystack, South Africa) is being switched on."),
+     "Today, orders arrive as a WhatsApp message and you take payment your usual way. Checkout through FluxMuse, "
+     "via our payment partners, is being switched on in South Africa."),
     ("Is there a trial? Can I cancel?",
      "No trials: every paid plan starts with payment, monthly or annual (10× monthly). Free is a permanent plan. "
      "Cancellation terms: [[CONFIRM TERMS]]."),
@@ -1130,8 +1178,8 @@ FAQ = [
      "We set you up by hand: WhatsApp number, catalogue from your photos, shop link. We aim for your first week; "
      "Meta approvals can stretch it."),
     ("I already use Shopify or WooCommerce.",
-     "Keep them. Sync from Shopify, WooCommerce and Takealot is being switched on. Until then, we build your "
-     "catalogue from product photos."),
+     "Keep them. Sync from Shopify and WooCommerce is being switched on. Until then, we build your catalogue "
+     "from product photos."),
     ("Where can I buy FluxMuse?",
      "South Africa, today. Nigeria, Kenya and Ghana are priced but not yet on sale. Other countries can join the "
      "waitlist."),
@@ -1177,9 +1225,9 @@ def deck_defs():
             B(s_segments), B(s_seg_solo), B(s_seg_sme), B(s_seg_agency), B(s_partner_model),
             B(s_journey), B(s_first_group), B(s_case), B(s_pricing), B(s_pricing_table), B(s_founding), B(s_trust),
             B(s_roadmap), B(s_next),
-            B(a_divider, items=[("A1", "Payment status by country"), ("A2", "Partner wholesale pricing"),
+            B(a_divider, items=[("A1", "Payment status by country"), ("A2", "Partner wholesale and levels"),
                                 ("A3", "Frequently asked questions")]),
-            B(a_rails, label="A1"), B(p_wholesale, label="A2"), B(a_faq, label="A3", part=1),
+            B(a_rails, label="A1"), B(p_wholesale, label="A2"), B(p_levels, label="A2"), B(a_faq, label="A3", part=1),
             B(a_faq, label="A3", part=2),
         ]),
         "FluxMuse_Pitch_Solo_Entrepreneurs.pptx": ("solo", [
@@ -1196,7 +1244,8 @@ def deck_defs():
         ]),
         "FluxMuse_Partner_Programme_Deck.pptx": ("partner", [
             B(s_title), B(p_squeeze), B(s_meet), B(s_how), B(s_sell), B(s_channels), B(s_seg_agency),
-            B(s_partner_model), B(p_what_you_get), B(p_wholesale), B(p_onboarding), B(p_comarketing), B(s_paid),
+            B(s_partner_model), B(p_what_you_get), B(p_wholesale), B(p_levels), B(p_onboarding), B(p_comarketing),
+            B(s_paid),
             B(s_first_group), B(s_trust), B(s_roadmap), B(s_next),
             B(a_divider, items=[("A1", "Payment status by country"), ("A2", "Frequently asked questions")]),
             B(a_rails, label="A1"), B(a_faq, label="A2", part=1), B(a_faq, label="A2", part=2),

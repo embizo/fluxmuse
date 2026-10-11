@@ -46,7 +46,7 @@ const label = (t, s, fs = 17) => `<div style="font:700 ${fs}px Inter;letter-spac
       <div style="width:${L.tierW}px;padding-left:${sq ? 10 : 20}px;font:700 ${sq ? 23 : 30}px Poppins;color:${t.fg}">${n}</div>
       ${ps.map((p, i) => `<div style="width:${cw}px;padding-left:${sq ? 10 : 18}px;align-self:stretch;display:flex;align-items:center;${i === 0 ? `background:${tintOf(dark)};` : ''}${i === 1 ? `border-left:2px dashed ${t.line}` : ''}"><span style="font:700 ${L.vf}px/1 Poppins;color:${i === 0 ? t.fg : t.muted};white-space:nowrap">${p}</span></div>`).join('')}</div>`).join('');
     const body = `<div style="position:absolute;left:${L.x}px;top:${L.top}px;width:${L.tw}px">${header}${rows}</div>
-      <div style="position:absolute;left:${L.x}px;bottom:${sq ? 30 : 34}px;width:${sq ? 760 : 1500}px;font:400 ${sq ? 16 : 20}px/1.4 Inter;color:${t.muted}">Free plan R0 everywhere; Custom on request. Annual = 10× monthly. Only South Africa is on sale today: local prices are set, but Nigeria, Kenya, Ghana and USD checkout open only once payment-provider accounts are live and checkout is tested.</div>`;
+      <div style="position:absolute;left:${L.x}px;bottom:${sq ? 30 : 34}px;width:${sq ? 760 : 1500}px;font:400 ${sq ? 16 : 20}px/1.4 Inter;color:${t.muted}">Free plan R0 everywhere; Custom on request. Annual = 10× monthly. Only South Africa is on sale today: local prices are set, but Nigeria, Kenya, Ghana and USD checkout open only once payment-partner accounts are live and checkout is tested.</div>`;
     return frame({ w, h, dark, eyebrow: 'Pricing by market', title: sq ? 'Regional pricing' : 'One set of plans, priced for each market', sub: sq ? 'On sale in South Africa only.' : 'On sale in South Africa today. Local prices are set for the next markets.', mark: 'tr', headW: sq ? 740 : 1400, body });
   }, { square: true });
 }
@@ -57,11 +57,12 @@ const badge = (size, dark) => `<div style="flex:none;width:${size}px;height:${si
     ${icon('sparkles', Math.round(size / 3.6), C.night, 2.4)}<div style="font:800 ${Math.round(size / 11)}px/1.05 Poppins;letter-spacing:.04em;margin-top:4px">FOUNDING<br>MEMBER</div></div></div>`;
 variants('founding-member-offer', ({ dark, w, h }) => {
   const t = T(dark); const sq = w === 1080;
-  const fmList = [['Nano', 149, 104], ['Micro', 289, 202], ['Starter', 499, 349], ['Growth', 1999, 1399], ['Scale', 4999, 3499]];
+  // Every self-serve plan, Nano to Agency (not Custom), through 31 Dec 2026; 30% off rounded down to whole rands.
+  const fmList = [['Nano', 149, 104], ['Micro', 289, 202], ['Starter', 499, 349], ['Growth', 1999, 1399], ['Scale', 4999, 3499], ['Corporate', 6999, 4899], ['Agency', 9999, 6999]];
   if (!sq) {
     const steps = [['1', 'Book a 20-minute call', 'See a demo on your own products'], ['2', 'Choose a paid plan', 'You pay from day one'], ['3', 'Pay 30% less', 'for your first two monthly bills']];
     const bars = [[1, 1399, true], [2, 1399, true], [3, 1999, false], [4, 1999, false]];
-    const maxH = 230, bx = 1150, by = 920;
+    const maxH = 180, bx = 1150, by = 920;
     const body = `
     <div class="card" style="position:absolute;left:88px;top:262px;width:918px;height:290px;padding:26px 32px;display:flex;gap:30px;align-items:center">${badge(190, dark)}
       <div><div style="font:800 96px/1 Poppins;color:${t.accentText};white-space:nowrap">30% off</div>
@@ -70,11 +71,11 @@ variants('founding-member-offer', ({ dark, w, h }) => {
     <div style="position:absolute;left:88px;top:586px;width:918px;display:flex;gap:16px">${steps.map(([n, a, b]) => `<div style="flex:1;display:flex;gap:12px;align-items:flex-start;padding:16px 16px;border-radius:18px;background:${t.card2}">
       <span style="flex:none;width:38px;height:38px;border-radius:50%;background:${C.orange};color:${C.night};font:700 20px Poppins;display:flex;align-items:center;justify-content:center">${n}</span>
       <div><div style="font:700 21px/1.2 Poppins;color:${t.fg}">${a}</div><div style="font:400 19px/1.3 Inter;color:${t.muted};margin-top:3px">${b}</div></div></div>`).join('')}</div>
-    ${orangeBand(`<div style="display:flex;align-items:center;gap:20px">${icon('flag', 40, C.night, 2.4)}<div><div style="font:700 20px Inter;letter-spacing:.08em;text-transform:uppercase">For South African sign-ups</div><div style="font:800 40px/1.1 Poppins;margin-top:4px">Live now, while it lasts</div></div></div>
-      <div style="font:600 21px/1.35 Inter;margin-top:10px">A discount on paid plans, not a free period. Agencies: see partner pricing.</div>`, 'position:absolute;left:88px;top:748px;width:918px;height:196px;border-radius:22px;padding:24px 30px')}
+    ${orangeBand(`<div style="display:flex;align-items:center;gap:20px">${icon('flag', 40, C.night, 2.4)}<div><div style="font:700 20px Inter;letter-spacing:.08em;text-transform:uppercase">Every plan, Nano to Agency</div><div style="font:800 40px/1.1 Poppins;margin-top:4px">Live now, until 31 Dec 2026</div></div></div>
+      <div style="font:600 21px/1.35 Inter;margin-top:10px">A discount on paid plans, not a free period. Doesn’t stack with partner pricing.</div>`, 'position:absolute;left:88px;top:748px;width:918px;height:196px;border-radius:22px;padding:24px 30px')}
     <div class="card" style="position:absolute;left:1060px;top:262px;width:772px;height:682px;padding:26px 34px">
       <div style="display:flex;font:700 18px Inter;color:${t.muted};padding-bottom:8px;border-bottom:2px solid ${t.fg}"><span style="flex:1">Plan</span><span style="width:170px;text-align:right">Normal /mo</span><span style="width:230px;text-align:right">First two bills</span></div>
-      ${fmList.map(([n, v, p]) => `<div style="display:flex;align-items:center;height:48px;border-bottom:1.5px solid ${t.line};font:500 22px Inter;color:${t.fg}"><span style="flex:1;font:700 23px Poppins">${n}</span><span style="width:170px;text-align:right;color:${t.muted}">${R(v)}</span><span style="width:230px;text-align:right;font:700 24px Poppins;color:${t.accentText}">${R(p)}</span></div>`).join('')}
+      ${fmList.map(([n, v, p]) => `<div style="display:flex;align-items:center;height:40px;border-bottom:1.5px solid ${t.line};font:500 22px Inter;color:${t.fg}"><span style="flex:1;font:700 23px Poppins">${n}</span><span style="width:170px;text-align:right;color:${t.muted}">${R(v)}</span><span style="width:230px;text-align:right;font:700 24px Poppins;color:${t.accentText}">${R(p)}</span></div>`).join('')}
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:22px"><div style="font:700 24px Poppins;color:${t.fg}">Example: Growth plan</div><div style="font:500 19px Inter;color:${t.muted}">R1,999/mo</div></div>
     </div>
     <svg style="position:absolute;left:0;top:0" width="${w}" height="${h}">
@@ -85,18 +86,18 @@ variants('founding-member-offer', ({ dark, w, h }) => {
       <div style="position:absolute;left:${x - 20}px;top:${by - bh - 40}px;width:158px;text-align:center;font:700 26px Poppins;color:${t.fg}">${R(v)}</div>
       ${disc ? `<div style="position:absolute;left:${x}px;top:${by - bh + 14}px;width:118px;text-align:center;font:700 20px Inter;color:${C.night}">−30%</div>` : ''}
       <div style="position:absolute;left:${x - 20}px;top:${by + 6}px;width:158px;text-align:center;font:500 19px Inter;color:${t.muted}">Bill ${m}</div>`; }).join('')}
-    <div style="position:absolute;left:88px;bottom:30px;width:1500px;font:400 20px/1.4 Inter;color:${t.muted}">30% off, rounded down to whole rands, on the first two monthly bills of a paid plan. South African sign-ups only. No end date set yet; it may close at any time.</div>`;
-    return frame({ w, h, dark, eyebrow: 'Launch offer · South Africa', title: 'Become a Founding Member', sub: 'Join now and pay less while you get set up.', headW: 1300, body });
+    <div style="position:absolute;left:88px;bottom:30px;width:1500px;font:400 20px/1.4 Inter;color:${t.muted}">30% off, rounded down to whole rands, on the first two monthly bills of any self-serve plan (not Custom). Open to sign-ups until 31 December 2026.</div>`;
+    return frame({ w, h, dark, eyebrow: 'Launch offer · until 31 Dec 2026', title: 'Become a Founding Member', sub: 'Join now and pay less while you get set up.', headW: 1300, body });
   }
   const body = `
   <div class="card" style="position:absolute;left:56px;top:200px;width:968px;height:240px;padding:24px 34px">
     <div style="display:flex;align-items:baseline;gap:22px"><span style="font:800 112px/1 Poppins;color:${t.accentText}">30% off</span><span style="font:700 34px/1.2 Poppins;color:${t.fg}">your first two<br>monthly bills</span></div>
     <div style="font:500 24px/1.35 Inter;color:${t.muted};margin-top:16px">A discount on paid plans, not a free period.</div></div>
   <div style="position:absolute;left:56px;top:470px;width:968px;display:flex;gap:26px;align-items:center">${badge(150, dark)}
-    <div style="flex:1">${fmList.slice(0, 4).map(([n, v, p]) => `<div style="display:flex;justify-content:space-between;font:500 23px/1.75 Inter;color:${t.fg};border-bottom:1.5px solid ${t.line}"><b style="font-family:Poppins">${n}</b><span><span style="color:${t.muted}">${R(v)} →</span> <b style="color:${t.accentText}">${R(p)}</b></span></div>`).join('')}</div></div>
-  ${orangeBand(`<div style="font:700 19px Inter;letter-spacing:.08em;text-transform:uppercase">South African sign-ups</div><div style="font:800 44px/1.1 Poppins;margin-top:6px">Live now, while it lasts</div><div style="font:600 22px Inter;margin-top:8px">fluxmuse.ai · paid plans from R149 a month</div>`, 'position:absolute;left:56px;top:740px;width:968px;height:206px;border-radius:22px;padding:22px 32px')}
-  <div style="position:absolute;left:56px;bottom:26px;width:760px;font:400 17px Inter;color:${t.muted}">First two monthly bills of a paid plan. Agencies: see partner pricing.</div>`;
-  return frame({ w, h, dark, eyebrow: 'Launch offer · South Africa', title: 'Become a Founding Member', mark: 'tr', headW: 760, body });
+    <div style="flex:1">${fmList.slice(0, 5).map(([n, v, p]) => `<div style="display:flex;justify-content:space-between;font:500 23px/1.75 Inter;color:${t.fg};border-bottom:1.5px solid ${t.line}"><b style="font-family:Poppins">${n}</b><span><span style="color:${t.muted}">${R(v)} →</span> <b style="color:${t.accentText}">${R(p)}</b></span></div>`).join('')}</div></div>
+  ${orangeBand(`<div style="font:700 19px Inter;letter-spacing:.08em;text-transform:uppercase">Every plan, Nano to Agency</div><div style="font:800 44px/1.1 Poppins;margin-top:6px">Live now, until 31 Dec 2026</div><div style="font:600 22px Inter;margin-top:8px">fluxmuse.ai · paid plans from R149 a month</div>`, 'position:absolute;left:56px;top:740px;width:968px;height:206px;border-radius:22px;padding:22px 32px')}
+  <div style="position:absolute;left:56px;bottom:26px;width:760px;font:400 17px Inter;color:${t.muted}">First two monthly bills of a paid plan. Doesn’t stack with partner pricing.</div>`;
+  return frame({ w, h, dark, eyebrow: 'Launch offer · until 31 Dec 2026', title: 'Become a Founding Member', mark: 'tr', headW: 760, body });
 }, { square: true });
 
 // founding-member-offer_pilot: retired 2026-10-05 (there is no pilot).
@@ -126,7 +127,7 @@ const SEGMENTS = [
     whoShort: 'Marketing, digital and social media agencies and freelancers managing 5–50 small-business clients',
     pain: 'Margin squeeze; manual reporting; too many tools per client; clients asking for WhatsApp selling and AI',
     promise: 'Serve more clients under your brand: set your own retail price and keep the spread',
-    motion: 'Partner conversation and demo, then the partner wholesale plan',
+    motion: 'Partner conversation and demo, then the partner wholesale plan or the partner programme (15–25% commission)',
     pains: ['Margin squeeze on every client retainer', 'Manual reporting and too many tools per client', 'Clients asking for WhatsApp selling and AI'],
     answers: ['Partner price R6,999/mo: set your own retail price and keep the spread', 'White-label and multi-client, with unlimited brands and 80 channels', 'Offer clients a WhatsApp marketing team under your own brand'],
     price: 9999, upNote: 'Agency tier list price. White-label, multi-client, bring your own cloud' },
@@ -156,13 +157,13 @@ variants('market-entry-sequence', ({ dark, w, h }) => {
   const rest = COUNTRIES.map((c) => c[0]).filter((iso) => !['ZA', 'NG', 'KE', 'GH'].includes(iso));
   const steps = [
     { n: '1', title: 'South Africa', tag: 'Home market', hi: (iso) => (iso === 'ZA' ? 'on' : 'off'), billing: 'Billed in ZAR',
-      items: ['Open now: paid plans, Paystack live', 'A small first group of businesses, set up by hand', 'Founding Member: 30% off the first two monthly bills'] },
+      items: ['Open now: paid plans, card and EFT', 'A small first group of businesses, set up by hand', 'Founding Member: 30% off the first two monthly bills'] },
     { n: '2', title: 'Nigeria, Kenya, Ghana', tag: 'Next · no date set', hi: (iso) => (['NG', 'KE', 'GH'].includes(iso) ? 'on' : iso === 'ZA' ? 'soft' : 'off'), billing: 'Priced in NGN, KES, GHS',
-      items: ['Not yet on sale', 'Opens once Fincra and pawaPay accounts are live and checkout is tested'] },
+      items: ['Not yet on sale', 'Opens once payment-partner accounts are live and checkout is tested'] },
     { n: '3', title: 'Other covered markets', tag: 'Later · self-serve', hi: (iso) => (rest.includes(iso) ? 'on' : ['ZA', 'NG', 'KE', 'GH'].includes(iso) ? 'soft' : 'off'), billing: 'USD, once open',
-      items: ["Côte d'Ivoire, Rwanda, Uganda, Tanzania, Zambia, francophone West & Central Africa and more", 'Markets pawaPay and Fincra cover; accounts pending'] },
+      items: ["Côte d'Ivoire, Rwanda, Uganda, Tanzania, Zambia, francophone West & Central Africa and more", 'Markets our payment partners cover; accounts pending'] },
     { n: '4', title: 'Botswana & Namibia', tag: 'Coming soon', soon: true, hi: (iso, soon) => (soon ? 'soon' : 'off'), billing: 'Waitlist only',
-      items: ['Shown in the region picker', 'Opens once a provider covers them'] },
+      items: ['Shown in the region picker', 'Opens once a payment partner covers them'] },
   ];
   const cw = (1744 - 3 * 44) / 4, top = 250, ch = 580;
   const body = `
@@ -180,8 +181,8 @@ variants('market-entry-sequence', ({ dark, w, h }) => {
   </div>`).join('')}
   <div style="position:absolute;left:88px;top:${top + ch + 24}px;width:1744px;height:112px;border-radius:22px;background:${t.card2};display:flex;align-items:center;gap:22px;padding:0 30px">
     <span style="flex:none;width:60px;height:60px;border-radius:16px;background:${t.card};border:1.5px solid ${t.line};display:flex;align-items:center;justify-content:center">${icon('shield', 32, t.slateMark, 2.2)}</span>
-    <div><div style="font:700 27px Poppins;color:${t.fg}">Everywhere else: waitlist only</div><div style="font:400 21px/1.35 Inter;color:${t.muted}">No paid checkout outside South Africa until a provider is live there and checkout is tested.</div></div></div>
-  <div style="position:absolute;left:88px;bottom:28px;width:1400px;font:400 19px/1.4 Inter;color:${t.muted}">Coverage shown is what pawaPay and Fincra contract for; their accounts are pending. Tiles placed roughly by geography.</div>`;
+    <div><div style="font:700 27px Poppins;color:${t.fg}">Everywhere else: waitlist only</div><div style="font:400 21px/1.35 Inter;color:${t.muted}">No paid checkout outside South Africa until a payment partner is live there and checkout is tested.</div></div></div>
+  <div style="position:absolute;left:88px;bottom:28px;width:1400px;font:400 19px/1.4 Inter;color:${t.muted}">Coverage shown is what our payment partners contract for; accounts pending. Tiles placed roughly by geography.</div>`;
   return frame({ w, h, dark, eyebrow: 'Market entry sequence', title: 'Where we sell, in order', headW: 1300, body });
 });
 
@@ -241,7 +242,7 @@ variants('market-entry-sequence', ({ dark, w, h }) => {
 for (const s of SEGMENTS) {
   variants('segment-' + s.key, ({ dark, w, h }) => {
     const t = T(dark);
-    const FM = { 149: 104, 289: 202, 499: 349, 1999: 1399, 4999: 3499 }; // Founding Member price points (facts §2), first 2 monthly bills
+    const FM = { 149: 104, 289: 202, 499: 349, 1999: 1399, 4999: 3499, 6999: 4899, 9999: 6999 }; // Founding Member price points (CURRENT_OFFER §1), first 2 monthly bills
     const fm = FM[s.price];
     const rh = 140, g = 16, y0 = 456;
     const body = `
@@ -265,7 +266,7 @@ for (const s of SEGMENTS) {
       <div style="font:600 19px/1.35 Inter;margin-top:8px">Wholesale for partner agencies. Set your own retail price and keep the spread.</div>`
       : `<div style="display:flex;align-items:center;gap:10px">${icon('sparkles', 26, C.night, 2.4)}<span style="font:700 18px Inter;letter-spacing:.08em;text-transform:uppercase">Founding Member</span></div>
       <div style="font:800 42px/1.1 Poppins;margin-top:10px">${R(fm)}/mo</div><div style="font:700 21px/1.3 Inter">for your first 2 bills (30% off)</div>
-      <div style="font:600 19px/1.35 Inter;margin-top:8px">Then ${R(s.price)}. South African sign-ups, while it lasts.</div>`, `position:absolute;left:1420px;top:${y0 + 224}px;width:412px;height:${3 * rh + 2 * g - 224}px;border-radius:22px;padding:20px 26px`)}
+      <div style="font:600 19px/1.35 Inter;margin-top:8px">Then ${R(s.price)}. Join by 31 Dec 2026.</div>`, `position:absolute;left:1420px;top:${y0 + 224}px;width:412px;height:${3 * rh + 2 * g - 224}px;border-radius:22px;padding:20px 26px`)}
     <div style="position:absolute;left:88px;bottom:30px;width:1400px;font:400 20px/1.4 Inter;color:${t.muted}"><b style="color:${t.fg}">How they buy:</b> ${s.motion}.${s.key === 'agency' ? ' Your spread depends on the retail price you set and your own costs.' : ''}</div>`;
     return frame({ w, h, dark, eyebrow: `Launch segment ${s.n} of 3 · South Africa first`, title: s.name, sub: s.whoShort, headW: 1400, body });
   });
