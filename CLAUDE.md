@@ -94,3 +94,15 @@ live production host. If the production server's `config.php` was ever seeded fr
 the same placeholder-containing `b8caae1c` commit and not since regenerated, rotate
 its `encryption_key` there directly (changing it invalidates existing sessions/cookies
 but rotating a weak key outweighs that).
+
+## Handing SQL to Thabo (standing instruction)
+
+Whenever Thabo has to run SQL himself in a Supabase SQL editor, give **every query or part as a live link** that opens the SQL editor already filled in. Don't give paste-only code blocks or attachment-only files.
+
+- Link format: `https://supabase.com/dashboard/project/<project-ref>/sql/new?content=<URL-encoded SQL>`
+  - FluxMuse (foundation-zero-point): `jgqokmilyijvcfqsrgjt`
+  - eMbizo (embizo-connect-app): `zhpdutqtehujhuipvzil`
+- Split long migrations into numbered parts of about 4.5KB of SQL or less, one link each, labelled with the order to run them in (the SQL editor truncates large pastes).
+- Test the parts before sending them (apply the joined parts to a scratch Postgres or run the migration's SQL test against them).
+- Also attach the `.sql` files as a fallback, and say which project each link is for.
+- If the session has Management API access to that project and Thabo has approved it, apply the migration yourself instead (one transaction plus its `supabase_migrations.schema_migrations` row) and verify afterwards.
