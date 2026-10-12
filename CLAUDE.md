@@ -101,7 +101,7 @@ Whenever Thabo has to run SQL himself in a Supabase SQL editor, give **every que
 
 - Link format: `https://supabase.com/dashboard/project/<project-ref>/sql/new?content=<URL-encoded SQL>`
   - FluxMuse (foundation-zero-point): `jgqokmilyijvcfqsrgjt`
-  - eMbizo (embizo-connect-app) is **not** in Thabo's Supabase account: it runs on Lovable Cloud (project `zhpdutqtehujhuipvzil` is owned by Lovable), so SQL-editor links and the Management API don't work for it. For eMbizo, commit the migration to `supabase/migrations/` on main and give Thabo a ready-to-paste prompt for the Lovable chat asking it to apply that file; Lovable applies it and deploys edge functions.
+  - eMbizo (embizo-connect-app): project `zhpdutqtehujhuipvzil`. Thabo is keeping this project and disconnecting Lovable from it (no dump, no new project). Lovable Cloud created it, so it isn't in Thabo's Supabase account yet: SQL-editor links and the Management API only work for it once access has been moved to his account. Until then, commit the migration to `supabase/migrations/` on main and give Thabo a ready-to-paste prompt for the Lovable chat to apply it. Don't have Lovable disconnected before that access exists, or nothing is left that can run SQL or deploy functions on eMbizo.
 - Split long migrations into numbered parts of about 4.5KB of SQL or less, one link each, labelled with the order to run them in (the SQL editor truncates large pastes).
 - Test the parts before sending them (apply the joined parts to a scratch Postgres or run the migration's SQL test against them).
 - Also attach the `.sql` files as a fallback, and say which project each link is for.
