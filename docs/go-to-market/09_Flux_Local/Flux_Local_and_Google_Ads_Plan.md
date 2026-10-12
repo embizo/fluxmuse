@@ -66,10 +66,10 @@ The code is built and deployed, but Google has not switched it on yet.
 
 | # | Revenue line | Mechanism | Price | Needs |
 |---|---|---|---|---|
-| R1 | **Tier upgrade pull** | Flux Local: 1 location on Starter, 3 on Growth, 10 on Scale. Google Ads on Growth and up | Existing tiers (R499 / R1,999 / R4,999) | Tier gate (gap 1) |
-| R2 | **Extra locations add-on** | Per location beyond the tier allowance | ASSUMPTION R149/location/mo · FOUNDER DECISION | Add-on SKU |
-| R3 | **Managed Google Ads ("Autopilot")** | Agent runs the campaigns inside a spend ceiling the owner sets | ASSUMPTION 10% of managed spend, min R500/mo · FOUNDER DECISION | Fee ledger + disclosure (Google's third-party policy requires transparent fees) |
-| R4 | **Google Local Booster (once-off setup)** | Claim/verify, categories, 10 photos, 4 posts, review-reply backlog, review template | ASSUMPTION R1,500 once-off | **Nothing. Sellable this week, manually** |
+| R1 | **Tier upgrade pull** | Flux Local: 1 location on Starter, 3 on Growth, 10 on Scale. Google Ads on Growth and up | Existing tiers (R499 / R1,999 / R4,999). Allowance 1 / 3 / 10 = DECIDED 2026-10-12 | Tier gate (gap 1) |
+| R2 | **Extra locations add-on** | Per location beyond the tier allowance | **R149/location/mo** (DECIDED 2026-10-12) | Add-on SKU |
+| R3 | **Managed Google Ads ("Autopilot")** | Agent runs the campaigns inside a spend ceiling the owner sets | **10% of managed spend, min R500/mo**, Growth and up (DECIDED 2026-10-12) | Fee ledger + disclosure (Google's third-party policy requires transparent fees) |
+| R4 | **Google Local Booster (once-off setup)** | Claim/verify, categories, 10 photos, 4 posts, review-reply backlog, review template | **R1,500 once-off + Starter R499/mo from day one** (DECIDED 2026-10-12) | **Nothing. Sellable this week, manually** |
 | R5 | **Payment-rail margin on Google-sourced orders** | Existing rails take-rate on orders the loop creates | Existing (see payment-rail fee memo) | Built |
 | R6 | **AI credits** | Post drafts, reply drafts, post images | Existing credit pricing (image 8 credits) | Built |
 | R7 | **WhatsApp review-request messages** | Template sends billed through the WhatsApp wallet | Pass-through + margin | Built |
@@ -175,9 +175,9 @@ Every worker follows the existing Flux_* pattern: cron or manual run, then `flux
 
 | Horizon | Play | Offer × buyers | Build between offer and invoice | Owner |
 |---|---|---|---|---|
-| **72 h** | Google Local Booster | ASSUMPTION R1,500 once-off + Starter R499/mo × first 5 buyers = R7,500 + R2,495/mo | **None.** Founder does it as a Manager on the client's profile. Gating step: a one-page offer + Paystack link | Founder |
+| **72 h** | Google Local Booster | R1,500 once-off + Starter R499/mo × first 5 buyers = R7,500 + R2,495/mo | **None.** Founder does it as a Manager on the client's profile. Gating step: a one-page offer + Paystack link | Founder |
 | 30 d | Flux Local on tiers + review harvester live on FluxMuse's own profile | Upgrade pull Starter→Growth | Phase 1 + 2 | Eng |
-| 90 d | Managed Google Ads with the closed-loop report | 10% of spend, min R500 × first 10 SMEs | Phase 3 + Basic/Standard Access | Founder + Eng |
+| 90 d | Managed Google Ads with the closed-loop report | 10% of spend, min R500/mo × first 10 SMEs | Phase 3 + Basic/Standard Access | Founder + Eng |
 | H3 | Local-commerce network + partner white-label | Partner R5,599/mo × agencies | Phase 4–5 | Founder |
 
 First buyers by segment (names come from the founder, not this doc): Gauteng solo service businesses already in `08_Prospects` (two prospect files note no confirmed Google Business listing: Fifi's Kotas, Hyde Park Physiotherapy), WhatsApp enquirers already in FluxMuse, and the braiding/hair-studio case-study archetype.
@@ -197,13 +197,17 @@ First buyers by segment (names come from the founder, not this doc): Gauteng sol
 
 ---
 
-## 7. Founder decisions needed
+## 7. Founder decisions (decided 2026-10-12)
 
-1. Extra-location price (R149/mo suggested).
-2. Managed Google Ads fee (10% of spend, min R500 suggested) and which tiers can buy it.
-3. Booster price (R1,500 suggested) and whether it includes the first month's subscription.
-4. Location allowance per tier (1 / 3 / 10 suggested).
-5. Go-ahead for Phase 0.1–0.3 today. 0.2 starts the critical-path clock.
+| # | Decision | Answer |
+|---|---|---|
+| 1 | Extra-location price | **R149/location/mo** |
+| 2 | Managed Google Ads fee | **10% of managed spend, min R500/mo**, Growth tier and up, shown on the invoice |
+| 3 | Booster price | **R1,500 once-off**, and Starter R499/mo starts at the same time (pay first) |
+| 4 | Locations per tier | **Starter 1 · Growth 3 · Scale 10** |
+| 5 | Phase 0 | **Go.** FluxMuse's own profile is a **service-area business**: address hidden, primary category "Marketing agency", secondary "Internet marketing service", areas Gauteng + North West. Google doesn't allow online-only businesses, and the Booster/onboarding work with clients is what makes FluxMuse eligible |
+
+Still open: how much a partner earns on referrals (see 00_FACTS §2), and the date FluxMuse's own profile is verified, which starts the ~60-day clock for the GBP API form.
 
 ---
 
