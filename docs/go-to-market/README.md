@@ -26,3 +26,4 @@ alongside the pilot campaign.
 4. Only claim Meta permissions that are approved. Instagram publishing, comments and DMs are still in App Review.
 
 - [08_Prospects](08_Prospects/README.md): first 20 SA prospects, tailored proposals and outreach playbook (2026-09-26)
+- [09_Flux_Local](09_Flux_Local/Flux_Local_and_Google_Ads_Plan.md): Flux Local (Google Business Profile) + Google Ads value chain, AI workers, revenue lines and build plan (2026-10-12)
