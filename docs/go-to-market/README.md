@@ -31,3 +31,4 @@ business plan and financial model for **Fluxmuse (Pty) Ltd**, prepared September
 5. Payments: paid sign-up is live in South Africa only (card and EFT). Nigeria, Kenya and Ghana checkout is not available yet. Never name a payment provider or gateway in anything a prospect, customer or partner sees; say "via our payment partners" (provider names are internal, `00_FACTS_AND_ASSUMPTIONS.md` §3).
 
 - [08_Prospects](08_Prospects/README.md): first 20 SA prospects, tailored proposals and outreach playbook (2026-09-26)
+- [09_Flux_Local](09_Flux_Local/Flux_Local_and_Google_Ads_Plan.md): Flux Local (Google Business Profile) + Google Ads value chain, AI workers, revenue lines and build plan (2026-10-12)
