@@ -1,0 +1,24 @@
+/*!
+ * Fluxmuse soft-UI supplement for public auth pages (login, sign-up, forgot password,
+ * activation), rendered by views/site/modern/subscription_theme.php.
+ * Loaded after neu-soft-ui.css; scoped to <body class="neu-auth">.
+ */
+body.neu-auth,
+body.neu-auth.bg-info-light-alt { background: var(--neu-bg) !important; }
+body.neu-auth #app, body.neu-auth .section { background: transparent; }
+
+body.neu-auth .login-brand { text-align: center; margin: 24px 0; }
+body.neu-auth .card.card-primary { border-top: 0; padding: 8px; }
+body.neu-auth .card .card-header h4 { color: var(--neu-primary); }
+body.neu-auth .login_btn,
+body.neu-auth .btn-lg { border-radius: var(--neu-radius-sm); padding: 12px 20px; }
+body.neu-auth .control-label { color: var(--neu-muted); font-weight: 600; }
+body.neu-auth .text-muted { color: var(--neu-muted) !important; }
+
+/* Social / Google sign-in buttons */
+body.neu-auth #customBtn {
+  background: var(--neu-surface); color: var(--neu-text);
+  border: 0; border-radius: var(--neu-radius-sm); box-shadow: var(--neu-out-sm);
+}
+body.neu-auth #customBtn:active { box-shadow: var(--neu-in-sm); }
+body.neu-auth .btn-social { border-radius: var(--neu-radius-sm); border: 0; }

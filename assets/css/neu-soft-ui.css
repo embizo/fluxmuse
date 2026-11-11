@@ -1,0 +1,204 @@
+/*!
+ * Fluxmuse Neumorphic Soft UI (NEU-inspired)
+ * Original implementation of the soft-UI look: extruded surfaces, inset fields,
+ * pressed states. Loaded AFTER custom.css so it only overrides visuals, never layout.
+ * Disable globally: remove the <link> in views/include/css_include_back.php,
+ * or opt out per page with <body class="no-neu">.
+ */
+
+:root {
+  --neu-bg: #e8ebf3;
+  --neu-surface: #e8ebf3;
+  --neu-text: #111827;
+  --neu-muted: #6b7280;
+  --neu-primary: #4338ca;
+  --neu-accent: #ff6b6b;
+  --neu-light: #ffffff;
+  --neu-dark: #c3c9d9;
+  --neu-radius: 16px;
+  --neu-radius-sm: 10px;
+  --neu-out: 6px 6px 14px var(--neu-dark), -6px -6px 14px var(--neu-light);
+  --neu-out-sm: 3px 3px 8px var(--neu-dark), -3px -3px 8px var(--neu-light);
+  --neu-in: inset 4px 4px 9px var(--neu-dark), inset -4px -4px 9px var(--neu-light);
+  --neu-in-sm: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.no-neu-dark) {
+    --neu-bg: #1c2030;
+    --neu-surface: #1c2030;
+    --neu-text: #e5e7eb;
+    --neu-muted: #9ca3af;
+    --neu-light: #262b3f;
+    --neu-dark: #12151f;
+    --neu-out: 6px 6px 14px var(--neu-dark), -6px -6px 14px var(--neu-light);
+    --neu-out-sm: 3px 3px 8px var(--neu-dark), -3px -3px 8px var(--neu-light);
+    --neu-in: inset 4px 4px 9px var(--neu-dark), inset -4px -4px 9px var(--neu-light);
+    --neu-in-sm: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
+  }
+}
+
+body:not(.no-neu) {
+  background: var(--neu-bg);
+  color: var(--neu-text);
+  font-family: 'Inter', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+body:not(.no-neu) h1, body:not(.no-neu) h2, body:not(.no-neu) h3,
+body:not(.no-neu) h4, body:not(.no-neu) h5, body:not(.no-neu) h6 {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  color: var(--neu-text);
+}
+
+/* ---- Layout shells ---- */
+body:not(.no-neu) .main-content,
+body:not(.no-neu) #app,
+body:not(.no-neu) .main-wrapper { background: var(--neu-bg); }
+
+body:not(.no-neu) .main-sidebar {
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out);
+}
+body:not(.no-neu) .main-sidebar .sidebar-menu li a {
+  color: var(--neu-muted);
+  border-radius: var(--neu-radius-sm);
+  margin: 4px 10px;
+  transition: box-shadow .2s, color .2s;
+}
+body:not(.no-neu) .main-sidebar .sidebar-menu li a:hover { color: var(--neu-primary); box-shadow: var(--neu-out-sm); }
+body:not(.no-neu) .main-sidebar .sidebar-menu li.active > a {
+  color: var(--neu-primary);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-in-sm);
+}
+body:not(.no-neu) .navbar-bg { background: var(--neu-bg) !important; box-shadow: none; }
+body:not(.no-neu) .main-navbar {
+  background: var(--neu-surface);
+  box-shadow: 0 6px 14px -8px var(--neu-dark);
+}
+
+/* ---- Cards ---- */
+body:not(.no-neu) .card {
+  background: var(--neu-surface);
+  border: 0;
+  border-radius: var(--neu-radius);
+  box-shadow: var(--neu-out);
+}
+body:not(.no-neu) .card .card-header,
+body:not(.no-neu) .card .card-footer { background: transparent; border-color: transparent; }
+body:not(.no-neu) .card.card-large-icons.card-condensed { box-shadow: var(--neu-out-sm); }
+body:not(.no-neu) .card.card-large-icons.card-condensed.active { background: var(--neu-primary); box-shadow: var(--neu-in); }
+
+/* ---- Buttons ---- */
+body:not(.no-neu) .btn {
+  border: 0;
+  border-radius: var(--neu-radius-sm);
+  transition: box-shadow .18s ease, transform .12s ease, color .18s;
+}
+body:not(.no-neu) .btn:not(.btn-link):not(.note-btn) { box-shadow: var(--neu-out-sm); }
+body:not(.no-neu) .btn:not(.btn-link):not(.note-btn):hover { box-shadow: var(--neu-out); }
+body:not(.no-neu) .btn:not(.btn-link):not(.note-btn):active,
+body:not(.no-neu) .btn.active { box-shadow: var(--neu-in-sm) !important; transform: translateY(1px); }
+body:not(.no-neu) .btn:focus { outline: 0; box-shadow: var(--neu-in-sm), 0 0 0 2px rgba(67,56,202,.35) !important; }
+
+body:not(.no-neu) .btn-light,
+body:not(.no-neu) .btn-secondary,
+body:not(.no-neu) .btn-outline-primary,
+body:not(.no-neu) .btn-outline-secondary { background: var(--neu-surface); color: var(--neu-text); }
+body:not(.no-neu) .btn-outline-primary { color: var(--neu-primary); }
+
+/* ---- Brand colour mapping (Indigo primary, Coral accent) ---- */
+body:not(.no-neu) .btn-primary,
+body:not(.no-neu) .badge-primary,
+body:not(.no-neu) .progress-bar { background-color: var(--neu-primary); border-color: var(--neu-primary); color: #fff; }
+body:not(.no-neu) .bg-primary { background-color: var(--neu-primary) !important; }
+body:not(.no-neu) .btn-primary:hover { background-color: #3730a3; }
+body:not(.no-neu) .btn-danger,
+body:not(.no-neu) .badge-danger,
+body:not(.no-neu) .bg-danger { background-color: var(--neu-accent); border-color: var(--neu-accent); color: #fff; }
+body:not(.no-neu) .btn-danger:hover { background-color: #f25252; }
+body:not(.no-neu) .btn-outline-primary { border: 0; color: var(--neu-primary); }
+body:not(.no-neu) .btn-outline-primary:hover { background: var(--neu-surface); color: var(--neu-primary); }
+body:not(.no-neu) a { color: var(--neu-primary); }
+body:not(.no-neu) .text-primary { color: var(--neu-primary) !important; }
+body:not(.no-neu) .text-danger { color: var(--neu-accent) !important; }
+body:not(.no-neu) .custom-control-input:checked ~ .custom-control-label::before { border-color: var(--neu-primary); }
+@media (prefers-color-scheme: dark) {
+  body:not(.no-neu):not(.no-neu-dark) .btn-outline-primary,
+  body:not(.no-neu):not(.no-neu-dark) a:not(.btn):not(.nav-link):not(.dropdown-item) { color: #818cf8; }
+}
+
+/* ---- Form controls: inset wells ---- */
+body:not(.no-neu) .form-control,
+body:not(.no-neu) .custom-select,
+body:not(.no-neu) .select2-container--default .select2-selection--single,
+body:not(.no-neu) .select2-container--default .select2-selection--multiple,
+body:not(.no-neu) .input-group-text {
+  background: var(--neu-surface);
+  color: var(--neu-text);
+  border: 0;
+  border-radius: var(--neu-radius-sm);
+  box-shadow: var(--neu-in-sm);
+}
+body:not(.no-neu) .form-control:focus,
+body:not(.no-neu) .custom-select:focus {
+  background: var(--neu-surface);
+  box-shadow: var(--neu-in), 0 0 0 2px rgba(67,56,202,.3);
+}
+body:not(.no-neu) .form-control::placeholder { color: var(--neu-muted); opacity: .7; }
+
+/* checkboxes / radios / switches */
+body:not(.no-neu) .custom-control-label::before {
+  background: var(--neu-surface); border: 0; box-shadow: var(--neu-in-sm);
+}
+body:not(.no-neu) .custom-control-input:checked ~ .custom-control-label::before {
+  background: var(--neu-primary); box-shadow: var(--neu-in-sm);
+}
+body:not(.no-neu) .custom-switch .custom-control-label::before { border-radius: 999px; }
+body:not(.no-neu) .custom-switch .custom-control-label::after {
+  background: var(--neu-light); box-shadow: var(--neu-out-sm);
+}
+body:not(.no-neu) .custom-switch .custom-control-input:checked ~ .custom-control-label::after { background: #fff; }
+
+/* ---- Tables, tabs, pills, badges ---- */
+body:not(.no-neu) .table thead th { background: transparent !important; border-bottom: 0; }
+body:not(.no-neu) .table td, body:not(.no-neu) .table th { border-top-color: rgba(125,135,160,.15); }
+body:not(.no-neu) .data-card .table:not(.table-sm) thead th { background: transparent !important; }
+
+body:not(.no-neu) .nav-pills .nav-link { border-radius: var(--neu-radius-sm); color: var(--neu-muted); }
+body:not(.no-neu) .nav-pills .nav-link:hover { box-shadow: var(--neu-out-sm); }
+body:not(.no-neu) .nav-pills .nav-link.active {
+  background: var(--neu-surface); color: var(--neu-primary); box-shadow: var(--neu-in-sm);
+}
+body:not(.no-neu) .nav-tabs { border-bottom: 0; }
+body:not(.no-neu) .nav-tabs .nav-link { border: 0; border-radius: var(--neu-radius-sm); color: var(--neu-muted); }
+body:not(.no-neu) .nav-tabs .nav-link.active { background: var(--neu-surface); color: var(--neu-primary); box-shadow: var(--neu-in-sm); }
+
+body:not(.no-neu) .badge { border-radius: 999px; box-shadow: var(--neu-out-sm); }
+
+/* ---- Overlays ---- */
+body:not(.no-neu) .modal-content {
+  background: var(--neu-surface); border: 0; border-radius: var(--neu-radius); box-shadow: var(--neu-out);
+}
+body:not(.no-neu) .modal-header, body:not(.no-neu) .modal-footer { border-color: transparent; }
+body:not(.no-neu) .dropdown-menu {
+  background: var(--neu-surface); border: 0; border-radius: var(--neu-radius-sm); box-shadow: var(--neu-out);
+}
+body:not(.no-neu) .dropdown-item:hover { background: transparent; color: var(--neu-primary); box-shadow: var(--neu-in-sm); }
+body:not(.no-neu) .progress { background: var(--neu-surface); box-shadow: var(--neu-in-sm); border-radius: 999px; }
+body:not(.no-neu) .progress-bar { border-radius: 999px; }
+body:not(.no-neu) .alert { border: 0; border-radius: var(--neu-radius-sm); box-shadow: var(--neu-out-sm); }
+body:not(.no-neu) .page-link { background: var(--neu-surface); border: 0; margin: 0 3px; border-radius: var(--neu-radius-sm); box-shadow: var(--neu-out-sm); }
+body:not(.no-neu) .page-item.active .page-link { background: var(--neu-surface); color: var(--neu-primary); box-shadow: var(--neu-in-sm); }
+
+/* ---- Utility classes for new markup ---- */
+.neu-raised   { background: var(--neu-surface); border-radius: var(--neu-radius); box-shadow: var(--neu-out); }
+.neu-raised-sm{ background: var(--neu-surface); border-radius: var(--neu-radius-sm); box-shadow: var(--neu-out-sm); }
+.neu-inset    { background: var(--neu-surface); border-radius: var(--neu-radius); box-shadow: var(--neu-in); }
+.neu-inset-sm { background: var(--neu-surface); border-radius: var(--neu-radius-sm); box-shadow: var(--neu-in-sm); }
+.neu-circle   { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--neu-surface); box-shadow:var(--neu-out-sm); color:var(--neu-primary); }
+.neu-circle:active { box-shadow: var(--neu-in-sm); }
+.neu-accent   { color: var(--neu-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.no-neu) .btn, body:not(.no-neu) .main-sidebar .sidebar-menu li a { transition: none; }
+}

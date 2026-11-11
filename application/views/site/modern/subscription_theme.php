@@ -24,12 +24,15 @@
   <?php if($is_rtl) { ?>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/rtl.css">
   <?php } ?>
+  <!-- Neumorphic Soft UI for public auth pages -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neu-soft-ui.css?v=2">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neu-auth.css?v=1">
   <?php include(APPPATH."views/include/js_variables_front.php");?>
   <script src="<?php echo base_url(); ?>assets/modules/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/modules/sweetalert/sweetalert.min.js"></script>
 </head>
 
-<body class="bg-info-light-alt gradient">
+<body class="bg-info-light-alt gradient neu-auth">
   <div id="app">
     <section class="section">
       <?php echo $this->load->view($body); ?>
