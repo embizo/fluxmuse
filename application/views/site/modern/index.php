@@ -57,9 +57,13 @@ Description: This is a default theme provided by the Author of ChatPion. We high
 	<!--====== Style CSS ======-->
 	<link rel="stylesheet" href="<?php echo base_url('assets/modern/css/style.css');?>">
 
+	<!--====== Neumorphic Soft UI ======-->
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/neu-soft-ui.css?v=2');?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/neu-landing.css?v=1');?>">
+
 </head>
 
-<body>
+<body class="neu-landing">
 	<!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
