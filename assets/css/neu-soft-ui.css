@@ -31,6 +31,10 @@
     --neu-muted: #9ca3af;
     --neu-light: #262b3f;
     --neu-dark: #12151f;
+    --neu-out: 6px 6px 14px var(--neu-dark), -6px -6px 14px var(--neu-light);
+    --neu-out-sm: 3px 3px 8px var(--neu-dark), -3px -3px 8px var(--neu-light);
+    --neu-in: inset 4px 4px 9px var(--neu-dark), inset -4px -4px 9px var(--neu-light);
+    --neu-in-sm: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
   }
 }
 
@@ -101,6 +105,27 @@ body:not(.no-neu) .btn-secondary,
 body:not(.no-neu) .btn-outline-primary,
 body:not(.no-neu) .btn-outline-secondary { background: var(--neu-surface); color: var(--neu-text); }
 body:not(.no-neu) .btn-outline-primary { color: var(--neu-primary); }
+
+/* ---- Brand colour mapping (Indigo primary, Coral accent) ---- */
+body:not(.no-neu) .btn-primary,
+body:not(.no-neu) .badge-primary,
+body:not(.no-neu) .progress-bar { background-color: var(--neu-primary); border-color: var(--neu-primary); color: #fff; }
+body:not(.no-neu) .bg-primary { background-color: var(--neu-primary) !important; }
+body:not(.no-neu) .btn-primary:hover { background-color: #3730a3; }
+body:not(.no-neu) .btn-danger,
+body:not(.no-neu) .badge-danger,
+body:not(.no-neu) .bg-danger { background-color: var(--neu-accent); border-color: var(--neu-accent); color: #fff; }
+body:not(.no-neu) .btn-danger:hover { background-color: #f25252; }
+body:not(.no-neu) .btn-outline-primary { border: 0; color: var(--neu-primary); }
+body:not(.no-neu) .btn-outline-primary:hover { background: var(--neu-surface); color: var(--neu-primary); }
+body:not(.no-neu) a { color: var(--neu-primary); }
+body:not(.no-neu) .text-primary { color: var(--neu-primary) !important; }
+body:not(.no-neu) .text-danger { color: var(--neu-accent) !important; }
+body:not(.no-neu) .custom-control-input:checked ~ .custom-control-label::before { border-color: var(--neu-primary); }
+@media (prefers-color-scheme: dark) {
+  body:not(.no-neu):not(.no-neu-dark) .btn-outline-primary,
+  body:not(.no-neu):not(.no-neu-dark) a:not(.btn):not(.nav-link):not(.dropdown-item) { color: #818cf8; }
+}
 
 /* ---- Form controls: inset wells ---- */
 body:not(.no-neu) .form-control,
