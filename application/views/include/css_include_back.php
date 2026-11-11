@@ -84,6 +84,9 @@ else
 <!-- Custom -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css">
 
+<!-- Neumorphic Soft UI (override layer; keep after custom.css) -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neu-soft-ui.css?v=1">
+
 <?php if($is_rtl) { ?>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/rtl.css">
 <?php } ?>
